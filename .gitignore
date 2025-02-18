@@ -6,7 +6,6 @@ __pycache__/
 *.wav
 .DS_Store
 .venv
-uv.lock
 
 # CodeTalker
 CodeTalker/demo/
