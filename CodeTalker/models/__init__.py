@@ -6,6 +6,9 @@ def get_model(cfg):
     elif cfg.arch == 'stage1_BIWI':
         from models.stage1_BIWI import VQAutoEncoder as Model
         model = Model(args=cfg)
+    elif cfg.arch == 'stage1_MEAD':
+        from models.stage1_MEAD import VQAutoEncoder as Model
+        model = Model(args=cfg)
     elif cfg.arch == 'stage2':
         from models.stage2 import CodeTalker as Model
         model = Model(args=cfg)

@@ -1,0 +1,1705 @@
+10
+Mon Feb 17 11:37:52 2025       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.54.03              Driver Version: 535.54.03    CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA RTX A6000               On  | 00000000:01:00.0 Off |                  Off |
+| 30%   24C    P8              24W / 300W |     12MiB / 49140MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   1  NVIDIA RTX A6000               On  | 00000000:25:00.0 Off |                  Off |
+| 30%   35C    P2              98W / 300W |  19810MiB / 49140MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   2  NVIDIA RTX A6000               On  | 00000000:41:00.0 Off |                  Off |
+| 30%   36C    P2              87W / 300W |  31996MiB / 49140MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   3  NVIDIA RTX A6000               On  | 00000000:61:00.0 Off |                  Off |
+| 30%   46C    P2             109W / 300W |  29718MiB / 49140MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   4  NVIDIA RTX A6000               On  | 00000000:81:00.0 Off |                  Off |
+| 56%   79C    P2             290W / 300W |  35546MiB / 49140MiB |     92%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   5  NVIDIA RTX A6000               On  | 00000000:A1:00.0 Off |                  Off |
+| 48%   75C    P2             291W / 300W |  45202MiB / 49140MiB |     99%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   6  NVIDIA RTX A6000               On  | 00000000:C1:00.0 Off |                  Off |
+| 94%   91C    P2             253W / 300W |  46680MiB / 49140MiB |     99%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   7  NVIDIA RTX A6000               On  | 00000000:E1:00.0 Off |                  Off |
+| 96%   88C    P2             265W / 300W |  42560MiB / 49140MiB |     99%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
++---------------------------------------------------------------------------------------+
+/home/sakaya/.local/bin/pip
+[2025-02-17 11:37:57,181 INFO train_pred.py line 73 1024]=>INaffine: False
+StepLR: True
+adaptive_lr: False
+arch: stage1_MEAD
+base_lr: 0.0001
+batch_size: 1
+batch_size_val: 1
+data_root: ./MEAD/
+dataset: MEAD
+dist_backend: nccl
+dist_url: tcp://127.0.0.1:6701
+distributed: False
+epochs: 200
+eval_freq: 10
+evaluate: True
+face_quan_num: 16
+factor: 0.3
+gamma: 0.5
+gpu: 0
+hidden_size: 1024
+in_dim: 15069
+intermediate_size: 1536
+manual_seed: 131
+model_path: None
+momentum: 0.9
+multiprocessing_distributed: False
+n_embed: 256
+neg: 0.2
+ngpus_per_node: 1
+num_attention_heads: 8
+num_hidden_layers: 6
+patience: 3
+poly_lr: False
+power: 0.9
+print_freq: 10
+quant_factor: 0
+quant_loss_weight: 1.0
+rank: 0
+read_audio: False
+resume: None
+save: True
+save_folder: None
+save_freq: 1
+save_path: RUN/MEAD/MEAD_stage1
+start_epoch: 0
+step_size: 20
+sync_bn: False
+template_file: FLAME2020_generic_model.pkl
+test_batch_size: 1
+test_gpu: [0]
+test_subjects: M013 M042 W026 W040
+test_workers: 0
+threshold: 0.0001
+train_gpu: 0
+train_subjects: M003 M005 M007 M009 M012 M019 M039 M041 W009 W011 W014 W015 W021 W023 W024 W028 W029 W033 W035 W036 W037
+use_sgd: False
+val_subjects: M011 M040 W025 W038
+vertices_path: vertices_npy
+warmup_steps: 1
+wav_path: wav
+weight: None
+weight_decay: 0.002
+window_size: 1
+workers: 10
+world_size: 1
+zquant_dim: 64
+[2025-02-17 11:37:57,181 INFO train_pred.py line 74 1024]=>=> creating model ...
+Loading data...
+  0%|          | 0/19101 [00:00<?, ?it/s]  0%|          | 4/19101 [00:00<08:26, 37.72it/s]  0%|          | 8/19101 [00:00<10:37, 29.97it/s]  0%|          | 13/19101 [00:00<08:41, 36.59it/s]  0%|          | 17/19101 [00:00<08:52, 35.84it/s]  0%|          | 22/19101 [00:00<08:06, 39.23it/s]  0%|          | 27/19101 [00:00<07:35, 41.89it/s]  0%|          | 32/19101 [00:00<07:16, 43.69it/s]  0%|          | 38/19101 [00:00<06:51, 46.35it/s]  0%|          | 43/19101 [00:01<06:57, 45.69it/s]  0%|          | 48/19101 [00:01<07:56, 39.95it/s]Expected file path: ./MEAD/vertices_npy/W023_front_surprised_lv2_002.npy
+File W023_front_surprised_lv2_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_contempt_lv1_015.npy
+File W028_front_contempt_lv1_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_contempt_lv3_028.npy
+File W040_front_contempt_lv3_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_contempt_lv2_025.npy
+File M005_front_contempt_lv2_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_neutral_lv1_023.npy
+File W023_front_neutral_lv1_023.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_surprised_lv3_027.npy
+File W025_front_surprised_lv3_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_happy_lv3_028.npy
+File M009_front_happy_lv3_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_happy_lv2_022.npy
+File M011_front_happy_lv2_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_fear_lv2_021.npy
+File M011_front_fear_lv2_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_angry_lv3_014.npy
+File M039_front_angry_lv3_014.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_contempt_lv1_023.npy
+File M005_front_contempt_lv1_023.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_angry_lv3_023.npy
+File W021_front_angry_lv3_023.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_contempt_lv3_008.npy
+File M039_front_contempt_lv3_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_surprised_lv1_008.npy
+File M012_front_surprised_lv1_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_surprised_lv2_020.npy
+File M013_front_surprised_lv2_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_happy_lv3_016.npy
+File M005_front_happy_lv3_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_neutral_lv1_026.npy
+File W037_front_neutral_lv1_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_angry_lv3_003.npy
+File W024_front_angry_lv3_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_sad_lv2_004.npy
+File W036_front_sad_lv2_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_fear_lv2_013.npy
+File M003_front_fear_lv2_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_fear_lv1_008.npy
+File W014_front_fear_lv1_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_surprised_lv1_021.npy
+File W033_front_surprised_lv1_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_fear_lv3_006.npy
+File W015_front_fear_lv3_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_disgusted_lv2_021.npy
+File W021_front_disgusted_lv2_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_fear_lv1_023.npy
+File M003_front_fear_lv1_023.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_sad_lv2_016.npy
+File M011_front_sad_lv2_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_angry_lv3_012.npy
+File M012_front_angry_lv3_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_disgusted_lv2_009.npy
+File M019_front_disgusted_lv2_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_disgusted_lv1_028.npy
+File M005_front_disgusted_lv1_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_disgusted_lv2_015.npy
+File M039_front_disgusted_lv2_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_happy_lv2_018.npy
+File W021_front_happy_lv2_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_sad_lv3_012.npy
+File W024_front_sad_lv3_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_angry_lv2_024.npy
+File M019_front_angry_lv2_024.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_contempt_lv1_016.npy
+File W036_front_contempt_lv1_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_happy_lv3_028.npy
+File W021_front_happy_lv3_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_fear_lv1_016.npy
+File M041_front_fear_lv1_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_surprised_lv2_030.npy
+File W036_front_surprised_lv2_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_sad_lv2_021.npy
+File M003_front_sad_lv2_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_sad_lv3_030.npy
+File M019_front_sad_lv3_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_surprised_lv3_010.npy
+File M039_front_surprised_lv3_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_sad_lv1_007.npy
+File W009_front_sad_lv1_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_surprised_lv1_006.npy
+File W029_front_surprised_lv1_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_contempt_lv2_006.npy
+File W038_front_contempt_lv2_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_surprised_lv3_001.npy
+File W028_front_surprised_lv3_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_surprised_lv3_004.npy
+File M009_front_surprised_lv3_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_fear_lv2_030.npy
+File M012_front_fear_lv2_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_angry_lv1_017.npy
+File W011_front_angry_lv1_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_happy_lv1_026.npy
+File M039_front_happy_lv1_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_disgusted_lv1_020.npy
+File W035_front_disgusted_lv1_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_surprised_lv3_023.npy
+File M041_front_surprised_lv3_023.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_fear_lv2_004.npy
+File W035_front_fear_lv2_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_fear_lv2_027.npy
+File M012_front_fear_lv2_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M007_front_angry_lv2_013.npy
+File M007_front_angry_lv2_013.npy not found in vertices_npy! Skipping this sample.
+  0%|          | 53/19101 [00:01<07:34, 41.87it/s]  0%|          | 58/19101 [00:01<07:16, 43.58it/s]  0%|          | 63/19101 [00:01<07:21, 43.08it/s]  0%|          | 69/19101 [00:01<07:02, 45.09it/s]  0%|          | 74/19101 [00:01<07:14, 43.81it/s]  0%|          | 79/19101 [00:01<07:21, 43.06it/s]  0%|          | 85/19101 [00:02<06:56, 45.71it/s]  0%|          | 91/19101 [00:02<06:29, 48.77it/s]  1%|          | 97/19101 [00:02<06:15, 50.59it/s]  1%|          | 103/19101 [00:02<06:25, 49.24it/s]Expected file path: ./MEAD/vertices_npy/W037_front_sad_lv2_001.npy
+File W037_front_sad_lv2_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_fear_lv1_016.npy
+File W009_front_fear_lv1_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_surprised_lv2_003.npy
+File M042_front_surprised_lv2_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_contempt_lv3_003.npy
+File W015_front_contempt_lv3_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_happy_lv2_027.npy
+File M041_front_happy_lv2_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_contempt_lv1_001.npy
+File W024_front_contempt_lv1_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M007_front_angry_lv3_003.npy
+File M007_front_angry_lv3_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_surprised_lv1_009.npy
+File W037_front_surprised_lv1_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_sad_lv1_026.npy
+File M003_front_sad_lv1_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_surprised_lv3_012.npy
+File W038_front_surprised_lv3_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_surprised_lv1_012.npy
+File W040_front_surprised_lv1_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_neutral_lv1_020.npy
+File M012_front_neutral_lv1_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_angry_lv3_007.npy
+File W036_front_angry_lv3_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_angry_lv2_023.npy
+File W014_front_angry_lv2_023.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_fear_lv2_029.npy
+File W021_front_fear_lv2_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_neutral_lv1_009.npy
+File M042_front_neutral_lv1_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_fear_lv1_018.npy
+File W024_front_fear_lv1_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_angry_lv2_011.npy
+File W028_front_angry_lv2_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_angry_lv2_002.npy
+File W028_front_angry_lv2_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_contempt_lv2_021.npy
+File M019_front_contempt_lv2_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_surprised_lv2_016.npy
+File W011_front_surprised_lv2_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_happy_lv2_006.npy
+File M013_front_happy_lv2_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_sad_lv3_012.npy
+File W029_front_sad_lv3_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_fear_lv3_026.npy
+File M003_front_fear_lv3_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_surprised_lv2_026.npy
+File M039_front_surprised_lv2_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_contempt_lv1_022.npy
+File W009_front_contempt_lv1_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_fear_lv3_026.npy
+File W015_front_fear_lv3_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_happy_lv2_011.npy
+File M005_front_happy_lv2_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_fear_lv3_010.npy
+File M005_front_fear_lv3_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_neutral_lv1_038.npy
+File W009_front_neutral_lv1_038.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_contempt_lv1_001.npy
+File M013_front_contempt_lv1_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_happy_lv3_021.npy
+File W029_front_happy_lv3_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_disgusted_lv1_009.npy
+File M042_front_disgusted_lv1_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_angry_lv1_010.npy
+File W036_front_angry_lv1_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_surprised_lv2_009.npy
+File M019_front_surprised_lv2_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_surprised_lv3_024.npy
+File W033_front_surprised_lv3_024.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_disgusted_lv1_028.npy
+File M019_front_disgusted_lv1_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_sad_lv1_022.npy
+File W038_front_sad_lv1_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_angry_lv1_001.npy
+File M041_front_angry_lv1_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_fear_lv2_002.npy
+File M009_front_fear_lv2_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_neutral_lv1_003.npy
+File W036_front_neutral_lv1_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_angry_lv2_001.npy
+File W024_front_angry_lv2_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_fear_lv1_005.npy
+File M005_front_fear_lv1_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_fear_lv2_022.npy
+File M009_front_fear_lv2_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_contempt_lv2_002.npy
+File M041_front_contempt_lv2_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_angry_lv3_020.npy
+File W040_front_angry_lv3_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_happy_lv1_008.npy
+File W026_front_happy_lv1_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_surprised_lv2_008.npy
+File W021_front_surprised_lv2_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_sad_lv2_025.npy
+File W036_front_sad_lv2_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_angry_lv1_018.npy
+File W036_front_angry_lv1_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_sad_lv3_020.npy
+File W040_front_sad_lv3_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_fear_lv2_008.npy
+File W037_front_fear_lv2_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_contempt_lv2_010.npy
+File M003_front_contempt_lv2_010.npy not found in vertices_npy! Skipping this sample.
+  1%|          | 108/19101 [00:02<06:27, 48.98it/s]  1%|          | 113/19101 [00:02<06:30, 48.65it/s]  1%|          | 119/19101 [00:02<06:09, 51.38it/s]  1%|          | 125/19101 [00:02<05:56, 53.16it/s]  1%|          | 131/19101 [00:02<05:51, 53.98it/s]  1%|          | 137/19101 [00:03<06:56, 45.53it/s]  1%|          | 143/19101 [00:03<06:37, 47.68it/s]  1%|          | 149/19101 [00:03<06:23, 49.43it/s]  1%|          | 155/19101 [00:03<06:20, 49.81it/s]Expected file path: ./MEAD/vertices_npy/M042_front_happy_lv2_004.npy
+File M042_front_happy_lv2_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_contempt_lv2_016.npy
+File M042_front_contempt_lv2_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_neutral_lv1_005.npy
+File W036_front_neutral_lv1_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_fear_lv1_006.npy
+File M011_front_fear_lv1_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_disgusted_lv2_013.npy
+File M013_front_disgusted_lv2_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_sad_lv3_016.npy
+File W035_front_sad_lv3_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_sad_lv2_012.npy
+File M005_front_sad_lv2_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_angry_lv3_015.npy
+File W014_front_angry_lv3_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_disgusted_lv2_009.npy
+File W035_front_disgusted_lv2_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_contempt_lv3_009.npy
+File M012_front_contempt_lv3_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_angry_lv3_008.npy
+File W009_front_angry_lv3_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_happy_lv2_022.npy
+File W025_front_happy_lv2_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_sad_lv1_002.npy
+File W021_front_sad_lv1_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_happy_lv2_022.npy
+File W037_front_happy_lv2_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_contempt_lv1_025.npy
+File W029_front_contempt_lv1_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_angry_lv3_017.npy
+File M042_front_angry_lv3_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_fear_lv3_007.npy
+File W028_front_fear_lv3_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_sad_lv3_030.npy
+File W009_front_sad_lv3_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_fear_lv1_010.npy
+File M040_front_fear_lv1_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_sad_lv2_006.npy
+File M009_front_sad_lv2_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_happy_lv1_020.npy
+File W011_front_happy_lv1_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_contempt_lv3_006.npy
+File W024_front_contempt_lv3_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_sad_lv3_007.npy
+File M039_front_sad_lv3_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_contempt_lv1_007.npy
+File M039_front_contempt_lv1_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_disgusted_lv3_012.npy
+File W026_front_disgusted_lv3_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_sad_lv2_005.npy
+File W009_front_sad_lv2_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_surprised_lv1_007.npy
+File W029_front_surprised_lv1_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_contempt_lv2_019.npy
+File M003_front_contempt_lv2_019.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M007_front_happy_lv1_015.npy
+File M007_front_happy_lv1_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_surprised_lv2_015.npy
+File M041_front_surprised_lv2_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M007_front_sad_lv2_029.npy
+File M007_front_sad_lv2_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_surprised_lv3_011.npy
+File M042_front_surprised_lv3_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_sad_lv3_021.npy
+File M039_front_sad_lv3_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_contempt_lv1_018.npy
+File W035_front_contempt_lv1_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_sad_lv2_002.npy
+File W009_front_sad_lv2_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_contempt_lv1_012.npy
+File W040_front_contempt_lv1_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_angry_lv2_009.npy
+File M003_front_angry_lv2_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_surprised_lv3_017.npy
+File W024_front_surprised_lv3_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_fear_lv1_001.npy
+File W033_front_fear_lv1_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_fear_lv1_003.npy
+File W024_front_fear_lv1_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_happy_lv1_005.npy
+File W033_front_happy_lv1_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_contempt_lv1_007.npy
+File M012_front_contempt_lv1_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_surprised_lv1_010.npy
+File W015_front_surprised_lv1_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_contempt_lv2_015.npy
+File W040_front_contempt_lv2_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_fear_lv1_023.npy
+File M005_front_fear_lv1_023.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_sad_lv2_009.npy
+File M005_front_sad_lv2_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_angry_lv3_013.npy
+File M009_front_angry_lv3_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_contempt_lv3_008.npy
+File M013_front_contempt_lv3_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_fear_lv3_010.npy
+File W036_front_fear_lv3_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_fear_lv1_013.npy
+File M042_front_fear_lv1_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_disgusted_lv2_019.npy
+File W026_front_disgusted_lv2_019.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_fear_lv3_019.npy
+File W025_front_fear_lv3_019.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_sad_lv3_021.npy
+File W023_front_sad_lv3_021.npy not found in vertices_npy! Skipping this sample.
+  1%|          | 161/19101 [00:03<06:40, 47.28it/s]  1%|          | 166/19101 [00:03<06:35, 47.87it/s]  1%|          | 171/19101 [00:03<07:37, 41.41it/s]  1%|          | 177/19101 [00:03<07:01, 44.91it/s]  1%|          | 185/19101 [00:04<06:06, 51.65it/s]  1%|          | 192/19101 [00:04<05:39, 55.69it/s]  1%|          | 198/19101 [00:04<05:39, 55.68it/s]  1%|          | 204/19101 [00:04<05:56, 53.07it/s]  1%|          | 212/19101 [00:04<05:25, 58.05it/s]Expected file path: ./MEAD/vertices_npy/W026_front_surprised_lv1_014.npy
+File W026_front_surprised_lv1_014.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_happy_lv2_014.npy
+File W033_front_happy_lv2_014.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_disgusted_lv3_016.npy
+File M019_front_disgusted_lv3_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_angry_lv1_027.npy
+File W036_front_angry_lv1_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_fear_lv1_022.npy
+File M005_front_fear_lv1_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_contempt_lv1_016.npy
+File M041_front_contempt_lv1_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_sad_lv1_004.npy
+File W011_front_sad_lv1_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_sad_lv2_029.npy
+File W015_front_sad_lv2_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_fear_lv2_023.npy
+File W025_front_fear_lv2_023.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_happy_lv2_007.npy
+File M019_front_happy_lv2_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_fear_lv1_028.npy
+File W026_front_fear_lv1_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_contempt_lv3_020.npy
+File M042_front_contempt_lv3_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_surprised_lv3_017.npy
+File W036_front_surprised_lv3_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_disgusted_lv3_027.npy
+File W025_front_disgusted_lv3_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_sad_lv2_011.npy
+File W033_front_sad_lv2_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_fear_lv2_025.npy
+File W028_front_fear_lv2_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_disgusted_lv1_002.npy
+File W029_front_disgusted_lv1_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_sad_lv1_011.npy
+File W036_front_sad_lv1_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_disgusted_lv3_013.npy
+File M042_front_disgusted_lv3_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_fear_lv1_016.npy
+File M042_front_fear_lv1_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_surprised_lv2_006.npy
+File W021_front_surprised_lv2_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_fear_lv2_028.npy
+File M013_front_fear_lv2_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_happy_lv1_006.npy
+File W011_front_happy_lv1_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_happy_lv2_018.npy
+File W025_front_happy_lv2_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_neutral_lv1_025.npy
+File W014_front_neutral_lv1_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_sad_lv3_014.npy
+File M039_front_sad_lv3_014.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_angry_lv2_009.npy
+File W038_front_angry_lv2_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_contempt_lv3_017.npy
+File M019_front_contempt_lv3_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_contempt_lv1_009.npy
+File W033_front_contempt_lv1_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_contempt_lv3_024.npy
+File W015_front_contempt_lv3_024.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_fear_lv3_003.npy
+File W036_front_fear_lv3_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_surprised_lv1_002.npy
+File M042_front_surprised_lv1_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_sad_lv1_005.npy
+File W011_front_sad_lv1_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_neutral_lv1_021.npy
+File W033_front_neutral_lv1_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_contempt_lv3_029.npy
+File M009_front_contempt_lv3_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_angry_lv1_010.npy
+File W040_front_angry_lv1_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_happy_lv2_005.npy
+File W021_front_happy_lv2_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_contempt_lv2_007.npy
+File W036_front_contempt_lv2_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_contempt_lv3_010.npy
+File M019_front_contempt_lv3_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_disgusted_lv2_019.npy
+File M013_front_disgusted_lv2_019.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_disgusted_lv3_012.npy
+File M041_front_disgusted_lv3_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_fear_lv3_024.npy
+File M042_front_fear_lv3_024.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_angry_lv1_003.npy
+File M041_front_angry_lv1_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_sad_lv1_006.npy
+File M019_front_sad_lv1_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_angry_lv2_026.npy
+File M003_front_angry_lv2_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_surprised_lv3_026.npy
+File M013_front_surprised_lv3_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_sad_lv2_005.npy
+File W038_front_sad_lv2_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_sad_lv2_024.npy
+File W029_front_sad_lv2_024.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_sad_lv2_021.npy
+File W025_front_sad_lv2_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_disgusted_lv2_021.npy
+File W035_front_disgusted_lv2_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_happy_lv2_014.npy
+File W023_front_happy_lv2_014.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_sad_lv1_005.npy
+File M005_front_sad_lv1_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_sad_lv3_028.npy
+File W037_front_sad_lv3_028.npy not found in vertices_npy! Skipping this sample.
+  1%|          | 218/19101 [00:04<05:39, 55.62it/s]  1%|          | 224/19101 [00:04<05:32, 56.71it/s]  1%|          | 232/19101 [00:04<06:13, 50.52it/s]  1%|▏         | 239/19101 [00:04<05:47, 54.26it/s]  1%|▏         | 245/19101 [00:05<05:46, 54.41it/s]  1%|▏         | 251/19101 [00:05<05:49, 53.95it/s]  1%|▏         | 257/19101 [00:05<06:05, 51.58it/s]  1%|▏         | 263/19101 [00:05<06:09, 50.98it/s]Expected file path: ./MEAD/vertices_npy/M003_front_angry_lv1_023.npy
+File M003_front_angry_lv1_023.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_disgusted_lv1_005.npy
+File W028_front_disgusted_lv1_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_sad_lv2_019.npy
+File M011_front_sad_lv2_019.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_happy_lv1_026.npy
+File M042_front_happy_lv1_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_angry_lv1_015.npy
+File W026_front_angry_lv1_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_disgusted_lv3_006.npy
+File M013_front_disgusted_lv3_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_angry_lv2_010.npy
+File W035_front_angry_lv2_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_surprised_lv3_027.npy
+File W033_front_surprised_lv3_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_happy_lv3_028.npy
+File M012_front_happy_lv3_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_disgusted_lv2_011.npy
+File M039_front_disgusted_lv2_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_angry_lv3_027.npy
+File M011_front_angry_lv3_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_surprised_lv2_022.npy
+File W015_front_surprised_lv2_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_happy_lv2_010.npy
+File W028_front_happy_lv2_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_angry_lv2_030.npy
+File M003_front_angry_lv2_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_fear_lv2_026.npy
+File M040_front_fear_lv2_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_surprised_lv1_002.npy
+File W021_front_surprised_lv1_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_angry_lv2_018.npy
+File W014_front_angry_lv2_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_happy_lv3_030.npy
+File W025_front_happy_lv3_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_sad_lv2_012.npy
+File W024_front_sad_lv2_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_disgusted_lv2_029.npy
+File W040_front_disgusted_lv2_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_disgusted_lv1_005.npy
+File M009_front_disgusted_lv1_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_surprised_lv2_010.npy
+File M042_front_surprised_lv2_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_neutral_lv1_011.npy
+File W024_front_neutral_lv1_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_surprised_lv3_005.npy
+File W023_front_surprised_lv3_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_happy_lv3_015.npy
+File M013_front_happy_lv3_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_happy_lv2_013.npy
+File M042_front_happy_lv2_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_angry_lv2_021.npy
+File W026_front_angry_lv2_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_angry_lv1_028.npy
+File W023_front_angry_lv1_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_fear_lv2_017.npy
+File W023_front_fear_lv2_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_fear_lv2_025.npy
+File M013_front_fear_lv2_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_happy_lv2_022.npy
+File M003_front_happy_lv2_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_happy_lv2_011.npy
+File M041_front_happy_lv2_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_happy_lv1_007.npy
+File W035_front_happy_lv1_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_contempt_lv1_022.npy
+File W040_front_contempt_lv1_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_angry_lv3_026.npy
+File W011_front_angry_lv3_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_neutral_lv1_037.npy
+File W021_front_neutral_lv1_037.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_fear_lv1_012.npy
+File W015_front_fear_lv1_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_angry_lv3_012.npy
+File W029_front_angry_lv3_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_disgusted_lv3_008.npy
+File M040_front_disgusted_lv3_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_fear_lv3_011.npy
+File M039_front_fear_lv3_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_angry_lv2_002.npy
+File W037_front_angry_lv2_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_happy_lv2_004.npy
+File W040_front_happy_lv2_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_sad_lv1_009.npy
+File W028_front_sad_lv1_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_neutral_lv1_004.npy
+File M039_front_neutral_lv1_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_happy_lv2_011.npy
+File W029_front_happy_lv2_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_contempt_lv2_006.npy
+File M005_front_contempt_lv2_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_sad_lv1_015.npy
+File W028_front_sad_lv1_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_disgusted_lv1_026.npy
+File M042_front_disgusted_lv1_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_contempt_lv1_008.npy
+File M005_front_contempt_lv1_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_contempt_lv2_022.npy
+File M012_front_contempt_lv2_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_contempt_lv1_017.npy
+File W038_front_contempt_lv1_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_neutral_lv1_033.npy
+File M040_front_neutral_lv1_033.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_contempt_lv1_011.npy
+File W033_front_contempt_lv1_011.npy not found in vertices_npy! Skipping this sample.
+  1%|▏         | 271/19101 [00:05<05:33, 56.40it/s]  1%|▏         | 278/19101 [00:05<05:16, 59.49it/s]  1%|▏         | 285/19101 [00:05<05:16, 59.44it/s]  2%|▏         | 293/19101 [00:05<04:54, 63.82it/s]  2%|▏         | 300/19101 [00:06<05:08, 60.96it/s]  2%|▏         | 308/19101 [00:06<04:53, 64.09it/s]  2%|▏         | 315/19101 [00:06<05:11, 60.25it/s]Expected file path: ./MEAD/vertices_npy/W024_front_happy_lv3_018.npy
+File W024_front_happy_lv3_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_disgusted_lv3_012.npy
+File M011_front_disgusted_lv3_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_disgusted_lv3_026.npy
+File W035_front_disgusted_lv3_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_fear_lv1_019.npy
+File M005_front_fear_lv1_019.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_disgusted_lv1_004.npy
+File M039_front_disgusted_lv1_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_angry_lv1_014.npy
+File W009_front_angry_lv1_014.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_contempt_lv2_012.npy
+File W009_front_contempt_lv2_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_disgusted_lv2_001.npy
+File W038_front_disgusted_lv2_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_surprised_lv2_012.npy
+File W014_front_surprised_lv2_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_angry_lv3_019.npy
+File W024_front_angry_lv3_019.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_disgusted_lv3_013.npy
+File M019_front_disgusted_lv3_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_fear_lv2_022.npy
+File M039_front_fear_lv2_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_disgusted_lv3_011.npy
+File W025_front_disgusted_lv3_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_angry_lv1_025.npy
+File M005_front_angry_lv1_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_fear_lv3_003.npy
+File W024_front_fear_lv3_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_contempt_lv2_018.npy
+File W033_front_contempt_lv2_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_angry_lv2_023.npy
+File M009_front_angry_lv2_023.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_sad_lv1_015.npy
+File W029_front_sad_lv1_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_disgusted_lv3_021.npy
+File W015_front_disgusted_lv3_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_angry_lv2_002.npy
+File W036_front_angry_lv2_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_contempt_lv3_008.npy
+File M040_front_contempt_lv3_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_happy_lv2_001.npy
+File W038_front_happy_lv2_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_happy_lv2_023.npy
+File W040_front_happy_lv2_023.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_happy_lv2_008.npy
+File M040_front_happy_lv2_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_happy_lv1_026.npy
+File W025_front_happy_lv1_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_disgusted_lv3_029.npy
+File M019_front_disgusted_lv3_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_surprised_lv2_018.npy
+File W014_front_surprised_lv2_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_surprised_lv2_007.npy
+File M019_front_surprised_lv2_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_disgusted_lv2_030.npy
+File M011_front_disgusted_lv2_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_disgusted_lv2_012.npy
+File W037_front_disgusted_lv2_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_sad_lv2_029.npy
+File W025_front_sad_lv2_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_sad_lv2_018.npy
+File M042_front_sad_lv2_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_contempt_lv3_012.npy
+File W015_front_contempt_lv3_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_angry_lv2_020.npy
+File M040_front_angry_lv2_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_angry_lv1_029.npy
+File W037_front_angry_lv1_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_neutral_lv1_020.npy
+File W011_front_neutral_lv1_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_angry_lv3_021.npy
+File M012_front_angry_lv3_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_happy_lv2_017.npy
+File W009_front_happy_lv2_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_angry_lv2_003.npy
+File M019_front_angry_lv2_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_angry_lv1_024.npy
+File W021_front_angry_lv1_024.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_surprised_lv2_016.npy
+File W040_front_surprised_lv2_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_contempt_lv3_006.npy
+File W015_front_contempt_lv3_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_angry_lv1_009.npy
+File W035_front_angry_lv1_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_contempt_lv3_007.npy
+File W024_front_contempt_lv3_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_disgusted_lv3_016.npy
+File W028_front_disgusted_lv3_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_happy_lv3_001.npy
+File M003_front_happy_lv3_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_surprised_lv1_024.npy
+File W026_front_surprised_lv1_024.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_disgusted_lv1_021.npy
+File M039_front_disgusted_lv1_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_angry_lv2_013.npy
+File M011_front_angry_lv2_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_contempt_lv1_008.npy
+File W024_front_contempt_lv1_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_surprised_lv3_026.npy
+File W038_front_surprised_lv3_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_happy_lv2_001.npy
+File M019_front_happy_lv2_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_surprised_lv1_001.npy
+  2%|▏         | 322/19101 [00:06<05:16, 59.29it/s]  2%|▏         | 329/19101 [00:06<05:15, 59.53it/s]  2%|▏         | 336/19101 [00:06<05:11, 60.15it/s]  2%|▏         | 343/19101 [00:06<05:21, 58.35it/s]  2%|▏         | 349/19101 [00:06<05:28, 57.16it/s]  2%|▏         | 355/19101 [00:07<05:55, 52.69it/s]  2%|▏         | 361/19101 [00:07<05:48, 53.74it/s]  2%|▏         | 368/19101 [00:07<05:29, 56.78it/s]File W014_front_surprised_lv1_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_angry_lv1_018.npy
+File W035_front_angry_lv1_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_surprised_lv2_024.npy
+File W026_front_surprised_lv2_024.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_surprised_lv1_029.npy
+File W029_front_surprised_lv1_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_fear_lv3_017.npy
+File W025_front_fear_lv3_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_disgusted_lv3_005.npy
+File M039_front_disgusted_lv3_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_angry_lv2_022.npy
+File W023_front_angry_lv2_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_contempt_lv3_022.npy
+File W024_front_contempt_lv3_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_contempt_lv1_011.npy
+File M040_front_contempt_lv1_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_contempt_lv2_012.npy
+File W014_front_contempt_lv2_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_disgusted_lv1_026.npy
+File M040_front_disgusted_lv1_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_contempt_lv1_029.npy
+File W011_front_contempt_lv1_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_happy_lv3_008.npy
+File W025_front_happy_lv3_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_contempt_lv2_026.npy
+File M013_front_contempt_lv2_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_happy_lv1_027.npy
+File W040_front_happy_lv1_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_surprised_lv3_014.npy
+File M013_front_surprised_lv3_014.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_angry_lv3_012.npy
+File M005_front_angry_lv3_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_sad_lv1_030.npy
+File M003_front_sad_lv1_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_angry_lv3_007.npy
+File W009_front_angry_lv3_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_happy_lv1_025.npy
+File M005_front_happy_lv1_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_surprised_lv2_027.npy
+File M013_front_surprised_lv2_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_disgusted_lv3_018.npy
+File M042_front_disgusted_lv3_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_neutral_lv1_005.npy
+File W021_front_neutral_lv1_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_contempt_lv1_006.npy
+File W040_front_contempt_lv1_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_surprised_lv1_020.npy
+File W040_front_surprised_lv1_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_disgusted_lv3_022.npy
+File M005_front_disgusted_lv3_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_sad_lv2_027.npy
+File W025_front_sad_lv2_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_disgusted_lv1_009.npy
+File W025_front_disgusted_lv1_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_angry_lv3_010.npy
+File W040_front_angry_lv3_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_happy_lv1_001.npy
+File W029_front_happy_lv1_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_sad_lv1_027.npy
+File M042_front_sad_lv1_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_fear_lv2_012.npy
+File M039_front_fear_lv2_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_happy_lv1_025.npy
+File W015_front_happy_lv1_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M007_front_angry_lv1_027.npy
+File M007_front_angry_lv1_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_angry_lv3_004.npy
+File M005_front_angry_lv3_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_sad_lv2_029.npy
+File M012_front_sad_lv2_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_happy_lv2_006.npy
+File W028_front_happy_lv2_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_neutral_lv1_022.npy
+File M012_front_neutral_lv1_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_angry_lv2_013.npy
+File W015_front_angry_lv2_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_contempt_lv1_002.npy
+File W028_front_contempt_lv1_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_disgusted_lv3_008.npy
+File W024_front_disgusted_lv3_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_happy_lv1_004.npy
+File W024_front_happy_lv1_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_fear_lv3_023.npy
+File W021_front_fear_lv3_023.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_contempt_lv3_009.npy
+File W029_front_contempt_lv3_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_angry_lv3_012.npy
+File W024_front_angry_lv3_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_happy_lv2_023.npy
+File M005_front_happy_lv2_023.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_happy_lv1_022.npy
+File W035_front_happy_lv1_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_fear_lv3_017.npy
+File M042_front_fear_lv3_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M007_front_disgusted_lv2_010.npy
+File M007_front_disgusted_lv2_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_angry_lv1_014.npy
+File W025_front_angry_lv1_014.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_surprised_lv2_023.npy
+File M019_front_surprised_lv2_023.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_angry_lv1_008.npy
+File W026_front_angry_lv1_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_contempt_lv3_013.npy
+File W033_front_contempt_lv3_013.npy not found in vertices_npy! Skipping this sample.
+  2%|▏         | 374/19101 [00:07<05:29, 56.81it/s]  2%|▏         | 380/19101 [00:07<05:52, 53.08it/s]  2%|▏         | 388/19101 [00:07<05:18, 58.67it/s]  2%|▏         | 394/19101 [00:07<05:38, 55.23it/s]  2%|▏         | 400/19101 [00:07<05:49, 53.46it/s]  2%|▏         | 407/19101 [00:07<05:27, 57.00it/s]  2%|▏         | 413/19101 [00:08<05:36, 55.46it/s]  2%|▏         | 422/19101 [00:08<04:58, 62.55it/s]Expected file path: ./MEAD/vertices_npy/W028_front_happy_lv2_026.npy
+File W028_front_happy_lv2_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_neutral_lv1_030.npy
+File M039_front_neutral_lv1_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_fear_lv1_029.npy
+File M012_front_fear_lv1_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_disgusted_lv1_003.npy
+File W036_front_disgusted_lv1_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_happy_lv1_021.npy
+File M040_front_happy_lv1_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_sad_lv1_019.npy
+File M041_front_sad_lv1_019.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_surprised_lv3_029.npy
+File W033_front_surprised_lv3_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_surprised_lv3_014.npy
+File W033_front_surprised_lv3_014.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_sad_lv1_016.npy
+File W029_front_sad_lv1_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_contempt_lv1_016.npy
+File M042_front_contempt_lv1_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_contempt_lv2_003.npy
+File W035_front_contempt_lv2_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_fear_lv2_025.npy
+File M041_front_fear_lv2_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_surprised_lv2_013.npy
+File W021_front_surprised_lv2_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_surprised_lv1_006.npy
+File W035_front_surprised_lv1_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_surprised_lv1_026.npy
+File W040_front_surprised_lv1_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_sad_lv3_024.npy
+File W015_front_sad_lv3_024.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_fear_lv2_010.npy
+File M042_front_fear_lv2_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_contempt_lv3_008.npy
+File W036_front_contempt_lv3_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_sad_lv1_008.npy
+File M011_front_sad_lv1_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_sad_lv3_013.npy
+File W026_front_sad_lv3_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_neutral_lv1_028.npy
+File W009_front_neutral_lv1_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_fear_lv3_005.npy
+File W024_front_fear_lv3_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_disgusted_lv2_019.npy
+File W025_front_disgusted_lv2_019.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_happy_lv2_018.npy
+File W026_front_happy_lv2_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_happy_lv2_017.npy
+File W021_front_happy_lv2_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_angry_lv1_030.npy
+File M013_front_angry_lv1_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_sad_lv2_009.npy
+File W023_front_sad_lv2_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_surprised_lv3_001.npy
+File W029_front_surprised_lv3_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_surprised_lv1_025.npy
+File W035_front_surprised_lv1_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_disgusted_lv1_028.npy
+File W015_front_disgusted_lv1_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_sad_lv3_009.npy
+File W028_front_sad_lv3_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_sad_lv1_008.npy
+File M012_front_sad_lv1_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_fear_lv3_002.npy
+File W014_front_fear_lv3_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_happy_lv2_005.npy
+File M019_front_happy_lv2_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_sad_lv1_006.npy
+File W035_front_sad_lv1_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_surprised_lv1_012.npy
+File M005_front_surprised_lv1_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_fear_lv3_014.npy
+File W009_front_fear_lv3_014.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_sad_lv3_021.npy
+File W033_front_sad_lv3_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_angry_lv2_004.npy
+File M012_front_angry_lv2_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_happy_lv2_005.npy
+File W011_front_happy_lv2_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_fear_lv2_010.npy
+File M019_front_fear_lv2_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_disgusted_lv1_029.npy
+File W033_front_disgusted_lv1_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_happy_lv1_002.npy
+File M011_front_happy_lv1_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_angry_lv2_005.npy
+File W029_front_angry_lv2_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_neutral_lv1_013.npy
+File M012_front_neutral_lv1_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_contempt_lv3_027.npy
+File W024_front_contempt_lv3_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_contempt_lv3_022.npy
+File W029_front_contempt_lv3_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_contempt_lv1_012.npy
+File W021_front_contempt_lv1_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_fear_lv3_025.npy
+File M042_front_fear_lv3_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_angry_lv1_005.npy
+File W029_front_angry_lv1_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_sad_lv3_027.npy
+File W033_front_sad_lv3_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_surprised_lv2_012.npy
+File W028_front_surprised_lv2_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_angry_lv1_022.npy
+File M003_front_angry_lv1_022.npy not found in vertices_npy! Skipping this sample.
+  2%|▏         | 429/19101 [00:08<04:49, 64.49it/s]  2%|▏         | 436/19101 [00:08<04:43, 65.88it/s]  2%|▏         | 443/19101 [00:08<04:53, 63.60it/s]  2%|▏         | 450/19101 [00:08<04:58, 62.48it/s]  2%|▏         | 458/19101 [00:08<04:48, 64.71it/s]  2%|▏         | 466/19101 [00:08<04:39, 66.77it/s]  2%|▏         | 473/19101 [00:08<04:40, 66.41it/s]Expected file path: ./MEAD/vertices_npy/W036_front_contempt_lv2_028.npy
+File W036_front_contempt_lv2_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_angry_lv1_026.npy
+File M041_front_angry_lv1_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_sad_lv3_009.npy
+File W033_front_sad_lv3_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_happy_lv3_018.npy
+File W040_front_happy_lv3_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_happy_lv3_009.npy
+File W036_front_happy_lv3_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_happy_lv2_021.npy
+File W038_front_happy_lv2_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_sad_lv3_021.npy
+File W029_front_sad_lv3_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_angry_lv1_002.npy
+File W038_front_angry_lv1_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_disgusted_lv1_015.npy
+File W026_front_disgusted_lv1_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_angry_lv2_007.npy
+File M009_front_angry_lv2_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_happy_lv3_008.npy
+File M011_front_happy_lv3_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_fear_lv1_013.npy
+File M041_front_fear_lv1_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_fear_lv3_004.npy
+File W036_front_fear_lv3_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_contempt_lv3_016.npy
+File W036_front_contempt_lv3_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_neutral_lv1_038.npy
+File M042_front_neutral_lv1_038.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_disgusted_lv3_025.npy
+File M012_front_disgusted_lv3_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_contempt_lv1_022.npy
+File W014_front_contempt_lv1_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_contempt_lv2_006.npy
+File W040_front_contempt_lv2_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_neutral_lv1_024.npy
+File M013_front_neutral_lv1_024.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_surprised_lv1_019.npy
+File W023_front_surprised_lv1_019.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_contempt_lv3_024.npy
+File W009_front_contempt_lv3_024.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_neutral_lv1_015.npy
+File W029_front_neutral_lv1_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_sad_lv2_020.npy
+File M042_front_sad_lv2_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_disgusted_lv1_005.npy
+File W033_front_disgusted_lv1_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_angry_lv1_029.npy
+File W021_front_angry_lv1_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_fear_lv3_016.npy
+File M039_front_fear_lv3_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_happy_lv2_008.npy
+File W009_front_happy_lv2_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_happy_lv1_008.npy
+File W009_front_happy_lv1_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_happy_lv2_017.npy
+File M005_front_happy_lv2_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_sad_lv3_015.npy
+File M005_front_sad_lv3_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_surprised_lv2_019.npy
+File M012_front_surprised_lv2_019.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_surprised_lv3_017.npy
+File W038_front_surprised_lv3_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_disgusted_lv1_013.npy
+File W025_front_disgusted_lv1_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_contempt_lv3_016.npy
+File W023_front_contempt_lv3_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_sad_lv1_007.npy
+File W036_front_sad_lv1_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_angry_lv3_012.npy
+File W009_front_angry_lv3_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_happy_lv2_001.npy
+File W021_front_happy_lv2_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_contempt_lv3_003.npy
+File W037_front_contempt_lv3_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_fear_lv2_004.npy
+File W038_front_fear_lv2_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_disgusted_lv2_015.npy
+File W040_front_disgusted_lv2_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_fear_lv1_020.npy
+File M009_front_fear_lv1_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_disgusted_lv3_026.npy
+File W040_front_disgusted_lv3_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_neutral_lv1_026.npy
+File W009_front_neutral_lv1_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_contempt_lv2_019.npy
+File W025_front_contempt_lv2_019.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_happy_lv3_016.npy
+File W009_front_happy_lv3_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_contempt_lv2_001.npy
+File W038_front_contempt_lv2_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_fear_lv2_002.npy
+File W038_front_fear_lv2_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_surprised_lv1_022.npy
+File W025_front_surprised_lv1_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_disgusted_lv1_027.npy
+File M019_front_disgusted_lv1_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_angry_lv2_028.npy
+File W014_front_angry_lv2_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_sad_lv2_027.npy
+File W014_front_sad_lv2_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_fear_lv3_020.npy
+File W026_front_fear_lv3_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_disgusted_lv2_002.npy
+File M041_front_disgusted_lv2_002.npy not found in vertices_npy! Skipping this sample.
+  3%|▎         | 481/19101 [00:09<04:30, 68.91it/s]  3%|▎         | 488/19101 [00:09<05:10, 59.90it/s]  3%|▎         | 495/19101 [00:09<05:05, 60.89it/s]  3%|▎         | 502/19101 [00:09<05:24, 57.26it/s]  3%|▎         | 508/19101 [00:09<05:25, 57.18it/s]  3%|▎         | 516/19101 [00:09<05:10, 59.92it/s]  3%|▎         | 523/19101 [00:09<05:13, 59.19it/s]Expected file path: ./MEAD/vertices_npy/W025_front_disgusted_lv1_003.npy
+File W025_front_disgusted_lv1_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_neutral_lv1_008.npy
+File W033_front_neutral_lv1_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_fear_lv1_027.npy
+File W040_front_fear_lv1_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_contempt_lv2_001.npy
+File M011_front_contempt_lv2_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_angry_lv1_006.npy
+File W026_front_angry_lv1_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_fear_lv1_025.npy
+File W028_front_fear_lv1_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_sad_lv2_004.npy
+File W023_front_sad_lv2_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_happy_lv1_002.npy
+File W025_front_happy_lv1_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_fear_lv2_016.npy
+File W028_front_fear_lv2_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_sad_lv3_007.npy
+File M011_front_sad_lv3_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_fear_lv2_011.npy
+File W024_front_fear_lv2_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_disgusted_lv3_023.npy
+File W033_front_disgusted_lv3_023.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_angry_lv3_028.npy
+File W026_front_angry_lv3_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_disgusted_lv2_017.npy
+File M039_front_disgusted_lv2_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_disgusted_lv3_006.npy
+File M019_front_disgusted_lv3_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_angry_lv2_006.npy
+File W028_front_angry_lv2_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_fear_lv1_004.npy
+File M009_front_fear_lv1_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_neutral_lv1_007.npy
+File M039_front_neutral_lv1_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_surprised_lv3_028.npy
+File W033_front_surprised_lv3_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_surprised_lv3_016.npy
+File W036_front_surprised_lv3_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_disgusted_lv1_007.npy
+File M013_front_disgusted_lv1_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_fear_lv1_010.npy
+File W029_front_fear_lv1_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_disgusted_lv1_016.npy
+File W011_front_disgusted_lv1_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_disgusted_lv2_014.npy
+File M013_front_disgusted_lv2_014.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_neutral_lv1_031.npy
+File W009_front_neutral_lv1_031.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_surprised_lv2_022.npy
+File M042_front_surprised_lv2_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_happy_lv2_012.npy
+File W036_front_happy_lv2_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_sad_lv3_008.npy
+File W028_front_sad_lv3_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_fear_lv3_021.npy
+File M041_front_fear_lv3_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_happy_lv3_027.npy
+File M011_front_happy_lv3_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_contempt_lv3_008.npy
+File W035_front_contempt_lv3_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_contempt_lv1_016.npy
+File W037_front_contempt_lv1_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_contempt_lv2_016.npy
+File W014_front_contempt_lv2_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_happy_lv3_003.npy
+File W015_front_happy_lv3_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_angry_lv2_016.npy
+File M009_front_angry_lv2_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_fear_lv3_003.npy
+File M012_front_fear_lv3_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_surprised_lv3_014.npy
+File M041_front_surprised_lv3_014.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_angry_lv3_001.npy
+File M013_front_angry_lv3_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_sad_lv3_008.npy
+File M012_front_sad_lv3_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_sad_lv1_015.npy
+File M003_front_sad_lv1_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_angry_lv1_009.npy
+File M041_front_angry_lv1_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_contempt_lv3_013.npy
+File W021_front_contempt_lv3_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_sad_lv2_029.npy
+File W021_front_sad_lv2_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_sad_lv2_018.npy
+File W029_front_sad_lv2_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_neutral_lv1_023.npy
+File W025_front_neutral_lv1_023.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_surprised_lv1_006.npy
+File M013_front_surprised_lv1_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_sad_lv3_025.npy
+File W026_front_sad_lv3_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_contempt_lv3_013.npy
+File M040_front_contempt_lv3_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_surprised_lv2_022.npy
+File W033_front_surprised_lv2_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_happy_lv3_018.npy
+File W009_front_happy_lv3_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_fear_lv1_004.npy
+File W026_front_fear_lv1_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_fear_lv3_029.npy
+File W014_front_fear_lv3_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_sad_lv1_016.npy
+File M011_front_sad_lv1_016.npy not found in vertices_npy! Skipping this sample.
+  3%|▎         | 531/19101 [00:09<04:52, 63.57it/s]  3%|▎         | 538/19101 [00:10<05:16, 58.73it/s]  3%|▎         | 545/19101 [00:10<05:01, 61.46it/s]  3%|▎         | 552/19101 [00:10<05:13, 59.11it/s]  3%|▎         | 559/19101 [00:10<05:16, 58.58it/s]  3%|▎         | 565/19101 [00:10<05:23, 57.25it/s]  3%|▎         | 571/19101 [00:10<05:36, 55.08it/s]  3%|▎         | 578/19101 [00:10<05:19, 58.00it/s]Expected file path: ./MEAD/vertices_npy/W025_front_surprised_lv3_024.npy
+File W025_front_surprised_lv3_024.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_surprised_lv1_029.npy
+File W033_front_surprised_lv1_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_happy_lv2_030.npy
+File W009_front_happy_lv2_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_neutral_lv1_032.npy
+File M019_front_neutral_lv1_032.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_fear_lv2_012.npy
+File W026_front_fear_lv2_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_fear_lv1_007.npy
+File M019_front_fear_lv1_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_sad_lv2_025.npy
+File W029_front_sad_lv2_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_contempt_lv1_004.npy
+File M019_front_contempt_lv1_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_disgusted_lv2_003.npy
+File W026_front_disgusted_lv2_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_contempt_lv3_005.npy
+File W015_front_contempt_lv3_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_contempt_lv3_021.npy
+File W037_front_contempt_lv3_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_fear_lv3_025.npy
+File W026_front_fear_lv3_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_disgusted_lv1_016.npy
+File W026_front_disgusted_lv1_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_disgusted_lv2_010.npy
+File W025_front_disgusted_lv2_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_disgusted_lv3_002.npy
+File M009_front_disgusted_lv3_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_surprised_lv1_015.npy
+File W038_front_surprised_lv1_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_fear_lv2_016.npy
+File W025_front_fear_lv2_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_sad_lv2_002.npy
+File W014_front_sad_lv2_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_fear_lv2_020.npy
+File M011_front_fear_lv2_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_sad_lv1_019.npy
+File M042_front_sad_lv1_019.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_sad_lv3_002.npy
+File W014_front_sad_lv3_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_disgusted_lv1_022.npy
+File W038_front_disgusted_lv1_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_surprised_lv2_005.npy
+File W011_front_surprised_lv2_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_neutral_lv1_032.npy
+File W033_front_neutral_lv1_032.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_sad_lv3_006.npy
+File W015_front_sad_lv3_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_neutral_lv1_033.npy
+File W036_front_neutral_lv1_033.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_neutral_lv1_002.npy
+File M009_front_neutral_lv1_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_neutral_lv1_002.npy
+File M039_front_neutral_lv1_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_happy_lv2_015.npy
+File W038_front_happy_lv2_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_contempt_lv2_014.npy
+File W014_front_contempt_lv2_014.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_sad_lv3_017.npy
+File M019_front_sad_lv3_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M007_front_angry_lv2_006.npy
+File M007_front_angry_lv2_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_disgusted_lv2_011.npy
+File W021_front_disgusted_lv2_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_sad_lv3_027.npy
+File M019_front_sad_lv3_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_angry_lv3_002.npy
+File W024_front_angry_lv3_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_fear_lv3_021.npy
+File W026_front_fear_lv3_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_contempt_lv1_008.npy
+File M041_front_contempt_lv1_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_happy_lv1_003.npy
+File W024_front_happy_lv1_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_fear_lv3_012.npy
+File W028_front_fear_lv3_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_neutral_lv1_016.npy
+File W014_front_neutral_lv1_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_contempt_lv1_026.npy
+File W009_front_contempt_lv1_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_happy_lv3_030.npy
+File W011_front_happy_lv3_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_surprised_lv3_019.npy
+File W025_front_surprised_lv3_019.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_happy_lv2_026.npy
+File W014_front_happy_lv2_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_disgusted_lv3_008.npy
+File W025_front_disgusted_lv3_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_contempt_lv2_021.npy
+File M040_front_contempt_lv2_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_sad_lv2_015.npy
+File M040_front_sad_lv2_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_angry_lv2_006.npy
+File M003_front_angry_lv2_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_disgusted_lv3_030.npy
+File W025_front_disgusted_lv3_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_surprised_lv1_028.npy
+File W015_front_surprised_lv1_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_contempt_lv2_026.npy
+File M003_front_contempt_lv2_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_surprised_lv1_023.npy
+File W036_front_surprised_lv1_023.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_angry_lv2_030.npy
+  3%|▎         | 584/19101 [00:10<05:24, 57.02it/s]  3%|▎         | 591/19101 [00:10<05:07, 60.21it/s]  3%|▎         | 598/19101 [00:11<04:55, 62.51it/s]  3%|▎         | 605/19101 [00:11<05:04, 60.76it/s]  3%|▎         | 612/19101 [00:11<05:25, 56.87it/s]  3%|▎         | 618/19101 [00:11<05:34, 55.23it/s]  3%|▎         | 625/19101 [00:11<05:47, 53.15it/s]  3%|▎         | 631/19101 [00:11<05:39, 54.40it/s]File W036_front_angry_lv2_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_contempt_lv2_022.npy
+File W036_front_contempt_lv2_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_sad_lv1_022.npy
+File W025_front_sad_lv1_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_contempt_lv1_018.npy
+File W038_front_contempt_lv1_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_surprised_lv1_030.npy
+File W033_front_surprised_lv1_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_happy_lv1_011.npy
+File M013_front_happy_lv1_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_contempt_lv2_005.npy
+File M011_front_contempt_lv2_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_disgusted_lv3_027.npy
+File M009_front_disgusted_lv3_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_disgusted_lv1_008.npy
+File W036_front_disgusted_lv1_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_surprised_lv1_005.npy
+File W037_front_surprised_lv1_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_happy_lv3_010.npy
+File W038_front_happy_lv3_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_contempt_lv2_028.npy
+File W023_front_contempt_lv2_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_angry_lv2_009.npy
+File M039_front_angry_lv2_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_surprised_lv3_030.npy
+File M042_front_surprised_lv3_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_happy_lv3_002.npy
+File M009_front_happy_lv3_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_angry_lv3_008.npy
+File W035_front_angry_lv3_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_fear_lv1_020.npy
+File M005_front_fear_lv1_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M007_front_sad_lv2_030.npy
+File M007_front_sad_lv2_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_contempt_lv3_012.npy
+File M040_front_contempt_lv3_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_happy_lv1_011.npy
+File W014_front_happy_lv1_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_fear_lv2_020.npy
+File W011_front_fear_lv2_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_sad_lv3_028.npy
+File M011_front_sad_lv3_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_disgusted_lv3_029.npy
+File M039_front_disgusted_lv3_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_angry_lv2_003.npy
+File W037_front_angry_lv2_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_angry_lv3_029.npy
+File W014_front_angry_lv3_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_angry_lv1_021.npy
+File M042_front_angry_lv1_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_surprised_lv1_004.npy
+File W038_front_surprised_lv1_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_neutral_lv1_030.npy
+File M041_front_neutral_lv1_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_contempt_lv2_008.npy
+File M005_front_contempt_lv2_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_neutral_lv1_032.npy
+File W023_front_neutral_lv1_032.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_angry_lv3_018.npy
+File W037_front_angry_lv3_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_surprised_lv2_020.npy
+File W035_front_surprised_lv2_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_neutral_lv1_004.npy
+File M040_front_neutral_lv1_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_surprised_lv3_021.npy
+File W015_front_surprised_lv3_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_fear_lv3_028.npy
+File W038_front_fear_lv3_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_happy_lv3_007.npy
+File W036_front_happy_lv3_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_sad_lv2_022.npy
+File W038_front_sad_lv2_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_surprised_lv3_002.npy
+File W011_front_surprised_lv3_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_contempt_lv2_001.npy
+File W011_front_contempt_lv2_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_contempt_lv1_001.npy
+File W037_front_contempt_lv1_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_sad_lv2_025.npy
+File M003_front_sad_lv2_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_fear_lv3_024.npy
+File W024_front_fear_lv3_024.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_contempt_lv2_019.npy
+File M040_front_contempt_lv2_019.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_angry_lv2_016.npy
+File W011_front_angry_lv2_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_sad_lv1_026.npy
+File W015_front_sad_lv1_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_happy_lv3_011.npy
+File W033_front_happy_lv3_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_disgusted_lv2_020.npy
+File W033_front_disgusted_lv2_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_surprised_lv1_026.npy
+File W025_front_surprised_lv1_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_happy_lv1_010.npy
+File M041_front_happy_lv1_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_angry_lv3_002.npy
+File W038_front_angry_lv3_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_angry_lv1_006.npy
+File M019_front_angry_lv1_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_angry_lv2_025.npy
+File W035_front_angry_lv2_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_sad_lv2_017.npy
+File M009_front_sad_lv2_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_angry_lv1_029.npy
+  3%|▎         | 637/19101 [00:11<05:31, 55.76it/s]  3%|▎         | 644/19101 [00:11<05:20, 57.61it/s]  3%|▎         | 650/19101 [00:11<05:36, 54.78it/s]  3%|▎         | 657/19101 [00:12<05:22, 57.20it/s]  3%|▎         | 663/19101 [00:12<05:22, 57.14it/s]  4%|▎         | 670/19101 [00:12<05:19, 57.71it/s]  4%|▎         | 676/19101 [00:12<06:11, 49.54it/s]  4%|▎         | 682/19101 [00:12<06:53, 44.53it/s]  4%|▎         | 687/19101 [00:12<07:15, 42.29it/s]File W036_front_angry_lv1_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M013_front_surprised_lv3_005.npy
+File M013_front_surprised_lv3_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_contempt_lv3_013.npy
+File W037_front_contempt_lv3_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_contempt_lv1_009.npy
+File W014_front_contempt_lv1_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_happy_lv2_025.npy
+File W023_front_happy_lv2_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_fear_lv3_029.npy
+File W026_front_fear_lv3_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_sad_lv1_021.npy
+File W040_front_sad_lv1_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_angry_lv3_028.npy
+File W024_front_angry_lv3_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_fear_lv3_015.npy
+File W028_front_fear_lv3_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_disgusted_lv1_002.npy
+File M042_front_disgusted_lv1_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_fear_lv1_028.npy
+File W025_front_fear_lv1_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_angry_lv3_029.npy
+File M042_front_angry_lv3_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_angry_lv1_020.npy
+File W021_front_angry_lv1_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_happy_lv3_020.npy
+File W028_front_happy_lv3_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_angry_lv1_004.npy
+File W011_front_angry_lv1_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_surprised_lv1_011.npy
+File W037_front_surprised_lv1_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_sad_lv3_025.npy
+File W011_front_sad_lv3_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M007_front_happy_lv2_012.npy
+File M007_front_happy_lv2_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_fear_lv2_017.npy
+File M005_front_fear_lv2_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_surprised_lv2_024.npy
+File W036_front_surprised_lv2_024.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_disgusted_lv3_029.npy
+File W023_front_disgusted_lv3_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_surprised_lv1_022.npy
+File W029_front_surprised_lv1_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_contempt_lv1_029.npy
+File M012_front_contempt_lv1_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_angry_lv1_015.npy
+File W037_front_angry_lv1_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_angry_lv1_027.npy
+File W025_front_angry_lv1_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_fear_lv1_005.npy
+File W021_front_fear_lv1_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_angry_lv2_008.npy
+File W037_front_angry_lv2_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_angry_lv2_001.npy
+File W023_front_angry_lv2_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_sad_lv2_015.npy
+File W026_front_sad_lv2_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_disgusted_lv1_014.npy
+File W026_front_disgusted_lv1_014.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_contempt_lv3_007.npy
+File M039_front_contempt_lv3_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_angry_lv3_005.npy
+File M009_front_angry_lv3_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_surprised_lv3_011.npy
+File W040_front_surprised_lv3_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_surprised_lv2_006.npy
+File M019_front_surprised_lv2_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_sad_lv3_022.npy
+File W036_front_sad_lv3_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_surprised_lv2_006.npy
+File M012_front_surprised_lv2_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_sad_lv3_009.npy
+File M012_front_sad_lv3_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_happy_lv3_007.npy
+File M041_front_happy_lv3_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_disgusted_lv1_012.npy
+File W038_front_disgusted_lv1_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_disgusted_lv1_011.npy
+File M019_front_disgusted_lv1_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_neutral_lv1_013.npy
+File W024_front_neutral_lv1_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M007_front_sad_lv2_016.npy
+File M007_front_sad_lv2_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_surprised_lv2_030.npy
+File W009_front_surprised_lv2_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_sad_lv3_020.npy
+File W033_front_sad_lv3_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_angry_lv2_022.npy
+File W038_front_angry_lv2_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_fear_lv3_001.npy
+File W037_front_fear_lv3_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_disgusted_lv2_020.npy
+File W011_front_disgusted_lv2_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_angry_lv1_003.npy
+File W025_front_angry_lv1_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_contempt_lv3_026.npy
+File W033_front_contempt_lv3_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_happy_lv1_014.npy
+File W021_front_happy_lv1_014.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_contempt_lv2_005.npy
+File M039_front_contempt_lv2_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_contempt_lv1_001.npy
+File W015_front_contempt_lv1_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_surprised_lv3_004.npy
+File M039_front_surprised_lv3_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_disgusted_lv2_022.npy
+  4%|▎         | 692/19101 [00:12<07:25, 41.37it/s]  4%|▎         | 697/19101 [00:13<07:30, 40.85it/s]  4%|▎         | 702/19101 [00:13<07:30, 40.88it/s]  4%|▎         | 707/19101 [00:13<07:43, 39.65it/s]  4%|▎         | 712/19101 [00:13<08:31, 35.95it/s]  4%|▎         | 716/19101 [00:13<08:37, 35.52it/s]  4%|▍         | 720/19101 [00:13<08:59, 34.09it/s]  4%|▍         | 724/19101 [00:13<08:47, 34.83it/s]  4%|▍         | 728/19101 [00:13<09:15, 33.05it/s]  4%|▍         | 732/19101 [00:14<09:33, 32.05it/s]  4%|▍         | 736/19101 [00:14<09:31, 32.12it/s]  4%|▍         | 740/19101 [00:14<09:15, 33.05it/s]File M009_front_disgusted_lv2_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_fear_lv3_013.npy
+File W025_front_fear_lv3_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_surprised_lv1_010.npy
+File W021_front_surprised_lv1_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_happy_lv3_006.npy
+File W026_front_happy_lv3_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_happy_lv1_002.npy
+File M019_front_happy_lv1_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_surprised_lv1_015.npy
+File W040_front_surprised_lv1_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_sad_lv3_027.npy
+File W025_front_sad_lv3_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_sad_lv1_019.npy
+File M011_front_sad_lv1_019.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_sad_lv3_027.npy
+File M012_front_sad_lv3_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_sad_lv1_027.npy
+File W015_front_sad_lv1_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_contempt_lv3_004.npy
+File M040_front_contempt_lv3_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_fear_lv1_023.npy
+File W015_front_fear_lv1_023.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_contempt_lv3_016.npy
+File M009_front_contempt_lv3_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_fear_lv2_005.npy
+File W024_front_fear_lv2_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_fear_lv2_020.npy
+File M009_front_fear_lv2_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_contempt_lv3_014.npy
+File W015_front_contempt_lv3_014.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_angry_lv3_021.npy
+File W033_front_angry_lv3_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_surprised_lv2_007.npy
+File W014_front_surprised_lv2_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_happy_lv2_015.npy
+File M005_front_happy_lv2_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_fear_lv2_021.npy
+File M042_front_fear_lv2_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_happy_lv2_024.npy
+File M011_front_happy_lv2_024.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_happy_lv2_026.npy
+File W023_front_happy_lv2_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_contempt_lv3_017.npy
+File W026_front_contempt_lv3_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_neutral_lv1_022.npy
+File M040_front_neutral_lv1_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_angry_lv2_018.npy
+File M040_front_angry_lv2_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_angry_lv1_004.npy
+File M005_front_angry_lv1_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_surprised_lv2_015.npy
+File M005_front_surprised_lv2_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_neutral_lv1_030.npy
+File W029_front_neutral_lv1_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_surprised_lv2_026.npy
+File W029_front_surprised_lv2_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_sad_lv3_025.npy
+File W029_front_sad_lv3_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_disgusted_lv2_021.npy
+File W009_front_disgusted_lv2_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_disgusted_lv3_026.npy
+File W038_front_disgusted_lv3_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_fear_lv2_005.npy
+File W025_front_fear_lv2_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_disgusted_lv3_022.npy
+File W038_front_disgusted_lv3_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_fear_lv3_001.npy
+File W021_front_fear_lv3_001.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_neutral_lv1_005.npy
+File W040_front_neutral_lv1_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_sad_lv2_026.npy
+File M009_front_sad_lv2_026.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_contempt_lv3_006.npy
+File W026_front_contempt_lv3_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_contempt_lv2_020.npy
+File W025_front_contempt_lv2_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_disgusted_lv2_003.npy
+File M039_front_disgusted_lv2_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_disgusted_lv1_002.npy
+File M019_front_disgusted_lv1_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_surprised_lv3_029.npy
+File M042_front_surprised_lv3_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_disgusted_lv3_014.npy
+File W023_front_disgusted_lv3_014.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_sad_lv2_012.npy
+File W029_front_sad_lv2_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_sad_lv2_015.npy
+File W033_front_sad_lv2_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_surprised_lv3_012.npy
+File M005_front_surprised_lv3_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_disgusted_lv3_027.npy
+File W023_front_disgusted_lv3_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W037_front_neutral_lv1_006.npy
+File W037_front_neutral_lv1_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W029_front_contempt_lv3_017.npy
+File W029_front_contempt_lv3_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W025_front_contempt_lv1_012.npy
+File W025_front_contempt_lv1_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_sad_lv2_010.npy
+File W014_front_sad_lv2_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_angry_lv2_015.npy
+File W024_front_angry_lv2_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_fear_lv3_016.npy
+File M019_front_fear_lv3_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M012_front_happy_lv2_008.npy
+  4%|▍         | 745/19101 [00:14<08:54, 34.33it/s]  4%|▍         | 749/19101 [00:14<09:24, 32.53it/s]  4%|▍         | 754/19101 [00:14<09:05, 33.61it/s]  4%|▍         | 758/19101 [00:14<09:17, 32.90it/s]  4%|▍         | 762/19101 [00:15<09:31, 32.08it/s]  4%|▍         | 766/19101 [00:15<09:14, 33.08it/s]  4%|▍         | 770/19101 [00:15<08:59, 33.97it/s]  4%|▍         | 774/19101 [00:15<09:23, 32.50it/s]  4%|▍         | 778/19101 [00:15<09:20, 32.71it/s]  4%|▍         | 782/19101 [00:15<09:16, 32.90it/s]  4%|▍         | 786/19101 [00:15<09:01, 33.83it/s]  4%|▍         | 790/19101 [00:15<08:49, 34.57it/s]File M012_front_happy_lv2_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_fear_lv3_014.npy
+File M011_front_fear_lv3_014.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M011_front_fear_lv1_002.npy
+File M011_front_fear_lv1_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_happy_lv3_021.npy
+File W036_front_happy_lv3_021.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W040_front_neutral_lv1_011.npy
+File W040_front_neutral_lv1_011.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_happy_lv1_007.npy
+File W011_front_happy_lv1_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_happy_lv3_004.npy
+File M009_front_happy_lv3_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_disgusted_lv3_012.npy
+File W021_front_disgusted_lv3_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_happy_lv3_005.npy
+File M041_front_happy_lv3_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_fear_lv1_016.npy
+File M005_front_fear_lv1_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_angry_lv1_008.npy
+File W028_front_angry_lv1_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_contempt_lv1_027.npy
+File W023_front_contempt_lv1_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_contempt_lv2_015.npy
+File M003_front_contempt_lv2_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_neutral_lv1_040.npy
+File M003_front_neutral_lv1_040.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_neutral_lv1_004.npy
+File M019_front_neutral_lv1_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_contempt_lv2_002.npy
+File W021_front_contempt_lv2_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_contempt_lv3_006.npy
+File M041_front_contempt_lv3_006.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_disgusted_lv2_027.npy
+File W009_front_disgusted_lv2_027.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_angry_lv3_016.npy
+File W015_front_angry_lv3_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M039_front_fear_lv2_019.npy
+File M039_front_fear_lv2_019.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M009_front_disgusted_lv3_028.npy
+File M009_front_disgusted_lv3_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_happy_lv3_009.npy
+File W009_front_happy_lv3_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_happy_lv2_012.npy
+File M005_front_happy_lv2_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_happy_lv3_018.npy
+File W026_front_happy_lv3_018.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M005_front_fear_lv2_013.npy
+File M005_front_fear_lv2_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_neutral_lv1_019.npy
+File W026_front_neutral_lv1_019.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_happy_lv2_010.npy
+File M041_front_happy_lv2_010.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_fear_lv3_029.npy
+File M040_front_fear_lv3_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_contempt_lv3_022.npy
+File W011_front_contempt_lv3_022.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_fear_lv2_020.npy
+File W033_front_fear_lv2_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M042_front_surprised_lv3_015.npy
+File M042_front_surprised_lv3_015.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_disgusted_lv2_002.npy
+File W036_front_disgusted_lv2_002.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_disgusted_lv2_016.npy
+File W038_front_disgusted_lv2_016.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_contempt_lv2_029.npy
+File W015_front_contempt_lv2_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_neutral_lv1_009.npy
+File M040_front_neutral_lv1_009.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_angry_lv3_017.npy
+File W036_front_angry_lv3_017.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W011_front_fear_lv2_030.npy
+File W011_front_fear_lv2_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W033_front_neutral_lv1_004.npy
+File W033_front_neutral_lv1_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W038_front_happy_lv3_029.npy
+File W038_front_happy_lv3_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_happy_lv1_012.npy
+File M041_front_happy_lv1_012.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W014_front_contempt_lv1_007.npy
+File W014_front_contempt_lv1_007.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W023_front_sad_lv1_008.npy
+File W023_front_sad_lv1_008.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M041_front_disgusted_lv1_028.npy
+File M041_front_disgusted_lv1_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W026_front_angry_lv2_029.npy
+File W026_front_angry_lv2_029.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W036_front_sad_lv1_025.npy
+File W036_front_sad_lv1_025.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W024_front_contempt_lv2_020.npy
+File W024_front_contempt_lv2_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W015_front_happy_lv2_030.npy
+File W015_front_happy_lv2_030.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W021_front_contempt_lv1_005.npy
+File W021_front_contempt_lv1_005.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W009_front_happy_lv2_028.npy
+File W009_front_happy_lv2_028.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W028_front_fear_lv1_013.npy
+File W028_front_fear_lv1_013.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M003_front_happy_lv1_020.npy
+File M003_front_happy_lv1_020.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/W035_front_disgusted_lv3_004.npy
+File W035_front_disgusted_lv3_004.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M019_front_surprised_lv3_003.npy
+File M019_front_surprised_lv3_003.npy not found in vertices_npy! Skipping this sample.
+Expected file path: ./MEAD/vertices_npy/M040_front_disgusted_lv3_017.npy
+  4%|▍         | 795/19101 [00:15<08:10, 37.31it/s]  4%|▍         | 799/19101 [00:16<08:06, 37.60it/s]  4%|▍         | 804/19101 [00:16<07:30, 40.62it/s]  4%|▍         | 809/19101 [00:16<07:16, 41.93it/s]  4%|▍         | 814/19101 [00:16<09:02, 33.73it/s]  4%|▍         | 818/19101 [00:16<09:15, 32.89it/s]  4%|▍         | 822/19101 [00:16<08:57, 34.02it/s]  4%|▍         | 826/19101 [00:16<09:25, 32.34it/s]  4%|▍         | 830/19101 [00:16<09:13, 32.99it/s]  4%|▍         | 834/19101 [00:17<08:58, 33.95it/s]  4%|▍         | 838/19101 [00:17<09:20, 32.58it/s]  4%|▍         | 842/19101 [00:17<09:34, 31.77it/s]

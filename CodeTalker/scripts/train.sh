@@ -38,15 +38,16 @@ which pip | tee -a ${exp_dir}/train-$now.log
 
 
 ## TRAIN
-$PYTHON -u main/${TRAIN_CODE} \
+# $PYTHON -u main/${TRAIN_CODE} \
+uv run main/${TRAIN_CODE} \
   --config=${config} \
   save_path ${exp_dir} \
   2>&1 | tee -a ${exp_dir}/train-$now.log
 
 ## TEST
-$PYTHON -u main/${TEST_CODE} \
-  --config=${config} \
-  save_folder ${exp_dir}/result \
-  model_path ${model_dir}/model.pth.tar \
-  2>&1 | tee -a ${exp_dir}/test-$now.log
-
+# # $PYTHON -u main/${TEST_CODE} \
+# uv run main/${TEST_CODE} \
+#   --config=${config} \
+#   save_folder ${exp_dir}/result \
+#   model_path ${model_dir}/model.pth.tar \
+#   2>&1 | tee -a ${exp_dir}/test-$now.log

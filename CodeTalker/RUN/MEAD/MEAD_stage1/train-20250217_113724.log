@@ -1,0 +1,127 @@
+10
+Mon Feb 17 11:37:24 2025       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.54.03              Driver Version: 535.54.03    CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA RTX A6000               On  | 00000000:01:00.0 Off |                  Off |
+| 30%   24C    P8              27W / 300W |     12MiB / 49140MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   1  NVIDIA RTX A6000               On  | 00000000:25:00.0 Off |                  Off |
+| 30%   34C    P2              71W / 300W |  19810MiB / 49140MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   2  NVIDIA RTX A6000               On  | 00000000:41:00.0 Off |                  Off |
+| 30%   35C    P2              77W / 300W |  31996MiB / 49140MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   3  NVIDIA RTX A6000               On  | 00000000:61:00.0 Off |                  Off |
+| 30%   42C    P2              77W / 300W |  29718MiB / 49140MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   4  NVIDIA RTX A6000               On  | 00000000:81:00.0 Off |                  Off |
+| 56%   79C    P2             291W / 300W |  35546MiB / 49140MiB |     97%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   5  NVIDIA RTX A6000               On  | 00000000:A1:00.0 Off |                  Off |
+| 48%   74C    P2             286W / 300W |  45202MiB / 49140MiB |     99%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   6  NVIDIA RTX A6000               On  | 00000000:C1:00.0 Off |                  Off |
+| 92%   91C    P2             263W / 300W |  46680MiB / 49140MiB |     98%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   7  NVIDIA RTX A6000               On  | 00000000:E1:00.0 Off |                  Off |
+| 95%   88C    P2             264W / 300W |  42560MiB / 49140MiB |     99%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
++---------------------------------------------------------------------------------------+
+/home/sakaya/.local/bin/pip
+[2025-02-17 11:37:29,152 INFO train_pred.py line 73 978]=>INaffine: False
+StepLR: True
+adaptive_lr: False
+arch: stage1_MEAD
+base_lr: 0.0001
+batch_size: 1
+batch_size_val: 1
+data_root: ./MEAD/
+dataset: MEAD
+dist_backend: nccl
+dist_url: tcp://127.0.0.1:6701
+distributed: False
+epochs: 200
+eval_freq: 10
+evaluate: True
+face_quan_num: 16
+factor: 0.3
+gamma: 0.5
+gpu: 0
+hidden_size: 1024
+in_dim: 15069
+intermediate_size: 1536
+manual_seed: 131
+model_path: None
+momentum: 0.9
+multiprocessing_distributed: False
+n_embed: 256
+neg: 0.2
+ngpus_per_node: 1
+num_attention_heads: 8
+num_hidden_layers: 6
+patience: 3
+poly_lr: False
+power: 0.9
+print_freq: 10
+quant_factor: 0
+quant_loss_weight: 1.0
+rank: 0
+read_audio: False
+resume: None
+save: True
+save_folder: None
+save_freq: 1
+save_path: RUN/MEAD/MEAD_stage1
+start_epoch: 0
+step_size: 20
+sync_bn: False
+template_file: FLAME2020_generic_model.pkl
+test_batch_size: 1
+test_gpu: [0]
+test_subjects: M013 M042 W026 W040
+test_workers: 0
+threshold: 0.0001
+train_gpu: 0
+train_subjects: M003 M005 M007 M009 M012 M019 M039 M041 W009 W011 W014 W015 W021 W023 W024 W028 W029 W033 W035 W036 W037
+use_sgd: False
+val_subjects: M011 M040 W025 W038
+vertices_path: vertices_npy
+warmup_steps: 1
+wav_path: wav
+weight: None
+weight_decay: 0.002
+window_size: 1
+workers: 10
+world_size: 1
+zquant_dim: 64
+[2025-02-17 11:37:29,152 INFO train_pred.py line 74 978]=>=> creating model ...
+Traceback (most recent call last):
+  File "/home/sakaya/TFG_RelatedWork/CodeTalker/main/train_pred.py", line 249, in <module>
+    main()
+  File "/home/sakaya/TFG_RelatedWork/CodeTalker/main/train_pred.py", line 50, in main
+    main_worker(args.train_gpu, args.ngpus_per_node, args)
+  File "/home/sakaya/TFG_RelatedWork/CodeTalker/main/train_pred.py", line 103, in main_worker
+    from dataset.data_loader import get_dataloaders
+  File "/home/sakaya/TFG_RelatedWork/CodeTalker/dataset/data_loader.py", line 95
+    for f in tqdm(fs):
+    ^
+IndentationError: expected an indented block

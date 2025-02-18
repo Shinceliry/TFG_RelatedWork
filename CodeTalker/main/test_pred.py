@@ -4,6 +4,9 @@ import cv2
 import torch
 import numpy as np
 
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
 from base.utilities import get_parser, get_logger
 from models import get_model
 from base.baseTrainer import load_state_dict

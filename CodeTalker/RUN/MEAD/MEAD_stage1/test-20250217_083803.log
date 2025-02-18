@@ -1,0 +1,72 @@
+[2025-02-17 08:38:15,271 INFO test_pred.py line 25 601]=>INaffine: False
+StepLR: True
+adaptive_lr: False
+arch: stage1_MEAD
+base_lr: 0.0001
+batch_size: 1
+batch_size_val: 1
+data_root: ./MEAD/
+dataset: MEAD
+dist_backend: nccl
+dist_url: tcp://127.0.0.1:6701
+epochs: 200
+eval_freq: 10
+evaluate: True
+face_quan_num: 16
+factor: 0.3
+gamma: 0.5
+hidden_size: 1024
+in_dim: 15069
+intermediate_size: 1536
+manual_seed: 131
+model_path: RUN/MEAD/MEAD_stage1/model/model.pth.tar
+momentum: 0.9
+multiprocessing_distributed: True
+n_embed: 256
+neg: 0.2
+num_attention_heads: 8
+num_hidden_layers: 6
+patience: 3
+poly_lr: False
+power: 0.9
+print_freq: 10
+quant_factor: 0
+quant_loss_weight: 1.0
+rank: 0
+read_audio: False
+resume: None
+save: True
+save_folder: RUN/MEAD/MEAD_stage1/result
+save_freq: 1
+save_path: None
+start_epoch: 0
+step_size: 20
+sync_bn: False
+template_file: templates.pkl
+test_batch_size: 1
+test_gpu: [0]
+test_subjects: M013 M042 W026 W040
+test_workers: 0
+threshold: 0.0001
+train_gpu: [0]
+train_subjects: M003 M005 M007 M009 M012 M019 M039 M041 W009 W011 W014 W015 W021 W023 W024 W028 W029 W033 W035 W036 W037
+use_sgd: False
+val_subjects: M011 M040 W025 W038
+vertices_path: vertices_npy
+warmup_steps: 1
+wav_path: wav
+weight: None
+weight_decay: 0.002
+window_size: 1
+workers: 10
+world_size: 1
+zquant_dim: 64
+[2025-02-17 08:38:15,271 INFO test_pred.py line 26 601]=>=> creating model ...
+/home/sakaya/TFG_RelatedWork/.venv/lib/python3.9/site-packages/_distutils_hack/__init__.py:53: UserWarning: Reliance on distutils from stdlib is deprecated. Users must rely on setuptools to provide the distutils module. Avoid importing distutils or import setuptools first, and avoid setting SETUPTOOLS_USE_DISTUTILS=stdlib. Register concerns at https://github.com/pypa/setuptools/issues/new?template=distutils-deprecation.yml
+  warnings.warn(
+Traceback (most recent call last):
+  File "/home/sakaya/TFG_RelatedWork/CodeTalker/main/test_pred.py", line 78, in <module>
+    main()
+  File "/home/sakaya/TFG_RelatedWork/CodeTalker/main/test_pred.py", line 36, in main
+    raise RuntimeError("=> no checkpoint flound at '{}'".format(cfg.model_path))
+RuntimeError: => no checkpoint flound at 'RUN/MEAD/MEAD_stage1/model/model.pth.tar'

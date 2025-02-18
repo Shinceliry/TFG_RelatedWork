@@ -1,0 +1,47 @@
+DATA:
+  dataset: MEAD
+  data_root: ./MEAD/
+  wav_path: wav
+  vertices_path: vertices_npy
+  template_file: FLAME2020_generic_model.pkl
+  train_subjects: M003 M005 M007 M009 M012 M019 M039 M041 W009 W011 W014 W015 W021 W023 W024 W028 W029 W033 W035 W036 W037
+
+NETWORK:
+  arch: stage2
+  in_dim: 15069
+  hidden_size: 1024
+  num_hidden_layers: 6
+  num_attention_heads: 8
+  intermediate_size: 1536
+  window_size: 1
+  quant_factor: 0
+  face_quan_num: 16
+  neg: 0.2
+  autoencoder: stage1_MEAD
+  INaffine: False
+  style_emb_method: nnemb # onehot or nnemb
+
+VQuantizer:
+  n_embed: 256
+  zquant_dim: 64
+
+PREDICTOR:
+  feature_dim: 1024
+  vertice_dim: 15069
+  device: cuda
+  period: 30
+  vqvae_pretrained_path: MEAD/MEAD_stage1.pth.tar
+  wav2vec2model_path: facebook/wav2vec2-base-960h
+  teacher_forcing: True
+  num_layers: 6
+  n_head: 4 # not used
+
+DEMO:
+  model_path: MEAD/MEAD_stage2.pth.tar
+  condition: M003
+  subject: M007
+  demo_wav_path: demo/wav/man.wav
+  demo_output_path: demo/output/
+  demo_npy_save_folder: demo/npy/
+  fps: 30
+  background_black: True # chose the background color of your rendered video

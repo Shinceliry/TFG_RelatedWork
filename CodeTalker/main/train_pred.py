@@ -13,6 +13,9 @@ import torch.distributed as dist
 from tensorboardX import SummaryWriter
 import cv2
 
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
 from base.baseTrainer import poly_learning_rate, reduce_tensor, save_checkpoint
 from base.utilities import get_parser, get_logger, main_process, AverageMeter
 from models import get_model

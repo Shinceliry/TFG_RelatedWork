@@ -1,0 +1,208 @@
+10
+Mon Feb 17 10:13:40 2025       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.54.03              Driver Version: 535.54.03    CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA RTX A6000               On  | 00000000:01:00.0 Off |                  Off |
+| 30%   26C    P8              24W / 300W |     12MiB / 49140MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   1  NVIDIA RTX A6000               On  | 00000000:25:00.0 Off |                  Off |
+| 30%   40C    P2             243W / 300W |  19810MiB / 49140MiB |     96%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   2  NVIDIA RTX A6000               On  | 00000000:41:00.0 Off |                  Off |
+| 30%   43C    P2             253W / 300W |  31996MiB / 49140MiB |     97%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   3  NVIDIA RTX A6000               On  | 00000000:61:00.0 Off |                  Off |
+| 30%   54C    P2             246W / 300W |  29718MiB / 49140MiB |     98%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   4  NVIDIA RTX A6000               On  | 00000000:81:00.0 Off |                  Off |
+| 60%   83C    P2             294W / 300W |  35546MiB / 49140MiB |     98%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   5  NVIDIA RTX A6000               On  | 00000000:A1:00.0 Off |                  Off |
+| 46%   74C    P2             289W / 300W |  45202MiB / 49140MiB |     99%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   6  NVIDIA RTX A6000               On  | 00000000:C1:00.0 Off |                  Off |
+|100%   91C    P2             272W / 300W |  46680MiB / 49140MiB |     99%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   7  NVIDIA RTX A6000               On  | 00000000:E1:00.0 Off |                  Off |
+| 99%   89C    P2             259W / 300W |  42560MiB / 49140MiB |     99%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
++---------------------------------------------------------------------------------------+
+/home/sakaya/.local/bin/pip
+Downloading tokenizers (2.9MiB)
+Downloading torchaudio (3.2MiB)
+Downloading nvidia-cublas-cu12 (346.6MiB)
+Downloading pillow (4.3MiB)
+Downloading pandas (12.1MiB)
+Downloading torchvision (6.9MiB)
+Downloading nvidia-curand-cu12 (53.7MiB)
+Downloading grpcio (5.7MiB)
+Downloading nvidia-cusparse-cu12 (197.8MiB)
+Downloading numpy (16.3MiB)
+Downloading pydantic-core (1.9MiB)
+Downloading nvidia-cuda-nvrtc-cu12 (23.5MiB)
+Downloading scipy (36.8MiB)
+Downloading transformers (9.2MiB)
+Downloading nvidia-nccl-cu12 (179.9MiB)
+Downloading numba (3.5MiB)
+Downloading networkx (1.6MiB)
+Downloading soundfile (1.3MiB)
+Downloading imageio-ffmpeg (28.1MiB)
+Downloading nvidia-nvjitlink-cu12 (20.1MiB)
+Downloading fonttools (4.4MiB)
+Downloading wandb (19.9MiB)
+Downloading sympy (5.9MiB)
+Downloading kiwisolver (1.5MiB)
+Downloading opencv-python (60.1MiB)
+Downloading nvidia-cusolver-cu12 (122.0MiB)
+Downloading nvidia-cuda-cupti-cu12 (13.2MiB)
+Downloading scikit-learn (12.9MiB)
+Downloading nvidia-cudnn-cu12 (634.0MiB)
+Downloading triton (241.3MiB)
+Downloading torch (731.2MiB)
+Downloading matplotlib (7.9MiB)
+Downloading nvidia-cusparselt-cu12 (143.1MiB)
+Downloading nvidia-cufft-cu12 (201.7MiB)
+Downloading tensorboard (5.2MiB)
+Downloading tensorboard-data-server (6.3MiB)
+Downloading llvmlite (41.8MiB)
+   Building moviepy==1.0.3
+Downloading setuptools (1.2MiB)
+ Downloaded soundfile
+ Downloaded kiwisolver
+      Built moviepy==1.0.3
+ Downloaded networkx
+ Downloaded pydantic-core
+ Downloaded setuptools
+ Downloaded tokenizers
+ Downloaded torchaudio
+ Downloaded numba
+ Downloaded pillow
+ Downloaded fonttools
+ Downloaded tensorboard
+ Downloaded grpcio
+ Downloaded sympy
+ Downloaded tensorboard-data-server
+ Downloaded torchvision
+ Downloaded matplotlib
+ Downloaded transformers
+ Downloaded pandas
+ Downloaded scikit-learn
+ Downloaded nvidia-cuda-cupti-cu12
+ Downloaded numpy
+ Downloaded wandb
+ Downloaded nvidia-nvjitlink-cu12
+ Downloaded nvidia-cuda-nvrtc-cu12
+ Downloaded imageio-ffmpeg
+ Downloaded scipy
+ Downloaded llvmlite
+ Downloaded nvidia-curand-cu12
+ Downloaded opencv-python
+ Downloaded nvidia-cusolver-cu12
+ Downloaded nvidia-cusparselt-cu12
+ Downloaded nvidia-nccl-cu12
+ Downloaded nvidia-cusparse-cu12
+ Downloaded nvidia-cufft-cu12
+ Downloaded triton
+ Downloaded nvidia-cublas-cu12
+ Downloaded nvidia-cudnn-cu12
+ Downloaded torch
+Installed 104 packages in 211ms
+[2025-02-17 10:15:24,454 INFO train_pred.py line 73 1501]=>INaffine: False
+StepLR: True
+adaptive_lr: False
+arch: stage1_MEAD
+base_lr: 0.0001
+batch_size: 1
+batch_size_val: 1
+data_root: ./MEAD/
+dataset: MEAD
+dist_backend: nccl
+dist_url: tcp://127.0.0.1:6701
+distributed: False
+epochs: 200
+eval_freq: 10
+evaluate: True
+face_quan_num: 16
+factor: 0.3
+gamma: 0.5
+gpu: 0
+hidden_size: 1024
+in_dim: 15069
+intermediate_size: 1536
+manual_seed: 131
+model_path: None
+momentum: 0.9
+multiprocessing_distributed: False
+n_embed: 256
+neg: 0.2
+ngpus_per_node: 1
+num_attention_heads: 8
+num_hidden_layers: 6
+patience: 3
+poly_lr: False
+power: 0.9
+print_freq: 10
+quant_factor: 0
+quant_loss_weight: 1.0
+rank: 0
+read_audio: False
+resume: None
+save: True
+save_folder: None
+save_freq: 1
+save_path: RUN/MEAD/MEAD_stage1
+start_epoch: 0
+step_size: 20
+sync_bn: False
+template_file: FLAME2020_generic_model.pkl
+test_batch_size: 1
+test_gpu: [0]
+test_subjects: M013 M042 W026 W040
+test_workers: 0
+threshold: 0.0001
+train_gpu: 0
+train_subjects: M003 M005 M007 M009 M012 M019 M039 M041 W009 W011 W014 W015 W021 W023 W024 W028 W029 W033 W035 W036 W037
+use_sgd: False
+val_subjects: M011 M040 W025 W038
+vertices_path: vertices_npy
+warmup_steps: 1
+wav_path: wav
+weight: None
+weight_decay: 0.002
+window_size: 1
+workers: 10
+world_size: 1
+zquant_dim: 64
+[2025-02-17 10:15:24,454 INFO train_pred.py line 74 1501]=>=> creating model ...
+Loading data...
+Traceback (most recent call last):
+  File "/home/sakaya/TFG_RelatedWork/CodeTalker/main/train_pred.py", line 249, in <module>
+    main()
+  File "/home/sakaya/TFG_RelatedWork/CodeTalker/main/train_pred.py", line 50, in main
+    main_worker(args.train_gpu, args.ngpus_per_node, args)
+  File "/home/sakaya/TFG_RelatedWork/CodeTalker/main/train_pred.py", line 104, in main_worker
+    dataset = get_dataloaders(cfg)
+  File "/home/sakaya/TFG_RelatedWork/CodeTalker/dataset/data_loader.py", line 111, in get_dataloaders
+    train_data, valid_data, test_data, subjects_dict = read_data(args)
+  File "/home/sakaya/TFG_RelatedWork/CodeTalker/dataset/data_loader.py", line 55, in read_data
+    templates = pickle.load(fin,encoding='latin1')
+ModuleNotFoundError: No module named 'chumpy'

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/sakaya/TFG_RelatedWork/CodeTalker/main/test_pred.py", line 14, in <module>
+    cfg = get_parser()
+  File "/home/sakaya/TFG_RelatedWork/CodeTalker/base/utilities.py", line 18, in get_parser
+    cfg = config.load_cfg_from_cfg_file(args.config)
+  File "/home/sakaya/TFG_RelatedWork/CodeTalker/base/config.py", line 62, in load_cfg_from_cfg_file
+    assert os.path.isfile(file) and file.endswith('.yaml'), \
+AssertionError:  is not a yaml file

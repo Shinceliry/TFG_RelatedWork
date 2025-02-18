@@ -7,6 +7,9 @@ import librosa
 import pickle
 
 from transformers import Wav2Vec2Processor
+
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from base.utilities import get_parser
 from models import get_model
 from base.baseTrainer import load_state_dict
