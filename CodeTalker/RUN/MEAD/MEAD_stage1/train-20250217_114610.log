@@ -1,2686 +1,0 @@
-10
-Mon Feb 17 11:46:10 2025       
-+---------------------------------------------------------------------------------------+
-| NVIDIA-SMI 535.54.03              Driver Version: 535.54.03    CUDA Version: 12.2     |
-|-----------------------------------------+----------------------+----------------------+
-| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
-|                                         |                      |               MIG M. |
-|=========================================+======================+======================|
-|   0  NVIDIA RTX A6000               On  | 00000000:01:00.0 Off |                  Off |
-| 30%   25C    P8              27W / 300W |     12MiB / 49140MiB |      0%      Default |
-|                                         |                      |                  N/A |
-+-----------------------------------------+----------------------+----------------------+
-|   1  NVIDIA RTX A6000               On  | 00000000:25:00.0 Off |                  Off |
-| 30%   38C    P2             160W / 300W |  19810MiB / 49140MiB |     97%      Default |
-|                                         |                      |                  N/A |
-+-----------------------------------------+----------------------+----------------------+
-|   2  NVIDIA RTX A6000               On  | 00000000:41:00.0 Off |                  Off |
-| 30%   41C    P2             181W / 300W |  31996MiB / 49140MiB |     98%      Default |
-|                                         |                      |                  N/A |
-+-----------------------------------------+----------------------+----------------------+
-|   3  NVIDIA RTX A6000               On  | 00000000:61:00.0 Off |                  Off |
-| 30%   52C    P2             165W / 300W |  33006MiB / 49140MiB |     98%      Default |
-|                                         |                      |                  N/A |
-+-----------------------------------------+----------------------+----------------------+
-|   4  NVIDIA RTX A6000               On  | 00000000:81:00.0 Off |                  Off |
-| 57%   81C    P2             292W / 300W |  35546MiB / 49140MiB |     98%      Default |
-|                                         |                      |                  N/A |
-+-----------------------------------------+----------------------+----------------------+
-|   5  NVIDIA RTX A6000               On  | 00000000:A1:00.0 Off |                  Off |
-| 46%   74C    P2             284W / 300W |  45202MiB / 49140MiB |     87%      Default |
-|                                         |                      |                  N/A |
-+-----------------------------------------+----------------------+----------------------+
-|   6  NVIDIA RTX A6000               On  | 00000000:C1:00.0 Off |                  Off |
-|100%   90C    P2             261W / 300W |  46680MiB / 49140MiB |     99%      Default |
-|                                         |                      |                  N/A |
-+-----------------------------------------+----------------------+----------------------+
-|   7  NVIDIA RTX A6000               On  | 00000000:E1:00.0 Off |                  Off |
-| 97%   89C    P2             267W / 300W |  42560MiB / 49140MiB |     99%      Default |
-|                                         |                      |                  N/A |
-+-----------------------------------------+----------------------+----------------------+
-                                                                                         
-+---------------------------------------------------------------------------------------+
-| Processes:                                                                            |
-|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
-|        ID   ID                                                             Usage      |
-|=======================================================================================|
-+---------------------------------------------------------------------------------------+
-/home/sakaya/.local/bin/pip
-[2025-02-17 11:46:14,991 INFO train_pred.py line 73 1304]=>INaffine: False
-StepLR: True
-adaptive_lr: False
-arch: stage1_MEAD
-base_lr: 0.0001
-batch_size: 1
-batch_size_val: 1
-data_root: ./MEAD/
-dataset: MEAD
-dist_backend: nccl
-dist_url: tcp://127.0.0.1:6701
-distributed: False
-epochs: 200
-eval_freq: 10
-evaluate: True
-face_quan_num: 16
-factor: 0.3
-gamma: 0.5
-gpu: 0
-hidden_size: 1024
-in_dim: 15069
-intermediate_size: 1536
-manual_seed: 131
-model_path: None
-momentum: 0.9
-multiprocessing_distributed: False
-n_embed: 256
-neg: 0.2
-ngpus_per_node: 1
-num_attention_heads: 8
-num_hidden_layers: 6
-patience: 3
-poly_lr: False
-power: 0.9
-print_freq: 10
-quant_factor: 0
-quant_loss_weight: 1.0
-rank: 0
-read_audio: False
-resume: None
-save: True
-save_folder: None
-save_freq: 1
-save_path: RUN/MEAD/MEAD_stage1
-start_epoch: 0
-step_size: 20
-sync_bn: False
-template_file: FLAME2020_generic_model.pkl
-test_batch_size: 1
-test_gpu: [0]
-test_subjects: M013 M042 W026 W040
-test_workers: 0
-threshold: 0.0001
-train_gpu: 0
-train_subjects: M003 M005 M007 M009 M012 M019 M039 M041 W009 W011 W014 W015 W021 W023 W024 W028 W029 W033 W035 W036 W037
-use_sgd: False
-val_subjects: M011 M040 W025 W038
-vertices_path: vertices_npy
-warmup_steps: 1
-wav_path: wav
-weight: None
-weight_decay: 0.002
-window_size: 1
-workers: 10
-world_size: 1
-zquant_dim: 64
-[2025-02-17 11:46:14,991 INFO train_pred.py line 74 1304]=>=> creating model ...
-Loading data...
-  0%|          | 0/19101 [00:00<?, ?it/s]  0%|          | 1/19101 [00:00<2:08:15,  2.48it/s]  0%|          | 3/19101 [00:00<1:19:17,  4.01it/s]  0%|          | 4/19101 [00:01<1:38:03,  3.25it/s]  0%|          | 7/19101 [00:02<2:16:12,  2.34it/s]  0%|          | 8/19101 [00:03<2:16:07,  2.34it/s]  0%|          | 9/19101 [00:03<2:15:41,  2.35it/s]  0%|          | 11/19101 [00:03<1:44:45,  3.04it/s]  0%|          | 13/19101 [00:04<1:32:16,  3.45it/s]  0%|          | 14/19101 [00:04<1:49:31,  2.90it/s]  0%|          | 15/19101 [00:05<2:25:05,  2.19it/s]  0%|          | 16/19101 [00:06<2:50:12,  1.87it/s]  0%|          | 18/19101 [00:07<2:10:07,  2.44it/s]  0%|          | 20/19101 [00:07<1:57:19,  2.71it/s]  0%|          | 22/19101 [00:08<1:48:21,  2.93it/s]  0%|          | 23/19101 [00:08<1:55:39,  2.75it/s]  0%|          | 25/19101 [00:09<1:44:38,  3.04it/s]  0%|          | 26/19101 [00:09<2:03:14,  2.58it/s]  0%|          | 27/19101 [00:10<2:05:02,  2.54it/s]  0%|          | 28/19101 [00:10<1:57:41,  2.70it/s]  0%|          | 29/19101 [00:11<2:16:35,  2.33it/s]  0%|          | 33/19101 [00:11<1:12:15,  4.40it/s]  0%|          | 35/19101 [00:11<1:09:15,  4.59it/s]  0%|          | 36/19101 [00:12<1:18:53,  4.03it/s]  0%|          | 37/19101 [00:12<1:20:48,  3.93it/s]  0%|          | 38/19101 [00:12<1:31:11,  3.48it/s]  0%|          | 39/19101 [00:13<2:10:18,  2.44it/s]  0%|          | 40/19101 [00:14<2:03:35,  2.57it/s]  0%|          | 41/19101 [00:14<2:25:03,  2.19it/s]  0%|          | 44/19101 [00:15<1:37:00,  3.27it/s]  0%|          | 45/19101 [00:15<1:43:25,  3.07it/s]  0%|          | 46/19101 [00:16<2:14:09,  2.37it/s]  0%|          | 47/19101 [00:17<2:32:01,  2.09it/s]  0%|          | 49/19101 [00:17<2:03:55,  2.56it/s]  0%|          | 50/19101 [00:18<3:04:37,  1.72it/s]  0%|          | 52/19101 [00:19<2:17:52,  2.30it/s]  0%|          | 53/19101 [00:19<2:14:37,  2.36it/s]  0%|          | 54/19101 [00:20<2:14:21,  2.36it/s]  0%|          | 55/19101 [00:20<2:19:53,  2.27it/s]  0%|          | 56/19101 [00:20<2:02:12,  2.60it/s]  0%|          | 57/19101 [00:21<1:51:30,  2.85it/s]  0%|          | 58/19101 [00:21<1:51:01,  2.86it/s]  0%|          | 59/19101 [00:21<1:58:58,  2.67it/s]  0%|          | 60/19101 [00:22<1:48:04,  2.94it/s]  0%|          | 61/19101 [00:22<1:50:31,  2.87it/s]  0%|          | 62/19101 [00:22<2:00:30,  2.63it/s]  0%|          | 65/19101 [00:23<1:18:19,  4.05it/s]  0%|          | 66/19101 [00:23<1:25:04,  3.73it/s]  0%|          | 67/19101 [00:25<2:46:48,  1.90it/s]  0%|          | 69/19101 [00:25<2:01:35,  2.61it/s]  0%|          | 70/19101 [00:25<2:03:18,  2.57it/s]  0%|          | 72/19101 [00:26<1:43:29,  3.06it/s]  0%|          | 73/19101 [00:27<2:56:32,  1.80it/s]  0%|          | 74/19101 [00:27<2:33:50,  2.06it/s]  0%|          | 75/19101 [00:28<2:33:35,  2.06it/s]  0%|          | 77/19101 [00:28<1:54:51,  2.76it/s]  0%|          | 79/19101 [00:29<1:33:22,  3.40it/s]  0%|          | 80/19101 [00:29<1:52:17,  2.82it/s]  0%|          | 81/19101 [00:30<1:51:03,  2.85it/s]  0%|          | 82/19101 [00:31<2:52:14,  1.84it/s]  0%|          | 83/19101 [00:31<2:49:38,  1.87it/s]  0%|          | 84/19101 [00:32<2:37:40,  2.01it/s]  0%|          | 85/19101 [00:32<2:29:10,  2.12it/s]  0%|          | 86/19101 [00:32<2:11:20,  2.41it/s]  0%|          | 87/19101 [00:33<2:01:29,  2.61it/s]  0%|          | 88/19101 [00:33<1:59:24,  2.65it/s]  0%|          | 89/19101 [00:33<1:55:39,  2.74it/s]  0%|          | 90/19101 [00:34<2:06:42,  2.50it/s]  0%|          | 91/19101 [00:34<1:56:44,  2.71it/s]  0%|          | 92/19101 [00:34<2:05:32,  2.52it/s]  0%|          | 93/19101 [00:35<2:00:55,  2.62it/s]  0%|          | 94/19101 [00:35<1:44:16,  3.04it/s]  0%|          | 95/19101 [00:36<2:00:02,  2.64it/s]  1%|          | 96/19101 [00:36<2:08:21,  2.47it/s]  1%|          | 97/19101 [00:36<1:52:07,  2.82it/s]  1%|          | 98/19101 [00:37<3:07:05,  1.69it/s]  1%|          | 100/19101 [00:38<2:21:15,  2.24it/s]  1%|          | 101/19101 [00:38<2:14:19,  2.36it/s]  1%|          | 102/19101 [00:39<2:13:35,  2.37it/s]  1%|          | 103/19101 [00:39<2:10:04,  2.43it/s]  1%|          | 104/19101 [00:40<2:15:10,  2.34it/s]  1%|          | 105/19101 [00:40<2:10:38,  2.42it/s]  1%|          | 106/19101 [00:40<2:08:03,  2.47it/s]  1%|          | 110/19101 [00:41<1:10:41,  4.48it/s]  1%|          | 111/19101 [00:41<1:20:47,  3.92it/s]  1%|          | 113/19101 [00:42<1:11:34,  4.42it/s]  1%|          | 114/19101 [00:43<2:33:12,  2.07it/s]  1%|          | 115/19101 [00:43<2:18:06,  2.29it/s]  1%|          | 116/19101 [00:44<2:18:22,  2.29it/s]  1%|          | 117/19101 [00:44<2:17:05,  2.31it/s]  1%|          | 118/19101 [00:44<2:03:42,  2.56it/s]  1%|          | 119/19101 [00:45<2:07:29,  2.48it/s]  1%|          | 120/19101 [00:45<1:49:10,  2.90it/s]  1%|          | 121/19101 [00:46<1:59:59,  2.64it/s]  1%|          | 122/19101 [00:46<2:39:45,  1.98it/s]  1%|          | 123/19101 [00:47<2:34:02,  2.05it/s]  1%|          | 124/19101 [00:47<2:35:37,  2.03it/s]  1%|          | 125/19101 [00:48<2:18:16,  2.29it/s]  1%|          | 126/19101 [00:48<2:22:43,  2.22it/s]  1%|          | 127/19101 [00:50<4:08:29,  1.27it/s]  1%|          | 129/19101 [00:51<3:51:31,  1.37it/s]  1%|          | 130/19101 [00:51<3:18:15,  1.59it/s]  1%|          | 131/19101 [00:53<4:14:27,  1.24it/s]  1%|          | 132/19101 [00:53<3:54:43,  1.35it/s]  1%|          | 133/19101 [00:54<3:22:04,  1.56it/s]  1%|          | 134/19101 [00:54<2:51:59,  1.84it/s]  1%|          | 135/19101 [00:54<2:46:02,  1.90it/s]  1%|          | 136/19101 [00:55<2:22:42,  2.21it/s]  1%|          | 137/19101 [00:55<2:07:59,  2.47it/s]  1%|          | 139/19101 [00:55<1:20:59,  3.90it/s]  1%|          | 140/19101 [00:55<1:16:35,  4.13it/s]  1%|          | 141/19101 [00:55<1:10:46,  4.47it/s]  1%|          | 143/19101 [00:56<1:07:35,  4.67it/s]  1%|          | 144/19101 [00:56<1:17:07,  4.10it/s]  1%|          | 145/19101 [00:57<1:43:14,  3.06it/s]  1%|          | 146/19101 [00:57<1:34:12,  3.35it/s]  1%|          | 148/19101 [00:57<1:13:53,  4.27it/s]  1%|          | 149/19101 [00:58<1:18:48,  4.01it/s]  1%|          | 151/19101 [00:58<1:20:02,  3.95it/s]  1%|          | 152/19101 [00:59<1:32:26,  3.42it/s]  1%|          | 153/19101 [00:59<1:30:39,  3.48it/s]  1%|          | 154/19101 [00:59<1:22:34,  3.82it/s]  1%|          | 155/19101 [00:59<1:25:55,  3.68it/s]  1%|          | 157/19101 [01:00<1:16:46,  4.11it/s]  1%|          | 159/19101 [01:00<1:03:04,  5.01it/s]  1%|          | 161/19101 [01:00<56:57,  5.54it/s]    1%|          | 162/19101 [01:01<1:20:22,  3.93it/s]  1%|          | 164/19101 [01:01<1:09:51,  4.52it/s]  1%|          | 166/19101 [01:02<1:53:12,  2.79it/s]  1%|          | 167/19101 [01:03<2:12:28,  2.38it/s]  1%|          | 168/19101 [01:04<2:25:40,  2.17it/s]  1%|          | 169/19101 [01:04<2:26:16,  2.16it/s]  1%|          | 171/19101 [01:05<2:01:19,  2.60it/s]  1%|          | 172/19101 [01:05<2:24:18,  2.19it/s]  1%|          | 173/19101 [01:06<2:18:12,  2.28it/s]  1%|          | 175/19101 [01:06<1:50:56,  2.84it/s]  1%|          | 176/19101 [01:07<1:49:57,  2.87it/s]  1%|          | 179/19101 [01:07<1:14:17,  4.24it/s]  1%|          | 181/19101 [01:07<1:09:57,  4.51it/s]  1%|          | 182/19101 [01:08<1:29:48,  3.51it/s]  1%|          | 184/19101 [01:08<1:25:28,  3.69it/s]  1%|          | 185/19101 [01:09<1:33:52,  3.36it/s]  1%|          | 186/19101 [01:09<1:40:43,  3.13it/s]  1%|          | 187/19101 [01:10<1:52:59,  2.79it/s]  1%|          | 188/19101 [01:10<1:48:57,  2.89it/s]  1%|          | 189/19101 [01:10<1:56:53,  2.70it/s]  1%|          | 190/19101 [01:11<1:46:16,  2.97it/s]  1%|          | 191/19101 [01:11<1:50:21,  2.86it/s]  1%|          | 192/19101 [01:12<2:20:23,  2.24it/s]  1%|          | 193/19101 [01:13<3:11:57,  1.64it/s]  1%|          | 194/19101 [01:13<2:49:19,  1.86it/s]  1%|          | 195/19101 [01:13<2:30:20,  2.10it/s]  1%|          | 197/19101 [01:14<1:58:43,  2.65it/s]  1%|          | 198/19101 [01:14<1:56:28,  2.70it/s]  1%|          | 199/19101 [01:15<1:58:30,  2.66it/s]  1%|          | 200/19101 [01:15<1:57:57,  2.67it/s]  1%|          | 201/19101 [01:15<1:57:40,  2.68it/s]  1%|          | 202/19101 [01:16<1:59:37,  2.63it/s]  1%|          | 203/19101 [01:16<2:00:53,  2.61it/s]  1%|          | 204/19101 [01:17<2:11:26,  2.40it/s]  1%|          | 205/19101 [01:17<2:27:04,  2.14it/s]  1%|          | 208/19101 [01:18<1:33:44,  3.36it/s]  1%|          | 210/19101 [01:18<1:32:18,  3.41it/s]  1%|          | 211/19101 [01:19<2:04:05,  2.54it/s]  1%|          | 213/19101 [01:20<1:42:41,  3.07it/s]  1%|          | 215/19101 [01:20<1:28:13,  3.57it/s]  1%|          | 217/19101 [01:20<1:20:18,  3.92it/s]  1%|          | 218/19101 [01:21<1:29:04,  3.53it/s]  1%|          | 219/19101 [01:21<1:32:44,  3.39it/s]W023 surprised lv2 002
-W028 contempt lv1 015
-./MEAD/vertices_npy/W028_front_contempt_lv1_015_vertices.npyないじゃん
-W040 contempt lv3 028
-M005 contempt lv2 025
-W023 neutral lv1 023
-./MEAD/vertices_npy/W023_front_neutral_lv1_023_vertices.npyないじゃん
-W025 surprised lv3 027
-./MEAD/vertices_npy/W025_front_surprised_lv3_027_vertices.npyないじゃん
-M009 happy lv3 028
-M011 happy lv2 022
-M011 fear lv2 021
-M039 angry lv3 014
-./MEAD/vertices_npy/M039_front_angry_lv3_014_vertices.npyないじゃん
-M005 contempt lv1 023
-W021 angry lv3 023
-./MEAD/vertices_npy/W021_front_angry_lv3_023_vertices.npyないじゃん
-M039 contempt lv3 008
-M012 surprised lv1 008
-M013 surprised lv2 020
-M005 happy lv3 016
-W037 neutral lv1 026
-./MEAD/vertices_npy/W037_front_neutral_lv1_026_vertices.npyないじゃん
-W024 angry lv3 003
-W036 sad lv2 004
-./MEAD/vertices_npy/W036_front_sad_lv2_004_vertices.npyないじゃん
-M003 fear lv2 013
-W014 fear lv1 008
-./MEAD/vertices_npy/W014_front_fear_lv1_008_vertices.npyないじゃん
-W033 surprised lv1 021
-W015 fear lv3 006
-W021 disgusted lv2 021
-./MEAD/vertices_npy/W021_front_disgusted_lv2_021_vertices.npyないじゃん
-M003 fear lv1 023
-M011 sad lv2 016
-M012 angry lv3 012
-M019 disgusted lv2 009
-M005 disgusted lv1 028
-M039 disgusted lv2 015
-./MEAD/vertices_npy/M039_front_disgusted_lv2_015_vertices.npyないじゃん
-W021 happy lv2 018
-./MEAD/vertices_npy/W021_front_happy_lv2_018_vertices.npyないじゃん
-W024 sad lv3 012
-./MEAD/vertices_npy/W024_front_sad_lv3_012_vertices.npyないじゃん
-M019 angry lv2 024
-W036 contempt lv1 016
-./MEAD/vertices_npy/W036_front_contempt_lv1_016_vertices.npyないじゃん
-W021 happy lv3 028
-M041 fear lv1 016
-W036 surprised lv2 030
-M003 sad lv2 021
-M019 sad lv3 030
-M039 surprised lv3 010
-W009 sad lv1 007
-W029 surprised lv1 006
-./MEAD/vertices_npy/W029_front_surprised_lv1_006_vertices.npyないじゃん
-W038 contempt lv2 006
-./MEAD/vertices_npy/W038_front_contempt_lv2_006_vertices.npyないじゃん
-W028 surprised lv3 001
-M009 surprised lv3 004
-M012 fear lv2 030
-W011 angry lv1 017
-M039 happy lv1 026
-./MEAD/vertices_npy/M039_front_happy_lv1_026_vertices.npyないじゃん
-W035 disgusted lv1 020
-M041 surprised lv3 023
-W035 fear lv2 004
-./MEAD/vertices_npy/W035_front_fear_lv2_004_vertices.npyないじゃん
-M012 fear lv2 027
-M007 angry lv2 013
-W037 sad lv2 001
-W009 fear lv1 016
-M042 surprised lv2 003
-W015 contempt lv3 003
-M041 happy lv2 027
-W024 contempt lv1 001
-M007 angry lv3 003
-W037 surprised lv1 009
-M003 sad lv1 026
-W038 surprised lv3 012
-./MEAD/vertices_npy/W038_front_surprised_lv3_012_vertices.npyないじゃん
-W040 surprised lv1 012
-./MEAD/vertices_npy/W040_front_surprised_lv1_012_vertices.npyないじゃん
-M012 neutral lv1 020
-W036 angry lv3 007
-W014 angry lv2 023
-W021 fear lv2 029
-./MEAD/vertices_npy/W021_front_fear_lv2_029_vertices.npyないじゃん
-M042 neutral lv1 009
-W024 fear lv1 018
-W028 angry lv2 011
-./MEAD/vertices_npy/W028_front_angry_lv2_011_vertices.npyないじゃん
-W028 angry lv2 002
-M019 contempt lv2 021
-W011 surprised lv2 016
-M013 happy lv2 006
-W029 sad lv3 012
-./MEAD/vertices_npy/W029_front_sad_lv3_012_vertices.npyないじゃん
-M003 fear lv3 026
-M039 surprised lv2 026
-./MEAD/vertices_npy/M039_front_surprised_lv2_026_vertices.npyないじゃん
-W009 contempt lv1 022
-W015 fear lv3 026
-M005 happy lv2 011
-M005 fear lv3 010
-W009 neutral lv1 038
-M013 contempt lv1 001
-W029 happy lv3 021
-M042 disgusted lv1 009
-W036 angry lv1 010
-M019 surprised lv2 009
-W033 surprised lv3 024
-M019 disgusted lv1 028
-W038 sad lv1 022
-M041 angry lv1 001
-M009 fear lv2 002
-W036 neutral lv1 003
-W024 angry lv2 001
-M005 fear lv1 005
-M009 fear lv2 022
-M041 contempt lv2 002
-W040 angry lv3 020
-./MEAD/vertices_npy/W040_front_angry_lv3_020_vertices.npyないじゃん
-W026 happy lv1 008
-W021 surprised lv2 008
-W036 sad lv2 025
-W036 angry lv1 018
-W040 sad lv3 020
-W037 fear lv2 008
-M003 contempt lv2 010
-M042 happy lv2 004
-./MEAD/vertices_npy/M042_front_happy_lv2_004_vertices.npyないじゃん
-M042 contempt lv2 016
-./MEAD/vertices_npy/M042_front_contempt_lv2_016_vertices.npyないじゃん
-W036 neutral lv1 005
-./MEAD/vertices_npy/W036_front_neutral_lv1_005_vertices.npyないじゃん
-M011 fear lv1 006
-M013 disgusted lv2 013
-W035 sad lv3 016
-./MEAD/vertices_npy/W035_front_sad_lv3_016_vertices.npyないじゃん
-M005 sad lv2 012
-W014 angry lv3 015
-W035 disgusted lv2 009
-M012 contempt lv3 009
-W009 angry lv3 008
-W025 happy lv2 022
-W021 sad lv1 002
-W037 happy lv2 022
-W029 contempt lv1 025
-M042 angry lv3 017
-W028 fear lv3 007
-W009 sad lv3 030
-M040 fear lv1 010
-M009 sad lv2 006
-W011 happy lv1 020
-W024 contempt lv3 006
-./MEAD/vertices_npy/W024_front_contempt_lv3_006_vertices.npyないじゃん
-M039 sad lv3 007
-M039 contempt lv1 007
-W026 disgusted lv3 012
-W009 sad lv2 005
-W029 surprised lv1 007
-M003 contempt lv2 019
-M007 happy lv1 015
-M041 surprised lv2 015
-M007 sad lv2 029
-M042 surprised lv3 011
-./MEAD/vertices_npy/M042_front_surprised_lv3_011_vertices.npyないじゃん
-M039 sad lv3 021
-W035 contempt lv1 018
-W009 sad lv2 002
-W040 contempt lv1 012
-./MEAD/vertices_npy/W040_front_contempt_lv1_012_vertices.npyないじゃん
-M003 angry lv2 009
-W024 surprised lv3 017
-W033 fear lv1 001
-W024 fear lv1 003
-W033 happy lv1 005
-./MEAD/vertices_npy/W033_front_happy_lv1_005_vertices.npyないじゃん
-M012 contempt lv1 007
-W015 surprised lv1 010
-W040 contempt lv2 015
-./MEAD/vertices_npy/W040_front_contempt_lv2_015_vertices.npyないじゃん
-M005 fear lv1 023
-M005 sad lv2 009
-M009 angry lv3 013
-M013 contempt lv3 008
-W036 fear lv3 010
-M042 fear lv1 013
-./MEAD/vertices_npy/M042_front_fear_lv1_013_vertices.npyないじゃん
-W026 disgusted lv2 019
-W025 fear lv3 019
-./MEAD/vertices_npy/W025_front_fear_lv3_019_vertices.npyないじゃん
-W023 sad lv3 021
-W026 surprised lv1 014
-./MEAD/vertices_npy/W026_front_surprised_lv1_014_vertices.npyないじゃん
-W033 happy lv2 014
-M019 disgusted lv3 016
-W036 angry lv1 027
-./MEAD/vertices_npy/W036_front_angry_lv1_027_vertices.npyないじゃん
-M005 fear lv1 022
-M041 contempt lv1 016
-./MEAD/vertices_npy/M041_front_contempt_lv1_016_vertices.npyないじゃん
-W011 sad lv1 004
-W015 sad lv2 029
-W025 fear lv2 023
-M019 happy lv2 007
-W026 fear lv1 028
-./MEAD/vertices_npy/W026_front_fear_lv1_028_vertices.npyないじゃん
-M042 contempt lv3 020
-W036 surprised lv3 017
-W025 disgusted lv3 027
-W033 sad lv2 011
-./MEAD/vertices_npy/W033_front_sad_lv2_011_vertices.npyないじゃん
-W028 fear lv2 025
-W029 disgusted lv1 002
-W036 sad lv1 011
-./MEAD/vertices_npy/W036_front_sad_lv1_011_vertices.npyないじゃん
-M042 disgusted lv3 013
-./MEAD/vertices_npy/M042_front_disgusted_lv3_013_vertices.npyないじゃん
-M042 fear lv1 016
-W021 surprised lv2 006
-./MEAD/vertices_npy/W021_front_surprised_lv2_006_vertices.npyないじゃん
-M013 fear lv2 028
-W011 happy lv1 006
-W025 happy lv2 018
-./MEAD/vertices_npy/W025_front_happy_lv2_018_vertices.npyないじゃん
-W014 neutral lv1 025
-M039 sad lv3 014
-W038 angry lv2 009
-M019 contempt lv3 017
-W033 contempt lv1 009
-W015 contempt lv3 024
-W036 fear lv3 003
-M042 surprised lv1 002
-W011 sad lv1 005
-W033 neutral lv1 021
-M009 contempt lv3 029
-W040 angry lv1 010
-W021 happy lv2 005
-./MEAD/vertices_npy/W021_front_happy_lv2_005_vertices.npyないじゃん
-W036 contempt lv2 007
-M019 contempt lv3 010
-M013 disgusted lv2 019
-M041 disgusted lv3 012
-M042 fear lv3 024
-M041 angry lv1 003
-M019 sad lv1 006
-M003 angry lv2 026
-M013 surprised lv3 026
-W038 sad lv2 005
-./MEAD/vertices_npy/W038_front_sad_lv2_005_vertices.npyないじゃん
-W029 sad lv2 024
-./MEAD/vertices_npy/W029_front_sad_lv2_024_vertices.npyないじゃん
-W025 sad lv2 021
-W035 disgusted lv2 021
-./MEAD/vertices_npy/W035_front_disgusted_lv2_021_vertices.npyないじゃん
-W023 happy lv2 014
-M005 sad lv1 005
-W037 sad lv3 028
-./MEAD/vertices_npy/W037_front_sad_lv3_028_vertices.npyないじゃん
-M003 angry lv1 023
-W028 disgusted lv1 005
-./MEAD/vertices_npy/W028_front_disgusted_lv1_005_vertices.npyないじゃん
-M011 sad lv2 019
-M042 happy lv1 026
-./MEAD/vertices_npy/M042_front_happy_lv1_026_vertices.npyないじゃん
-W026 angry lv1 015
-M013 disgusted lv3 006
-W035 angry lv2 010
-W033 surprised lv3 027
-  1%|          | 221/19101 [01:22<1:24:27,  3.73it/s]  1%|          | 222/19101 [01:22<1:28:17,  3.56it/s]  1%|          | 223/19101 [01:22<1:41:30,  3.10it/s]  1%|          | 224/19101 [01:23<1:55:23,  2.73it/s]  1%|          | 226/19101 [01:23<1:37:58,  3.21it/s]  1%|          | 227/19101 [01:24<1:35:48,  3.28it/s]  1%|          | 228/19101 [01:24<1:45:07,  2.99it/s]  1%|          | 229/19101 [01:25<2:12:37,  2.37it/s]  1%|          | 233/19101 [01:25<1:05:10,  4.83it/s]  1%|          | 234/19101 [01:25<1:22:53,  3.79it/s]  1%|          | 237/19101 [01:26<1:00:16,  5.22it/s]  1%|          | 238/19101 [01:26<1:03:46,  4.93it/s]  1%|▏         | 241/19101 [01:26<55:00,  5.72it/s]    1%|▏         | 242/19101 [01:27<1:00:42,  5.18it/s]  1%|▏         | 243/19101 [01:27<1:00:00,  5.24it/s]  1%|▏         | 245/19101 [01:27<55:17,  5.68it/s]    1%|▏         | 247/19101 [01:27<53:39,  5.86it/s]  1%|▏         | 249/19101 [01:28<55:02,  5.71it/s]  1%|▏         | 253/19101 [01:28<37:53,  8.29it/s]  1%|▏         | 255/19101 [01:28<39:32,  7.94it/s]  1%|▏         | 258/19101 [01:29<32:55,  9.54it/s]  1%|▏         | 260/19101 [01:29<49:29,  6.34it/s]  1%|▏         | 261/19101 [01:29<50:51,  6.17it/s]  1%|▏         | 262/19101 [01:30<59:02,  5.32it/s]  1%|▏         | 263/19101 [01:30<1:09:50,  4.50it/s]  1%|▏         | 264/19101 [01:30<1:16:25,  4.11it/s]  1%|▏         | 267/19101 [01:31<57:20,  5.47it/s]    1%|▏         | 268/19101 [01:31<56:31,  5.55it/s]  1%|▏         | 269/19101 [01:31<1:08:57,  4.55it/s]  1%|▏         | 270/19101 [01:32<1:12:55,  4.30it/s]  1%|▏         | 271/19101 [01:32<1:15:37,  4.15it/s]  1%|▏         | 272/19101 [01:32<1:26:47,  3.62it/s]  1%|▏         | 273/19101 [01:32<1:24:12,  3.73it/s]  1%|▏         | 274/19101 [01:33<1:28:07,  3.56it/s]  1%|▏         | 276/19101 [01:33<1:07:34,  4.64it/s]  1%|▏         | 278/19101 [01:33<56:58,  5.51it/s]    1%|▏         | 279/19101 [01:33<58:32,  5.36it/s]  1%|▏         | 280/19101 [01:34<52:52,  5.93it/s]  1%|▏         | 281/19101 [01:34<56:32,  5.55it/s]  1%|▏         | 282/19101 [01:34<53:29,  5.86it/s]  1%|▏         | 283/19101 [01:34<1:04:21,  4.87it/s]  1%|▏         | 284/19101 [01:36<3:04:57,  1.70it/s]  1%|▏         | 285/19101 [01:36<2:27:04,  2.13it/s]  1%|▏         | 286/19101 [01:36<1:55:14,  2.72it/s]  2%|▏         | 287/19101 [01:36<1:46:44,  2.94it/s]  2%|▏         | 289/19101 [01:37<1:15:38,  4.14it/s]  2%|▏         | 291/19101 [01:37<1:01:22,  5.11it/s]  2%|▏         | 292/19101 [01:37<1:17:23,  4.05it/s]  2%|▏         | 293/19101 [01:37<1:12:39,  4.31it/s]  2%|▏         | 294/19101 [01:38<1:09:37,  4.50it/s]  2%|▏         | 295/19101 [01:38<1:07:11,  4.66it/s]  2%|▏         | 296/19101 [01:38<1:20:54,  3.87it/s]  2%|▏         | 298/19101 [01:39<1:10:02,  4.47it/s]  2%|▏         | 301/19101 [01:39<52:47,  5.93it/s]    2%|▏         | 302/19101 [01:39<59:22,  5.28it/s]  2%|▏         | 303/19101 [01:40<1:19:13,  3.95it/s]  2%|▏         | 304/19101 [01:40<1:14:55,  4.18it/s]  2%|▏         | 305/19101 [01:40<1:18:53,  3.97it/s]  2%|▏         | 306/19101 [01:40<1:23:28,  3.75it/s]  2%|▏         | 307/19101 [01:41<1:25:34,  3.66it/s]  2%|▏         | 308/19101 [01:41<1:18:21,  4.00it/s]  2%|▏         | 309/19101 [01:41<1:19:17,  3.95it/s]  2%|▏         | 311/19101 [01:42<1:05:33,  4.78it/s]  2%|▏         | 312/19101 [01:42<1:14:54,  4.18it/s]  2%|▏         | 314/19101 [01:42<1:05:36,  4.77it/s]  2%|▏         | 315/19101 [01:42<1:12:02,  4.35it/s]  2%|▏         | 317/19101 [01:43<1:05:17,  4.79it/s]  2%|▏         | 318/19101 [01:43<1:20:40,  3.88it/s]  2%|▏         | 319/19101 [01:44<1:25:59,  3.64it/s]  2%|▏         | 320/19101 [01:44<1:30:09,  3.47it/s]  2%|▏         | 321/19101 [01:44<1:39:08,  3.16it/s]  2%|▏         | 322/19101 [01:45<1:41:54,  3.07it/s]  2%|▏         | 326/19101 [01:45<53:34,  5.84it/s]    2%|▏         | 327/19101 [01:45<1:09:06,  4.53it/s]  2%|▏         | 328/19101 [01:46<1:10:43,  4.42it/s]  2%|▏         | 329/19101 [01:46<1:16:04,  4.11it/s]  2%|▏         | 330/19101 [01:46<1:26:03,  3.64it/s]  2%|▏         | 331/19101 [01:47<1:27:04,  3.59it/s]  2%|▏         | 332/19101 [01:47<1:36:32,  3.24it/s]  2%|▏         | 333/19101 [01:47<1:33:46,  3.34it/s]  2%|▏         | 334/19101 [01:47<1:22:47,  3.78it/s]  2%|▏         | 335/19101 [01:48<1:21:23,  3.84it/s]  2%|▏         | 336/19101 [01:48<1:18:17,  3.99it/s]  2%|▏         | 337/19101 [01:48<1:25:01,  3.68it/s]  2%|▏         | 338/19101 [01:49<1:28:26,  3.54it/s]  2%|▏         | 339/19101 [01:49<1:30:36,  3.45it/s]  2%|▏         | 343/19101 [01:50<1:20:43,  3.87it/s]  2%|▏         | 345/19101 [01:50<1:08:39,  4.55it/s]  2%|▏         | 346/19101 [01:50<1:11:48,  4.35it/s]  2%|▏         | 347/19101 [01:51<1:19:15,  3.94it/s]  2%|▏         | 350/19101 [01:51<54:20,  5.75it/s]    2%|▏         | 351/19101 [01:51<1:07:05,  4.66it/s]  2%|▏         | 352/19101 [01:52<1:13:23,  4.26it/s]  2%|▏         | 353/19101 [01:52<1:12:51,  4.29it/s]  2%|▏         | 355/19101 [01:52<55:44,  5.60it/s]    2%|▏         | 356/19101 [01:52<1:01:38,  5.07it/s]  2%|▏         | 357/19101 [01:53<1:09:31,  4.49it/s]  2%|▏         | 358/19101 [01:53<1:21:24,  3.84it/s]  2%|▏         | 360/19101 [01:54<1:18:06,  4.00it/s]  2%|▏         | 361/19101 [01:54<1:17:26,  4.03it/s]  2%|▏         | 363/19101 [01:54<1:10:24,  4.44it/s]  2%|▏         | 364/19101 [01:54<1:14:52,  4.17it/s]  2%|▏         | 365/19101 [01:55<2:04:45,  2.50it/s]  2%|▏         | 366/19101 [01:56<2:05:52,  2.48it/s]  2%|▏         | 368/19101 [01:56<1:36:41,  3.23it/s]  2%|▏         | 369/19101 [01:56<1:34:55,  3.29it/s]  2%|▏         | 372/19101 [01:57<55:31,  5.62it/s]    2%|▏         | 373/19101 [01:57<1:06:24,  4.70it/s]  2%|▏         | 374/19101 [01:57<1:29:36,  3.48it/s]  2%|▏         | 375/19101 [01:58<1:29:45,  3.48it/s]  2%|▏         | 376/19101 [01:58<1:24:30,  3.69it/s]  2%|▏         | 377/19101 [01:58<1:23:38,  3.73it/s]  2%|▏         | 381/19101 [01:59<47:23,  6.58it/s]    2%|▏         | 382/19101 [01:59<51:17,  6.08it/s]  2%|▏         | 386/19101 [01:59<39:24,  7.91it/s]  2%|▏         | 387/19101 [01:59<44:34,  7.00it/s]  2%|▏         | 388/19101 [02:00<46:17,  6.74it/s]  2%|▏         | 389/19101 [02:00<1:13:25,  4.25it/s]  2%|▏         | 390/19101 [02:01<1:26:39,  3.60it/s]  2%|▏         | 391/19101 [02:01<1:37:04,  3.21it/s]  2%|▏         | 393/19101 [02:01<1:21:08,  3.84it/s]  2%|▏         | 396/19101 [02:02<1:05:14,  4.78it/s]  2%|▏         | 397/19101 [02:02<1:19:47,  3.91it/s]  2%|▏         | 398/19101 [02:03<1:28:43,  3.51it/s]  2%|▏         | 400/19101 [02:03<1:44:34,  2.98it/s]  2%|▏         | 401/19101 [02:04<1:45:21,  2.96it/s]  2%|▏         | 402/19101 [02:04<1:47:26,  2.90it/s]  2%|▏         | 403/19101 [02:04<1:42:50,  3.03it/s]  2%|▏         | 404/19101 [02:05<1:38:36,  3.16it/s]  2%|▏         | 406/19101 [02:05<1:14:02,  4.21it/s]  2%|▏         | 407/19101 [02:05<1:17:58,  4.00it/s]  2%|▏         | 408/19101 [02:05<1:10:01,  4.45it/s]  2%|▏         | 409/19101 [02:06<1:10:38,  4.41it/s]  2%|▏         | 410/19101 [02:06<1:15:00,  4.15it/s]  2%|▏         | 411/19101 [02:07<2:06:39,  2.46it/s]./MEAD/vertices_npy/W033_front_surprised_lv3_027_vertices.npyないじゃん
-M012 happy lv3 028
-M039 disgusted lv2 011
-M011 angry lv3 027
-W015 surprised lv2 022
-W028 happy lv2 010
-./MEAD/vertices_npy/W028_front_happy_lv2_010_vertices.npyないじゃん
-M003 angry lv2 030
-M040 fear lv2 026
-W021 surprised lv1 002
-W014 angry lv2 018
-W025 happy lv3 030
-./MEAD/vertices_npy/W025_front_happy_lv3_030_vertices.npyないじゃん
-W024 sad lv2 012
-./MEAD/vertices_npy/W024_front_sad_lv2_012_vertices.npyないじゃん
-W040 disgusted lv2 029
-./MEAD/vertices_npy/W040_front_disgusted_lv2_029_vertices.npyないじゃん
-M009 disgusted lv1 005
-M042 surprised lv2 010
-W024 neutral lv1 011
-./MEAD/vertices_npy/W024_front_neutral_lv1_011_vertices.npyないじゃん
-W023 surprised lv3 005
-./MEAD/vertices_npy/W023_front_surprised_lv3_005_vertices.npyないじゃん
-M013 happy lv3 015
-M042 happy lv2 013
-W026 angry lv2 021
-./MEAD/vertices_npy/W026_front_angry_lv2_021_vertices.npyないじゃん
-W023 angry lv1 028
-./MEAD/vertices_npy/W023_front_angry_lv1_028_vertices.npyないじゃん
-W023 fear lv2 017
-M013 fear lv2 025
-M003 happy lv2 022
-M041 happy lv2 011
-./MEAD/vertices_npy/M041_front_happy_lv2_011_vertices.npyないじゃん
-W035 happy lv1 007
-W040 contempt lv1 022
-./MEAD/vertices_npy/W040_front_contempt_lv1_022_vertices.npyないじゃん
-W011 angry lv3 026
-W021 neutral lv1 037
-./MEAD/vertices_npy/W021_front_neutral_lv1_037_vertices.npyないじゃん
-W015 fear lv1 012
-W029 angry lv3 012
-./MEAD/vertices_npy/W029_front_angry_lv3_012_vertices.npyないじゃん
-M040 disgusted lv3 008
-./MEAD/vertices_npy/M040_front_disgusted_lv3_008_vertices.npyないじゃん
-M039 fear lv3 011
-./MEAD/vertices_npy/M039_front_fear_lv3_011_vertices.npyないじゃん
-W037 angry lv2 002
-W040 happy lv2 004
-./MEAD/vertices_npy/W040_front_happy_lv2_004_vertices.npyないじゃん
-W028 sad lv1 009
-M039 neutral lv1 004
-./MEAD/vertices_npy/M039_front_neutral_lv1_004_vertices.npyないじゃん
-W029 happy lv2 011
-./MEAD/vertices_npy/W029_front_happy_lv2_011_vertices.npyないじゃん
-M005 contempt lv2 006
-W028 sad lv1 015
-M042 disgusted lv1 026
-M005 contempt lv1 008
-M012 contempt lv2 022
-W038 contempt lv1 017
-M040 neutral lv1 033
-W033 contempt lv1 011
-./MEAD/vertices_npy/W033_front_contempt_lv1_011_vertices.npyないじゃん
-W024 happy lv3 018
-./MEAD/vertices_npy/W024_front_happy_lv3_018_vertices.npyないじゃん
-M011 disgusted lv3 012
-W035 disgusted lv3 026
-M005 fear lv1 019
-M039 disgusted lv1 004
-W009 angry lv1 014
-W009 contempt lv2 012
-W038 disgusted lv2 001
-W014 surprised lv2 012
-W024 angry lv3 019
-./MEAD/vertices_npy/W024_front_angry_lv3_019_vertices.npyないじゃん
-M019 disgusted lv3 013
-M039 fear lv2 022
-./MEAD/vertices_npy/M039_front_fear_lv2_022_vertices.npyないじゃん
-W025 disgusted lv3 011
-M005 angry lv1 025
-W024 fear lv3 003
-W033 contempt lv2 018
-M009 angry lv2 023
-W029 sad lv1 015
-W015 disgusted lv3 021
-W036 angry lv2 002
-M040 contempt lv3 008
-W038 happy lv2 001
-W040 happy lv2 023
-./MEAD/vertices_npy/W040_front_happy_lv2_023_vertices.npyないじゃん
-M040 happy lv2 008
-W025 happy lv1 026
-./MEAD/vertices_npy/W025_front_happy_lv1_026_vertices.npyないじゃん
-M019 disgusted lv3 029
-W014 surprised lv2 018
-M019 surprised lv2 007
-M011 disgusted lv2 030
-W037 disgusted lv2 012
-W025 sad lv2 029
-M042 sad lv2 018
-./MEAD/vertices_npy/M042_front_sad_lv2_018_vertices.npyないじゃん
-W015 contempt lv3 012
-M040 angry lv2 020
-./MEAD/vertices_npy/M040_front_angry_lv2_020_vertices.npyないじゃん
-W037 angry lv1 029
-./MEAD/vertices_npy/W037_front_angry_lv1_029_vertices.npyないじゃん
-W011 neutral lv1 020
-M012 angry lv3 021
-W009 happy lv2 017
-M019 angry lv2 003
-W021 angry lv1 024
-W040 surprised lv2 016
-W015 contempt lv3 006
-W035 angry lv1 009
-W024 contempt lv3 007
-W028 disgusted lv3 016
-./MEAD/vertices_npy/W028_front_disgusted_lv3_016_vertices.npyないじゃん
-M003 happy lv3 001
-W026 surprised lv1 024
-M039 disgusted lv1 021
-./MEAD/vertices_npy/M039_front_disgusted_lv1_021_vertices.npyないじゃん
-M011 angry lv2 013
-W024 contempt lv1 008
-W038 surprised lv3 026
-./MEAD/vertices_npy/W038_front_surprised_lv3_026_vertices.npyないじゃん
-M019 happy lv2 001
-W014 surprised lv1 001
-W035 angry lv1 018
-W026 surprised lv2 024
-W029 surprised lv1 029
-W025 fear lv3 017
-M039 disgusted lv3 005
-./MEAD/vertices_npy/M039_front_disgusted_lv3_005_vertices.npyないじゃん
-W023 angry lv2 022
-./MEAD/vertices_npy/W023_front_angry_lv2_022_vertices.npyないじゃん
-W024 contempt lv3 022
-./MEAD/vertices_npy/W024_front_contempt_lv3_022_vertices.npyないじゃん
-M040 contempt lv1 011
-W014 contempt lv2 012
-M040 disgusted lv1 026
-W011 contempt lv1 029
-W025 happy lv3 008
-M013 contempt lv2 026
-W040 happy lv1 027
-M013 surprised lv3 014
-M005 angry lv3 012
-M003 sad lv1 030
-W009 angry lv3 007
-M005 happy lv1 025
-M013 surprised lv2 027
-M042 disgusted lv3 018
-W021 neutral lv1 005
-./MEAD/vertices_npy/W021_front_neutral_lv1_005_vertices.npyないじゃん
-W040 contempt lv1 006
-./MEAD/vertices_npy/W040_front_contempt_lv1_006_vertices.npyないじゃん
-W040 surprised lv1 020
-./MEAD/vertices_npy/W040_front_surprised_lv1_020_vertices.npyないじゃん
-M005 disgusted lv3 022
-W025 sad lv2 027
-./MEAD/vertices_npy/W025_front_sad_lv2_027_vertices.npyないじゃん
-W025 disgusted lv1 009
-W040 angry lv3 010
-W029 happy lv1 001
-M042 sad lv1 027
-./MEAD/vertices_npy/M042_front_sad_lv1_027_vertices.npyないじゃん
-M039 fear lv2 012
-./MEAD/vertices_npy/M039_front_fear_lv2_012_vertices.npyないじゃん
-W015 happy lv1 025
-M007 angry lv1 027
-M005 angry lv3 004
-M012 sad lv2 029
-W028 happy lv2 006
-./MEAD/vertices_npy/W028_front_happy_lv2_006_vertices.npyないじゃん
-M012 neutral lv1 022
-W015 angry lv2 013
-W028 contempt lv1 002
-W024 disgusted lv3 008
-W024 happy lv1 004
-./MEAD/vertices_npy/W024_front_happy_lv1_004_vertices.npyないじゃん
-W021 fear lv3 023
-W029 contempt lv3 009
-W024 angry lv3 012
-./MEAD/vertices_npy/W024_front_angry_lv3_012_vertices.npyないじゃん
-M005 happy lv2 023
-W035 happy lv1 022
-M042 fear lv3 017
-M007 disgusted lv2 010
-W025 angry lv1 014
-./MEAD/vertices_npy/W025_front_angry_lv1_014_vertices.npyないじゃん
-M019 surprised lv2 023
-W026 angry lv1 008
-W033 contempt lv3 013
-./MEAD/vertices_npy/W033_front_contempt_lv3_013_vertices.npyないじゃん
-W028 happy lv2 026
-./MEAD/vertices_npy/W028_front_happy_lv2_026_vertices.npyないじゃん
-M039 neutral lv1 030
-./MEAD/vertices_npy/M039_front_neutral_lv1_030_vertices.npyないじゃん
-M012 fear lv1 029
-W036 disgusted lv1 003
-M040 happy lv1 021
-M041 sad lv1 019
-W033 surprised lv3 029
-W033 surprised lv3 014
-./MEAD/vertices_npy/W033_front_surprised_lv3_014_vertices.npyないじゃん
-W029 sad lv1 016
-./MEAD/vertices_npy/W029_front_sad_lv1_016_vertices.npyないじゃん
-M042 contempt lv1 016
-./MEAD/vertices_npy/M042_front_contempt_lv1_016_vertices.npyないじゃん
-W035 contempt lv2 003
-M041 fear lv2 025
-W021 surprised lv2 013
-./MEAD/vertices_npy/W021_front_surprised_lv2_013_vertices.npyないじゃん
-W035 surprised lv1 006
-./MEAD/vertices_npy/W035_front_surprised_lv1_006_vertices.npyないじゃん
-W040 surprised lv1 026
-./MEAD/vertices_npy/W040_front_surprised_lv1_026_vertices.npyないじゃん
-W015 sad lv3 024
-M042 fear lv2 010
-W036 contempt lv3 008
-M011 sad lv1 008
-W026 sad lv3 013
-W009 neutral lv1 028
-W024 fear lv3 005
-./MEAD/vertices_npy/W024_front_fear_lv3_005_vertices.npyないじゃん
-W025 disgusted lv2 019
-W026 happy lv2 018
-./MEAD/vertices_npy/W026_front_happy_lv2_018_vertices.npyないじゃん
-W021 happy lv2 017
-./MEAD/vertices_npy/W021_front_happy_lv2_017_vertices.npyないじゃん
-M013 angry lv1 030
-W023 sad lv2 009
-W029 surprised lv3 001
-W035 surprised lv1 025
-./MEAD/vertices_npy/W035_front_surprised_lv1_025_vertices.npyないじゃん
-W015 disgusted lv1 028
-W028 sad lv3 009
-M012 sad lv1 008
-W014 fear lv3 002
-M019 happy lv2 005
-W035 sad lv1 006
-./MEAD/vertices_npy/W035_front_sad_lv1_006_vertices.npyないじゃん
-M005 surprised lv1 012
-W009 fear lv3 014
-W033 sad lv3 021
-M012 angry lv2 004
-W011 happy lv2 005
-M019 fear lv2 010
-W033 disgusted lv1 029
-  2%|▏         | 413/19101 [02:07<1:26:15,  3.61it/s]  2%|▏         | 415/19101 [02:07<1:07:21,  4.62it/s]  2%|▏         | 416/19101 [02:08<1:22:51,  3.76it/s]  2%|▏         | 419/19101 [02:08<53:19,  5.84it/s]    2%|▏         | 423/19101 [02:08<36:48,  8.46it/s]  2%|▏         | 425/19101 [02:08<38:21,  8.12it/s]  2%|▏         | 426/19101 [02:09<47:46,  6.52it/s]  2%|▏         | 428/19101 [02:09<43:54,  7.09it/s]  2%|▏         | 429/19101 [02:09<46:11,  6.74it/s]  2%|▏         | 430/19101 [02:10<59:04,  5.27it/s]  2%|▏         | 431/19101 [02:10<1:02:56,  4.94it/s]  2%|▏         | 433/19101 [02:10<55:25,  5.61it/s]    2%|▏         | 434/19101 [02:10<1:03:06,  4.93it/s]  2%|▏         | 439/19101 [02:11<39:03,  7.96it/s]    2%|▏         | 440/19101 [02:11<52:25,  5.93it/s]  2%|▏         | 442/19101 [02:11<45:29,  6.84it/s]  2%|▏         | 444/19101 [02:12<44:29,  6.99it/s]  2%|▏         | 445/19101 [02:12<55:08,  5.64it/s]  2%|▏         | 446/19101 [02:12<1:00:16,  5.16it/s]  2%|▏         | 449/19101 [02:12<40:31,  7.67it/s]    2%|▏         | 450/19101 [02:13<46:01,  6.75it/s]  2%|▏         | 451/19101 [02:13<57:04,  5.45it/s]  2%|▏         | 452/19101 [02:13<1:10:05,  4.43it/s]  2%|▏         | 453/19101 [02:14<1:14:21,  4.18it/s]  2%|▏         | 454/19101 [02:14<1:21:11,  3.83it/s]  2%|▏         | 455/19101 [02:14<1:26:04,  3.61it/s]  2%|▏         | 458/19101 [02:15<56:42,  5.48it/s]    2%|▏         | 459/19101 [02:15<58:16,  5.33it/s]  2%|▏         | 460/19101 [02:15<1:04:24,  4.82it/s]  2%|▏         | 461/19101 [02:15<59:09,  5.25it/s]    2%|▏         | 464/19101 [02:15<41:49,  7.43it/s]  2%|▏         | 465/19101 [02:16<45:31,  6.82it/s]  2%|▏         | 466/19101 [02:16<47:33,  6.53it/s]  2%|▏         | 467/19101 [02:16<53:45,  5.78it/s]  2%|▏         | 468/19101 [02:16<1:03:14,  4.91it/s]  2%|▏         | 469/19101 [02:17<1:57:53,  2.63it/s]  2%|▏         | 470/19101 [02:17<1:44:43,  2.96it/s]  2%|▏         | 471/19101 [02:18<1:29:11,  3.48it/s]  2%|▏         | 472/19101 [02:18<1:25:01,  3.65it/s]  2%|▏         | 473/19101 [02:18<1:22:27,  3.77it/s]  2%|▏         | 474/19101 [02:18<1:16:51,  4.04it/s]  2%|▏         | 476/19101 [02:18<51:36,  6.01it/s]    2%|▏         | 477/19101 [02:19<54:34,  5.69it/s]  3%|▎         | 478/19101 [02:19<59:32,  5.21it/s]  3%|▎         | 480/19101 [02:19<45:55,  6.76it/s]  3%|▎         | 482/19101 [02:19<43:15,  7.17it/s]  3%|▎         | 484/19101 [02:20<1:28:33,  3.50it/s]  3%|▎         | 485/19101 [02:21<1:38:09,  3.16it/s]  3%|▎         | 486/19101 [02:21<1:38:13,  3.16it/s]  3%|▎         | 490/19101 [02:21<48:58,  6.33it/s]    3%|▎         | 492/19101 [02:22<46:52,  6.62it/s]  3%|▎         | 494/19101 [02:22<46:48,  6.63it/s]  3%|▎         | 496/19101 [02:22<40:46,  7.60it/s]  3%|▎         | 498/19101 [02:23<57:44,  5.37it/s]  3%|▎         | 499/19101 [02:23<57:25,  5.40it/s]  3%|▎         | 500/19101 [02:23<53:44,  5.77it/s]  3%|▎         | 501/19101 [02:23<1:00:42,  5.11it/s]  3%|▎         | 502/19101 [02:23<55:28,  5.59it/s]    3%|▎         | 504/19101 [02:24<1:29:51,  3.45it/s]  3%|▎         | 506/19101 [02:25<1:13:53,  4.19it/s]  3%|▎         | 507/19101 [02:25<1:08:13,  4.54it/s]  3%|▎         | 509/19101 [02:25<1:02:33,  4.95it/s]  3%|▎         | 510/19101 [02:25<57:07,  5.42it/s]    3%|▎         | 511/19101 [02:25<59:08,  5.24it/s]  3%|▎         | 512/19101 [02:25<53:06,  5.83it/s]  3%|▎         | 514/19101 [02:26<45:07,  6.86it/s]  3%|▎         | 515/19101 [02:26<46:24,  6.68it/s]  3%|▎         | 516/19101 [02:26<51:49,  5.98it/s]  3%|▎         | 517/19101 [02:26<52:00,  5.95it/s]  3%|▎         | 519/19101 [02:27<49:41,  6.23it/s]  3%|▎         | 522/19101 [02:27<42:52,  7.22it/s]  3%|▎         | 525/19101 [02:27<33:10,  9.33it/s]  3%|▎         | 526/19101 [02:27<34:55,  8.86it/s]  3%|▎         | 528/19101 [02:28<40:09,  7.71it/s]  3%|▎         | 529/19101 [02:28<45:47,  6.76it/s]  3%|▎         | 530/19101 [02:28<46:55,  6.60it/s]  3%|▎         | 531/19101 [02:28<50:39,  6.11it/s]  3%|▎         | 532/19101 [02:28<58:19,  5.31it/s]  3%|▎         | 533/19101 [02:29<59:41,  5.18it/s]  3%|▎         | 535/19101 [02:29<50:14,  6.16it/s]  3%|▎         | 537/19101 [02:29<46:44,  6.62it/s]  3%|▎         | 538/19101 [02:30<1:09:42,  4.44it/s]  3%|▎         | 539/19101 [02:30<1:06:57,  4.62it/s]  3%|▎         | 541/19101 [02:30<1:02:32,  4.95it/s]  3%|▎         | 543/19101 [02:31<1:00:52,  5.08it/s]  3%|▎         | 544/19101 [02:31<1:00:29,  5.11it/s]  3%|▎         | 545/19101 [02:31<1:09:08,  4.47it/s]  3%|▎         | 546/19101 [02:35<5:53:27,  1.14s/it]  3%|▎         | 547/19101 [02:35<4:48:44,  1.07it/s]  3%|▎         | 548/19101 [02:36<4:01:01,  1.28it/s]  3%|▎         | 549/19101 [02:36<3:15:44,  1.58it/s]  3%|▎         | 550/19101 [02:36<2:40:45,  1.92it/s]  3%|▎         | 552/19101 [02:36<1:46:32,  2.90it/s]  3%|▎         | 554/19101 [02:37<1:37:50,  3.16it/s]  3%|▎         | 555/19101 [02:37<1:40:15,  3.08it/s]  3%|▎         | 556/19101 [02:38<1:35:22,  3.24it/s]  3%|▎         | 557/19101 [02:38<1:31:07,  3.39it/s]  3%|▎         | 558/19101 [02:38<1:27:03,  3.55it/s]  3%|▎         | 559/19101 [02:38<1:26:55,  3.56it/s]  3%|▎         | 560/19101 [02:39<1:36:30,  3.20it/s]  3%|▎         | 561/19101 [02:39<1:28:00,  3.51it/s]  3%|▎         | 563/19101 [02:40<1:39:23,  3.11it/s]  3%|▎         | 564/19101 [02:40<1:33:33,  3.30it/s]  3%|▎         | 566/19101 [02:40<1:13:04,  4.23it/s]  3%|▎         | 567/19101 [02:40<1:12:52,  4.24it/s]  3%|▎         | 569/19101 [02:41<1:00:52,  5.07it/s]  3%|▎         | 570/19101 [02:41<1:13:39,  4.19it/s]  3%|▎         | 571/19101 [02:42<1:37:25,  3.17it/s]  3%|▎         | 573/19101 [02:42<1:32:57,  3.32it/s]  3%|▎         | 575/19101 [02:42<1:04:41,  4.77it/s]  3%|▎         | 576/19101 [02:43<1:18:00,  3.96it/s]  3%|▎         | 577/19101 [02:43<1:16:41,  4.03it/s]  3%|▎         | 579/19101 [02:44<1:26:14,  3.58it/s]  3%|▎         | 580/19101 [02:44<1:32:01,  3.35it/s]  3%|▎         | 581/19101 [02:44<1:35:07,  3.24it/s]  3%|▎         | 584/19101 [02:45<1:13:04,  4.22it/s]  3%|▎         | 585/19101 [02:46<2:08:03,  2.41it/s]  3%|▎         | 586/19101 [02:46<1:56:24,  2.65it/s]  3%|▎         | 587/19101 [02:47<1:59:31,  2.58it/s]  3%|▎         | 588/19101 [02:47<1:51:34,  2.77it/s]  3%|▎         | 589/19101 [02:47<2:01:39,  2.54it/s]  3%|▎         | 593/19101 [02:48<1:08:40,  4.49it/s]  3%|▎         | 594/19101 [02:48<1:13:18,  4.21it/s]  3%|▎         | 595/19101 [02:49<1:18:51,  3.91it/s]  3%|▎         | 596/19101 [02:49<1:24:53,  3.63it/s]  3%|▎         | 597/19101 [02:49<1:38:31,  3.13it/s]  3%|▎         | 598/19101 [02:50<2:01:15,  2.54it/s]  3%|▎         | 599/19101 [02:50<2:05:12,  2.46it/s]./MEAD/vertices_npy/W033_front_disgusted_lv1_029_vertices.npyないじゃん
-M011 happy lv1 002
-W029 angry lv2 005
-./MEAD/vertices_npy/W029_front_angry_lv2_005_vertices.npyないじゃん
-M012 neutral lv1 013
-W024 contempt lv3 027
-W029 contempt lv3 022
-./MEAD/vertices_npy/W029_front_contempt_lv3_022_vertices.npyないじゃん
-W021 contempt lv1 012
-./MEAD/vertices_npy/W021_front_contempt_lv1_012_vertices.npyないじゃん
-M042 fear lv3 025
-W029 angry lv1 005
-./MEAD/vertices_npy/W029_front_angry_lv1_005_vertices.npyないじゃん
-W033 sad lv3 027
-./MEAD/vertices_npy/W033_front_sad_lv3_027_vertices.npyないじゃん
-W028 surprised lv2 012
-./MEAD/vertices_npy/W028_front_surprised_lv2_012_vertices.npyないじゃん
-M003 angry lv1 022
-W036 contempt lv2 028
-M041 angry lv1 026
-W033 sad lv3 009
-W040 happy lv3 018
-./MEAD/vertices_npy/W040_front_happy_lv3_018_vertices.npyないじゃん
-W036 happy lv3 009
-W038 happy lv2 021
-W029 sad lv3 021
-W038 angry lv1 002
-W026 disgusted lv1 015
-./MEAD/vertices_npy/W026_front_disgusted_lv1_015_vertices.npyないじゃん
-M009 angry lv2 007
-M011 happy lv3 008
-M041 fear lv1 013
-./MEAD/vertices_npy/M041_front_fear_lv1_013_vertices.npyないじゃん
-W036 fear lv3 004
-./MEAD/vertices_npy/W036_front_fear_lv3_004_vertices.npyないじゃん
-W036 contempt lv3 016
-./MEAD/vertices_npy/W036_front_contempt_lv3_016_vertices.npyないじゃん
-M042 neutral lv1 038
-./MEAD/vertices_npy/M042_front_neutral_lv1_038_vertices.npyないじゃん
-M012 disgusted lv3 025
-W014 contempt lv1 022
-W040 contempt lv2 006
-./MEAD/vertices_npy/W040_front_contempt_lv2_006_vertices.npyないじゃん
-M013 neutral lv1 024
-W023 surprised lv1 019
-./MEAD/vertices_npy/W023_front_surprised_lv1_019_vertices.npyないじゃん
-W009 contempt lv3 024
-W029 neutral lv1 015
-M042 sad lv2 020
-W033 disgusted lv1 005
-./MEAD/vertices_npy/W033_front_disgusted_lv1_005_vertices.npyないじゃん
-W021 angry lv1 029
-./MEAD/vertices_npy/W021_front_angry_lv1_029_vertices.npyないじゃん
-M039 fear lv3 016
-W009 happy lv2 008
-W009 happy lv1 008
-M005 happy lv2 017
-M005 sad lv3 015
-M012 surprised lv2 019
-W038 surprised lv3 017
-W025 disgusted lv1 013
-./MEAD/vertices_npy/W025_front_disgusted_lv1_013_vertices.npyないじゃん
-W023 contempt lv3 016
-./MEAD/vertices_npy/W023_front_contempt_lv3_016_vertices.npyないじゃん
-W036 sad lv1 007
-W009 angry lv3 012
-W021 happy lv2 001
-W037 contempt lv3 003
-W038 fear lv2 004
-./MEAD/vertices_npy/W038_front_fear_lv2_004_vertices.npyないじゃん
-W040 disgusted lv2 015
-./MEAD/vertices_npy/W040_front_disgusted_lv2_015_vertices.npyないじゃん
-M009 fear lv1 020
-W040 disgusted lv3 026
-W009 neutral lv1 026
-W025 contempt lv2 019
-W009 happy lv3 016
-W038 contempt lv2 001
-W038 fear lv2 002
-W025 surprised lv1 022
-M019 disgusted lv1 027
-W014 angry lv2 028
-W014 sad lv2 027
-W026 fear lv3 020
-./MEAD/vertices_npy/W026_front_fear_lv3_020_vertices.npyないじゃん
-M041 disgusted lv2 002
-W025 disgusted lv1 003
-W033 neutral lv1 008
-W040 fear lv1 027
-./MEAD/vertices_npy/W040_front_fear_lv1_027_vertices.npyないじゃん
-M011 contempt lv2 001
-W026 angry lv1 006
-./MEAD/vertices_npy/W026_front_angry_lv1_006_vertices.npyないじゃん
-W028 fear lv1 025
-W023 sad lv2 004
-./MEAD/vertices_npy/W023_front_sad_lv2_004_vertices.npyないじゃん
-W025 happy lv1 002
-W028 fear lv2 016
-M011 sad lv3 007
-W024 fear lv2 011
-./MEAD/vertices_npy/W024_front_fear_lv2_011_vertices.npyないじゃん
-W033 disgusted lv3 023
-./MEAD/vertices_npy/W033_front_disgusted_lv3_023_vertices.npyないじゃん
-W026 angry lv3 028
-./MEAD/vertices_npy/W026_front_angry_lv3_028_vertices.npyないじゃん
-M039 disgusted lv2 017
-M019 disgusted lv3 006
-W028 angry lv2 006
-./MEAD/vertices_npy/W028_front_angry_lv2_006_vertices.npyないじゃん
-M009 fear lv1 004
-M039 neutral lv1 007
-W033 surprised lv3 028
-./MEAD/vertices_npy/W033_front_surprised_lv3_028_vertices.npyないじゃん
-W036 surprised lv3 016
-M013 disgusted lv1 007
-W029 fear lv1 010
-W011 disgusted lv1 016
-M013 disgusted lv2 014
-W009 neutral lv1 031
-M042 surprised lv2 022
-W036 happy lv2 012
-./MEAD/vertices_npy/W036_front_happy_lv2_012_vertices.npyないじゃん
-W028 sad lv3 008
-M041 fear lv3 021
-./MEAD/vertices_npy/M041_front_fear_lv3_021_vertices.npyないじゃん
-M011 happy lv3 027
-W035 contempt lv3 008
-W037 contempt lv1 016
-./MEAD/vertices_npy/W037_front_contempt_lv1_016_vertices.npyないじゃん
-W014 contempt lv2 016
-W015 happy lv3 003
-M009 angry lv2 016
-M012 fear lv3 003
-M041 surprised lv3 014
-./MEAD/vertices_npy/M041_front_surprised_lv3_014_vertices.npyないじゃん
-M013 angry lv3 001
-M012 sad lv3 008
-M003 sad lv1 015
-M041 angry lv1 009
-W021 contempt lv3 013
-./MEAD/vertices_npy/W021_front_contempt_lv3_013_vertices.npyないじゃん
-W021 sad lv2 029
-W029 sad lv2 018
-./MEAD/vertices_npy/W029_front_sad_lv2_018_vertices.npyないじゃん
-W025 neutral lv1 023
-./MEAD/vertices_npy/W025_front_neutral_lv1_023_vertices.npyないじゃん
-M013 surprised lv1 006
-W026 sad lv3 025
-./MEAD/vertices_npy/W026_front_sad_lv3_025_vertices.npyないじゃん
-M040 contempt lv3 013
-./MEAD/vertices_npy/M040_front_contempt_lv3_013_vertices.npyないじゃん
-W033 surprised lv2 022
-W009 happy lv3 018
-W026 fear lv1 004
-./MEAD/vertices_npy/W026_front_fear_lv1_004_vertices.npyないじゃん
-W014 fear lv3 029
-M011 sad lv1 016
-W025 surprised lv3 024
-W033 surprised lv1 029
-W009 happy lv2 030
-M019 neutral lv1 032
-W026 fear lv2 012
-./MEAD/vertices_npy/W026_front_fear_lv2_012_vertices.npyないじゃん
-M019 fear lv1 007
-W029 sad lv2 025
-./MEAD/vertices_npy/W029_front_sad_lv2_025_vertices.npyないじゃん
-M019 contempt lv1 004
-W026 disgusted lv2 003
-W015 contempt lv3 005
-W037 contempt lv3 021
-./MEAD/vertices_npy/W037_front_contempt_lv3_021_vertices.npyないじゃん
-W026 fear lv3 025
-W026 disgusted lv1 016
-./MEAD/vertices_npy/W026_front_disgusted_lv1_016_vertices.npyないじゃん
-W025 disgusted lv2 010
-M009 disgusted lv3 002
-W038 surprised lv1 015
-W025 fear lv2 016
-W014 sad lv2 002
-M011 fear lv2 020
-M042 sad lv1 019
-W014 sad lv3 002
-W038 disgusted lv1 022
-./MEAD/vertices_npy/W038_front_disgusted_lv1_022_vertices.npyないじゃん
-W011 surprised lv2 005
-W033 neutral lv1 032
-./MEAD/vertices_npy/W033_front_neutral_lv1_032_vertices.npyないじゃん
-W015 sad lv3 006
-W036 neutral lv1 033
-M009 neutral lv1 002
-M039 neutral lv1 002
-W038 happy lv2 015
-W014 contempt lv2 014
-M019 sad lv3 017
-M007 angry lv2 006
-W021 disgusted lv2 011
-./MEAD/vertices_npy/W021_front_disgusted_lv2_011_vertices.npyないじゃん
-M019 sad lv3 027
-W024 angry lv3 002
-W026 fear lv3 021
-./MEAD/vertices_npy/W026_front_fear_lv3_021_vertices.npyないじゃん
-M041 contempt lv1 008
-W024 happy lv1 003
-W028 fear lv3 012
-./MEAD/vertices_npy/W028_front_fear_lv3_012_vertices.npyないじゃん
-W014 neutral lv1 016
-W009 contempt lv1 026
-W011 happy lv3 030
-W025 surprised lv3 019
-./MEAD/vertices_npy/W025_front_surprised_lv3_019_vertices.npyないじゃん
-W014 happy lv2 026
-W025 disgusted lv3 008
-./MEAD/vertices_npy/W025_front_disgusted_lv3_008_vertices.npyないじゃん
-M040 contempt lv2 021
-./MEAD/vertices_npy/M040_front_contempt_lv2_021_vertices.npyないじゃん
-M040 sad lv2 015
-M003 angry lv2 006
-W025 disgusted lv3 030
-./MEAD/vertices_npy/W025_front_disgusted_lv3_030_vertices.npyないじゃん
-W015 surprised lv1 028
-M003 contempt lv2 026
-W036 surprised lv1 023
-W036 angry lv2 030
-./MEAD/vertices_npy/W036_front_angry_lv2_030_vertices.npyないじゃん
-W036 contempt lv2 022
-./MEAD/vertices_npy/W036_front_contempt_lv2_022_vertices.npyないじゃん
-W025 sad lv1 022
-W038 contempt lv1 018
-W033 surprised lv1 030
-M013 happy lv1 011
-M011 contempt lv2 005
-M009 disgusted lv3 027
-W036 disgusted lv1 008
-./MEAD/vertices_npy/W036_front_disgusted_lv1_008_vertices.npyないじゃん
-W037 surprised lv1 005
-./MEAD/vertices_npy/W037_front_surprised_lv1_005_vertices.npyないじゃん
-W038 happy lv3 010
-./MEAD/vertices_npy/W038_front_happy_lv3_010_vertices.npyないじゃん
-W023 contempt lv2 028
-M039 angry lv2 009
-M042 surprised lv3 030
-M009 happy lv3 002
-W035 angry lv3 008
-M005 fear lv1 020
-M007 sad lv2 030
-M040 contempt lv3 012
-  3%|▎         | 601/19101 [02:51<1:51:16,  2.77it/s]  3%|▎         | 602/19101 [02:52<2:23:20,  2.15it/s]  3%|▎         | 603/19101 [02:52<2:38:47,  1.94it/s]  3%|▎         | 605/19101 [02:53<1:57:08,  2.63it/s]  3%|▎         | 606/19101 [02:55<3:49:58,  1.34it/s]  3%|▎         | 610/19101 [02:55<1:57:28,  2.62it/s]  3%|▎         | 612/19101 [02:56<1:41:39,  3.03it/s]  3%|▎         | 615/19101 [02:56<1:20:26,  3.83it/s]  3%|▎         | 617/19101 [02:57<1:16:55,  4.00it/s]  3%|▎         | 618/19101 [02:57<1:21:58,  3.76it/s]  3%|▎         | 619/19101 [02:57<1:31:55,  3.35it/s]  3%|▎         | 620/19101 [02:58<1:40:29,  3.07it/s]  3%|▎         | 621/19101 [02:58<1:46:33,  2.89it/s]  3%|▎         | 622/19101 [02:59<1:48:09,  2.85it/s]  3%|▎         | 623/19101 [02:59<1:53:31,  2.71it/s]  3%|▎         | 624/19101 [02:59<1:53:13,  2.72it/s]  3%|▎         | 625/19101 [03:00<2:02:13,  2.52it/s]  3%|▎         | 626/19101 [03:00<2:13:13,  2.31it/s]  3%|▎         | 628/19101 [03:01<1:45:07,  2.93it/s]  3%|▎         | 630/19101 [03:01<1:12:47,  4.23it/s]  3%|▎         | 631/19101 [03:01<1:25:16,  3.61it/s]  3%|▎         | 632/19101 [03:02<1:26:11,  3.57it/s]  3%|▎         | 633/19101 [03:02<1:35:56,  3.21it/s]  3%|▎         | 634/19101 [03:02<1:35:51,  3.21it/s]  3%|▎         | 636/19101 [03:03<1:47:26,  2.86it/s]  3%|▎         | 638/19101 [03:04<1:39:57,  3.08it/s]  3%|▎         | 639/19101 [03:04<1:39:54,  3.08it/s]  3%|▎         | 641/19101 [03:04<1:24:12,  3.65it/s]  3%|▎         | 643/19101 [03:05<1:18:13,  3.93it/s]  3%|▎         | 644/19101 [03:05<1:16:48,  4.00it/s]  3%|▎         | 648/19101 [03:06<59:37,  5.16it/s]    3%|▎         | 649/19101 [03:06<1:08:00,  4.52it/s]  3%|▎         | 651/19101 [03:06<1:06:42,  4.61it/s]  3%|▎         | 652/19101 [03:07<1:15:19,  4.08it/s]  3%|▎         | 653/19101 [03:07<1:33:04,  3.30it/s]  3%|▎         | 654/19101 [03:08<1:35:56,  3.20it/s]  3%|▎         | 656/19101 [03:09<1:49:38,  2.80it/s]  3%|▎         | 657/19101 [03:09<1:50:48,  2.77it/s]  3%|▎         | 658/19101 [03:09<1:42:36,  3.00it/s]  3%|▎         | 661/19101 [03:09<1:07:38,  4.54it/s]  3%|▎         | 662/19101 [03:10<1:13:43,  4.17it/s]  3%|▎         | 663/19101 [03:10<1:36:11,  3.19it/s]  3%|▎         | 665/19101 [03:11<1:19:51,  3.85it/s]  3%|▎         | 666/19101 [03:11<1:16:16,  4.03it/s]  3%|▎         | 668/19101 [03:12<1:24:14,  3.65it/s]  4%|▎         | 670/19101 [03:12<1:12:01,  4.27it/s]  4%|▎         | 671/19101 [03:12<1:16:18,  4.03it/s]  4%|▎         | 672/19101 [03:13<1:22:25,  3.73it/s]  4%|▎         | 673/19101 [03:13<1:19:27,  3.87it/s]  4%|▎         | 674/19101 [03:13<1:27:36,  3.51it/s]  4%|▎         | 675/19101 [03:14<1:36:19,  3.19it/s]  4%|▎         | 676/19101 [03:14<1:42:12,  3.00it/s]  4%|▎         | 677/19101 [03:14<1:59:37,  2.57it/s]  4%|▎         | 678/19101 [03:15<1:54:11,  2.69it/s]  4%|▎         | 680/19101 [03:15<1:38:19,  3.12it/s]  4%|▎         | 681/19101 [03:16<1:55:11,  2.67it/s]  4%|▎         | 682/19101 [03:16<1:57:30,  2.61it/s]  4%|▎         | 683/19101 [03:17<2:01:48,  2.52it/s]  4%|▎         | 684/19101 [03:17<2:12:02,  2.32it/s]  4%|▎         | 686/19101 [03:18<1:40:36,  3.05it/s]  4%|▎         | 688/19101 [03:18<1:24:16,  3.64it/s]  4%|▎         | 690/19101 [03:18<1:22:18,  3.73it/s]  4%|▎         | 692/19101 [03:19<1:18:55,  3.89it/s]  4%|▎         | 693/19101 [03:19<1:31:07,  3.37it/s]  4%|▎         | 695/19101 [03:20<1:26:41,  3.54it/s]  4%|▎         | 696/19101 [03:20<1:37:09,  3.16it/s]  4%|▎         | 697/19101 [03:21<1:52:26,  2.73it/s]  4%|▎         | 699/19101 [03:21<1:35:46,  3.20it/s]  4%|▎         | 700/19101 [03:22<1:50:37,  2.77it/s]  4%|▎         | 702/19101 [03:22<1:42:32,  2.99it/s]  4%|▎         | 703/19101 [03:23<1:50:00,  2.79it/s]  4%|▎         | 705/19101 [03:23<1:36:57,  3.16it/s]  4%|▎         | 706/19101 [03:24<1:34:18,  3.25it/s]  4%|▎         | 708/19101 [03:24<1:17:28,  3.96it/s]  4%|▎         | 709/19101 [03:24<1:30:18,  3.39it/s]  4%|▎         | 710/19101 [03:25<1:42:56,  2.98it/s]  4%|▎         | 711/19101 [03:25<1:50:18,  2.78it/s]  4%|▎         | 712/19101 [03:26<1:59:28,  2.57it/s]  4%|▎         | 713/19101 [03:26<2:02:53,  2.49it/s]  4%|▎         | 714/19101 [03:27<2:09:25,  2.37it/s]  4%|▍         | 718/19101 [03:27<1:15:22,  4.07it/s]  4%|▍         | 719/19101 [03:28<1:17:39,  3.94it/s]  4%|▍         | 722/19101 [03:28<1:11:56,  4.26it/s]  4%|▍         | 724/19101 [03:29<1:07:25,  4.54it/s]  4%|▍         | 726/19101 [03:29<1:19:51,  3.83it/s]  4%|▍         | 727/19101 [03:30<1:30:07,  3.40it/s]  4%|▍         | 728/19101 [03:30<1:41:03,  3.03it/s]  4%|▍         | 729/19101 [03:31<1:52:31,  2.72it/s]  4%|▍         | 732/19101 [03:31<1:28:55,  3.44it/s]  4%|▍         | 733/19101 [03:32<1:34:54,  3.23it/s]  4%|▍         | 736/19101 [03:32<1:13:46,  4.15it/s]  4%|▍         | 738/19101 [03:33<1:13:33,  4.16it/s]  4%|▍         | 739/19101 [03:33<1:21:33,  3.75it/s]  4%|▍         | 740/19101 [03:34<1:46:32,  2.87it/s]  4%|▍         | 741/19101 [03:34<1:59:16,  2.57it/s]  4%|▍         | 742/19101 [03:35<2:01:53,  2.51it/s]  4%|▍         | 743/19101 [03:35<1:54:13,  2.68it/s]  4%|▍         | 744/19101 [03:35<1:48:50,  2.81it/s]  4%|▍         | 746/19101 [03:36<1:34:03,  3.25it/s]  4%|▍         | 747/19101 [03:36<1:42:58,  2.97it/s]  4%|▍         | 750/19101 [03:37<1:23:32,  3.66it/s]  4%|▍         | 751/19101 [03:37<1:31:54,  3.33it/s]  4%|▍         | 752/19101 [03:38<2:10:56,  2.34it/s]  4%|▍         | 753/19101 [03:39<2:07:29,  2.40it/s]  4%|▍         | 754/19101 [03:39<2:08:42,  2.38it/s]  4%|▍         | 755/19101 [03:39<2:04:58,  2.45it/s]  4%|▍         | 756/19101 [03:40<2:09:57,  2.35it/s]  4%|▍         | 758/19101 [03:40<1:43:31,  2.95it/s]  4%|▍         | 759/19101 [03:41<1:54:06,  2.68it/s]  4%|▍         | 761/19101 [03:41<1:38:54,  3.09it/s]  4%|▍         | 762/19101 [03:42<1:49:53,  2.78it/s]  4%|▍         | 763/19101 [03:42<1:52:56,  2.71it/s]  4%|▍         | 765/19101 [03:43<1:38:33,  3.10it/s]  4%|▍         | 766/19101 [03:43<1:54:41,  2.66it/s]  4%|▍         | 769/19101 [03:44<1:35:23,  3.20it/s]  4%|▍         | 771/19101 [03:44<1:22:02,  3.72it/s]  4%|▍         | 772/19101 [03:45<1:24:18,  3.62it/s]  4%|▍         | 774/19101 [03:45<1:18:16,  3.90it/s]  4%|▍         | 775/19101 [03:45<1:19:40,  3.83it/s]  4%|▍         | 776/19101 [03:46<1:30:18,  3.38it/s]  4%|▍         | 777/19101 [03:46<1:47:17,  2.85it/s]  4%|▍         | 779/19101 [03:47<1:28:36,  3.45it/s]  4%|▍         | 781/19101 [03:47<1:13:35,  4.15it/s]  4%|▍         | 782/19101 [03:47<1:29:37,  3.41it/s]  4%|▍         | 783/19101 [03:48<1:46:06,  2.88it/s]./MEAD/vertices_npy/M040_front_contempt_lv3_012_vertices.npyないじゃん
-W014 happy lv1 011
-W011 fear lv2 020
-M011 sad lv3 028
-M039 disgusted lv3 029
-./MEAD/vertices_npy/M039_front_disgusted_lv3_029_vertices.npyないじゃん
-W037 angry lv2 003
-W014 angry lv3 029
-M042 angry lv1 021
-./MEAD/vertices_npy/M042_front_angry_lv1_021_vertices.npyないじゃん
-W038 surprised lv1 004
-./MEAD/vertices_npy/W038_front_surprised_lv1_004_vertices.npyないじゃん
-M041 neutral lv1 030
-./MEAD/vertices_npy/M041_front_neutral_lv1_030_vertices.npyないじゃん
-M005 contempt lv2 008
-W023 neutral lv1 032
-./MEAD/vertices_npy/W023_front_neutral_lv1_032_vertices.npyないじゃん
-W037 angry lv3 018
-W035 surprised lv2 020
-./MEAD/vertices_npy/W035_front_surprised_lv2_020_vertices.npyないじゃん
-M040 neutral lv1 004
-./MEAD/vertices_npy/M040_front_neutral_lv1_004_vertices.npyないじゃん
-W015 surprised lv3 021
-W038 fear lv3 028
-./MEAD/vertices_npy/W038_front_fear_lv3_028_vertices.npyないじゃん
-W036 happy lv3 007
-W038 sad lv2 022
-W011 surprised lv3 002
-W011 contempt lv2 001
-W037 contempt lv1 001
-M003 sad lv2 025
-W024 fear lv3 024
-M040 contempt lv2 019
-W011 angry lv2 016
-W015 sad lv1 026
-W033 happy lv3 011
-./MEAD/vertices_npy/W033_front_happy_lv3_011_vertices.npyないじゃん
-W033 disgusted lv2 020
-W025 surprised lv1 026
-./MEAD/vertices_npy/W025_front_surprised_lv1_026_vertices.npyないじゃん
-M041 happy lv1 010
-./MEAD/vertices_npy/M041_front_happy_lv1_010_vertices.npyないじゃん
-W038 angry lv3 002
-M019 angry lv1 006
-W035 angry lv2 025
-M009 sad lv2 017
-W036 angry lv1 029
-./MEAD/vertices_npy/W036_front_angry_lv1_029_vertices.npyないじゃん
-M013 surprised lv3 005
-W037 contempt lv3 013
-./MEAD/vertices_npy/W037_front_contempt_lv3_013_vertices.npyないじゃん
-W014 contempt lv1 009
-W023 happy lv2 025
-W026 fear lv3 029
-./MEAD/vertices_npy/W026_front_fear_lv3_029_vertices.npyないじゃん
-W040 sad lv1 021
-W024 angry lv3 028
-./MEAD/vertices_npy/W024_front_angry_lv3_028_vertices.npyないじゃん
-W028 fear lv3 015
-M042 disgusted lv1 002
-W025 fear lv1 028
-./MEAD/vertices_npy/W025_front_fear_lv1_028_vertices.npyないじゃん
-M042 angry lv3 029
-./MEAD/vertices_npy/M042_front_angry_lv3_029_vertices.npyないじゃん
-W021 angry lv1 020
-./MEAD/vertices_npy/W021_front_angry_lv1_020_vertices.npyないじゃん
-W028 happy lv3 020
-W011 angry lv1 004
-W037 surprised lv1 011
-./MEAD/vertices_npy/W037_front_surprised_lv1_011_vertices.npyないじゃん
-W011 sad lv3 025
-M007 happy lv2 012
-M005 fear lv2 017
-W036 surprised lv2 024
-W023 disgusted lv3 029
-./MEAD/vertices_npy/W023_front_disgusted_lv3_029_vertices.npyないじゃん
-W029 surprised lv1 022
-M012 contempt lv1 029
-W037 angry lv1 015
-W025 angry lv1 027
-./MEAD/vertices_npy/W025_front_angry_lv1_027_vertices.npyないじゃん
-W021 fear lv1 005
-./MEAD/vertices_npy/W021_front_fear_lv1_005_vertices.npyないじゃん
-W037 angry lv2 008
-W023 angry lv2 001
-W026 sad lv2 015
-W026 disgusted lv1 014
-./MEAD/vertices_npy/W026_front_disgusted_lv1_014_vertices.npyないじゃん
-M039 contempt lv3 007
-M009 angry lv3 005
-W040 surprised lv3 011
-./MEAD/vertices_npy/W040_front_surprised_lv3_011_vertices.npyないじゃん
-M019 surprised lv2 006
-W036 sad lv3 022
-./MEAD/vertices_npy/W036_front_sad_lv3_022_vertices.npyないじゃん
-M012 surprised lv2 006
-M012 sad lv3 009
-M041 happy lv3 007
-W038 disgusted lv1 012
-M019 disgusted lv1 011
-W024 neutral lv1 013
-M007 sad lv2 016
-W009 surprised lv2 030
-W033 sad lv3 020
-W038 angry lv2 022
-./MEAD/vertices_npy/W038_front_angry_lv2_022_vertices.npyないじゃん
-W037 fear lv3 001
-W011 disgusted lv2 020
-W025 angry lv1 003
-W033 contempt lv3 026
-W021 happy lv1 014
-M039 contempt lv2 005
-./MEAD/vertices_npy/M039_front_contempt_lv2_005_vertices.npyないじゃん
-W015 contempt lv1 001
-M039 surprised lv3 004
-./MEAD/vertices_npy/M039_front_surprised_lv3_004_vertices.npyないじゃん
-M009 disgusted lv2 022
-W025 fear lv3 013
-./MEAD/vertices_npy/W025_front_fear_lv3_013_vertices.npyないじゃん
-W021 surprised lv1 010
-W026 happy lv3 006
-./MEAD/vertices_npy/W026_front_happy_lv3_006_vertices.npyないじゃん
-M019 happy lv1 002
-W040 surprised lv1 015
-W025 sad lv3 027
-./MEAD/vertices_npy/W025_front_sad_lv3_027_vertices.npyないじゃん
-M011 sad lv1 019
-M012 sad lv3 027
-W015 sad lv1 027
-M040 contempt lv3 004
-./MEAD/vertices_npy/M040_front_contempt_lv3_004_vertices.npyないじゃん
-W015 fear lv1 023
-M009 contempt lv3 016
-W024 fear lv2 005
-./MEAD/vertices_npy/W024_front_fear_lv2_005_vertices.npyないじゃん
-M009 fear lv2 020
-W015 contempt lv3 014
-W033 angry lv3 021
-./MEAD/vertices_npy/W033_front_angry_lv3_021_vertices.npyないじゃん
-W014 surprised lv2 007
-M005 happy lv2 015
-M042 fear lv2 021
-./MEAD/vertices_npy/M042_front_fear_lv2_021_vertices.npyないじゃん
-M011 happy lv2 024
-W023 happy lv2 026
-W026 contempt lv3 017
-M040 neutral lv1 022
-M040 angry lv2 018
-M005 angry lv1 004
-M005 surprised lv2 015
-W029 neutral lv1 030
-./MEAD/vertices_npy/W029_front_neutral_lv1_030_vertices.npyないじゃん
-W029 surprised lv2 026
-./MEAD/vertices_npy/W029_front_surprised_lv2_026_vertices.npyないじゃん
-W029 sad lv3 025
-./MEAD/vertices_npy/W029_front_sad_lv3_025_vertices.npyないじゃん
-W009 disgusted lv2 021
-W038 disgusted lv3 026
-W025 fear lv2 005
-./MEAD/vertices_npy/W025_front_fear_lv2_005_vertices.npyないじゃん
-W038 disgusted lv3 022
-./MEAD/vertices_npy/W038_front_disgusted_lv3_022_vertices.npyないじゃん
-W021 fear lv3 001
-W040 neutral lv1 005
-./MEAD/vertices_npy/W040_front_neutral_lv1_005_vertices.npyないじゃん
-M009 sad lv2 026
-W026 contempt lv3 006
-./MEAD/vertices_npy/W026_front_contempt_lv3_006_vertices.npyないじゃん
-W025 contempt lv2 020
-M039 disgusted lv2 003
-M019 disgusted lv1 002
-M042 surprised lv3 029
-W023 disgusted lv3 014
-./MEAD/vertices_npy/W023_front_disgusted_lv3_014_vertices.npyないじゃん
-W029 sad lv2 012
-./MEAD/vertices_npy/W029_front_sad_lv2_012_vertices.npyないじゃん
-W033 sad lv2 015
-M005 surprised lv3 012
-W023 disgusted lv3 027
-./MEAD/vertices_npy/W023_front_disgusted_lv3_027_vertices.npyないじゃん
-W037 neutral lv1 006
-./MEAD/vertices_npy/W037_front_neutral_lv1_006_vertices.npyないじゃん
-W029 contempt lv3 017
-W025 contempt lv1 012
-./MEAD/vertices_npy/W025_front_contempt_lv1_012_vertices.npyないじゃん
-W014 sad lv2 010
-W024 angry lv2 015
-M019 fear lv3 016
-M012 happy lv2 008
-M011 fear lv3 014
-M011 fear lv1 002
-W036 happy lv3 021
-W040 neutral lv1 011
-./MEAD/vertices_npy/W040_front_neutral_lv1_011_vertices.npyないじゃん
-W011 happy lv1 007
-M009 happy lv3 004
-W021 disgusted lv3 012
-./MEAD/vertices_npy/W021_front_disgusted_lv3_012_vertices.npyないじゃん
-M041 happy lv3 005
-./MEAD/vertices_npy/M041_front_happy_lv3_005_vertices.npyないじゃん
-M005 fear lv1 016
-W028 angry lv1 008
-W023 contempt lv1 027
-M003 contempt lv2 015
-M003 neutral lv1 040
-M019 neutral lv1 004
-W021 contempt lv2 002
-M041 contempt lv3 006
-./MEAD/vertices_npy/M041_front_contempt_lv3_006_vertices.npyないじゃん
-W009 disgusted lv2 027
-W015 angry lv3 016
-M039 fear lv2 019
-./MEAD/vertices_npy/M039_front_fear_lv2_019_vertices.npyないじゃん
-M009 disgusted lv3 028
-W009 happy lv3 009
-M005 happy lv2 012
-W026 happy lv3 018
-./MEAD/vertices_npy/W026_front_happy_lv3_018_vertices.npyないじゃん
-M005 fear lv2 013
-W026 neutral lv1 019
-M041 happy lv2 010
-./MEAD/vertices_npy/M041_front_happy_lv2_010_vertices.npyないじゃん
-M040 fear lv3 029
-./MEAD/vertices_npy/M040_front_fear_lv3_029_vertices.npyないじゃん
-W011 contempt lv3 022
-W033 fear lv2 020
-./MEAD/vertices_npy/W033_front_fear_lv2_020_vertices.npyないじゃん
-M042 surprised lv3 015
-W036 disgusted lv2 002
-W038 disgusted lv2 016
-./MEAD/vertices_npy/W038_front_disgusted_lv2_016_vertices.npyないじゃん
-W015 contempt lv2 029
-M040 neutral lv1 009
-W036 angry lv3 017
-W011 fear lv2 030
-W033 neutral lv1 004
-./MEAD/vertices_npy/W033_front_neutral_lv1_004_vertices.npyないじゃん
-W038 happy lv3 029
-M041 happy lv1 012
-./MEAD/vertices_npy/M041_front_happy_lv1_012_vertices.npyないじゃん
-W014 contempt lv1 007
-W023 sad lv1 008
-M041 disgusted lv1 028
-W026 angry lv2 029
-  4%|▍         | 786/19101 [03:49<1:23:04,  3.67it/s]  4%|▍         | 787/19101 [03:49<1:27:50,  3.47it/s]  4%|▍         | 789/19101 [03:49<1:22:16,  3.71it/s]  4%|▍         | 791/19101 [03:50<1:09:22,  4.40it/s]  4%|▍         | 792/19101 [03:50<1:10:56,  4.30it/s]  4%|▍         | 793/19101 [03:50<1:21:14,  3.76it/s]  4%|▍         | 794/19101 [03:51<1:17:12,  3.95it/s]  4%|▍         | 797/19101 [03:51<1:09:03,  4.42it/s]  4%|▍         | 799/19101 [03:51<59:48,  5.10it/s]    4%|▍         | 800/19101 [03:52<1:26:46,  3.51it/s]  4%|▍         | 802/19101 [03:52<1:15:04,  4.06it/s]  4%|▍         | 803/19101 [03:53<1:14:54,  4.07it/s]  4%|▍         | 804/19101 [03:53<1:22:48,  3.68it/s]  4%|▍         | 805/19101 [03:53<1:24:45,  3.60it/s]  4%|▍         | 806/19101 [03:54<1:42:45,  2.97it/s]  4%|▍         | 807/19101 [03:54<1:47:14,  2.84it/s]  4%|▍         | 809/19101 [03:55<1:25:34,  3.56it/s]  4%|▍         | 811/19101 [03:55<1:15:21,  4.05it/s]  4%|▍         | 812/19101 [03:55<1:28:35,  3.44it/s]  4%|▍         | 813/19101 [03:56<1:43:46,  2.94it/s]  4%|▍         | 814/19101 [03:56<1:54:23,  2.66it/s]  4%|▍         | 815/19101 [03:57<1:57:29,  2.59it/s]  4%|▍         | 816/19101 [03:57<2:06:12,  2.41it/s]  4%|▍         | 818/19101 [03:58<1:40:50,  3.02it/s]  4%|▍         | 819/19101 [03:58<1:46:00,  2.87it/s]  4%|▍         | 820/19101 [03:59<1:57:10,  2.60it/s]  4%|▍         | 821/19101 [03:59<2:07:19,  2.39it/s]  4%|▍         | 822/19101 [04:00<2:01:42,  2.50it/s]  4%|▍         | 824/19101 [04:00<1:45:08,  2.90it/s]  4%|▍         | 826/19101 [04:00<1:26:34,  3.52it/s]  4%|▍         | 827/19101 [04:01<1:28:16,  3.45it/s]  4%|▍         | 829/19101 [04:01<1:19:41,  3.82it/s]  4%|▍         | 830/19101 [04:02<1:29:10,  3.41it/s]  4%|▍         | 831/19101 [04:02<1:38:52,  3.08it/s]  4%|▍         | 832/19101 [04:02<1:40:37,  3.03it/s]  4%|▍         | 834/19101 [04:03<1:31:39,  3.32it/s]  4%|▍         | 837/19101 [04:03<53:52,  5.65it/s]    4%|▍         | 839/19101 [04:03<55:31,  5.48it/s]  4%|▍         | 840/19101 [04:04<1:11:07,  4.28it/s]  4%|▍         | 841/19101 [04:04<1:20:28,  3.78it/s]  4%|▍         | 843/19101 [04:05<1:11:28,  4.26it/s]  4%|▍         | 844/19101 [04:05<1:47:14,  2.84it/s]  4%|▍         | 845/19101 [04:06<1:56:29,  2.61it/s]  4%|▍         | 847/19101 [04:07<1:50:23,  2.76it/s]  4%|▍         | 848/19101 [04:07<2:00:13,  2.53it/s]  4%|▍         | 849/19101 [04:08<2:04:08,  2.45it/s]  4%|▍         | 850/19101 [04:08<2:05:10,  2.43it/s]  4%|▍         | 851/19101 [04:08<2:11:28,  2.31it/s]  4%|▍         | 852/19101 [04:09<2:24:12,  2.11it/s]  4%|▍         | 853/19101 [04:10<2:26:32,  2.08it/s]  4%|▍         | 854/19101 [04:10<2:23:17,  2.12it/s]  4%|▍         | 855/19101 [04:11<2:44:01,  1.85it/s]  4%|▍         | 856/19101 [04:11<2:44:27,  1.85it/s]  4%|▍         | 857/19101 [04:12<2:33:04,  1.99it/s]  4%|▍         | 858/19101 [04:12<2:38:08,  1.92it/s]  5%|▍         | 860/19101 [04:13<1:49:39,  2.77it/s]  5%|▍         | 861/19101 [04:13<1:52:31,  2.70it/s]  5%|▍         | 863/19101 [04:13<1:31:53,  3.31it/s]  5%|▍         | 864/19101 [04:14<1:46:09,  2.86it/s]  5%|▍         | 865/19101 [04:14<1:44:56,  2.90it/s]  5%|▍         | 866/19101 [04:15<2:05:09,  2.43it/s]  5%|▍         | 867/19101 [04:15<2:08:36,  2.36it/s]  5%|▍         | 869/19101 [04:15<1:20:37,  3.77it/s]  5%|▍         | 871/19101 [04:16<1:17:32,  3.92it/s]  5%|▍         | 872/19101 [04:16<1:29:19,  3.40it/s]  5%|▍         | 873/19101 [04:17<1:36:51,  3.14it/s]  5%|▍         | 875/19101 [04:17<1:22:22,  3.69it/s]  5%|▍         | 876/19101 [04:18<1:50:09,  2.76it/s]  5%|▍         | 878/19101 [04:18<1:37:01,  3.13it/s]  5%|▍         | 879/19101 [04:19<2:11:48,  2.30it/s]  5%|▍         | 880/19101 [04:20<2:12:59,  2.28it/s]  5%|▍         | 881/19101 [04:20<2:34:46,  1.96it/s]  5%|▍         | 882/19101 [04:21<2:29:15,  2.03it/s]  5%|▍         | 885/19101 [04:21<1:40:14,  3.03it/s]  5%|▍         | 886/19101 [04:22<1:50:27,  2.75it/s]  5%|▍         | 887/19101 [04:22<1:54:04,  2.66it/s]  5%|▍         | 888/19101 [04:23<1:58:30,  2.56it/s]  5%|▍         | 890/19101 [04:23<1:46:53,  2.84it/s]  5%|▍         | 891/19101 [04:24<2:17:36,  2.21it/s]  5%|▍         | 892/19101 [04:24<2:15:07,  2.25it/s]  5%|▍         | 894/19101 [04:25<1:25:57,  3.53it/s]  5%|▍         | 895/19101 [04:25<1:44:02,  2.92it/s]  5%|▍         | 896/19101 [04:26<2:19:50,  2.17it/s]  5%|▍         | 897/19101 [04:26<2:18:52,  2.18it/s]  5%|▍         | 898/19101 [04:27<2:16:01,  2.23it/s]  5%|▍         | 900/19101 [04:27<1:24:45,  3.58it/s]  5%|▍         | 901/19101 [04:28<1:48:48,  2.79it/s]  5%|▍         | 904/19101 [04:28<1:25:40,  3.54it/s]  5%|▍         | 906/19101 [04:29<1:21:42,  3.71it/s]  5%|▍         | 907/19101 [04:29<1:35:45,  3.17it/s]  5%|▍         | 908/19101 [04:30<1:50:17,  2.75it/s]  5%|▍         | 909/19101 [04:30<1:56:11,  2.61it/s]  5%|▍         | 910/19101 [04:31<2:42:40,  1.86it/s]  5%|▍         | 911/19101 [04:32<2:30:58,  2.01it/s]  5%|▍         | 912/19101 [04:32<2:21:20,  2.14it/s]  5%|▍         | 914/19101 [04:32<1:50:35,  2.74it/s]  5%|▍         | 916/19101 [04:33<1:38:30,  3.08it/s]  5%|▍         | 919/19101 [04:33<58:53,  5.14it/s]    5%|▍         | 921/19101 [04:34<1:13:29,  4.12it/s]  5%|▍         | 922/19101 [04:34<1:28:08,  3.44it/s]  5%|▍         | 923/19101 [04:35<1:37:51,  3.10it/s]  5%|▍         | 924/19101 [04:35<1:43:57,  2.91it/s]  5%|▍         | 927/19101 [04:35<58:27,  5.18it/s]    5%|▍         | 929/19101 [04:36<56:07,  5.40it/s]  5%|▍         | 930/19101 [04:36<1:10:50,  4.27it/s]  5%|▍         | 931/19101 [04:37<1:26:34,  3.50it/s]  5%|▍         | 932/19101 [04:37<1:39:16,  3.05it/s]  5%|▍         | 933/19101 [04:37<1:50:03,  2.75it/s]  5%|▍         | 934/19101 [04:38<1:57:42,  2.57it/s]  5%|▍         | 935/19101 [04:39<2:15:16,  2.24it/s]  5%|▍         | 936/19101 [04:39<2:11:10,  2.31it/s]  5%|▍         | 939/19101 [04:39<1:06:18,  4.57it/s]  5%|▍         | 940/19101 [04:40<1:37:04,  3.12it/s]  5%|▍         | 941/19101 [04:40<1:47:12,  2.82it/s]  5%|▍         | 942/19101 [04:41<1:48:16,  2.80it/s]  5%|▍         | 943/19101 [04:41<1:56:50,  2.59it/s]  5%|▍         | 944/19101 [04:41<1:50:59,  2.73it/s]  5%|▍         | 946/19101 [04:42<1:28:50,  3.41it/s]  5%|▍         | 947/19101 [04:42<1:33:09,  3.25it/s]  5%|▍         | 948/19101 [04:43<1:47:06,  2.82it/s]  5%|▍         | 951/19101 [04:43<1:05:55,  4.59it/s]  5%|▍         | 952/19101 [04:43<1:18:59,  3.83it/s]  5%|▍         | 953/19101 [04:44<1:27:37,  3.45it/s]  5%|▌         | 956/19101 [04:44<1:06:41,  4.53it/s]  5%|▌         | 957/19101 [04:45<1:55:52,  2.61it/s]  5%|▌         | 958/19101 [04:46<1:48:08,  2.80it/s]  5%|▌         | 959/19101 [04:46<1:38:54,  3.06it/s]  5%|▌         | 961/19101 [04:46<1:23:02,  3.64it/s]  5%|▌         | 962/19101 [04:47<1:34:48,  3.19it/s]  5%|▌         | 963/19101 [04:47<1:31:58,  3.29it/s]  5%|▌         | 964/19101 [04:47<1:50:38,  2.73it/s]  5%|▌         | 965/19101 [04:48<1:35:48,  3.15it/s]  5%|▌         | 966/19101 [04:48<1:38:10,  3.08it/s]  5%|▌         | 968/19101 [04:48<1:17:20,  3.91it/s]  5%|▌         | 969/19101 [04:49<1:22:09,  3.68it/s]  5%|▌         | 970/19101 [04:49<1:28:56,  3.40it/s]  5%|▌         | 971/19101 [04:49<1:21:17,  3.72it/s]  5%|▌         | 972/19101 [04:49<1:25:09,  3.55it/s]  5%|▌         | 973/19101 [04:50<1:24:02,  3.59it/s]  5%|▌         | 974/19101 [04:50<1:14:07,  4.08it/s]  5%|▌         | 975/19101 [04:50<1:10:12,  4.30it/s]  5%|▌         | 976/19101 [04:50<1:21:45,  3.69it/s]  5%|▌         | 977/19101 [04:51<1:39:14,  3.04it/s]  5%|▌         | 978/19101 [04:51<1:31:24,  3.30it/s]  5%|▌         | 980/19101 [04:52<1:25:48,  3.52it/s]./MEAD/vertices_npy/W026_front_angry_lv2_029_vertices.npyないじゃん
-W036 sad lv1 025
-./MEAD/vertices_npy/W036_front_sad_lv1_025_vertices.npyないじゃん
-W024 contempt lv2 020
-W015 happy lv2 030
-W021 contempt lv1 005
-./MEAD/vertices_npy/W021_front_contempt_lv1_005_vertices.npyないじゃん
-W009 happy lv2 028
-W028 fear lv1 013
-./MEAD/vertices_npy/W028_front_fear_lv1_013_vertices.npyないじゃん
-M003 happy lv1 020
-W035 disgusted lv3 004
-M019 surprised lv3 003
-M040 disgusted lv3 017
-W026 disgusted lv3 014
-./MEAD/vertices_npy/W026_front_disgusted_lv3_014_vertices.npyないじゃん
-W021 sad lv3 018
-./MEAD/vertices_npy/W021_front_sad_lv3_018_vertices.npyないじゃん
-W038 sad lv1 001
-W033 fear lv2 014
-./MEAD/vertices_npy/W033_front_fear_lv2_014_vertices.npyないじゃん
-W021 angry lv2 003
-W037 disgusted lv1 020
-W036 fear lv3 028
-./MEAD/vertices_npy/W036_front_fear_lv3_028_vertices.npyないじゃん
-W040 happy lv3 022
-M003 contempt lv2 003
-M019 fear lv3 024
-W025 happy lv2 003
-M011 angry lv2 004
-M013 contempt lv1 012
-M042 fear lv1 027
-./MEAD/vertices_npy/M042_front_fear_lv1_027_vertices.npyないじゃん
-W023 happy lv2 007
-W026 fear lv3 019
-./MEAD/vertices_npy/W026_front_fear_lv3_019_vertices.npyないじゃん
-W015 sad lv2 014
-M040 sad lv3 002
-W026 happy lv3 013
-M009 angry lv2 027
-M041 sad lv3 020
-W014 neutral lv1 033
-W029 neutral lv1 037
-./MEAD/vertices_npy/W029_front_neutral_lv1_037_vertices.npyないじゃん
-W026 angry lv2 003
-W035 disgusted lv3 011
-W026 angry lv1 018
-M012 angry lv3 015
-W035 surprised lv1 024
-M041 sad lv2 025
-./MEAD/vertices_npy/M041_front_sad_lv2_025_vertices.npyないじゃん
-W011 contempt lv1 011
-W025 sad lv1 004
-./MEAD/vertices_npy/W025_front_sad_lv1_004_vertices.npyないじゃん
-M039 contempt lv3 025
-W025 contempt lv3 003
-W028 disgusted lv2 006
-./MEAD/vertices_npy/W028_front_disgusted_lv2_006_vertices.npyないじゃん
-W040 sad lv1 020
-W038 angry lv3 008
-M012 surprised lv3 022
-W028 angry lv2 009
-W033 neutral lv1 006
-./MEAD/vertices_npy/W033_front_neutral_lv1_006_vertices.npyないじゃん
-W015 fear lv2 013
-W029 surprised lv2 018
-./MEAD/vertices_npy/W029_front_surprised_lv2_018_vertices.npyないじゃん
-M039 contempt lv1 012
-./MEAD/vertices_npy/M039_front_contempt_lv1_012_vertices.npyないじゃん
-W033 sad lv1 012
-./MEAD/vertices_npy/W033_front_sad_lv1_012_vertices.npyないじゃん
-M039 sad lv1 026
-./MEAD/vertices_npy/M039_front_sad_lv1_026_vertices.npyないじゃん
-M005 fear lv3 002
-M012 happy lv2 006
-M012 surprised lv1 025
-W026 fear lv3 014
-./MEAD/vertices_npy/W026_front_fear_lv3_014_vertices.npyないじゃん
-W033 happy lv1 022
-M012 happy lv3 015
-M009 angry lv1 007
-M040 fear lv2 005
-./MEAD/vertices_npy/M040_front_fear_lv2_005_vertices.npyないじゃん
-M012 contempt lv1 017
-W014 surprised lv2 004
-W021 neutral lv1 002
-W028 contempt lv1 010
-W040 sad lv1 001
-W025 neutral lv1 034
-M019 fear lv1 008
-M005 fear lv2 012
-W014 sad lv2 021
-M007 happy lv1 019
-M005 sad lv1 001
-M042 disgusted lv2 003
-W029 sad lv1 024
-./MEAD/vertices_npy/W029_front_sad_lv1_024_vertices.npyないじゃん
-M009 contempt lv1 023
-M013 disgusted lv2 021
-W026 surprised lv2 014
-./MEAD/vertices_npy/W026_front_surprised_lv2_014_vertices.npyないじゃん
-M009 sad lv1 023
-M039 angry lv3 025
-M039 neutral lv1 008
-W015 contempt lv1 009
-W037 happy lv2 021
-W028 surprised lv1 019
-./MEAD/vertices_npy/W028_front_surprised_lv1_019_vertices.npyないじゃん
-W024 sad lv1 026
-./MEAD/vertices_npy/W024_front_sad_lv1_026_vertices.npyないじゃん
-W035 happy lv3 004
-./MEAD/vertices_npy/W035_front_happy_lv3_004_vertices.npyないじゃん
-M011 angry lv3 009
-W026 neutral lv1 029
-M039 disgusted lv3 019
-M042 sad lv3 011
-./MEAD/vertices_npy/M042_front_sad_lv3_011_vertices.npyないじゃん
-W011 happy lv2 014
-W009 disgusted lv1 015
-W025 happy lv2 025
-./MEAD/vertices_npy/W025_front_happy_lv2_025_vertices.npyないじゃん
-W009 angry lv1 007
-M012 sad lv2 009
-M007 angry lv3 019
-W011 contempt lv1 025
-M041 surprised lv1 023
-W036 happy lv2 023
-./MEAD/vertices_npy/W036_front_happy_lv2_023_vertices.npyないじゃん
-M042 fear lv3 011
-./MEAD/vertices_npy/M042_front_fear_lv3_011_vertices.npyないじゃん
-M041 happy lv1 007
-M040 angry lv2 008
-W024 disgusted lv3 015
-W009 contempt lv3 005
-M039 angry lv1 029
-./MEAD/vertices_npy/M039_front_angry_lv1_029_vertices.npyないじゃん
-M019 fear lv2 025
-W026 sad lv2 013
-W024 sad lv1 022
-W028 contempt lv1 029
-./MEAD/vertices_npy/W028_front_contempt_lv1_029_vertices.npyないじゃん
-W025 disgusted lv2 016
-./MEAD/vertices_npy/W025_front_disgusted_lv2_016_vertices.npyないじゃん
-M012 sad lv3 007
-W021 angry lv1 026
-M009 sad lv1 017
-W038 surprised lv1 029
-W040 sad lv2 006
-./MEAD/vertices_npy/W040_front_sad_lv2_006_vertices.npyないじゃん
-W021 contempt lv1 021
-./MEAD/vertices_npy/W021_front_contempt_lv1_021_vertices.npyないじゃん
-W011 neutral lv1 038
-W036 surprised lv2 004
-./MEAD/vertices_npy/W036_front_surprised_lv2_004_vertices.npyないじゃん
-W033 contempt lv2 020
-./MEAD/vertices_npy/W033_front_contempt_lv2_020_vertices.npyないじゃん
-W014 contempt lv2 030
-W023 sad lv1 010
-./MEAD/vertices_npy/W023_front_sad_lv1_010_vertices.npyないじゃん
-M012 contempt lv1 021
-W040 surprised lv1 017
-W014 surprised lv3 024
-W021 neutral lv1 015
-W035 sad lv1 009
-M007 disgusted lv2 024
-M009 fear lv1 002
-W021 surprised lv1 025
-./MEAD/vertices_npy/W021_front_surprised_lv1_025_vertices.npyないじゃん
-M040 surprised lv1 022
-M042 surprised lv2 027
-./MEAD/vertices_npy/M042_front_surprised_lv2_027_vertices.npyないじゃん
-M042 angry lv2 025
-M039 fear lv1 012
-./MEAD/vertices_npy/M039_front_fear_lv1_012_vertices.npyないじゃん
-W037 sad lv1 011
-./MEAD/vertices_npy/W037_front_sad_lv1_011_vertices.npyないじゃん
-W033 disgusted lv3 029
-./MEAD/vertices_npy/W033_front_disgusted_lv3_029_vertices.npyないじゃん
-M039 angry lv3 023
-M012 angry lv3 006
-W035 sad lv3 013
-W028 surprised lv1 024
-M005 fear lv2 025
-M040 contempt lv1 016
-./MEAD/vertices_npy/M040_front_contempt_lv1_016_vertices.npyないじゃん
-W021 angry lv2 029
-./MEAD/vertices_npy/W021_front_angry_lv2_029_vertices.npyないじゃん
-W040 contempt lv3 004
-./MEAD/vertices_npy/W040_front_contempt_lv3_004_vertices.npyないじゃん
-W026 happy lv2 012
-./MEAD/vertices_npy/W026_front_happy_lv2_012_vertices.npyないじゃん
-W021 fear lv1 003
-M003 disgusted lv2 019
-M005 sad lv2 015
-M011 neutral lv1 025
-M003 contempt lv1 028
-W036 sad lv3 023
-M013 sad lv3 026
-W015 sad lv3 003
-W038 surprised lv2 019
-./MEAD/vertices_npy/W038_front_surprised_lv2_019_vertices.npyないじゃん
-W037 angry lv2 020
-./MEAD/vertices_npy/W037_front_angry_lv2_020_vertices.npyないじゃん
-W040 surprised lv1 005
-./MEAD/vertices_npy/W040_front_surprised_lv1_005_vertices.npyないじゃん
-W009 sad lv2 026
-W038 fear lv1 017
-M011 surprised lv1 009
-W026 fear lv2 007
-M009 neutral lv1 029
-M042 surprised lv1 005
-./MEAD/vertices_npy/M042_front_surprised_lv1_005_vertices.npyないじゃん
-W015 sad lv2 022
-M011 happy lv3 002
-M042 sad lv2 007
-W040 disgusted lv1 008
-./MEAD/vertices_npy/W040_front_disgusted_lv1_008_vertices.npyないじゃん
-W036 sad lv2 018
-./MEAD/vertices_npy/W036_front_sad_lv2_018_vertices.npyないじゃん
-W038 contempt lv2 025
-W015 disgusted lv1 017
-W028 happy lv1 009
-M039 angry lv2 012
-./MEAD/vertices_npy/M039_front_angry_lv2_012_vertices.npyないじゃん
-W021 sad lv3 024
-./MEAD/vertices_npy/W021_front_sad_lv3_024_vertices.npyないじゃん
-W011 contempt lv3 013
-W011 sad lv1 023
-M011 angry lv2 002
-M005 surprised lv3 009
-W021 happy lv3 012
-./MEAD/vertices_npy/W021_front_happy_lv3_012_vertices.npyないじゃん
-M007 sad lv1 005
-W009 disgusted lv2 003
-M007 disgusted lv1 006
-W014 sad lv2 016
-W033 fear lv3 010
-W009 surprised lv1 029
-M040 fear lv3 019
-./MEAD/vertices_npy/M040_front_fear_lv3_019_vertices.npyないじゃん
-W040 surprised lv1 023
-W024 contempt lv1 018
-W009 neutral lv1 033
-W011 happy lv1 015
-M011 sad lv3 029
-M012 sad lv2 015
-M003 disgusted lv2 004
-W033 surprised lv3 021
-W035 fear lv3 001
-M009 neutral lv1 009
-M012 disgusted lv3 030
-W028 happy lv3 010
-./MEAD/vertices_npy/W028_front_happy_lv3_010_vertices.npyないじゃん
-M040 disgusted lv1 028
-M003   5%|▌         | 981/19101 [04:52<1:25:29,  3.53it/s]  5%|▌         | 982/19101 [04:52<1:26:00,  3.51it/s]  5%|▌         | 983/19101 [04:53<1:31:59,  3.28it/s]  5%|▌         | 985/19101 [04:53<1:24:40,  3.57it/s]  5%|▌         | 986/19101 [04:53<1:28:29,  3.41it/s]  5%|▌         | 990/19101 [04:54<56:18,  5.36it/s]    5%|▌         | 992/19101 [04:54<1:03:58,  4.72it/s]  5%|▌         | 994/19101 [04:55<1:09:43,  4.33it/s]  5%|▌         | 995/19101 [04:55<1:12:45,  4.15it/s]  5%|▌         | 996/19101 [04:56<1:17:59,  3.87it/s]  5%|▌         | 997/19101 [04:56<1:19:38,  3.79it/s]  5%|▌         | 1000/19101 [04:56<58:16,  5.18it/s]   5%|▌         | 1001/19101 [04:57<1:03:16,  4.77it/s]  5%|▌         | 1003/19101 [04:57<54:09,  5.57it/s]    5%|▌         | 1004/19101 [04:58<1:29:59,  3.35it/s]  5%|▌         | 1005/19101 [04:58<1:24:03,  3.59it/s]  5%|▌         | 1007/19101 [04:58<1:14:55,  4.02it/s]  5%|▌         | 1009/19101 [04:59<1:12:19,  4.17it/s]  5%|▌         | 1010/19101 [04:59<1:15:17,  4.00it/s]  5%|▌         | 1013/19101 [04:59<55:13,  5.46it/s]    5%|▌         | 1015/19101 [05:00<57:46,  5.22it/s]  5%|▌         | 1017/19101 [05:00<49:21,  6.11it/s]  5%|▌         | 1018/19101 [05:00<1:06:31,  4.53it/s]  5%|▌         | 1019/19101 [05:01<1:09:57,  4.31it/s]  5%|▌         | 1020/19101 [05:03<4:00:05,  1.26it/s]  5%|▌         | 1021/19101 [05:04<3:27:08,  1.45it/s]  5%|▌         | 1022/19101 [05:04<2:54:24,  1.73it/s]  5%|▌         | 1024/19101 [05:04<2:07:50,  2.36it/s]  5%|▌         | 1025/19101 [05:05<1:58:20,  2.55it/s]  5%|▌         | 1026/19101 [05:05<1:56:06,  2.59it/s]  5%|▌         | 1029/19101 [05:05<1:17:20,  3.89it/s]  5%|▌         | 1030/19101 [05:06<1:19:22,  3.79it/s]  5%|▌         | 1031/19101 [05:06<1:18:57,  3.81it/s]  5%|▌         | 1032/19101 [05:06<1:11:27,  4.21it/s]  5%|▌         | 1033/19101 [05:06<1:13:10,  4.12it/s]  5%|▌         | 1038/19101 [05:07<39:50,  7.56it/s]    5%|▌         | 1039/19101 [05:07<43:04,  6.99it/s]  5%|▌         | 1043/19101 [05:07<39:27,  7.63it/s]  5%|▌         | 1044/19101 [05:08<42:57,  7.01it/s]  5%|▌         | 1045/19101 [05:08<48:21,  6.22it/s]  5%|▌         | 1046/19101 [05:08<54:25,  5.53it/s]  5%|▌         | 1047/19101 [05:08<1:02:57,  4.78it/s]  5%|▌         | 1048/19101 [05:09<1:15:12,  4.00it/s]  5%|▌         | 1049/19101 [05:09<1:05:29,  4.59it/s]  5%|▌         | 1050/19101 [05:09<1:04:37,  4.66it/s]  6%|▌         | 1052/19101 [05:09<51:45,  5.81it/s]    6%|▌         | 1053/19101 [05:10<53:23,  5.63it/s]  6%|▌         | 1054/19101 [05:10<49:12,  6.11it/s]  6%|▌         | 1056/19101 [05:10<42:10,  7.13it/s]  6%|▌         | 1057/19101 [05:10<44:31,  6.75it/s]  6%|▌         | 1058/19101 [05:10<55:03,  5.46it/s]  6%|▌         | 1060/19101 [05:11<1:31:41,  3.28it/s]  6%|▌         | 1061/19101 [05:12<1:35:07,  3.16it/s]  6%|▌         | 1063/19101 [05:12<1:05:30,  4.59it/s]  6%|▌         | 1065/19101 [05:12<58:44,  5.12it/s]    6%|▌         | 1066/19101 [05:12<58:18,  5.15it/s]  6%|▌         | 1067/19101 [05:13<58:07,  5.17it/s]  6%|▌         | 1068/19101 [05:13<57:03,  5.27it/s]  6%|▌         | 1071/19101 [05:13<39:26,  7.62it/s]  6%|▌         | 1072/19101 [05:13<58:37,  5.13it/s]  6%|▌         | 1073/19101 [05:14<1:12:02,  4.17it/s]  6%|▌         | 1074/19101 [05:14<1:25:37,  3.51it/s]  6%|▌         | 1076/19101 [05:15<1:12:39,  4.13it/s]  6%|▌         | 1077/19101 [05:15<1:10:06,  4.28it/s]  6%|▌         | 1078/19101 [05:15<1:05:45,  4.57it/s]  6%|▌         | 1079/19101 [05:15<1:07:46,  4.43it/s]  6%|▌         | 1080/19101 [05:16<1:13:42,  4.08it/s]  6%|▌         | 1081/19101 [05:16<1:09:38,  4.31it/s]  6%|▌         | 1082/19101 [05:16<1:17:49,  3.86it/s]  6%|▌         | 1083/19101 [05:16<1:08:44,  4.37it/s]  6%|▌         | 1085/19101 [05:16<51:35,  5.82it/s]    6%|▌         | 1087/19101 [05:17<53:12,  5.64it/s]  6%|▌         | 1088/19101 [05:17<58:07,  5.16it/s]  6%|▌         | 1089/19101 [05:17<1:06:28,  4.52it/s]  6%|▌         | 1090/19101 [05:18<1:19:14,  3.79it/s]  6%|▌         | 1092/19101 [05:18<58:51,  5.10it/s]    6%|▌         | 1093/19101 [05:18<1:03:10,  4.75it/s]  6%|▌         | 1094/19101 [05:18<1:06:07,  4.54it/s]  6%|▌         | 1096/19101 [05:19<1:03:12,  4.75it/s]  6%|▌         | 1097/19101 [05:19<1:06:51,  4.49it/s]  6%|▌         | 1098/19101 [05:19<1:11:43,  4.18it/s]  6%|▌         | 1099/19101 [05:20<1:18:51,  3.80it/s]  6%|▌         | 1102/19101 [05:20<48:06,  6.24it/s]    6%|▌         | 1104/19101 [05:20<40:45,  7.36it/s]  6%|▌         | 1107/19101 [05:20<30:05,  9.97it/s]  6%|▌         | 1110/19101 [05:20<24:10, 12.40it/s]  6%|▌         | 1112/19101 [05:21<43:13,  6.94it/s]  6%|▌         | 1114/19101 [05:21<39:27,  7.60it/s]  6%|▌         | 1116/19101 [05:21<36:30,  8.21it/s]  6%|▌         | 1118/19101 [05:22<37:56,  7.90it/s]  6%|▌         | 1119/19101 [05:22<40:18,  7.44it/s]  6%|▌         | 1122/19101 [05:22<41:25,  7.23it/s]  6%|▌         | 1123/19101 [05:22<41:42,  7.19it/s]  6%|▌         | 1124/19101 [05:23<40:30,  7.40it/s]  6%|▌         | 1125/19101 [05:23<38:29,  7.78it/s]  6%|▌         | 1126/19101 [05:23<45:19,  6.61it/s]  6%|▌         | 1127/19101 [05:23<43:39,  6.86it/s]  6%|▌         | 1128/19101 [05:23<56:56,  5.26it/s]  6%|▌         | 1132/19101 [05:24<38:19,  7.81it/s]  6%|▌         | 1133/19101 [05:24<53:36,  5.59it/s]  6%|▌         | 1134/19101 [05:24<56:48,  5.27it/s]  6%|▌         | 1135/19101 [05:25<1:07:21,  4.45it/s]  6%|▌         | 1136/19101 [05:25<1:07:31,  4.43it/s]  6%|▌         | 1138/19101 [05:25<50:05,  5.98it/s]    6%|▌         | 1139/19101 [05:25<47:18,  6.33it/s]  6%|▌         | 1140/19101 [05:25<48:55,  6.12it/s]  6%|▌         | 1144/19101 [05:26<29:59,  9.98it/s]  6%|▌         | 1146/19101 [05:26<39:53,  7.50it/s]  6%|▌         | 1147/19101 [05:26<42:54,  6.97it/s]  6%|▌         | 1148/19101 [05:28<2:01:41,  2.46it/s]  6%|▌         | 1150/19101 [05:28<1:37:15,  3.08it/s]  6%|▌         | 1151/19101 [05:28<1:35:47,  3.12it/s]  6%|▌         | 1152/19101 [05:29<1:38:41,  3.03it/s]  6%|▌         | 1154/19101 [05:29<1:21:49,  3.66it/s]  6%|▌         | 1157/19101 [05:29<49:24,  6.05it/s]    6%|▌         | 1159/19101 [05:30<1:04:45,  4.62it/s]  6%|▌         | 1160/19101 [05:30<1:07:48,  4.41it/s]  6%|▌         | 1161/19101 [05:30<1:09:33,  4.30it/s]  6%|▌         | 1162/19101 [05:31<1:16:29,  3.91it/s]angry lv3 012
-W015 happy lv2 003
-M003 fear lv3 024
-W029 surprised lv2 004
-./MEAD/vertices_npy/W029_front_surprised_lv2_004_vertices.npyないじゃん
-W026 happy lv2 014
-W033 sad lv3 022
-M039 contempt lv3 024
-./MEAD/vertices_npy/M039_front_contempt_lv3_024_vertices.npyないじゃん
-M042 angry lv2 021
-./MEAD/vertices_npy/M042_front_angry_lv2_021_vertices.npyないじゃん
-W021 surprised lv1 012
-./MEAD/vertices_npy/W021_front_surprised_lv1_012_vertices.npyないじゃん
-M011 disgusted lv1 007
-W035 angry lv1 006
-./MEAD/vertices_npy/W035_front_angry_lv1_006_vertices.npyないじゃん
-W035 happy lv1 014
-W029 neutral lv1 016
-./MEAD/vertices_npy/W029_front_neutral_lv1_016_vertices.npyないじゃん
-M019 neutral lv1 040
-M040 sad lv2 021
-M007 happy lv3 013
-W021 contempt lv3 008
-M042 disgusted lv1 024
-./MEAD/vertices_npy/M042_front_disgusted_lv1_024_vertices.npyないじゃん
-W021 angry lv1 012
-./MEAD/vertices_npy/W021_front_angry_lv1_012_vertices.npyないじゃん
-W038 disgusted lv2 019
-M009 surprised lv1 004
-M041 sad lv1 024
-./MEAD/vertices_npy/M041_front_sad_lv1_024_vertices.npyないじゃん
-M003 disgusted lv1 022
-W014 neutral lv1 024
-M041 sad lv2 003
-W033 disgusted lv2 007
-./MEAD/vertices_npy/W033_front_disgusted_lv2_007_vertices.npyないじゃん
-W021 fear lv2 023
-W024 surprised lv3 011
-./MEAD/vertices_npy/W024_front_surprised_lv3_011_vertices.npyないじゃん
-M013 angry lv3 011
-W011 surprised lv1 027
-M040 happy lv1 030
-./MEAD/vertices_npy/M040_front_happy_lv1_030_vertices.npyないじゃん
-W025 fear lv1 029
-./MEAD/vertices_npy/W025_front_fear_lv1_029_vertices.npyないじゃん
-W014 sad lv3 013
-W025 contempt lv2 006
-./MEAD/vertices_npy/W025_front_contempt_lv2_006_vertices.npyないじゃん
-M039 disgusted lv1 011
-W033 happy lv1 012
-./MEAD/vertices_npy/W033_front_happy_lv1_012_vertices.npyないじゃん
-M013 surprised lv3 016
-W014 fear lv2 025
-W021 happy lv1 002
-M012 angry lv2 018
-M003 happy lv1 019
-W015 surprised lv3 024
-W038 surprised lv3 004
-./MEAD/vertices_npy/W038_front_surprised_lv3_004_vertices.npyないじゃん
-M013 disgusted lv2 020
-W038 contempt lv3 007
-M012 happy lv2 019
-W025 contempt lv3 023
-./MEAD/vertices_npy/W025_front_contempt_lv3_023_vertices.npyないじゃん
-W025 contempt lv2 023
-./MEAD/vertices_npy/W025_front_contempt_lv2_023_vertices.npyないじゃん
-W014 disgusted lv3 028
-W025 neutral lv1 020
-W026 angry lv2 015
-M011 angry lv3 026
-W025 surprised lv3 023
-W037 sad lv1 010
-./MEAD/vertices_npy/W037_front_sad_lv1_010_vertices.npyないじゃん
-W025 happy lv1 017
-./MEAD/vertices_npy/W025_front_happy_lv1_017_vertices.npyないじゃん
-W037 happy lv3 011
-./MEAD/vertices_npy/W037_front_happy_lv3_011_vertices.npyないじゃん
-W036 contempt lv2 012
-./MEAD/vertices_npy/W036_front_contempt_lv2_012_vertices.npyないじゃん
-M011 fear lv1 025
-W038 happy lv3 022
-M041 sad lv1 026
-./MEAD/vertices_npy/M041_front_sad_lv1_026_vertices.npyないじゃん
-W029 surprised lv1 012
-./MEAD/vertices_npy/W029_front_surprised_lv1_012_vertices.npyないじゃん
-W038 happy lv1 011
-./MEAD/vertices_npy/W038_front_happy_lv1_011_vertices.npyないじゃん
-W021 neutral lv1 008
-M005 fear lv1 007
-M012 neutral lv1 030
-M011 happy lv2 012
-W009 angry lv2 010
-M012 angry lv1 025
-M041 angry lv1 024
-W036 sad lv2 014
-W040 sad lv2 018
-./MEAD/vertices_npy/W040_front_sad_lv2_018_vertices.npyないじゃん
-M013 fear lv2 011
-M039 happy lv3 001
-M007 angry lv2 008
-W028 sad lv3 006
-./MEAD/vertices_npy/W028_front_sad_lv3_006_vertices.npyないじゃん
-M041 happy lv3 001
-W033 fear lv1 024
-W021 sad lv2 013
-W033 fear lv2 005
-./MEAD/vertices_npy/W033_front_fear_lv2_005_vertices.npyないじゃん
-W037 contempt lv1 020
-W040 sad lv2 009
-M042 surprised lv3 027
-./MEAD/vertices_npy/M042_front_surprised_lv3_027_vertices.npyないじゃん
-M003 fear lv3 004
-W037 happy lv2 024
-./MEAD/vertices_npy/W037_front_happy_lv2_024_vertices.npyないじゃん
-M012 disgusted lv3 003
-W015 angry lv3 012
-M003 happy lv1 007
-M005 happy lv2 027
-W040 sad lv3 027
-./MEAD/vertices_npy/W040_front_sad_lv3_027_vertices.npyないじゃん
-W021 happy lv1 005
-./MEAD/vertices_npy/W021_front_happy_lv1_005_vertices.npyないじゃん
-M012 angry lv1 011
-M009 neutral lv1 018
-M013 surprised lv1 008
-M039 disgusted lv1 028
-W024 fear lv1 011
-./MEAD/vertices_npy/W024_front_fear_lv1_011_vertices.npyないじゃん
-W024 angry lv3 026
-M039 surprised lv1 021
-M003 contempt lv1 006
-W015 angry lv1 009
-W021 fear lv1 002
-W024 fear lv3 018
-M007 fear lv3 006
-W014 happy lv1 003
-W033 surprised lv2 004
-./MEAD/vertices_npy/W033_front_surprised_lv2_004_vertices.npyないじゃん
-W009 fear lv2 018
-W036 angry lv3 005
-./MEAD/vertices_npy/W036_front_angry_lv3_005_vertices.npyないじゃん
-W024 sad lv3 014
-W009 neutral lv1 016
-M011 neutral lv1 027
-W009 happy lv2 025
-W021 happy lv2 012
-./MEAD/vertices_npy/W021_front_happy_lv2_012_vertices.npyないじゃん
-M003 fear lv1 005
-W025 fear lv1 010
-W033 neutral lv1 014
-M041 happy lv2 018
-./MEAD/vertices_npy/M041_front_happy_lv2_018_vertices.npyないじゃん
-M011 surprised lv2 023
-M019 disgusted lv1 012
-M005 angry lv1 020
-M007 fear lv2 013
-M041 surprised lv2 020
-./MEAD/vertices_npy/M041_front_surprised_lv2_020_vertices.npyないじゃん
-W021 sad lv3 026
-./MEAD/vertices_npy/W021_front_sad_lv3_026_vertices.npyないじゃん
-W009 disgusted lv2 009
-M039 surprised lv3 005
-./MEAD/vertices_npy/M039_front_surprised_lv3_005_vertices.npyないじゃん
-W038 angry lv3 023
-W033 angry lv3 011
-./MEAD/vertices_npy/W033_front_angry_lv3_011_vertices.npyないじゃん
-W037 surprised lv3 020
-./MEAD/vertices_npy/W037_front_surprised_lv3_020_vertices.npyないじゃん
-M012 surprised lv1 003
-W038 angry lv2 030
-./MEAD/vertices_npy/W038_front_angry_lv2_030_vertices.npyないじゃん
-M040 angry lv3 027
-./MEAD/vertices_npy/M040_front_angry_lv3_027_vertices.npyないじゃん
-W015 contempt lv2 028
-M011 angry lv2 023
-M013 happy lv2 007
-M019 disgusted lv3 015
-W038 fear lv1 004
-./MEAD/vertices_npy/W038_front_fear_lv1_004_vertices.npyないじゃん
-M012 contempt lv2 014
-W033 surprised lv1 011
-./MEAD/vertices_npy/W033_front_surprised_lv1_011_vertices.npyないじゃん
-W024 sad lv3 002
-M009 sad lv1 021
-M019 fear lv3 004
-W035 angry lv2 011
-./MEAD/vertices_npy/W035_front_angry_lv2_011_vertices.npyないじゃん
-M039 fear lv1 014
-./MEAD/vertices_npy/M039_front_fear_lv1_014_vertices.npyないじゃん
-W014 fear lv3 004
-M041 fear lv1 026
-M007 angry lv2 011
-M003 contempt lv3 007
-W028 happy lv3 009
-W038 neutral lv1 003
-W009 surprised lv1 005
-W021 neutral lv1 031
-./MEAD/vertices_npy/W021_front_neutral_lv1_031_vertices.npyないじゃん
-W025 contempt lv1 014
-./MEAD/vertices_npy/W025_front_contempt_lv1_014_vertices.npyないじゃん
-W026 neutral lv1 010
-./MEAD/vertices_npy/W026_front_neutral_lv1_010_vertices.npyないじゃん
-W026 angry lv1 026
-W029 disgusted lv2 010
-M019 contempt lv3 009
-M005 angry lv1 019
-W025 surprised lv3 016
-W023 surprised lv3 020
-./MEAD/vertices_npy/W023_front_surprised_lv3_020_vertices.npyないじゃん
-M007 disgusted lv2 021
-W009 contempt lv3 021
-W009 fear lv3 027
-W021 surprised lv1 006
-./MEAD/vertices_npy/W021_front_surprised_lv1_006_vertices.npyないじゃん
-W025 surprised lv2 018
-./MEAD/vertices_npy/W025_front_surprised_lv2_018_vertices.npyないじゃん
-W038 surprised lv1 026
-./MEAD/vertices_npy/W038_front_surprised_lv1_026_vertices.npyないじゃん
-W036 contempt lv1 001
-M009 surprised lv2 006
-W021 surprised lv2 024
-W009 angry lv3 023
-M013 happy lv3 025
-W029 fear lv1 029
-./MEAD/vertices_npy/W029_front_fear_lv1_029_vertices.npyないじゃん
-M019 happy lv3 007
-M040 contempt lv2 020
-W025 fear lv2 025
-W036 sad lv1 024
-./MEAD/vertices_npy/W036_front_sad_lv1_024_vertices.npyないじゃん
-W014 happy lv3 007
-W024 neutral lv1 030
-./MEAD/vertices_npy/W024_front_neutral_lv1_030_vertices.npyないじゃん
-W033 angry lv3 020
-./MEAD/vertices_npy/W033_front_angry_lv3_020_vertices.npyないじゃん
-W029 happy lv1 017
-./MEAD/vertices_npy/W029_front_happy_lv1_017_vertices.npyないじゃん
-M011 sad lv3 017
-M007 sad lv2 009
-M042 contempt lv3 018
-M042 surprised lv2 016
-M013 contempt lv2 004
-W036 angry lv1 019
-./MEAD/vertices_npy/W036_front_angry_lv1_019_vertices.npyないじゃん
-  6%|▌         | 1164/19101 [05:31<1:08:12,  4.38it/s]  6%|▌         | 1165/19101 [05:31<1:14:45,  4.00it/s]  6%|▌         | 1167/19101 [05:32<1:17:05,  3.88it/s]  6%|▌         | 1168/19101 [05:32<1:21:48,  3.65it/s]  6%|▌         | 1169/19101 [05:33<1:35:56,  3.11it/s]  6%|▌         | 1171/19101 [05:33<1:17:51,  3.84it/s]  6%|▌         | 1173/19101 [05:34<1:14:44,  4.00it/s]  6%|▌         | 1175/19101 [05:34<1:04:57,  4.60it/s]  6%|▌         | 1176/19101 [05:34<1:16:05,  3.93it/s]  6%|▌         | 1178/19101 [05:35<1:06:16,  4.51it/s]  6%|▌         | 1179/19101 [05:35<1:14:03,  4.03it/s]  6%|▌         | 1180/19101 [05:35<1:27:41,  3.41it/s]  6%|▌         | 1183/19101 [05:36<1:11:27,  4.18it/s]  6%|▌         | 1185/19101 [05:36<1:04:15,  4.65it/s]  6%|▌         | 1186/19101 [05:37<1:14:33,  4.00it/s]  6%|▌         | 1188/19101 [05:37<1:10:05,  4.26it/s]  6%|▌         | 1189/19101 [05:37<1:11:44,  4.16it/s]  6%|▌         | 1190/19101 [05:38<1:18:25,  3.81it/s]  6%|▌         | 1191/19101 [05:38<1:30:11,  3.31it/s]  6%|▌         | 1192/19101 [05:39<1:41:20,  2.95it/s]  6%|▌         | 1193/19101 [05:39<1:38:05,  3.04it/s]  6%|▋         | 1194/19101 [05:39<1:43:13,  2.89it/s]  6%|▋         | 1196/19101 [05:40<1:55:42,  2.58it/s]  6%|▋         | 1197/19101 [05:41<1:57:33,  2.54it/s]  6%|▋         | 1198/19101 [05:41<1:58:54,  2.51it/s]  6%|▋         | 1199/19101 [05:42<2:09:38,  2.30it/s]  6%|▋         | 1200/19101 [05:42<1:53:16,  2.63it/s]  6%|▋         | 1201/19101 [05:42<2:10:16,  2.29it/s]  6%|▋         | 1202/19101 [05:43<1:53:09,  2.64it/s]  6%|▋         | 1204/19101 [05:43<1:28:24,  3.37it/s]  6%|▋         | 1206/19101 [05:44<1:29:00,  3.35it/s]  6%|▋         | 1208/19101 [05:44<1:11:10,  4.19it/s]  6%|▋         | 1209/19101 [05:44<1:09:38,  4.28it/s]  6%|▋         | 1210/19101 [05:45<1:25:40,  3.48it/s]  6%|▋         | 1211/19101 [05:45<1:33:35,  3.19it/s]  6%|▋         | 1212/19101 [05:45<1:33:43,  3.18it/s]  6%|▋         | 1213/19101 [05:46<1:33:07,  3.20it/s]  6%|▋         | 1214/19101 [05:46<1:32:23,  3.23it/s]  6%|▋         | 1216/19101 [05:46<1:14:48,  3.98it/s]  6%|▋         | 1218/19101 [05:46<1:02:19,  4.78it/s]  6%|▋         | 1220/19101 [05:47<54:57,  5.42it/s]    6%|▋         | 1221/19101 [05:47<1:01:14,  4.87it/s]  6%|▋         | 1222/19101 [05:48<1:33:53,  3.17it/s]  6%|▋         | 1223/19101 [05:48<1:30:26,  3.29it/s]  6%|▋         | 1224/19101 [05:48<1:31:55,  3.24it/s]  6%|▋         | 1226/19101 [05:49<1:15:58,  3.92it/s]  6%|▋         | 1227/19101 [05:49<1:16:36,  3.89it/s]  6%|▋         | 1228/19101 [05:49<1:23:22,  3.57it/s]  6%|▋         | 1229/19101 [05:50<1:40:27,  2.97it/s]  6%|▋         | 1230/19101 [05:50<1:31:33,  3.25it/s]  6%|▋         | 1231/19101 [05:50<1:24:27,  3.53it/s]  6%|▋         | 1233/19101 [05:51<1:04:33,  4.61it/s]  6%|▋         | 1234/19101 [05:51<1:26:02,  3.46it/s]  6%|▋         | 1235/19101 [05:51<1:32:53,  3.21it/s]  6%|▋         | 1236/19101 [05:52<1:28:24,  3.37it/s]  6%|▋         | 1237/19101 [05:52<1:23:33,  3.56it/s]  6%|▋         | 1238/19101 [05:52<1:14:40,  3.99it/s]  6%|▋         | 1239/19101 [05:53<1:28:59,  3.35it/s]  6%|▋         | 1240/19101 [05:53<1:38:07,  3.03it/s]  6%|▋         | 1241/19101 [05:54<2:03:31,  2.41it/s]  7%|▋         | 1242/19101 [05:54<1:56:41,  2.55it/s]  7%|▋         | 1243/19101 [05:54<1:46:47,  2.79it/s]  7%|▋         | 1244/19101 [05:54<1:40:49,  2.95it/s]  7%|▋         | 1245/19101 [05:55<1:39:07,  3.00it/s]  7%|▋         | 1246/19101 [05:55<1:31:59,  3.24it/s]  7%|▋         | 1247/19101 [05:55<1:35:30,  3.12it/s]  7%|▋         | 1248/19101 [05:56<1:38:53,  3.01it/s]  7%|▋         | 1250/19101 [05:56<1:09:54,  4.26it/s]  7%|▋         | 1252/19101 [05:57<1:21:48,  3.64it/s]  7%|▋         | 1253/19101 [05:57<1:30:09,  3.30it/s]  7%|▋         | 1254/19101 [05:57<1:27:30,  3.40it/s]  7%|▋         | 1255/19101 [05:58<1:33:36,  3.18it/s]  7%|▋         | 1258/19101 [05:58<1:02:59,  4.72it/s]  7%|▋         | 1260/19101 [05:58<52:52,  5.62it/s]    7%|▋         | 1261/19101 [05:59<1:02:05,  4.79it/s]  7%|▋         | 1262/19101 [05:59<1:07:34,  4.40it/s]  7%|▋         | 1265/19101 [05:59<57:03,  5.21it/s]    7%|▋         | 1267/19101 [06:00<1:06:11,  4.49it/s]  7%|▋         | 1268/19101 [06:00<1:17:50,  3.82it/s]  7%|▋         | 1269/19101 [06:01<1:29:42,  3.31it/s]  7%|▋         | 1272/19101 [06:01<1:03:04,  4.71it/s]  7%|▋         | 1274/19101 [06:01<58:32,  5.08it/s]    7%|▋         | 1275/19101 [06:02<1:04:35,  4.60it/s]  7%|▋         | 1276/19101 [06:03<1:41:10,  2.94it/s]  7%|▋         | 1277/19101 [06:03<1:45:37,  2.81it/s]  7%|▋         | 1279/19101 [06:03<1:15:02,  3.96it/s]  7%|▋         | 1281/19101 [06:04<1:11:05,  4.18it/s]  7%|▋         | 1283/19101 [06:04<1:00:42,  4.89it/s]  7%|▋         | 1285/19101 [06:04<56:03,  5.30it/s]    7%|▋         | 1286/19101 [06:04<59:53,  4.96it/s]  7%|▋         | 1287/19101 [06:05<59:02,  5.03it/s]  7%|▋         | 1288/19101 [06:05<1:00:33,  4.90it/s]  7%|▋         | 1289/19101 [06:05<1:11:36,  4.15it/s]  7%|▋         | 1290/19101 [06:05<1:08:32,  4.33it/s]  7%|▋         | 1293/19101 [06:06<54:01,  5.49it/s]    7%|▋         | 1294/19101 [06:06<1:04:49,  4.58it/s]  7%|▋         | 1295/19101 [06:06<1:06:44,  4.45it/s]  7%|▋         | 1297/19101 [06:07<1:05:27,  4.53it/s]  7%|▋         | 1298/19101 [06:07<1:11:44,  4.14it/s]  7%|▋         | 1299/19101 [06:07<1:14:28,  3.98it/s]  7%|▋         | 1300/19101 [06:08<1:10:54,  4.18it/s]  7%|▋         | 1301/19101 [06:08<1:13:01,  4.06it/s]  7%|▋         | 1302/19101 [06:08<1:16:38,  3.87it/s]  7%|▋         | 1304/19101 [06:09<1:00:02,  4.94it/s]  7%|▋         | 1305/19101 [06:09<1:05:36,  4.52it/s]  7%|▋         | 1308/19101 [06:09<47:57,  6.18it/s]    7%|▋         | 1309/19101 [06:09<52:40,  5.63it/s]  7%|▋         | 1310/19101 [06:10<1:02:08,  4.77it/s]  7%|▋         | 1312/19101 [06:10<54:55,  5.40it/s]    7%|▋         | 1313/19101 [06:10<1:06:33,  4.45it/s]  7%|▋         | 1314/19101 [06:11<1:22:05,  3.61it/s]  7%|▋         | 1315/19101 [06:11<1:24:03,  3.53it/s]  7%|▋         | 1316/19101 [06:12<1:38:18,  3.02it/s]  7%|▋         | 1317/19101 [06:12<1:37:09,  3.05it/s]  7%|▋         | 1320/19101 [06:12<1:08:30,  4.33it/s]  7%|▋         | 1321/19101 [06:13<1:11:59,  4.12it/s]  7%|▋         | 1322/19101 [06:13<1:09:25,  4.27it/s]  7%|▋         | 1323/19101 [06:13<1:06:28,  4.46it/s]  7%|▋         | 1324/19101 [06:13<1:07:05,  4.42it/s]  7%|▋         | 1325/19101 [06:13<1:07:34,  4.38it/s]  7%|▋         | 1329/19101 [06:14<43:29,  6.81it/s]    7%|▋         | 1330/19101 [06:14<53:06,  5.58it/s]  7%|▋         | 1331/19101 [06:14<52:40,  5.62it/s]  7%|▋         | 1333/19101 [06:15<49:32,  5.98it/s]  7%|▋         | 1334/19101 [06:15<51:11,  5.78it/s]  7%|▋         | 1335/19101 [06:15<53:11,  5.57it/s]  7%|▋         | 1338/19101 [06:15<43:03,  6.88it/s]  7%|▋         | 1340/19101 [06:16<46:23,  6.38it/s]  7%|▋         | 1342/19101 [06:16<48:19,  6.13it/s]  7%|▋         | 1343/19101 [06:16<55:13,  5.36it/s]  7%|▋         | 1344/19101 [06:17<58:24,  5.07it/s]  7%|▋         | 1346/19101 [06:17<53:46,  5.50it/s]  7%|▋         | 1347/19101 [06:17<1:05:48,  4.50it/s]  7%|▋         | 1348/19101 [06:19<2:19:01,  2.13it/s]  7%|▋         | 1349/19101 [06:19<2:03:08,  2.40it/s]  7%|▋         | 1350/19101 [06:19<1:47:39,  2.75it/s]  7%|▋         | 1351/19101 [06:19<1:48:07,  2.74it/s]  7%|▋         | 1352/19101 [06:20<1:42:35,  2.88it/s]  7%|▋         | 1353/19101 [06:20<1:29:33,  3.30it/s]  7%|▋         | 1355/19101 [06:20<1:14:51,  3.95it/s]  7%|▋         | 1357/19101 [06:21<1:00:51,  4.86it/s]  7%|▋         | 1358/19101 [06:21<59:58,  4.93it/s]    7%|▋         | 1359/19101 [06:21<1:07:26,  4.38it/s]  7%|▋         | 1361/19101 [06:21<54:15,  5.45it/s]    7%|▋         | 1363/19101 [06:22<1:02:45,  4.71it/s]W036 surprised lv2 001
-W036 sad lv3 002
-M042 angry lv2 022
-./MEAD/vertices_npy/M042_front_angry_lv2_022_vertices.npyないじゃん
-W014 sad lv3 023
-W029 surprised lv1 030
-M007 happy lv1 025
-W028 contempt lv3 029
-./MEAD/vertices_npy/W028_front_contempt_lv3_029_vertices.npyないじゃん
-M005 contempt lv2 030
-M040 surprised lv2 027
-./MEAD/vertices_npy/M040_front_surprised_lv2_027_vertices.npyないじゃん
-M012 neutral lv1 028
-W023 contempt lv2 016
-./MEAD/vertices_npy/W023_front_contempt_lv2_016_vertices.npyないじゃん
-M041 angry lv3 003
-W023 happy lv2 009
-W025 disgusted lv2 021
-./MEAD/vertices_npy/W025_front_disgusted_lv2_021_vertices.npyないじゃん
-M040 contempt lv1 010
-M041 fear lv2 001
-M011 happy lv1 007
-M039 fear lv3 013
-./MEAD/vertices_npy/M039_front_fear_lv3_013_vertices.npyないじゃん
-W024 contempt lv1 012
-./MEAD/vertices_npy/W024_front_contempt_lv1_012_vertices.npyないじゃん
-M019 surprised lv3 021
-W035 angry lv1 021
-./MEAD/vertices_npy/W035_front_angry_lv1_021_vertices.npyないじゃん
-W035 happy lv1 009
-M003 disgusted lv3 013
-M041 disgusted lv2 006
-./MEAD/vertices_npy/M041_front_disgusted_lv2_006_vertices.npyないじゃん
-W014 happy lv1 015
-W025 contempt lv2 011
-M003 disgusted lv1 009
-W011 happy lv1 017
-W026 fear lv1 017
-W011 fear lv1 018
-W009 angry lv1 005
-W026 happy lv1 005
-./MEAD/vertices_npy/W026_front_happy_lv1_005_vertices.npyないじゃん
-W009 disgusted lv1 007
-W040 angry lv1 003
-M013 neutral lv1 020
-W025 surprised lv1 001
-W023 surprised lv2 010
-M005 surprised lv1 029
-M042 disgusted lv2 017
-M039 disgusted lv2 005
-./MEAD/vertices_npy/M039_front_disgusted_lv2_005_vertices.npyないじゃん
-W040 fear lv2 008
-W021 sad lv1 006
-./MEAD/vertices_npy/W021_front_sad_lv1_006_vertices.npyないじゃん
-W011 contempt lv3 018
-W028 happy lv1 010
-./MEAD/vertices_npy/W028_front_happy_lv1_010_vertices.npyないじゃん
-W009 fear lv2 022
-M019 fear lv2 018
-W011 neutral lv1 027
-M019 contempt lv3 023
-M007 sad lv2 022
-W023 fear lv2 007
-W025 contempt lv2 010
-W033 contempt lv1 012
-./MEAD/vertices_npy/W033_front_contempt_lv1_012_vertices.npyないじゃん
-M007 happy lv1 024
-W024 surprised lv3 004
-./MEAD/vertices_npy/W024_front_surprised_lv3_004_vertices.npyないじゃん
-M003 angry lv2 021
-M040 angry lv2 014
-./MEAD/vertices_npy/M040_front_angry_lv2_014_vertices.npyないじゃん
-M041 disgusted lv3 004
-M039 disgusted lv2 019
-W021 surprised lv3 029
-W040 angry lv3 008
-W021 fear lv1 023
-W021 angry lv3 014
-./MEAD/vertices_npy/W021_front_angry_lv3_014_vertices.npyないじゃん
-M013 contempt lv3 020
-M041 surprised lv3 008
-M009 contempt lv1 027
-W015 disgusted lv1 007
-W009 fear lv3 018
-W036 sad lv1 003
-M039 sad lv3 016
-./MEAD/vertices_npy/M039_front_sad_lv3_016_vertices.npyないじゃん
-M041 sad lv1 030
-W015 disgusted lv1 016
-W037 surprised lv2 021
-W009 sad lv3 013
-M019 contempt lv3 028
-M041 happy lv3 003
-W009 surprised lv1 012
-W033 disgusted lv1 026
-W025 neutral lv1 027
-W009 disgusted lv2 010
-M012 sad lv3 010
-M009 angry lv3 010
-M011 angry lv1 027
-M041 disgusted lv2 025
-W009 surprised lv2 006
-W026 happy lv1 001
-M040 surprised lv2 019
-./MEAD/vertices_npy/M040_front_surprised_lv2_019_vertices.npyないじゃん
-W011 happy lv3 015
-M042 sad lv1 018
-./MEAD/vertices_npy/M042_front_sad_lv1_018_vertices.npyないじゃん
-W009 surprised lv1 020
-W014 contempt lv3 028
-W011 contempt lv3 014
-W036 neutral lv1 007
-W025 angry lv3 027
-./MEAD/vertices_npy/W025_front_angry_lv3_027_vertices.npyないじゃん
-W021 surprised lv2 028
-./MEAD/vertices_npy/W021_front_surprised_lv2_028_vertices.npyないじゃん
-W036 surprised lv1 008
-W037 angry lv3 028
-./MEAD/vertices_npy/W037_front_angry_lv3_028_vertices.npyないじゃん
-M003 contempt lv3 004
-M011 fear lv3 016
-W014 fear lv1 009
-W036 sad lv1 010
-./MEAD/vertices_npy/W036_front_sad_lv1_010_vertices.npyないじゃん
-W033 surprised lv1 005
-./MEAD/vertices_npy/W033_front_surprised_lv1_005_vertices.npyないじゃん
-W024 happy lv3 021
-M041 happy lv2 024
-./MEAD/vertices_npy/M041_front_happy_lv2_024_vertices.npyないじゃん
-M019 contempt lv1 022
-W033 angry lv3 007
-M007 disgusted lv3 010
-W038 sad lv3 026
-./MEAD/vertices_npy/W038_front_sad_lv3_026_vertices.npyないじゃん
-W036 happy lv3 010
-./MEAD/vertices_npy/W036_front_happy_lv3_010_vertices.npyないじゃん
-W009 surprised lv2 016
-W026 surprised lv3 011
-./MEAD/vertices_npy/W026_front_surprised_lv3_011_vertices.npyないじゃん
-M019 happy lv1 013
-M007 fear lv1 011
-W037 surprised lv3 016
-W021 disgusted lv3 002
-W040 contempt lv2 004
-./MEAD/vertices_npy/W040_front_contempt_lv2_004_vertices.npyないじゃん
-M005 happy lv3 003
-M042 fear lv3 004
-./MEAD/vertices_npy/M042_front_fear_lv3_004_vertices.npyないじゃん
-M013 happy lv1 020
-W025 angry lv3 006
-./MEAD/vertices_npy/W025_front_angry_lv3_006_vertices.npyないじゃん
-M013 angry lv1 010
-W024 surprised lv2 005
-./MEAD/vertices_npy/W024_front_surprised_lv2_005_vertices.npyないじゃん
-M007 contempt lv1 004
-M013 surprised lv1 016
-W011 happy lv3 003
-M039 fear lv1 018
-M012 disgusted lv1 016
-W029 angry lv1 023
-M040 angry lv1 027
-./MEAD/vertices_npy/M040_front_angry_lv1_027_vertices.npyないじゃん
-W037 angry lv3 005
-./MEAD/vertices_npy/W037_front_angry_lv3_005_vertices.npyないじゃん
-M013 disgusted lv1 022
-W014 fear lv3 010
-M041 disgusted lv2 001
-M042 disgusted lv1 013
-./MEAD/vertices_npy/M042_front_disgusted_lv1_013_vertices.npyないじゃん
-W011 fear lv3 022
-M039 neutral lv1 040
-M007 happy lv3 007
-M011 angry lv1 011
-M009 sad lv2 007
-W025 angry lv2 016
-W033 surprised lv3 019
-./MEAD/vertices_npy/W033_front_surprised_lv3_019_vertices.npyないじゃん
-M003 contempt lv2 020
-W040 sad lv2 019
-M041 contempt lv1 004
-./MEAD/vertices_npy/M041_front_contempt_lv1_004_vertices.npyないじゃん
-W033 sad lv1 006
-./MEAD/vertices_npy/W033_front_sad_lv1_006_vertices.npyないじゃん
-W037 happy lv1 003
-M005 contempt lv1 014
-W023 angry lv1 016
-W028 sad lv1 016
-./MEAD/vertices_npy/W028_front_sad_lv1_016_vertices.npyないじゃん
-W014 happy lv1 022
-M013 happy lv3 020
-W011 sad lv1 015
-M007 surprised lv3 017
-W015 disgusted lv2 017
-M005 disgusted lv1 013
-W021 happy lv1 030
-./MEAD/vertices_npy/W021_front_happy_lv1_030_vertices.npyないじゃん
-M042 fear lv2 030
-./MEAD/vertices_npy/M042_front_fear_lv2_030_vertices.npyないじゃん
-M013 disgusted lv1 013
-W015 sad lv1 024
-M012 happy lv2 027
-M011 fear lv2 004
-W028 surprised lv2 021
-W036 surprised lv1 009
-W036 angry lv1 014
-./MEAD/vertices_npy/W036_front_angry_lv1_014_vertices.npyないじゃん
-W040 fear lv1 006
-./MEAD/vertices_npy/W040_front_fear_lv1_006_vertices.npyないじゃん
-M040 sad lv2 025
-./MEAD/vertices_npy/M040_front_sad_lv2_025_vertices.npyないじゃん
-M003 fear lv1 024
-W011 angry lv2 011
-W011 sad lv1 024
-W036 disgusted lv3 016
-./MEAD/vertices_npy/W036_front_disgusted_lv3_016_vertices.npyないじゃん
-M012 sad lv1 021
-W038 surprised lv1 010
-M039 fear lv2 016
-W024 happy lv3 023
-./MEAD/vertices_npy/W024_front_happy_lv3_023_vertices.npyないじゃん
-M041 fear lv1 027
-./MEAD/vertices_npy/M041_front_fear_lv1_027_vertices.npyないじゃん
-W037 happy lv1 008
-W038 fear lv2 005
-./MEAD/vertices_npy/W038_front_fear_lv2_005_vertices.npyないじゃん
-M042 disgusted lv2 028
-W038 happy lv3 016
-./MEAD/vertices_npy/W038_front_happy_lv3_016_vertices.npyないじゃん
-W036 sad lv3 001
-W033 happy lv1 027
-M007 disgusted lv3 005
-M039 surprised lv2 005
-./MEAD/vertices_npy/M039_front_surprised_lv2_005_vertices.npyないじゃん
-M005 fear lv2 027
-W026 disgusted lv2 012
-W028 happy lv3 019
-W024 angry lv1 015
-W037 disgusted lv2 009
-M019 disgusted lv1 006
-W036 sad lv3 013
-M042 angry lv3 023
-M042 neutral lv1 005
-./MEAD/vertices_npy/M042_front_neutral_lv1_005_vertices.npyないじゃん
-W009 sad lv1 004
-W029 happy lv1 018
-./MEAD/vertices_npy/W029_front_happy_lv1_018_vertices.npyないじゃん
-M007 happy lv3 023
-M012 neutral lv1 032
-W014 sad lv1 029
-M042 sad lv2 010
-./MEAD/vertices_npy/M042_front_sad_lv2_010_vertices.npyないじゃん
-W025 angry lv1 016
-W035 happy lv3 030
-./MEAD/vertices_npy/W035_front_happy_lv3_030_vertices.npyないじゃん
-W014 fear lv3 008
-M040 surprised lv1 012
-  7%|▋         | 1365/19101 [06:22<58:50,  5.02it/s]    7%|▋         | 1366/19101 [06:22<58:05,  5.09it/s]  7%|▋         | 1367/19101 [06:23<1:03:49,  4.63it/s]  7%|▋         | 1368/19101 [06:23<1:05:23,  4.52it/s]  7%|▋         | 1369/19101 [06:23<1:12:06,  4.10it/s]  7%|▋         | 1371/19101 [06:24<1:04:13,  4.60it/s]  7%|▋         | 1372/19101 [06:24<1:42:36,  2.88it/s]  7%|▋         | 1373/19101 [06:25<1:40:46,  2.93it/s]  7%|▋         | 1375/19101 [06:25<1:14:37,  3.96it/s]  7%|▋         | 1376/19101 [06:25<1:16:31,  3.86it/s]  7%|▋         | 1377/19101 [06:26<1:27:03,  3.39it/s]  7%|▋         | 1378/19101 [06:26<1:20:07,  3.69it/s]  7%|▋         | 1379/19101 [06:26<1:17:40,  3.80it/s]  7%|▋         | 1380/19101 [06:26<1:24:55,  3.48it/s]  7%|▋         | 1381/19101 [06:27<1:24:30,  3.49it/s]  7%|▋         | 1382/19101 [06:27<1:22:34,  3.58it/s]  7%|▋         | 1383/19101 [06:27<1:28:53,  3.32it/s]  7%|▋         | 1384/19101 [06:28<1:34:15,  3.13it/s]  7%|▋         | 1387/19101 [06:28<1:07:18,  4.39it/s]  7%|▋         | 1388/19101 [06:29<1:20:09,  3.68it/s]  7%|▋         | 1389/19101 [06:29<1:29:40,  3.29it/s]  7%|▋         | 1390/19101 [06:29<1:28:29,  3.34it/s]  7%|▋         | 1391/19101 [06:29<1:21:31,  3.62it/s]  7%|▋         | 1392/19101 [06:30<1:47:56,  2.73it/s]  7%|▋         | 1393/19101 [06:30<1:44:44,  2.82it/s]  7%|▋         | 1394/19101 [06:31<1:29:49,  3.29it/s]  7%|▋         | 1395/19101 [06:31<1:50:52,  2.66it/s]  7%|▋         | 1396/19101 [06:31<1:34:53,  3.11it/s]  7%|▋         | 1397/19101 [06:32<1:32:38,  3.18it/s]  7%|▋         | 1398/19101 [06:32<1:23:10,  3.55it/s]  7%|▋         | 1399/19101 [06:32<1:30:07,  3.27it/s]  7%|▋         | 1400/19101 [06:33<1:42:47,  2.87it/s]  7%|▋         | 1401/19101 [06:33<1:34:03,  3.14it/s]  7%|▋         | 1403/19101 [06:33<1:09:56,  4.22it/s]  7%|▋         | 1404/19101 [06:33<1:01:19,  4.81it/s]  7%|▋         | 1405/19101 [06:34<1:01:28,  4.80it/s]  7%|▋         | 1406/19101 [06:34<1:02:26,  4.72it/s]  7%|▋         | 1407/19101 [06:34<1:06:22,  4.44it/s]  7%|▋         | 1409/19101 [06:34<1:01:28,  4.80it/s]  7%|▋         | 1410/19101 [06:35<1:05:20,  4.51it/s]  7%|▋         | 1411/19101 [06:35<1:16:15,  3.87it/s]  7%|▋         | 1412/19101 [06:35<1:18:41,  3.75it/s]  7%|▋         | 1414/19101 [06:36<1:49:29,  2.69it/s]  7%|▋         | 1417/19101 [06:37<1:09:18,  4.25it/s]  7%|▋         | 1419/19101 [06:38<1:40:27,  2.93it/s]  7%|▋         | 1421/19101 [06:38<1:24:43,  3.48it/s]  7%|▋         | 1422/19101 [06:38<1:19:49,  3.69it/s]  7%|▋         | 1424/19101 [06:39<1:16:09,  3.87it/s]  7%|▋         | 1428/19101 [06:39<54:55,  5.36it/s]    7%|▋         | 1429/19101 [06:39<57:16,  5.14it/s]  7%|▋         | 1430/19101 [06:40<59:08,  4.98it/s]  7%|▋         | 1431/19101 [06:40<1:04:14,  4.58it/s]  7%|▋         | 1432/19101 [06:40<1:09:03,  4.26it/s]  8%|▊         | 1434/19101 [06:40<55:34,  5.30it/s]    8%|▊         | 1435/19101 [06:41<1:04:24,  4.57it/s]  8%|▊         | 1437/19101 [06:41<59:28,  4.95it/s]    8%|▊         | 1438/19101 [06:41<1:01:45,  4.77it/s]  8%|▊         | 1440/19101 [06:42<55:41,  5.28it/s]    8%|▊         | 1441/19101 [06:42<58:45,  5.01it/s]  8%|▊         | 1442/19101 [06:42<59:31,  4.94it/s]  8%|▊         | 1443/19101 [06:42<1:01:55,  4.75it/s]  8%|▊         | 1444/19101 [06:43<1:26:49,  3.39it/s]  8%|▊         | 1446/19101 [06:43<1:11:42,  4.10it/s]  8%|▊         | 1447/19101 [06:44<1:15:32,  3.89it/s]  8%|▊         | 1448/19101 [06:44<1:25:46,  3.43it/s]  8%|▊         | 1450/19101 [06:44<1:10:47,  4.16it/s]  8%|▊         | 1452/19101 [06:45<1:00:52,  4.83it/s]  8%|▊         | 1454/19101 [06:45<52:55,  5.56it/s]    8%|▊         | 1455/19101 [06:45<59:40,  4.93it/s]  8%|▊         | 1456/19101 [06:46<1:14:02,  3.97it/s]  8%|▊         | 1457/19101 [06:46<1:16:03,  3.87it/s]  8%|▊         | 1459/19101 [06:46<1:09:46,  4.21it/s]  8%|▊         | 1460/19101 [06:47<1:13:38,  3.99it/s]  8%|▊         | 1461/19101 [06:47<1:17:14,  3.81it/s]  8%|▊         | 1462/19101 [06:47<1:19:30,  3.70it/s]  8%|▊         | 1463/19101 [06:47<1:22:48,  3.55it/s]  8%|▊         | 1464/19101 [06:48<1:28:32,  3.32it/s]  8%|▊         | 1468/19101 [06:48<54:58,  5.35it/s]    8%|▊         | 1469/19101 [06:48<55:54,  5.26it/s]  8%|▊         | 1470/19101 [06:49<1:02:18,  4.72it/s]  8%|▊         | 1471/19101 [06:49<1:07:15,  4.37it/s]  8%|▊         | 1472/19101 [06:49<1:07:20,  4.36it/s]  8%|▊         | 1473/19101 [06:50<1:16:44,  3.83it/s]  8%|▊         | 1474/19101 [06:50<1:28:02,  3.34it/s]  8%|▊         | 1475/19101 [06:50<1:24:29,  3.48it/s]  8%|▊         | 1476/19101 [06:51<1:43:26,  2.84it/s]  8%|▊         | 1477/19101 [06:51<1:46:44,  2.75it/s]  8%|▊         | 1478/19101 [06:51<1:34:23,  3.11it/s]  8%|▊         | 1479/19101 [06:52<1:38:53,  2.97it/s]  8%|▊         | 1480/19101 [06:52<2:08:13,  2.29it/s]  8%|▊         | 1483/19101 [06:53<1:14:28,  3.94it/s]  8%|▊         | 1484/19101 [06:53<1:18:48,  3.73it/s]  8%|▊         | 1485/19101 [06:53<1:24:06,  3.49it/s]  8%|▊         | 1486/19101 [06:54<1:22:17,  3.57it/s]  8%|▊         | 1488/19101 [06:54<1:15:00,  3.91it/s]  8%|▊         | 1489/19101 [06:54<1:13:26,  4.00it/s]  8%|▊         | 1490/19101 [06:55<1:13:04,  4.02it/s]  8%|▊         | 1491/19101 [06:55<1:21:00,  3.62it/s]  8%|▊         | 1492/19101 [06:55<1:32:33,  3.17it/s]  8%|▊         | 1493/19101 [06:56<1:37:26,  3.01it/s]  8%|▊         | 1494/19101 [06:56<1:43:04,  2.85it/s]  8%|▊         | 1495/19101 [06:56<1:37:51,  3.00it/s]  8%|▊         | 1496/19101 [06:57<1:45:20,  2.79it/s]  8%|▊         | 1498/19101 [06:57<1:24:34,  3.47it/s]  8%|▊         | 1499/19101 [06:58<1:22:18,  3.56it/s]  8%|▊         | 1500/19101 [06:58<1:24:55,  3.45it/s]  8%|▊         | 1501/19101 [06:58<1:31:10,  3.22it/s]  8%|▊         | 1502/19101 [06:59<1:31:08,  3.22it/s]  8%|▊         | 1504/19101 [06:59<1:26:43,  3.38it/s]  8%|▊         | 1507/19101 [07:00<1:10:23,  4.17it/s]  8%|▊         | 1510/19101 [07:00<1:02:43,  4.67it/s]  8%|▊         | 1511/19101 [07:01<1:09:47,  4.20it/s]  8%|▊         | 1513/19101 [07:01<1:07:03,  4.37it/s]  8%|▊         | 1514/19101 [07:01<1:18:43,  3.72it/s]  8%|▊         | 1518/19101 [07:02<51:13,  5.72it/s]    8%|▊         | 1521/19101 [07:02<48:44,  6.01it/s]  8%|▊         | 1523/19101 [07:03<48:52,  6.00it/s]  8%|▊         | 1524/19101 [07:03<1:01:02,  4.80it/s]  8%|▊         | 1525/19101 [07:03<1:08:26,  4.28it/s]  8%|▊         | 1526/19101 [07:04<1:20:04,  3.66it/s]  8%|▊         | 1528/19101 [07:04<1:08:37,  4.27it/s]  8%|▊         | 1529/19101 [07:05<1:23:40,  3.50it/s]  8%|▊         | 1530/19101 [07:05<1:30:38,  3.23it/s]  8%|▊         | 1531/19101 [07:05<1:38:42,  2.97it/s]  8%|▊         | 1533/19101 [07:06<1:32:30,  3.16it/s]  8%|▊         | 1534/19101 [07:06<1:40:11,  2.92it/s]  8%|▊         | 1535/19101 [07:07<1:43:03,  2.84it/s]  8%|▊         | 1536/19101 [07:07<1:53:38,  2.58it/s]  8%|▊         | 1537/19101 [07:08<1:56:28,  2.51it/s]  8%|▊         | 1538/19101 [07:08<1:50:22,  2.65it/s]  8%|▊         | 1539/19101 [07:08<1:44:08,  2.81it/s]  8%|▊         | 1540/19101 [07:09<1:39:27,  2.94it/s]  8%|▊         | 1542/19101 [07:09<1:15:52,  3.86it/s]  8%|▊         | 1546/19101 [07:09<43:48,  6.68it/s]    8%|▊         | 1547/19101 [07:10<54:20,  5.38it/s]  8%|▊         | 1549/19101 [07:10<48:56,  5.98it/s]  8%|▊         | 1551/19101 [07:10<53:52,  5.43it/s]  8%|▊         | 1552/19101 [07:11<1:13:52,  3.96it/s]  8%|▊         | 1554/19101 [07:11<1:12:44,  4.02it/s]  8%|▊         | 1556/19101 [07:12<1:19:27,  3.68it/s]  8%|▊         | 1557/19101 [07:12<1:29:04,  3.28it/s]  8%|▊         | 1558/19101 [07:13<1:36:23,  3.03it/s]  8%|▊         | 1559/19101 [07:13<1:56:02,  2.52it/s]  8%|▊         | 1560/19101 [07:14<2:11:15,  2.23it/s]  8%|▊         | 1561/19101 [07:14<2:06:24,  2.31it/s]  8%|▊         | 1562/19101 [07:15<1:54:08,  2.56it/s]  8%|▊         | 1563/19101 [07:15<2:09:42,  2.25it/s]  8%|▊         | 1564/19101 [07:16<2:17:01,  2.13it/s]  8%|▊         | 1566/19101 [07:16<1:51:34,  2.62it/s]  8%|▊         | 1567/19101 [07:17<1:41:46,  2.87it/s]  8%|▊         | 1568/19101 [07:17<1:38:06,  2.98it/s]./MEAD/vertices_npy/M040_front_surprised_lv1_012_vertices.npyないじゃん
-M019 contempt lv2 018
-W036 surprised lv2 003
-M013 angry lv1 007
-W009 contempt lv2 020
-W014 disgusted lv3 021
-W035 contempt lv2 029
-./MEAD/vertices_npy/W035_front_contempt_lv2_029_vertices.npyないじゃん
-W025 sad lv2 030
-M011 happy lv2 010
-W033 neutral lv1 009
-M042 sad lv3 012
-./MEAD/vertices_npy/M042_front_sad_lv3_012_vertices.npyないじゃん
-M040 fear lv1 026
-W035 happy lv1 028
-M011 neutral lv1 007
-W036 happy lv3 002
-M039 happy lv1 021
-W011 sad lv3 007
-W009 sad lv2 013
-M011 disgusted lv2 018
-W014 angry lv3 010
-W023 happy lv3 027
-W033 happy lv1 018
-./MEAD/vertices_npy/W033_front_happy_lv1_018_vertices.npyないじゃん
-W024 surprised lv2 018
-./MEAD/vertices_npy/W024_front_surprised_lv2_018_vertices.npyないじゃん
-M005 sad lv3 010
-W037 happy lv3 009
-M009 happy lv2 005
-W028 surprised lv2 017
-W023 surprised lv1 008
-M011 happy lv3 016
-W011 fear lv3 012
-M005 sad lv1 022
-M007 happy lv2 026
-M013 surprised lv2 018
-M012 fear lv1 022
-M009 fear lv2 024
-M013 contempt lv2 025
-W028 happy lv2 009
-W014 surprised lv3 007
-M040 happy lv3 006
-./MEAD/vertices_npy/M040_front_happy_lv3_006_vertices.npyないじゃん
-W029 sad lv2 022
-W026 fear lv1 010
-W009 fear lv1 001
-W040 sad lv2 002
-M007 happy lv2 014
-W036 sad lv1 018
-./MEAD/vertices_npy/W036_front_sad_lv1_018_vertices.npyないじゃん
-M012 neutral lv1 018
-W033 happy lv1 009
-W011 contempt lv1 030
-W009 angry lv3 022
-M040 disgusted lv3 024
-./MEAD/vertices_npy/M040_front_disgusted_lv3_024_vertices.npyないじゃん
-M005 happy lv1 019
-M042 neutral lv1 024
-./MEAD/vertices_npy/M042_front_neutral_lv1_024_vertices.npyないじゃん
-W025 sad lv1 028
-./MEAD/vertices_npy/W025_front_sad_lv1_028_vertices.npyないじゃん
-W025 sad lv2 003
-W026 sad lv3 027
-./MEAD/vertices_npy/W026_front_sad_lv3_027_vertices.npyないじゃん
-M013 sad lv2 023
-W036 disgusted lv2 008
-./MEAD/vertices_npy/W036_front_disgusted_lv2_008_vertices.npyないじゃん
-M011 happy lv1 023
-W028 fear lv3 010
-M041 angry lv2 021
-./MEAD/vertices_npy/M041_front_angry_lv2_021_vertices.npyないじゃん
-W025 sad lv3 008
-W021 fear lv3 004
-./MEAD/vertices_npy/W021_front_fear_lv3_004_vertices.npyないじゃん
-W023 contempt lv2 024
-./MEAD/vertices_npy/W023_front_contempt_lv2_024_vertices.npyないじゃん
-W040 sad lv3 016
-./MEAD/vertices_npy/W040_front_sad_lv3_016_vertices.npyないじゃん
-W021 contempt lv1 026
-W026 surprised lv3 008
-M011 disgusted lv1 023
-W011 disgusted lv2 005
-W011 happy lv3 027
-W035 neutral lv1 017
-./MEAD/vertices_npy/W035_front_neutral_lv1_017_vertices.npyないじゃん
-W021 happy lv3 002
-W015 disgusted lv3 001
-W029 fear lv3 014
-./MEAD/vertices_npy/W029_front_fear_lv3_014_vertices.npyないじゃん
-W024 angry lv1 018
-M003 disgusted lv2 029
-W038 angry lv2 012
-./MEAD/vertices_npy/W038_front_angry_lv2_012_vertices.npyないじゃん
-W025 surprised lv2 010
-M012 fear lv1 003
-M039 happy lv3 002
-W014 fear lv2 003
-W009 sad lv2 018
-W028 disgusted lv2 005
-./MEAD/vertices_npy/W028_front_disgusted_lv2_005_vertices.npyないじゃん
-W021 sad lv3 020
-W033 happy lv3 009
-W009 disgusted lv3 011
-W036 sad lv1 027
-./MEAD/vertices_npy/W036_front_sad_lv1_027_vertices.npyないじゃん
-W014 surprised lv1 002
-W023 fear lv1 014
-./MEAD/vertices_npy/W023_front_fear_lv1_014_vertices.npyないじゃん
-M012 angry lv1 023
-W028 surprised lv3 028
-./MEAD/vertices_npy/W028_front_surprised_lv3_028_vertices.npyないじゃん
-M003 happy lv2 027
-M012 contempt lv3 018
-M005 happy lv1 001
-W024 surprised lv3 010
-W029 sad lv2 006
-./MEAD/vertices_npy/W029_front_sad_lv2_006_vertices.npyないじゃん
-W021 angry lv1 009
-W025 angry lv1 015
-W011 neutral lv1 033
-W009 disgusted lv3 009
-W035 contempt lv2 027
-M007 fear lv3 004
-W038 fear lv3 022
-./MEAD/vertices_npy/W038_front_fear_lv3_022_vertices.npyないじゃん
-W024 disgusted lv2 014
-./MEAD/vertices_npy/W024_front_disgusted_lv2_014_vertices.npyないじゃん
-W028 contempt lv2 023
-./MEAD/vertices_npy/W028_front_contempt_lv2_023_vertices.npyないじゃん
-M013 surprised lv3 019
-M042 contempt lv2 003
-M011 happy lv3 023
-M005 surprised lv1 004
-W038 sad lv1 023
-W021 surprised lv3 010
-W036 sad lv1 013
-W038 contempt lv1 028
-W021 happy lv3 008
-M003 surprised lv2 013
-M009 fear lv1 018
-W009 surprised lv3 022
-M019 sad lv2 022
-W023 sad lv1 027
-./MEAD/vertices_npy/W023_front_sad_lv1_027_vertices.npyないじゃん
-W026 sad lv2 024
-./MEAD/vertices_npy/W026_front_sad_lv2_024_vertices.npyないじゃん
-M011 sad lv1 025
-M040 neutral lv1 028
-W038 neutral lv1 007
-M013 happy lv2 008
-W025 angry lv2 006
-./MEAD/vertices_npy/W025_front_angry_lv2_006_vertices.npyないじゃん
-W009 neutral lv1 040
-W038 contempt lv1 009
-W025 disgusted lv3 025
-W021 happy lv1 007
-W015 fear lv2 026
-W011 contempt lv1 020
-M005 sad lv3 007
-M042 disgusted lv1 019
-M005 happy lv3 030
-W023 angry lv2 006
-./MEAD/vertices_npy/W023_front_angry_lv2_006_vertices.npyないじゃん
-W014 contempt lv1 001
-M013 angry lv3 003
-W035 contempt lv1 020
-M012 disgusted lv2 022
-W009 disgusted lv1 021
-W029 surprised lv2 012
-./MEAD/vertices_npy/W029_front_surprised_lv2_012_vertices.npyないじゃん
-W040 sad lv3 002
-M039 disgusted lv2 014
-./MEAD/vertices_npy/M039_front_disgusted_lv2_014_vertices.npyないじゃん
-W037 fear lv2 019
-./MEAD/vertices_npy/W037_front_fear_lv2_019_vertices.npyないじゃん
-W026 sad lv2 019
-W026 sad lv2 011
-./MEAD/vertices_npy/W026_front_sad_lv2_011_vertices.npyないじゃん
-W024 happy lv3 024
-./MEAD/vertices_npy/W024_front_happy_lv3_024_vertices.npyないじゃん
-M019 fear lv3 001
-M013 fear lv2 006
-W036 surprised lv1 025
-./MEAD/vertices_npy/W036_front_surprised_lv1_025_vertices.npyないじゃん
-W015 sad lv3 011
-M003 happy lv1 027
-M039 neutral lv1 016
-./MEAD/vertices_npy/M039_front_neutral_lv1_016_vertices.npyないじゃん
-W021 contempt lv2 012
-./MEAD/vertices_npy/W021_front_contempt_lv2_012_vertices.npyないじゃん
-M041 surprised lv1 018
-./MEAD/vertices_npy/M041_front_surprised_lv1_018_vertices.npyないじゃん
-M005 contempt lv1 015
-M042 disgusted lv1 023
-./MEAD/vertices_npy/M042_front_disgusted_lv1_023_vertices.npyないじゃん
-W023 happy lv1 004
-./MEAD/vertices_npy/W023_front_happy_lv1_004_vertices.npyないじゃん
-M007 angry lv1 025
-W033 fear lv3 011
-./MEAD/vertices_npy/W033_front_fear_lv3_011_vertices.npyないじゃん
-W037 disgusted lv2 017
-M011 surprised lv1 023
-M009 contempt lv1 021
-M013 disgusted lv2 006
-W021 disgusted lv2 030
-./MEAD/vertices_npy/W021_front_disgusted_lv2_030_vertices.npyないじゃん
-M005 contempt lv1 022
-M012 angry lv2 029
-M005 contempt lv1 002
-W037 happy lv3 021
-W021 fear lv1 013
-./MEAD/vertices_npy/W021_front_fear_lv1_013_vertices.npyないじゃん
-W015 sad lv2 007
-W014 disgusted lv1 005
-W021 happy lv2 003
-W038 surprised lv3 015
-M039 happy lv2 013
-M011 disgusted lv2 004
-M039 happy lv3 021
-W025 surprised lv1 030
-W033 neutral lv1 036
-./MEAD/vertices_npy/W033_front_neutral_lv1_036_vertices.npyないじゃん
-M041 neutral lv1 034
-W028 happy lv1 012
-./MEAD/vertices_npy/W028_front_happy_lv1_012_vertices.npyないじゃん
-W021 surprised lv2 027
-./MEAD/vertices_npy/W021_front_surprised_lv2_027_vertices.npyないじゃん
-M042 disgusted lv3 005
-./MEAD/vertices_npy/M042_front_disgusted_lv3_005_vertices.npyないじゃん
-W025 contempt lv2 025
-M011 disgusted lv2 028
-W038 contempt lv3 006
-./MEAD/vertices_npy/W038_front_contempt_lv3_006_vertices.npyないじゃん
-M003 angry lv3 003
-M042 sad lv3 025
-./MEAD/vertices_npy/M042_front_sad_lv3_025_vertices.npyないじゃん
-M042 surprised lv1 016
-M012 sad lv2 019
-W028 sad lv3 028
-./MEAD/vertices_npy/W028_front_sad_lv3_028_vertices.npyないじゃん
-W033 disgusted lv1 025
-W036 fear lv2 027
-./MEAD/vertices_npy/W036_front_fear_lv2_027_vertices.npyないじゃん
-W035 disgusted lv1 011
-M041 angry lv2 001
-M040 sad lv3 013
-M005 angry lv2 017
-M003 sad lv3 008
-W026 happy lv3 002
-W015 sad lv1 012
-W015 disgusted lv3 027
-M040 sad lv1 013
-M041 disgusted lv2 023
-./MEAD/vertices_npy/M041_front_disgusted_lv2_023_vertices.npyないじゃん
-W011 surprised lv3 028
-M040 neutral lv1 039
-M013 fear lv2 022
-W038 contempt lv2 022
-./MEAD/vertices_npy/W038_front_contempt_lv2_022_vertices.npyないじゃん
-W023   8%|▊         | 1570/19101 [07:17<1:23:22,  3.50it/s]  8%|▊         | 1571/19101 [07:18<1:28:04,  3.32it/s]  8%|▊         | 1572/19101 [07:18<1:32:17,  3.17it/s]  8%|▊         | 1574/19101 [07:18<1:13:36,  3.97it/s]  8%|▊         | 1576/19101 [07:19<1:06:39,  4.38it/s]  8%|▊         | 1577/19101 [07:19<1:23:39,  3.49it/s]  8%|▊         | 1578/19101 [07:20<1:28:30,  3.30it/s]  8%|▊         | 1580/19101 [07:20<1:25:44,  3.41it/s]  8%|▊         | 1581/19101 [07:21<1:38:39,  2.96it/s]  8%|▊         | 1582/19101 [07:21<1:38:21,  2.97it/s]  8%|▊         | 1583/19101 [07:22<1:54:35,  2.55it/s]  8%|▊         | 1584/19101 [07:22<2:00:41,  2.42it/s]  8%|▊         | 1586/19101 [07:23<1:41:19,  2.88it/s]  8%|▊         | 1587/19101 [07:23<1:37:34,  2.99it/s]  8%|▊         | 1589/19101 [07:23<1:19:04,  3.69it/s]  8%|▊         | 1591/19101 [07:24<1:26:32,  3.37it/s]  8%|▊         | 1593/19101 [07:24<1:18:34,  3.71it/s]  8%|▊         | 1594/19101 [07:25<1:31:15,  3.20it/s]  8%|▊         | 1595/19101 [07:25<1:43:03,  2.83it/s]  8%|▊         | 1597/19101 [07:26<1:24:15,  3.46it/s]  8%|▊         | 1598/19101 [07:26<1:35:53,  3.04it/s]  8%|▊         | 1599/19101 [07:26<1:37:24,  2.99it/s]  8%|▊         | 1600/19101 [07:27<1:43:16,  2.82it/s]  8%|▊         | 1601/19101 [07:27<1:44:54,  2.78it/s]  8%|▊         | 1602/19101 [07:28<2:07:14,  2.29it/s]  8%|▊         | 1604/19101 [07:28<1:41:07,  2.88it/s]  8%|▊         | 1606/19101 [07:29<1:17:47,  3.75it/s]  8%|▊         | 1607/19101 [07:29<1:26:55,  3.35it/s]  8%|▊         | 1608/19101 [07:29<1:24:15,  3.46it/s]  8%|▊         | 1609/19101 [07:30<1:23:00,  3.51it/s]  8%|▊         | 1610/19101 [07:30<1:26:03,  3.39it/s]  8%|▊         | 1611/19101 [07:30<1:32:02,  3.17it/s]  8%|▊         | 1612/19101 [07:31<1:54:10,  2.55it/s]  8%|▊         | 1613/19101 [07:31<1:44:04,  2.80it/s]  8%|▊         | 1614/19101 [07:31<1:38:44,  2.95it/s]  8%|▊         | 1616/19101 [07:32<1:18:35,  3.71it/s]  8%|▊         | 1617/19101 [07:32<1:16:51,  3.79it/s]  8%|▊         | 1618/19101 [07:32<1:24:01,  3.47it/s]  8%|▊         | 1619/19101 [07:33<1:36:55,  3.01it/s]  8%|▊         | 1620/19101 [07:33<1:40:21,  2.90it/s]  8%|▊         | 1622/19101 [07:34<1:22:16,  3.54it/s]  8%|▊         | 1623/19101 [07:34<1:38:24,  2.96it/s]  9%|▊         | 1624/19101 [07:35<1:53:17,  2.57it/s]  9%|▊         | 1625/19101 [07:35<2:02:35,  2.38it/s]  9%|▊         | 1626/19101 [07:36<2:07:45,  2.28it/s]  9%|▊         | 1627/19101 [07:36<2:01:37,  2.39it/s]  9%|▊         | 1628/19101 [07:36<1:50:29,  2.64it/s]  9%|▊         | 1629/19101 [07:37<1:44:25,  2.79it/s]  9%|▊         | 1630/19101 [07:37<1:48:56,  2.67it/s]  9%|▊         | 1632/19101 [07:37<1:15:24,  3.86it/s]  9%|▊         | 1633/19101 [07:38<1:14:08,  3.93it/s]  9%|▊         | 1634/19101 [07:38<1:22:11,  3.54it/s]  9%|▊         | 1635/19101 [07:38<1:30:24,  3.22it/s]  9%|▊         | 1637/19101 [07:39<1:04:21,  4.52it/s]  9%|▊         | 1638/19101 [07:39<1:16:10,  3.82it/s]  9%|▊         | 1641/19101 [07:39<56:32,  5.15it/s]    9%|▊         | 1642/19101 [07:40<1:03:20,  4.59it/s]  9%|▊         | 1643/19101 [07:40<1:21:56,  3.55it/s]  9%|▊         | 1644/19101 [07:41<1:37:59,  2.97it/s]  9%|▊         | 1645/19101 [07:41<1:36:33,  3.01it/s]  9%|▊         | 1646/19101 [07:41<1:48:11,  2.69it/s]  9%|▊         | 1647/19101 [07:42<1:59:57,  2.42it/s]  9%|▊         | 1648/19101 [07:42<2:07:54,  2.27it/s]  9%|▊         | 1649/19101 [07:43<2:12:11,  2.20it/s]  9%|▊         | 1651/19101 [07:43<1:38:09,  2.96it/s]  9%|▊         | 1654/19101 [07:44<1:08:56,  4.22it/s]  9%|▊         | 1655/19101 [07:44<1:12:02,  4.04it/s]  9%|▊         | 1656/19101 [07:44<1:25:17,  3.41it/s]  9%|▊         | 1657/19101 [07:45<1:32:23,  3.15it/s]  9%|▊         | 1658/19101 [07:45<1:33:31,  3.11it/s]  9%|▊         | 1659/19101 [07:46<1:38:32,  2.95it/s]  9%|▊         | 1660/19101 [07:46<1:33:00,  3.13it/s]  9%|▊         | 1662/19101 [07:46<1:19:16,  3.67it/s]  9%|▊         | 1663/19101 [07:47<1:27:11,  3.33it/s]  9%|▊         | 1664/19101 [07:47<1:33:21,  3.11it/s]  9%|▊         | 1665/19101 [07:48<1:43:28,  2.81it/s]  9%|▊         | 1666/19101 [07:48<1:50:38,  2.63it/s]  9%|▊         | 1667/19101 [07:48<1:40:12,  2.90it/s]  9%|▊         | 1668/19101 [07:49<1:47:17,  2.71it/s]  9%|▊         | 1669/19101 [07:49<1:48:02,  2.69it/s]  9%|▊         | 1670/19101 [07:50<2:02:44,  2.37it/s]  9%|▊         | 1671/19101 [07:50<2:05:03,  2.32it/s]  9%|▉         | 1672/19101 [07:50<1:56:41,  2.49it/s]  9%|▉         | 1674/19101 [07:51<1:28:08,  3.30it/s]  9%|▉         | 1676/19101 [07:51<1:17:56,  3.73it/s]  9%|▉         | 1677/19101 [07:52<1:22:54,  3.50it/s]  9%|▉         | 1679/19101 [07:52<1:09:27,  4.18it/s]  9%|▉         | 1680/19101 [07:52<1:35:41,  3.03it/s]  9%|▉         | 1683/19101 [07:53<1:12:28,  4.01it/s]  9%|▉         | 1685/19101 [07:54<1:13:28,  3.95it/s]  9%|▉         | 1686/19101 [07:54<1:20:35,  3.60it/s]  9%|▉         | 1687/19101 [07:54<1:38:43,  2.94it/s]  9%|▉         | 1688/19101 [07:55<1:50:22,  2.63it/s]  9%|▉         | 1691/19101 [07:55<1:00:33,  4.79it/s]  9%|▉         | 1693/19101 [07:56<1:22:22,  3.52it/s]  9%|▉         | 1694/19101 [07:56<1:31:52,  3.16it/s]  9%|▉         | 1695/19101 [07:57<1:38:10,  2.95it/s]  9%|▉         | 1696/19101 [07:57<1:36:29,  3.01it/s]  9%|▉         | 1697/19101 [07:58<1:36:13,  3.01it/s]  9%|▉         | 1699/19101 [07:58<1:20:34,  3.60it/s]  9%|▉         | 1700/19101 [07:58<1:27:46,  3.30it/s]  9%|▉         | 1702/19101 [07:59<1:18:14,  3.71it/s]  9%|▉         | 1704/19101 [07:59<56:26,  5.14it/s]    9%|▉         | 1705/19101 [07:59<1:00:38,  4.78it/s]  9%|▉         | 1707/19101 [07:59<52:14,  5.55it/s]    9%|▉         | 1709/19101 [08:00<1:15:12,  3.85it/s]  9%|▉         | 1710/19101 [08:00<1:14:45,  3.88it/s]  9%|▉         | 1711/19101 [08:01<1:18:29,  3.69it/s]  9%|▉         | 1714/19101 [08:01<1:11:47,  4.04it/s]  9%|▉         | 1715/19101 [08:02<1:20:14,  3.61it/s]  9%|▉         | 1717/19101 [08:02<1:12:52,  3.98it/s]  9%|▉         | 1718/19101 [08:03<1:19:47,  3.63it/s]  9%|▉         | 1719/19101 [08:03<1:22:45,  3.50it/s]  9%|▉         | 1720/19101 [08:03<1:36:28,  3.00it/s]  9%|▉         | 1721/19101 [08:04<1:43:00,  2.81it/s]  9%|▉         | 1722/19101 [08:04<1:45:54,  2.74it/s]  9%|▉         | 1724/19101 [08:05<1:33:11,  3.11it/s]  9%|▉         | 1727/19101 [08:05<1:08:10,  4.25it/s]  9%|▉         | 1729/19101 [08:06<1:01:27,  4.71it/s]  9%|▉         | 1730/19101 [08:06<1:09:01,  4.19it/s]  9%|▉         | 1732/19101 [08:06<1:06:14,  4.37it/s]  9%|▉         | 1733/19101 [08:07<1:15:18,  3.84it/s]  9%|▉         | 1734/19101 [08:07<1:43:09,  2.81it/s]  9%|▉         | 1735/19101 [08:08<1:48:01,  2.68it/s]  9%|▉         | 1736/19101 [08:08<2:00:20,  2.40it/s]  9%|▉         | 1737/19101 [08:09<1:53:53,  2.54it/s]  9%|▉         | 1738/19101 [08:09<2:09:49,  2.23it/s]  9%|▉         | 1739/19101 [08:10<2:18:19,  2.09it/s]  9%|▉         | 1740/19101 [08:10<2:30:29,  1.92it/s]  9%|▉         | 1741/19101 [08:11<2:23:10,  2.02it/s]  9%|▉         | 1742/19101 [08:11<2:09:22,  2.24it/s]  9%|▉         | 1744/19101 [08:12<1:42:03,  2.83it/s]  9%|▉         | 1746/19101 [08:12<1:44:32,  2.77it/s]  9%|▉         | 1747/19101 [08:13<1:43:18,  2.80it/s]  9%|▉         | 1748/19101 [08:13<1:54:34,  2.52it/s]  9%|▉         | 1749/19101 [08:14<1:57:38,  2.46it/s]  9%|▉         | 1750/19101 [08:14<2:01:31,  2.38it/s]  9%|▉         | 1751/19101 [08:15<1:53:19,  2.55it/s]  9%|▉         | 1752/19101 [08:15<1:48:52,  2.66it/s]  9%|▉         | 1753/19101 [08:15<1:49:26,  2.64it/s]  9%|▉         | 1754/19101 [08:16<1:45:35,  2.74it/s]  9%|▉         | 1755/19101 [08:16<1:52:01,  2.58it/s]  9%|▉         | 1756/19101 [08:16<1:51:46,  2.59it/s]  9%|▉         | 1757/19101 [08:17<1:51:56,  2.58it/s]  9%|▉         | 1758/19101 [08:17<1:59:07,  2.43it/s]  9%|▉         | 1761/19101 [08:18<1:24:16,  3.43it/s]  9%|▉         | 1762/19101 [08:18<1:38:01,  2.95it/s]  9%|▉         | 1764/19101 [08:19<1:31:12,  3.17it/s]  9%|▉         | 1765/19101 [08:19<1:46:04,  2.72it/s]  9%|▉         | 1766/19101 [08:20<1:51:08,  2.60it/s]  9%|▉         | 1767/19101 [08:20<2:01:18,  2.38it/s]  9%|▉         | 1769/19101 [08:21<1:45:12,  2.75it/s]  9%|▉         | 1770/19101 [08:22<1:57:09,  2.47it/s]  9%|▉         | 1771/19101 [08:22<2:08:23,  2.25it/s]  9%|▉         | 1773/19101 [08:23<2:14:45,  2.14it/s]  9%|▉         | 1775/19101 [08:24<1:54:17,  2.53it/s]  9%|▉         | 1776/19101 [08:24<2:10:51,  2.21it/s]  9%|▉         | 1778/19101 [08:25<2:00:30,  2.40it/s]  9%|▉         | 1779/19101 [08:26<2:14:34,  2.15it/s]  9%|▉         | 1780/19101 [08:26<2:05:14,  2.31it/s]  9%|▉         | 1781/19101 [08:27<2:11:00,  2.20it/s]happy lv1 008
-W011 contempt lv3 020
-W015 fear lv1 013
-W025 happy lv2 005
-./MEAD/vertices_npy/W025_front_happy_lv2_005_vertices.npyないじゃん
-W033 sad lv2 022
-W029 neutral lv1 023
-./MEAD/vertices_npy/W029_front_neutral_lv1_023_vertices.npyないじゃん
-W024 happy lv2 019
-W014 happy lv2 028
-M039 sad lv2 020
-W038 disgusted lv1 008
-./MEAD/vertices_npy/W038_front_disgusted_lv1_008_vertices.npyないじゃん
-M011 sad lv2 020
-M012 surprised lv3 030
-M039 fear lv2 008
-W011 angry lv1 018
-W024 contempt lv3 002
-W040 surprised lv1 004
-./MEAD/vertices_npy/W040_front_surprised_lv1_004_vertices.npyないじゃん
-M007 sad lv3 026
-M019 disgusted lv3 014
-W035 fear lv3 030
-./MEAD/vertices_npy/W035_front_fear_lv3_030_vertices.npyないじゃん
-M012 surprised lv3 003
-W036 fear lv1 029
-./MEAD/vertices_npy/W036_front_fear_lv1_029_vertices.npyないじゃん
-W021 sad lv1 008
-W029 fear lv2 021
-./MEAD/vertices_npy/W029_front_fear_lv2_021_vertices.npyないじゃん
-M005 angry lv2 012
-W024 surprised lv2 023
-W037 happy lv3 008
-W021 happy lv2 030
-./MEAD/vertices_npy/W021_front_happy_lv2_030_vertices.npyないじゃん
-W036 happy lv1 021
-W035 sad lv1 007
-W040 surprised lv1 007
-M009 sad lv3 004
-M040 fear lv3 016
-M013 sad lv3 007
-W025 surprised lv2 027
-./MEAD/vertices_npy/W025_front_surprised_lv2_027_vertices.npyないじゃん
-W040 disgusted lv1 018
-W036 surprised lv3 013
-./MEAD/vertices_npy/W036_front_surprised_lv3_013_vertices.npyないじゃん
-M041 contempt lv1 002
-M040 happy lv3 015
-M003 angry lv3 025
-W037 disgusted lv3 002
-M007 fear lv2 023
-W011 angry lv3 017
-M011 neutral lv1 018
-W035 contempt lv1 026
-W025 angry lv2 017
-W029 surprised lv3 006
-./MEAD/vertices_npy/W029_front_surprised_lv3_006_vertices.npyないじゃん
-M019 happy lv2 023
-W015 happy lv3 014
-W036 angry lv3 016
-W014 fear lv2 020
-W023 angry lv3 010
-M040 fear lv3 005
-./MEAD/vertices_npy/M040_front_fear_lv3_005_vertices.npyないじゃん
-M019 sad lv2 009
-M013 fear lv2 026
-W021 fear lv3 017
-M019 happy lv3 026
-W026 sad lv2 029
-M040 contempt lv1 001
-W009 surprised lv3 025
-M003 fear lv2 022
-M005 contempt lv2 012
-W040 fear lv1 022
-./MEAD/vertices_npy/W040_front_fear_lv1_022_vertices.npyないじゃん
-W009 angry lv1 006
-M039 happy lv2 027
-M009 neutral lv1 038
-M012 fear lv1 016
-W023 neutral lv1 017
-./MEAD/vertices_npy/W023_front_neutral_lv1_017_vertices.npyないじゃん
-W033 sad lv1 023
-M012 fear lv2 024
-M040 happy lv3 030
-./MEAD/vertices_npy/M040_front_happy_lv3_030_vertices.npyないじゃん
-W037 contempt lv3 004
-./MEAD/vertices_npy/W037_front_contempt_lv3_004_vertices.npyないじゃん
-W025 surprised lv3 015
-W024 happy lv2 002
-M013 angry lv1 028
-M040 disgusted lv1 027
-W037 happy lv2 028
-M012 sad lv2 023
-W023 angry lv1 001
-W026 happy lv1 007
-W026 sad lv1 015
-W040 sad lv1 016
-./MEAD/vertices_npy/W040_front_sad_lv1_016_vertices.npyないじゃん
-M039 happy lv3 022
-M040 disgusted lv1 015
-./MEAD/vertices_npy/M040_front_disgusted_lv1_015_vertices.npyないじゃん
-W029 angry lv2 011
-./MEAD/vertices_npy/W029_front_angry_lv2_011_vertices.npyないじゃん
-M003 angry lv3 016
-M012 contempt lv3 028
-W029 happy lv3 013
-M012 contempt lv2 016
-W038 surprised lv3 030
-W014 surprised lv3 001
-M011 surprised lv2 013
-W025 neutral lv1 026
-./MEAD/vertices_npy/W025_front_neutral_lv1_026_vertices.npyないじゃん
-W035 fear lv2 025
-W036 surprised lv3 003
-W028 contempt lv3 028
-M007 sad lv3 012
-M042 fear lv2 015
-W036 angry lv3 009
-W009 sad lv1 011
-M039 contempt lv1 017
-W025 sad lv1 014
-W037 happy lv1 022
-M005 surprised lv2 011
-W021 fear lv1 011
-./MEAD/vertices_npy/W021_front_fear_lv1_011_vertices.npyないじゃん
-M040 sad lv2 014
-M042 neutral lv1 023
-./MEAD/vertices_npy/M042_front_neutral_lv1_023_vertices.npyないじゃん
-W028 surprised lv1 022
-W015 disgusted lv3 005
-W035 contempt lv2 024
-./MEAD/vertices_npy/W035_front_contempt_lv2_024_vertices.npyないじゃん
-M042 disgusted lv3 017
-W023 contempt lv1 001
-W028 contempt lv3 016
-./MEAD/vertices_npy/W028_front_contempt_lv3_016_vertices.npyないじゃん
-M042 disgusted lv2 014
-./MEAD/vertices_npy/M042_front_disgusted_lv2_014_vertices.npyないじゃん
-M042 angry lv1 026
-W033 disgusted lv1 023
-./MEAD/vertices_npy/W033_front_disgusted_lv1_023_vertices.npyないじゃん
-W015 disgusted lv2 022
-W028 sad lv3 020
-W026 disgusted lv2 020
-W037 angry lv1 001
-W021 happy lv3 010
-./MEAD/vertices_npy/W021_front_happy_lv3_010_vertices.npyないじゃん
-W021 fear lv1 020
-./MEAD/vertices_npy/W021_front_fear_lv1_020_vertices.npyないじゃん
-W029 angry lv1 027
-./MEAD/vertices_npy/W029_front_angry_lv1_027_vertices.npyないじゃん
-M012 disgusted lv2 026
-M042 surprised lv3 023
-M003 surprised lv1 010
-W036 surprised lv1 022
-W026 sad lv2 023
-W026 disgusted lv2 002
-W024 contempt lv3 023
-./MEAD/vertices_npy/W024_front_contempt_lv3_023_vertices.npyないじゃん
-M040 disgusted lv3 003
-M041 happy lv2 021
-W026 surprised lv2 026
-./MEAD/vertices_npy/W026_front_surprised_lv2_026_vertices.npyないじゃん
-W009 surprised lv1 022
-W036 disgusted lv1 016
-./MEAD/vertices_npy/W036_front_disgusted_lv1_016_vertices.npyないじゃん
-W038 neutral lv1 016
-./MEAD/vertices_npy/W038_front_neutral_lv1_016_vertices.npyないじゃん
-M003 fear lv1 025
-M040 sad lv1 028
-./MEAD/vertices_npy/M040_front_sad_lv1_028_vertices.npyないじゃん
-M012 sad lv3 029
-W035 fear lv2 022
-./MEAD/vertices_npy/W035_front_fear_lv2_022_vertices.npyないじゃん
-M003 disgusted lv2 016
-M040 contempt lv2 002
-W028 surprised lv1 030
-W040 fear lv2 021
-./MEAD/vertices_npy/W040_front_fear_lv2_021_vertices.npyないじゃん
-M042 fear lv1 012
-./MEAD/vertices_npy/M042_front_fear_lv1_012_vertices.npyないじゃん
-W014 fear lv3 027
-W014 happy lv2 029
-W033 surprised lv2 028
-./MEAD/vertices_npy/W033_front_surprised_lv2_028_vertices.npyないじゃん
-W009 happy lv1 015
-W040 surprised lv3 021
-M012 angry lv1 024
-W014 angry lv3 019
-W024 fear lv1 024
-W015 surprised lv3 011
-W023 neutral lv1 006
-./MEAD/vertices_npy/W023_front_neutral_lv1_006_vertices.npyないじゃん
-W011 disgusted lv3 026
-W023 disgusted lv3 011
-./MEAD/vertices_npy/W023_front_disgusted_lv3_011_vertices.npyないじゃん
-W029 disgusted lv1 015
-./MEAD/vertices_npy/W029_front_disgusted_lv1_015_vertices.npyないじゃん
-W015 fear lv2 022
-M042 contempt lv2 021
-./MEAD/vertices_npy/M042_front_contempt_lv2_021_vertices.npyないじゃん
-M039 fear lv2 010
-M011 contempt lv1 005
-W026 happy lv1 030
-./MEAD/vertices_npy/W026_front_happy_lv1_030_vertices.npyないじゃん
-W024 fear lv1 010
-M013 angry lv3 009
-W015 sad lv1 007
-W011 disgusted lv3 009
-W009 happy lv1 012
-M013 sad lv3 003
-W026 contempt lv2 020
-W009 sad lv2 008
-M019 fear lv2 020
-W014 sad lv1 022
-M040 angry lv2 016
-M041 surprised lv3 020
-./MEAD/vertices_npy/M041_front_surprised_lv3_020_vertices.npyないじゃん
-M011 contempt lv1 013
-M041 contempt lv2 024
-./MEAD/vertices_npy/M041_front_contempt_lv2_024_vertices.npyないじゃん
-W033 disgusted lv1 027
-M011 disgusted lv3 002
-W014 contempt lv2 009
-W021 disgusted lv3 007
-W011 angry lv1 013
-M011 surprised lv2 003
-W035 angry lv3 023
-W021 sad lv1 022
-M012 contempt lv1 005
-M005 surprised lv2 021
-M041 angry lv3 002
-W014 surprised lv1 004
-M019 contempt lv3 002
-W024 angry lv1 005
-./MEAD/vertices_npy/W024_front_angry_lv1_005_vertices.npyないじゃん
-M042 neutral lv1 012
-./MEAD/vertices_npy/M042_front_neutral_lv1_012_vertices.npyないじゃん
-M012 surprised lv1 011
-W014 fear lv2 017
-M040 neutral lv1 006
-./MEAD/vertices_npy/M040_front_neutral_lv1_006_vertices.npyないじゃん
-W009 surprised lv2 004
-M011 sad lv3 020
-M019 angry lv1 004
-W024 disgusted lv1 008
-W038 surprised lv3 019
-./MEAD/vertices_npy/W038_front_surprised_lv3_019_vertices.npyないじゃん
-W024 surprised lv1 007
-W033 angry lv2 009
-W029 surprised lv1 021
-W024 surprised lv3 028
-./MEAD/vertices_npy/W024_front_surprised_lv3_028_vertices.npyないじゃん
-M013 surprised lv1 020
-W024 contempt lv2 023
-./MEAD/vertices_npy/W024_front_contempt_lv2_023_vertices.npyないじゃん
-W023 contempt lv1 003
-W038 surprised lv3 001
-W037 contempt lv2 012
-./MEAD/vertices_npy/W037_front_contempt_lv2_012_vertices.npyないじゃん
-M005 fear lv3 011
-W029 disgusted lv2 019
-M041 angry lv2 015
-W011 contempt lv2 030
-W035 disgusted  9%|▉         | 1782/19101 [08:27<2:02:11,  2.36it/s]  9%|▉         | 1783/19101 [08:27<1:49:20,  2.64it/s]  9%|▉         | 1785/19101 [08:28<1:30:14,  3.20it/s]  9%|▉         | 1786/19101 [08:28<1:49:05,  2.65it/s]  9%|▉         | 1787/19101 [08:28<1:42:06,  2.83it/s]  9%|▉         | 1788/19101 [08:29<1:39:17,  2.91it/s]  9%|▉         | 1789/19101 [08:29<1:31:50,  3.14it/s]  9%|▉         | 1790/19101 [08:29<1:26:45,  3.33it/s]  9%|▉         | 1791/19101 [08:30<1:29:00,  3.24it/s]  9%|▉         | 1792/19101 [08:30<1:27:16,  3.31it/s]  9%|▉         | 1793/19101 [08:30<1:34:44,  3.04it/s]  9%|▉         | 1794/19101 [08:31<1:36:39,  2.98it/s]  9%|▉         | 1795/19101 [08:31<1:47:01,  2.70it/s]  9%|▉         | 1796/19101 [08:32<1:58:45,  2.43it/s]  9%|▉         | 1797/19101 [08:32<2:09:15,  2.23it/s]  9%|▉         | 1798/19101 [08:33<2:00:59,  2.38it/s]  9%|▉         | 1800/19101 [08:33<1:40:32,  2.87it/s]  9%|▉         | 1803/19101 [08:33<1:07:12,  4.29it/s]  9%|▉         | 1804/19101 [08:34<1:15:55,  3.80it/s]  9%|▉         | 1805/19101 [08:34<1:14:37,  3.86it/s]  9%|▉         | 1806/19101 [08:34<1:14:06,  3.89it/s]  9%|▉         | 1807/19101 [08:35<1:21:58,  3.52it/s]  9%|▉         | 1808/19101 [08:35<1:28:05,  3.27it/s]  9%|▉         | 1809/19101 [08:35<1:30:02,  3.20it/s]  9%|▉         | 1810/19101 [08:36<1:36:00,  3.00it/s]  9%|▉         | 1811/19101 [08:36<1:40:19,  2.87it/s]  9%|▉         | 1812/19101 [08:36<1:37:04,  2.97it/s]  9%|▉         | 1813/19101 [08:37<1:43:25,  2.79it/s] 10%|▉         | 1815/19101 [08:37<1:16:52,  3.75it/s] 10%|▉         | 1817/19101 [08:38<1:20:07,  3.59it/s] 10%|▉         | 1822/19101 [08:38<45:57,  6.27it/s]   10%|▉         | 1823/19101 [08:38<50:43,  5.68it/s] 10%|▉         | 1825/19101 [08:39<49:59,  5.76it/s] 10%|▉         | 1826/19101 [08:39<56:24,  5.10it/s] 10%|▉         | 1827/19101 [08:39<56:43,  5.07it/s] 10%|▉         | 1828/19101 [08:40<1:02:35,  4.60it/s] 10%|▉         | 1829/19101 [08:40<1:07:54,  4.24it/s] 10%|▉         | 1830/19101 [08:40<1:08:12,  4.22it/s] 10%|▉         | 1831/19101 [08:41<1:25:49,  3.35it/s] 10%|▉         | 1833/19101 [08:41<1:09:00,  4.17it/s] 10%|▉         | 1834/19101 [08:41<1:04:52,  4.44it/s] 10%|▉         | 1836/19101 [08:41<1:01:25,  4.68it/s] 10%|▉         | 1837/19101 [08:42<1:02:21,  4.61it/s] 10%|▉         | 1839/19101 [08:42<1:00:46,  4.73it/s] 10%|▉         | 1840/19101 [08:42<1:07:15,  4.28it/s] 10%|▉         | 1842/19101 [08:43<1:00:52,  4.72it/s] 10%|▉         | 1843/19101 [08:43<1:19:03,  3.64it/s] 10%|▉         | 1844/19101 [08:44<1:30:39,  3.17it/s] 10%|▉         | 1845/19101 [08:44<1:42:48,  2.80it/s] 10%|▉         | 1846/19101 [08:44<1:40:14,  2.87it/s] 10%|▉         | 1847/19101 [08:45<1:29:32,  3.21it/s] 10%|▉         | 1848/19101 [08:45<1:16:56,  3.74it/s] 10%|▉         | 1849/19101 [08:45<1:16:44,  3.75it/s] 10%|▉         | 1850/19101 [08:45<1:15:02,  3.83it/s] 10%|▉         | 1851/19101 [08:46<1:16:45,  3.75it/s] 10%|▉         | 1852/19101 [08:46<1:06:58,  4.29it/s] 10%|▉         | 1853/19101 [08:46<1:00:45,  4.73it/s] 10%|▉         | 1854/19101 [08:46<1:02:49,  4.58it/s] 10%|▉         | 1855/19101 [08:46<1:09:29,  4.14it/s] 10%|▉         | 1856/19101 [08:47<1:59:52,  2.40it/s] 10%|▉         | 1858/19101 [08:48<1:21:54,  3.51it/s] 10%|▉         | 1860/19101 [08:48<1:05:41,  4.37it/s] 10%|▉         | 1861/19101 [08:48<1:17:30,  3.71it/s] 10%|▉         | 1862/19101 [08:48<1:10:52,  4.05it/s] 10%|▉         | 1863/19101 [08:49<1:15:22,  3.81it/s] 10%|▉         | 1865/19101 [08:49<54:54,  5.23it/s]   10%|▉         | 1868/19101 [08:49<42:48,  6.71it/s] 10%|▉         | 1870/19101 [08:50<49:04,  5.85it/s] 10%|▉         | 1871/19101 [08:50<58:55,  4.87it/s] 10%|▉         | 1872/19101 [08:50<1:05:10,  4.41it/s] 10%|▉         | 1873/19101 [08:51<1:18:34,  3.65it/s] 10%|▉         | 1874/19101 [08:51<1:29:05,  3.22it/s] 10%|▉         | 1875/19101 [08:51<1:24:40,  3.39it/s] 10%|▉         | 1876/19101 [08:52<1:25:41,  3.35it/s] 10%|▉         | 1878/19101 [08:52<59:17,  4.84it/s]   10%|▉         | 1879/19101 [08:52<1:10:56,  4.05it/s] 10%|▉         | 1880/19101 [08:53<1:29:55,  3.19it/s] 10%|▉         | 1881/19101 [08:53<1:29:40,  3.20it/s] 10%|▉         | 1882/19101 [08:53<1:32:43,  3.09it/s] 10%|▉         | 1883/19101 [08:54<1:17:33,  3.70it/s] 10%|▉         | 1884/19101 [08:54<1:20:34,  3.56it/s] 10%|▉         | 1885/19101 [08:54<1:18:18,  3.66it/s] 10%|▉         | 1886/19101 [08:54<1:10:27,  4.07it/s] 10%|▉         | 1888/19101 [08:55<57:44,  4.97it/s]   10%|▉         | 1889/19101 [08:55<1:07:18,  4.26it/s] 10%|▉         | 1890/19101 [08:55<1:09:20,  4.14it/s] 10%|▉         | 1891/19101 [08:55<1:06:57,  4.28it/s] 10%|▉         | 1892/19101 [08:56<1:07:20,  4.26it/s] 10%|▉         | 1893/19101 [08:56<1:18:05,  3.67it/s] 10%|▉         | 1894/19101 [08:56<1:20:42,  3.55it/s] 10%|▉         | 1895/19101 [08:57<1:09:35,  4.12it/s] 10%|▉         | 1898/19101 [08:57<49:48,  5.76it/s]   10%|▉         | 1899/19101 [08:57<1:06:52,  4.29it/s] 10%|▉         | 1900/19101 [08:58<1:07:35,  4.24it/s] 10%|▉         | 1901/19101 [08:58<1:19:03,  3.63it/s] 10%|▉         | 1904/19101 [08:58<57:51,  4.95it/s]   10%|▉         | 1908/19101 [08:59<40:26,  7.09it/s] 10%|▉         | 1910/19101 [08:59<43:08,  6.64it/s] 10%|█         | 1911/19101 [08:59<45:25,  6.31it/s] 10%|█         | 1912/19101 [08:59<49:01,  5.84it/s] 10%|█         | 1913/19101 [09:00<52:56,  5.41it/s] 10%|█         | 1914/19101 [09:00<56:38,  5.06it/s] 10%|█         | 1915/19101 [09:00<1:11:18,  4.02it/s] 10%|█         | 1916/19101 [09:01<1:16:54,  3.72it/s] 10%|█         | 1918/19101 [09:01<1:01:46,  4.64it/s] 10%|█         | 1919/19101 [09:01<1:05:06,  4.40it/s] 10%|█         | 1920/19101 [09:01<56:43,  5.05it/s]   10%|█         | 1921/19101 [09:01<52:00,  5.51it/s] 10%|█         | 1923/19101 [09:02<50:34,  5.66it/s] 10%|█         | 1925/19101 [09:02<48:36,  5.89it/s] 10%|█         | 1926/19101 [09:03<1:23:48,  3.42it/s] 10%|█         | 1927/19101 [09:03<1:26:39,  3.30it/s] 10%|█         | 1929/19101 [09:04<1:11:37,  4.00it/s] 10%|█         | 1930/19101 [09:04<1:23:33,  3.42it/s] 10%|█         | 1931/19101 [09:04<1:35:49,  2.99it/s] 10%|█         | 1932/19101 [09:05<1:34:26,  3.03it/s] 10%|█         | 1933/19101 [09:05<1:23:18,  3.43it/s] 10%|█         | 1934/19101 [09:05<1:34:41,  3.02it/s] 10%|█         | 1935/19101 [09:06<1:26:11,  3.32it/s] 10%|█         | 1936/19101 [09:06<1:26:27,  3.31it/s] 10%|█         | 1937/19101 [09:06<1:19:32,  3.60it/s] 10%|█         | 1938/19101 [09:06<1:13:09,  3.91it/s] 10%|█         | 1939/19101 [09:07<1:04:32,  4.43it/s] 10%|█         | 1940/19101 [09:07<1:00:56,  4.69it/s] 10%|█         | 1941/19101 [09:07<1:08:45,  4.16it/s] 10%|█         | 1942/19101 [09:07<1:10:38,  4.05it/s] 10%|█         | 1943/19101 [09:07<1:04:43,  4.42it/s] 10%|█         | 1946/19101 [09:08<44:51,  6.37it/s]   10%|█         | 1947/19101 [09:08<48:48,  5.86it/s] 10%|█         | 1948/19101 [09:08<1:09:54,  4.09it/s] 10%|█         | 1949/19101 [09:09<1:08:42,  4.16it/s] 10%|█         | 1950/19101 [09:09<1:15:20,  3.79it/s] 10%|█         | 1951/19101 [09:09<1:19:21,  3.60it/s] 10%|█         | 1952/19101 [09:10<1:49:37,  2.61it/s] 10%|█         | 1953/19101 [09:10<1:34:07,  3.04it/s] 10%|█         | 1954/19101 [09:10<1:24:46,  3.37it/s] 10%|█         | 1955/19101 [09:11<1:20:22,  3.56it/s] 10%|█         | 1957/19101 [09:11<1:05:03,  4.39it/s] 10%|█         | 1959/19101 [09:12<1:08:42,  4.16it/s] 10%|█         | 1961/19101 [09:12<50:43,  5.63it/s]   10%|█         | 1962/19101 [09:12<52:26,  5.45it/s] 10%|█         | 1963/19101 [09:12<56:35,  5.05it/s] 10%|█         | 1964/19101 [09:12<50:55,  5.61it/s] 10%|█         | 1965/19101 [09:12<56:40,  5.04it/s] 10%|█         | 1966/19101 [09:13<53:24,  5.35it/s] 10%|█         | 1968/19101 [09:13<50:19,  5.67it/s] 10%|█         | 1969/19101 [09:13<1:03:42,  4.48it/s] 10%|█         | 1970/19101 [09:13<55:39,  5.13it/s]   10%|█         | 1971/19101 [09:14<58:41,  4.86it/s] 10%|█         | 1972/19101 [09:14<59:34,  4.79it/s] 10%|█         | 1973/19101 [09:14<1:01:34,  4.64it/s] 10%|█         | 1975/19101 [09:14<46:03,  6.20it/s]   10%|█         | 1976/19101 [09:15<55:15,  5.17it/s] 10%|█         | 1978/19101 [09:15<44:14,  6.45it/s] 10%|█         | 1980/19101 [09:15<35:12,  8.10it/s] 10%|█         | 1981/19101 [09:15<45:14,  6.31it/s] 10%|█         | 1982/19101 [09:15<45:37,  6.25it/s] 10%|█         | 1983/19101 [09:15<42:07,  6.77it/s] 10%|█         | 1984/19101 [09:16<42:27,  6.72it/s] 10%|█         | 1985/19101 [09:16<1:00:08,  4.74it/s] 10%|█         | 1986/19101 [09:16<1:10:26,  4.05it/s] 10%|█         | 1987/19101 [09:17<1:06:35,  4.28it/s] 10%|█         | 1988/19101 [09:17<1:07:35,  4.22it/s] 10%|█         | 1989/19101 [09:17<1:09:54,  4.08it/s] 10%|█         | 1991/19101 [09:17<50:33,  5.64it/s]   10%|█         | 1992/19101 [09:17<54:04,  5.27it/s] 10%|█         | 1993/19101 [09:18<58:24,  4.88it/s] 10%|█         | 1994/19101 [09:18<59:30,  4.79it/s] 10%|█         | 1995/19101 [09:18<53:40,  5.31it/s] 10%|█         | 1998/19101 [09:18<41:20,  6.90it/s] 10%|█         | 1999/19101 [09:19<45:14,  6.30it/s] 10%|█         | 2000/19101 [09:19<52:41,  5.41it/s] 10%|█         | 2001/19101 [09:19<54:21,  5.24it/s] 10%|█         | 2002/19101 [09:19<56:23,  5.05it/s] 10%|█         | 2004/19101 [09:20<59:06,  4.82it/s] 10%|█         | 2005/19101 [09:20<1:09:25,  4.10it/s] 11%|█         | 2006/19101 [09:20<1:08:38,  4.15it/s] 11%|█         | 2007/19101 [09:21<1:13:40,  3.87it/s] 11%|█         | 2008/19101 [09:21<1:13:49,  3.86it/s] 11%|█         | 2009/19101 [09:21<1:14:07,  3.84it/s] 11%|█         | 2010/19101 [09:22<1:23:26,  3.41it/s] 11%|█         | 2011/19101 [09:22<1:35:39,  2.98it/s] 11%|█         | 2012/19101 [09:22<1:35:00,  3.00it/s] lv2 012
-W014 happy lv2 015
-M039 disgusted lv2 030
-./MEAD/vertices_npy/M039_front_disgusted_lv2_030_vertices.npyないじゃん
-W025 happy lv3 015
-W014 fear lv1 019
-W037 fear lv2 026
-M007 angry lv1 005
-W035 angry lv2 001
-M041 angry lv1 018
-W023 contempt lv2 025
-M039 fear lv3 003
-W026 disgusted lv3 011
-M019 neutral lv1 025
-W037 angry lv1 009
-W015 fear lv3 025
-W036 fear lv1 015
-M011 sad lv3 019
-W035 neutral lv1 016
-./MEAD/vertices_npy/W035_front_neutral_lv1_016_vertices.npyないじゃん
-W014 surprised lv2 026
-W026 contempt lv2 013
-./MEAD/vertices_npy/W026_front_contempt_lv2_013_vertices.npyないじゃん
-W029 sad lv1 017
-./MEAD/vertices_npy/W029_front_sad_lv1_017_vertices.npyないじゃん
-M003 surprised lv1 001
-M040 sad lv1 008
-M009 disgusted lv3 005
-W014 contempt lv2 003
-W037 happy lv2 001
-M011 disgusted lv3 022
-W037 surprised lv3 030
-M003 surprised lv2 029
-M007 disgusted lv2 023
-W015 sad lv2 025
-W021 surprised lv2 017
-W026 disgusted lv1 023
-./MEAD/vertices_npy/W026_front_disgusted_lv1_023_vertices.npyないじゃん
-W025 angry lv1 008
-W025 fear lv3 022
-./MEAD/vertices_npy/W025_front_fear_lv3_022_vertices.npyないじゃん
-W014 fear lv3 013
-W038 disgusted lv1 029
-./MEAD/vertices_npy/W038_front_disgusted_lv1_029_vertices.npyないじゃん
-W024 surprised lv1 026
-./MEAD/vertices_npy/W024_front_surprised_lv1_026_vertices.npyないじゃん
-W036 surprised lv1 027
-./MEAD/vertices_npy/W036_front_surprised_lv1_027_vertices.npyないじゃん
-W028 disgusted lv1 008
-./MEAD/vertices_npy/W028_front_disgusted_lv1_008_vertices.npyないじゃん
-M039 angry lv1 023
-W009 disgusted lv2 020
-M039 surprised lv1 004
-./MEAD/vertices_npy/M039_front_surprised_lv1_004_vertices.npyないじゃん
-M009 happy lv1 011
-M003 sad lv1 006
-M005 contempt lv2 024
-M041 fear lv3 015
-W028 fear lv3 016
-W037 fear lv2 009
-M005 surprised lv1 017
-W023 sad lv1 017
-./MEAD/vertices_npy/W023_front_sad_lv1_017_vertices.npyないじゃん
-W009 sad lv1 002
-W009 disgusted lv2 002
-M041 angry lv1 027
-./MEAD/vertices_npy/M041_front_angry_lv1_027_vertices.npyないじゃん
-M042 sad lv1 014
-M005 contempt lv1 021
-W024 fear lv3 019
-./MEAD/vertices_npy/W024_front_fear_lv3_019_vertices.npyないじゃん
-W038 contempt lv2 018
-W036 disgusted lv3 010
-W021 neutral lv1 010
-./MEAD/vertices_npy/W021_front_neutral_lv1_010_vertices.npyないじゃん
-W040 fear lv1 015
-W009 contempt lv2 010
-W009 surprised lv2 020
-W014 happy lv3 020
-W015 angry lv2 021
-M019 neutral lv1 023
-M040 contempt lv3 007
-W023 sad lv1 001
-W026 angry lv1 017
-W028 neutral lv1 014
-W036 disgusted lv1 026
-M019 happy lv1 022
-M040 angry lv3 009
-W009 disgusted lv2 024
-M007 happy lv1 020
-W029 fear lv2 028
-./MEAD/vertices_npy/W029_front_fear_lv2_028_vertices.npyないじゃん
-W011 contempt lv1 024
-W037 angry lv1 005
-./MEAD/vertices_npy/W037_front_angry_lv1_005_vertices.npyないじゃん
-W033 happy lv3 008
-M009 happy lv3 017
-W025 fear lv2 024
-W014 disgusted lv1 003
-M041 surprised lv2 006
-./MEAD/vertices_npy/M041_front_surprised_lv2_006_vertices.npyないじゃん
-M012 fear lv2 003
-M042 contempt lv2 006
-./MEAD/vertices_npy/M042_front_contempt_lv2_006_vertices.npyないじゃん
-W023 fear lv1 029
-./MEAD/vertices_npy/W023_front_fear_lv1_029_vertices.npyないじゃん
-W015 disgusted lv2 001
-M039 disgusted lv3 013
-./MEAD/vertices_npy/M039_front_disgusted_lv3_013_vertices.npyないじゃん
-W023 neutral lv1 033
-W025 surprised lv2 029
-W035 neutral lv1 034
-W035 contempt lv2 020
-W033 angry lv1 026
-W023 sad lv3 003
-M003 angry lv3 018
-W036 angry lv1 011
-./MEAD/vertices_npy/W036_front_angry_lv1_011_vertices.npyないじゃん
-W021 fear lv3 010
-W035 surprised lv1 009
-W029 disgusted lv3 001
-M007 happy lv3 017
-W014 fear lv2 012
-M003 sad lv1 004
-M039 surprised lv1 017
-W028 disgusted lv3 009
-W011 angry lv1 003
-W023 contempt lv2 029
-./MEAD/vertices_npy/W023_front_contempt_lv2_029_vertices.npyないじゃん
-W033 disgusted lv3 011
-M040 disgusted lv2 018
-M011 happy lv1 027
-W038 contempt lv1 026
-M012 fear lv1 024
-W024 sad lv1 009
-M003 neutral lv1 024
-M003 contempt lv1 002
-M039 fear lv1 030
-./MEAD/vertices_npy/M039_front_fear_lv1_030_vertices.npyないじゃん
-W021 disgusted lv2 004
-./MEAD/vertices_npy/W021_front_disgusted_lv2_004_vertices.npyないじゃん
-M009 sad lv3 015
-W023 sad lv3 015
-W011 angry lv3 009
-W009 happy lv1 016
-M042 contempt lv1 015
-./MEAD/vertices_npy/M042_front_contempt_lv1_015_vertices.npyないじゃん
-W021 happy lv3 017
-./MEAD/vertices_npy/W021_front_happy_lv3_017_vertices.npyないじゃん
-W011 disgusted lv2 004
-W040 angry lv2 020
-./MEAD/vertices_npy/W040_front_angry_lv2_020_vertices.npyないじゃん
-W025 sad lv3 005
-./MEAD/vertices_npy/W025_front_sad_lv3_005_vertices.npyないじゃん
-W021 fear lv2 019
-./MEAD/vertices_npy/W021_front_fear_lv2_019_vertices.npyないじゃん
-W015 disgusted lv1 010
-M041 sad lv3 025
-./MEAD/vertices_npy/M041_front_sad_lv3_025_vertices.npyないじゃん
-M007 sad lv1 020
-W011 sad lv3 003
-W011 contempt lv2 011
-M009 fear lv2 013
-M005 disgusted lv2 010
-M007 happy lv1 017
-M012 angry lv2 002
-W038 angry lv1 028
-./MEAD/vertices_npy/W038_front_angry_lv1_028_vertices.npyないじゃん
-W026 contempt lv2 011
-W040 fear lv2 018
-M005 happy lv1 022
-W025 fear lv1 003
-M040 sad lv3 004
-./MEAD/vertices_npy/M040_front_sad_lv3_004_vertices.npyないじゃん
-M007 disgusted lv2 006
-M005 fear lv2 003
-W037 fear lv2 002
-W029 sad lv3 013
-M040 happy lv2 001
-W025 happy lv2 026
-./MEAD/vertices_npy/W025_front_happy_lv2_026_vertices.npyないじゃん
-W011 disgusted lv1 027
-M007 contempt lv3 021
-W023 sad lv3 019
-W023 surprised lv2 023
-M039 disgusted lv1 012
-W025 contempt lv2 028
-M007 fear lv2 018
-W009 surprised lv3 007
-W035 surprised lv3 024
-W028 disgusted lv1 017
-W015 contempt lv1 005
-M019 contempt lv3 024
-W035 fear lv3 017
-W033 contempt lv3 027
-W024 contempt lv3 003
-W037 fear lv1 022
-./MEAD/vertices_npy/W037_front_fear_lv1_022_vertices.npyないじゃん
-M042 contempt lv2 024
-./MEAD/vertices_npy/M042_front_contempt_lv2_024_vertices.npyないじゃん
-W024 surprised lv3 009
-M011 angry lv1 023
-M005 happy lv3 023
-M011 disgusted lv2 014
-M041 disgusted lv3 020
-W026 angry lv3 007
-W011 angry lv1 019
-W015 contempt lv1 022
-W026 contempt lv3 010
-W015 surprised lv3 004
-W028 angry lv2 029
-./MEAD/vertices_npy/W028_front_angry_lv2_029_vertices.npyないじゃん
-W038 disgusted lv3 019
-W024 angry lv3 004
-./MEAD/vertices_npy/W024_front_angry_lv3_004_vertices.npyないじゃん
-W009 happy lv2 026
-W038 contempt lv1 004
-./MEAD/vertices_npy/W038_front_contempt_lv1_004_vertices.npyないじゃん
-W009 sad lv2 012
-W011 angry lv1 002
-W011 sad lv2 027
-M009 angry lv3 014
-M003 contempt lv1 027
-W025 fear lv2 007
-W037 disgusted lv3 013
-./MEAD/vertices_npy/W037_front_disgusted_lv3_013_vertices.npyないじゃん
-W021 sad lv2 015
-W040 angry lv2 026
-M003 neutral lv1 003
-W036 contempt lv1 025
-M007 fear lv1 020
-W035 happy lv3 001
-M040 fear lv2 012
-./MEAD/vertices_npy/M040_front_fear_lv2_012_vertices.npyないじゃん
-M011 neutral lv1 010
-W011 happy lv3 017
-M007 neutral lv1 022
-M009 fear lv2 004
-M039 sad lv1 006
-./MEAD/vertices_npy/M039_front_sad_lv1_006_vertices.npyないじゃん
-W037 surprised lv2 008
-W015 angry lv2 018
-M011 happy lv3 014
-M005 angry lv3 003
-W014 contempt lv2 008
-W021 disgusted lv1 017
-W015 neutral lv1 036
-M012 happy lv3 027
-M009 contempt lv2 027
-W015 fear lv2 006
-W038 neutral lv1 018
-./MEAD/vertices_npy/W038_front_neutral_lv1_018_vertices.npyないじゃん
-M003 disgusted lv3 011
-M009 contempt lv1 001
-M005 surprised lv1 023
-M039 angry lv2 023
-M019 angry lv2 016
-W026 happy lv2 011
-./MEAD/vertices_npy/W026_front_happy_lv2_011_vertices.npyないじゃん
-W033 sad lv2 006
-./MEAD/vertices_npy/W033_front_sad_lv2_006_vertices.npyないじゃん
-W015 angry lv3 022
-W028 surprised lv1 015
-M013 sad lv1 013
-W035 fear lv1 024
-M039 happy lv1 014
-W024 contempt lv1 029
-./MEAD/vertices_npy/W024_front_contempt_lv1_029_vertices.npyないじゃん
-M007 sad lv3 020
-W023 disgusted lv3 017
-W037 contempt lv3 017
-W023 surprised lv1 010
-W015 contempt lv3 016
-W011 sad lv3 011
-W025 contempt lv2 026
-W029 contempt lv1 027
-W035 happy lv1 008
-W036 surprised lv2 018
-./MEAD/vertices_npy/W036_front_surprised_lv2_018_vertices.npyないじゃん
-W036 angry lv2 014
- 11%|█         | 2015/19101 [09:23<1:05:48,  4.33it/s] 11%|█         | 2016/19101 [09:23<1:12:53,  3.91it/s] 11%|█         | 2020/19101 [09:24<50:45,  5.61it/s]   11%|█         | 2021/19101 [09:24<1:03:40,  4.47it/s] 11%|█         | 2023/19101 [09:24<55:30,  5.13it/s]   11%|█         | 2026/19101 [09:25<43:13,  6.58it/s] 11%|█         | 2028/19101 [09:25<42:02,  6.77it/s] 11%|█         | 2030/19101 [09:25<40:10,  7.08it/s] 11%|█         | 2031/19101 [09:25<45:18,  6.28it/s] 11%|█         | 2032/19101 [09:26<51:40,  5.51it/s] 11%|█         | 2033/19101 [09:26<58:13,  4.89it/s] 11%|█         | 2034/19101 [09:26<1:12:02,  3.95it/s] 11%|█         | 2036/19101 [09:27<1:10:11,  4.05it/s] 11%|█         | 2037/19101 [09:27<1:14:04,  3.84it/s] 11%|█         | 2039/19101 [09:28<1:10:37,  4.03it/s] 11%|█         | 2041/19101 [09:28<59:53,  4.75it/s]   11%|█         | 2042/19101 [09:28<1:03:43,  4.46it/s] 11%|█         | 2043/19101 [09:28<1:09:15,  4.11it/s] 11%|█         | 2046/19101 [09:29<54:06,  5.25it/s]   11%|█         | 2047/19101 [09:29<1:06:44,  4.26it/s] 11%|█         | 2048/19101 [09:29<1:03:34,  4.47it/s] 11%|█         | 2049/19101 [09:30<1:05:27,  4.34it/s] 11%|█         | 2051/19101 [09:30<1:08:25,  4.15it/s] 11%|█         | 2052/19101 [09:31<1:17:10,  3.68it/s] 11%|█         | 2053/19101 [09:31<1:18:47,  3.61it/s] 11%|█         | 2054/19101 [09:31<1:14:04,  3.84it/s] 11%|█         | 2055/19101 [09:31<1:16:03,  3.74it/s] 11%|█         | 2056/19101 [09:32<1:15:56,  3.74it/s] 11%|█         | 2057/19101 [09:32<1:24:32,  3.36it/s] 11%|█         | 2058/19101 [09:33<1:43:58,  2.73it/s] 11%|█         | 2059/19101 [09:33<1:37:15,  2.92it/s] 11%|█         | 2061/19101 [09:33<1:29:15,  3.18it/s] 11%|█         | 2063/19101 [09:34<1:11:15,  3.98it/s] 11%|█         | 2064/19101 [09:34<1:20:57,  3.51it/s] 11%|█         | 2066/19101 [09:34<1:08:13,  4.16it/s] 11%|█         | 2067/19101 [09:35<1:13:39,  3.85it/s] 11%|█         | 2071/19101 [09:35<43:13,  6.57it/s]   11%|█         | 2072/19101 [09:35<52:11,  5.44it/s] 11%|█         | 2073/19101 [09:36<1:03:54,  4.44it/s] 11%|█         | 2074/19101 [09:36<1:07:26,  4.21it/s] 11%|█         | 2075/19101 [09:37<1:20:19,  3.53it/s] 11%|█         | 2076/19101 [09:37<1:30:13,  3.14it/s] 11%|█         | 2077/19101 [09:37<1:36:06,  2.95it/s] 11%|█         | 2078/19101 [09:38<1:33:39,  3.03it/s] 11%|█         | 2079/19101 [09:38<1:30:36,  3.13it/s] 11%|█         | 2080/19101 [09:38<1:24:13,  3.37it/s] 11%|█         | 2083/19101 [09:39<1:03:03,  4.50it/s] 11%|█         | 2084/19101 [09:39<1:15:17,  3.77it/s] 11%|█         | 2087/19101 [09:39<55:08,  5.14it/s]   11%|█         | 2089/19101 [09:40<50:38,  5.60it/s] 11%|█         | 2090/19101 [09:40<1:01:31,  4.61it/s] 11%|█         | 2091/19101 [09:41<1:21:04,  3.50it/s] 11%|█         | 2092/19101 [09:41<1:25:40,  3.31it/s] 11%|█         | 2093/19101 [09:41<1:27:14,  3.25it/s] 11%|█         | 2096/19101 [09:41<47:43,  5.94it/s]   11%|█         | 2098/19101 [09:43<1:21:41,  3.47it/s] 11%|█         | 2100/19101 [09:43<1:16:40,  3.70it/s] 11%|█         | 2101/19101 [09:43<1:20:10,  3.53it/s] 11%|█         | 2102/19101 [09:44<1:37:34,  2.90it/s] 11%|█         | 2103/19101 [09:45<2:02:49,  2.31it/s] 11%|█         | 2104/19101 [09:45<1:55:05,  2.46it/s] 11%|█         | 2105/19101 [09:45<1:54:15,  2.48it/s] 11%|█         | 2106/19101 [09:46<1:46:40,  2.66it/s] 11%|█         | 2107/19101 [09:46<2:07:39,  2.22it/s] 11%|█         | 2108/19101 [09:47<1:57:02,  2.42it/s] 11%|█         | 2109/19101 [09:47<2:03:05,  2.30it/s] 11%|█         | 2110/19101 [09:48<2:11:00,  2.16it/s] 11%|█         | 2112/19101 [09:48<1:52:43,  2.51it/s] 11%|█         | 2113/19101 [09:48<1:39:36,  2.84it/s] 11%|█         | 2114/19101 [09:49<1:39:21,  2.85it/s] 11%|█         | 2115/19101 [09:49<1:49:43,  2.58it/s] 11%|█         | 2116/19101 [09:50<1:53:50,  2.49it/s] 11%|█         | 2117/19101 [09:50<2:12:38,  2.13it/s] 11%|█         | 2118/19101 [09:51<2:10:25,  2.17it/s] 11%|█         | 2119/19101 [09:51<1:56:43,  2.42it/s] 11%|█         | 2120/19101 [09:52<1:56:13,  2.44it/s] 11%|█         | 2121/19101 [09:52<2:00:27,  2.35it/s] 11%|█         | 2124/19101 [09:53<1:25:47,  3.30it/s] 11%|█         | 2127/19101 [09:53<1:04:02,  4.42it/s] 11%|█         | 2128/19101 [09:53<1:14:52,  3.78it/s] 11%|█         | 2129/19101 [09:54<1:23:22,  3.39it/s] 11%|█         | 2131/19101 [09:55<1:44:06,  2.72it/s] 11%|█         | 2132/19101 [09:55<1:48:12,  2.61it/s] 11%|█         | 2133/19101 [09:56<2:03:24,  2.29it/s] 11%|█         | 2134/19101 [09:56<2:06:39,  2.23it/s] 11%|█         | 2135/19101 [09:57<2:01:29,  2.33it/s] 11%|█         | 2136/19101 [09:57<2:00:11,  2.35it/s] 11%|█         | 2137/19101 [09:58<1:52:57,  2.50it/s] 11%|█         | 2138/19101 [09:58<1:49:35,  2.58it/s] 11%|█         | 2140/19101 [09:58<1:18:10,  3.62it/s] 11%|█         | 2142/19101 [09:59<1:15:30,  3.74it/s] 11%|█         | 2143/19101 [09:59<1:29:13,  3.17it/s] 11%|█         | 2146/19101 [10:00<1:07:28,  4.19it/s] 11%|█         | 2147/19101 [10:00<1:03:11,  4.47it/s] 11%|█         | 2148/19101 [10:01<1:37:38,  2.89it/s] 11%|█▏        | 2150/19101 [10:01<1:16:21,  3.70it/s] 11%|█▏        | 2151/19101 [10:01<1:25:53,  3.29it/s] 11%|█▏        | 2152/19101 [10:02<1:24:27,  3.34it/s] 11%|█▏        | 2153/19101 [10:02<1:26:16,  3.27it/s] 11%|█▏        | 2154/19101 [10:02<1:22:09,  3.44it/s] 11%|█▏        | 2157/19101 [10:03<1:05:49,  4.29it/s] 11%|█▏        | 2158/19101 [10:03<1:11:23,  3.96it/s] 11%|█▏        | 2159/19101 [10:03<1:12:01,  3.92it/s] 11%|█▏        | 2160/19101 [10:04<1:31:21,  3.09it/s] 11%|█▏        | 2163/19101 [10:04<1:04:23,  4.38it/s] 11%|█▏        | 2164/19101 [10:05<1:08:03,  4.15it/s]
