@@ -4,6 +4,9 @@ __pycache__/
 *.pth
 *.npy
 *.wav
+.DS_Store
+.venv
+uv.lock
 
 # CodeTalker
 CodeTalker/demo/*
