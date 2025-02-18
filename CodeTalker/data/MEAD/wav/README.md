@@ -1,1 +1,0 @@
-This folder will contain the audio data for all the sequences in `.wav` format. 
