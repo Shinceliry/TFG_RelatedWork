@@ -1,6 +1,5 @@
 *.pth.tar
 __pycache__/
-*.pkl
 *.pth
 .DS_Store
 .venv
