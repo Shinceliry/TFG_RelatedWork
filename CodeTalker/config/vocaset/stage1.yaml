@@ -1,6 +1,6 @@
 DATA:
   dataset: vocaset
-  data_root: ./vocaset/
+  data_root: ./data/vocaset/
   wav_path: wav
   vertices_path: vertices_npy
   template_file: templates.pkl

@@ -1,6 +1,6 @@
 DATA:
   dataset: MEAD
-  data_root: ./MEAD/
+  data_root: ./data/MEAD/
   wav_path: wav
   vertices_path: vertices_npy
   template_file: FLAME2020_generic_model.pkl

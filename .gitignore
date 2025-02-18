@@ -1,0 +1,10 @@
+*.pth.tar
+__pycache__/
+*.pkl
+*.pth
+*.npy
+*.wav
+
+# CodeTalker
+CodeTalker/demo/*
+CodeTalker/RUN/*

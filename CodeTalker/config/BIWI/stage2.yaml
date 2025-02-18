@@ -1,6 +1,6 @@
 DATA:
   dataset: BIWI
-  data_root: ./BIWI/
+  data_root: ./data/BIWI/
   wav_path: wav
   vertices_path: vertices_npy
   template_file: templates.pkl
