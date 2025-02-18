@@ -9,5 +9,5 @@ __pycache__/
 uv.lock
 
 # CodeTalker
-CodeTalker/demo/*
-CodeTalker/RUN/*
+CodeTalker/demo/
+CodeTalker/RUN/
