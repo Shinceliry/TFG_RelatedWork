@@ -1,2 +1,4 @@
 *.pth.tar
 __pycache__/
+CodeTalker/demo/
+CodeTalker/RUN/
