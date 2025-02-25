@@ -1,1 +1,0 @@
-/home/sakaya/mlnas/sakaya/FLAME/FLAME2020_generic_model.pkl
