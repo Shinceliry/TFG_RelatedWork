@@ -6,3 +6,10 @@ __pycache__/
 
 # CodeTalker
 CodeTalker/RUN/
+# CodeTalker/data/
+
+# FaceDiffuser
+# FaceDiffuser/data/
+
+# FaceFormer
+# FaceFormer/data/

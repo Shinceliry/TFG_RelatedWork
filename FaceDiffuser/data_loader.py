@@ -59,7 +59,7 @@ def read_data(args):
         templates = pickle.load(fin, encoding='latin1')
 
     indices_to_split = []
-    all_subjects = args.test_subjects.split() + args.val_subjects.split() + args.test_subjects.split()
+    all_subjects = args.train_subjects.split() + args.val_subjects.split() + args.test_subjects.split()
     for r, ds, fs in os.walk(audio_path):
         for f in tqdm(fs):
             if f.endswith("wav"):
@@ -70,6 +70,9 @@ def read_data(args):
                 if args.dataset == 'vocaset':
                     subject_id = "_".join(key.split("_")[:-1])
                     sentence_id = int(key.split(".")[0][-2:])
+                elif args.dataset == "MEAD":
+                    subject_id = k.split("_")[0] 
+                    temp = templates['v_template']
                 else:
                     sentence_id = key.split(".")[0].split("_")[-1]
                     subject_id = key.split("_")[0]
@@ -87,10 +90,12 @@ def read_data(args):
                                          sampling_rate=sampling_rate).input_values)
 
                 data[key]["audio"] = input_values
-                temp = templates.get(subject_id, np.zeros(args.vertice_dim))
+                if not args.dataset == "MEAD":
+                    temp = templates.get(subject_id, np.zeros(args.vertice_dim))
                 data[key]["name"] = f
                 data[key]["template"] = temp.reshape((-1))
-                vertice_path = os.path.join(vertices_path, f.replace("wav", "npy"))
+                vertice_path = os.path.join(vertices_path, key)
+                
                 if not os.path.exists(vertice_path):
                     del data[key]
                     print("Vertices Data Not Found! ", vertice_path)
@@ -145,7 +150,8 @@ def read_data(args):
             'val': val_split,
             'test': test_split
         },
-        'vocaset': {'train': range(1, 41), 'val': range(21, 41), 'test': range(21, 41)}
+        'vocaset': {'train': range(1, 41), 'val': range(21, 41), 'test': range(21, 41)},
+        'MEAD': {'train': range(1, 61), 'val': range(1, 61), 'test': range(1, 61)}
     }
 
 
@@ -175,6 +181,15 @@ def read_data(args):
                 valid_data.append(v)
             elif subject_id in subjects_dict["test"] and sentence_id in splits[args.dataset]['test']:
                 test_data.append(v)
+        elif args.dataset == 'MEAD':
+            subject_id = k.split("_")[0] 
+            sentence_id = int(k.split("_")[-1][:-4])
+            if subject_id in subjects_dict["train"] and sentence_id in splits[args.dataset]['train']:
+                train_data.append(v)
+            elif subject_id in subjects_dict["val"] and sentence_id in splits[args.dataset]['val']:
+                valid_data.append(v)
+            elif subject_id in subjects_dict["test"] and sentence_id in splits[args.dataset]['test']:
+                test_data.append(v)
         else:
             subject_id = k.split("_")[0]
             sentence_id = int(k.split(".")[0].split("_")[-1])
@@ -185,7 +200,7 @@ def read_data(args):
             elif subject_id in subjects_dict["test"] and sentence_id in splits[args.dataset]['test']:
                 test_data.append(v)
 
-    print(len(train_data), len(valid_data), len(test_data))
+    print('Loaded data: Train-{}, Val-{}, Test-{}'.format(len(train_data), len(valid_data), len(test_data)))
     return train_data, valid_data, test_data, subjects_dict
 
 

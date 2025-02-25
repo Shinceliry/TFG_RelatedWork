@@ -21,7 +21,8 @@ class Dataset(data.Dataset):
     def __getitem__(self, index):
         """Returns one data pair (source and target)."""
         file_name = self.data[index]["name"]
-        audio = self.data[index]["audio"]
+        if self.read_audio:
+            audio = self.data[index]["audio"]
         vertice = self.data[index]["vertice"]
         template = self.data[index]["template"]
         
@@ -71,12 +72,7 @@ def read_data(args):
                     data[key]["audio"] = None
                 
                 if args.dataset == "MEAD":
-                    parts = f.split("_")
-                    subject_id = parts[1]
-                    emotion_label = parts[2]
-                    emotion_level = parts[3]
-                    sentence_id = parts[4].split(".")[0]
-                    key = f"{subject_id}_front_{emotion_label}_{emotion_level}_{sentence_id}_vertices.npy"
+                    subject_id = k.split("_")[0] 
                     temp = templates['v_template']
                 elif args.dataset in ["vocaset", "BIWI"]:
                     subject_id = "_".join(key.split("_")[:-1])
@@ -106,14 +102,14 @@ def read_data(args):
     splits = {
         'vocaset': {'train': range(1, 41), 'val': range(21, 41), 'test': range(21, 41)},
         'BIWI': {'train': range(1, 33), 'val': range(33, 37), 'test': range(37, 41)},
-        'MEAD': {'train': list(range(1, 25)) + list(range(31, 61)), 'val': range(25, 28), 'test': range(28, 31)}
+        'MEAD': {'train': range(1, 61), 'val': range(1, 61), 'test': range(1, 61)}
     }
     
     for k, v in data.items():
         if args.dataset == "MEAD":
-            subject_id = k.split("_")[0]  # 例: "M003"
-            sentence_id = int(k.split("_")[-1].split(".")[0])  # "XXX.npy" の "XXX" を取得
-        else:
+            subject_id = k.split("_")[0] 
+            sentence_id = int(k.split("_")[-1][:-4])
+        elif args.dataset in ["vocaset", "BIWI"]:
             subject_id = "_".join(k.split("_")[:-1])
             sentence_id = int(k.split(".")[0][-2:])
         
