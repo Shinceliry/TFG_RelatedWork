@@ -18,7 +18,8 @@ def trainer(args, train_loader, dev_loader, model, optimizer, criterion, epoch=1
         shutil.rmtree(save_path)
     os.makedirs(save_path)
 
-    train_subjects_list = [i for i in args.train_subjects.split(" ")]
+    # train_subjects_list = [i for i in args.train_subjects.split(" ")]
+    train_subjects_list = args.train_subjects
     iteration = 0
     for e in range(epoch+1):
         loss_log = []
@@ -61,7 +62,7 @@ def trainer(args, train_loader, dev_loader, model, optimizer, criterion, epoch=1
                         
         current_loss = np.mean(valid_loss_log)
         
-        if (e > 0 and e % 25 == 0) or e == args.max_epoch:
+        if (e > 0 and e % 5 == 0) or e == args.max_epoch:
             torch.save(model.state_dict(), os.path.join(save_path,'{}_model.pth'.format(e)))
 
         print("epcoh: {}, current loss:{:.7f}".format(e+1,current_loss))    
@@ -75,7 +76,8 @@ def test(args, model, test_loader,epoch):
     os.makedirs(result_path)
 
     save_path = os.path.join(args.dataset,args.save_path)
-    train_subjects_list = [i for i in args.train_subjects.split(" ")]
+    # train_subjects_list = [i for i in args.train_subjects.split(" ")]
+    train_subjects_list = args.train_subjects
 
     model.load_state_dict(torch.load(os.path.join(save_path, '{}_model.pth'.format(epoch))))
     model = model.to(torch.device("cuda"))
@@ -118,13 +120,13 @@ def main():
     parser.add_argument("--template_file", type=str, default="templates.pkl", help='path of the personalized templates')
     parser.add_argument("--save_path", type=str, default="save", help='path of the trained models')
     parser.add_argument("--result_path", type=str, default="result", help='path to the predictions')
-    parser.add_argument("--train_subjects", type=str, default="FaceTalk_170728_03272_TA"
+    parser.add_argument("--train_subjects", type=str, nargs="+", default="FaceTalk_170728_03272_TA"
        " FaceTalk_170904_00128_TA FaceTalk_170725_00137_TA FaceTalk_170915_00223_TA"
        " FaceTalk_170811_03274_TA FaceTalk_170913_03279_TA"
        " FaceTalk_170904_03276_TA FaceTalk_170912_03278_TA")
-    parser.add_argument("--val_subjects", type=str, default="FaceTalk_170811_03275_TA"
+    parser.add_argument("--val_subjects", type=str, nargs="+", default="FaceTalk_170811_03275_TA"
        " FaceTalk_170908_03277_TA")
-    parser.add_argument("--test_subjects", type=str, default="FaceTalk_170809_00138_TA"
+    parser.add_argument("--test_subjects", type=str, nargs="+", default="FaceTalk_170809_00138_TA"
        " FaceTalk_170731_00024_TA")
     args = parser.parse_args()
 

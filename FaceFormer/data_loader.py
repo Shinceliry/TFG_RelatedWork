@@ -83,9 +83,12 @@ def read_data(args):
                     data[key]["vertice"] = np.load(vertice_path, allow_pickle=True)
 
     subjects_dict = {}
-    subjects_dict["train"] = [i for i in args.train_subjects.split(" ")]
-    subjects_dict["val"] = [i for i in args.val_subjects.split(" ")]
-    subjects_dict["test"] = [i for i in args.test_subjects.split(" ")]
+    # subjects_dict["train"] = [i for i in args.train_subjects.split(" ")]
+    # subjects_dict["val"] = [i for i in args.val_subjects.split(" ")]
+    # subjects_dict["test"] = [i for i in args.test_subjects.split(" ")]
+    subjects_dict["train"] = [i for i in args.train_subjects]
+    subjects_dict["val"] = [i for i in args.val_subjects]
+    subjects_dict["test"] = [i for i in args.test_subjects]
 
     splits = {
         'vocaset':{'train':range(1,41),'val':range(21,41),'test':range(21,41)},

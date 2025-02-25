@@ -21,7 +21,8 @@ def trainer_diff(args, train_loader, dev_loader, model, diffusion, optimizer, ep
 
     save_path = os.path.join(args.save_path)
     schedule_sampler = create_named_schedule_sampler('uniform', diffusion)
-    train_subjects_list = [i for i in args.train_subjects.split(" ")]
+    # train_subjects_list = [i for i in args.train_subjects.split(" ")]
+    train_subjects_list = args.train_subjects
 
     iteration = 0
 
@@ -131,7 +132,7 @@ def trainer_diff(args, train_loader, dev_loader, model, diffusion, optimizer, ep
         current_loss = np.mean(valid_loss_log)
 
         val_losses.append(current_loss)
-        if e == args.max_epoch or e % 25 == 0 and e != 0:
+        if e == args.max_epoch or e % 5 == 0 and e != 0:
             torch.save(model.state_dict(), os.path.join(save_path, f'{args.model}_{args.dataset}_{e}.pth'))
             plot_losses(train_losses, val_losses, os.path.join(save_path, f"losses_{args.model}_{args.dataset}"))
         print("epcoh: {}, current loss:{:.8f}".format(e + 1, current_loss))
@@ -149,7 +150,8 @@ def test_diff(args, model, test_loader, epoch, diffusion, device="cuda"):
     os.makedirs(result_path)
 
     save_path = os.path.join(args.save_path)
-    train_subjects_list = [i for i in args.train_subjects.split(" ")]
+    # train_subjects_list = [i for i in args.train_subjects.split(" ")]
+    train_subjects_list = args.train_subjects
 
     model.load_state_dict(torch.load(os.path.join(save_path, f'{args.model}_{args.dataset}_{epoch}.pth')))
     model = model.to(torch.device(device))
