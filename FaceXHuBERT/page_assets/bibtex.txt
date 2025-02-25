@@ -1,0 +1,12 @@
+@inproceedings{facexhubert,
+author = {Haque,  Kazi Injamamul and Yumak,  Zerrin},
+title = {FaceXHuBERT: Text-less Speech-driven E(X)pressive 3D Facial Animation Synthesis Using Self-Supervised Speech Representation Learning},
+booktitle = {INTERNATIONAL CONFERENCE ON MULTIMODAL INTERACTION (ICMI ’23)},
+year = {2023},
+location = {Paris, France},
+numpages = {10},
+url = {https://doi.org/10.1145/3577190.3614157},
+doi = {10.1145/3577190.3614157},
+publisher = {ACM},
+address = {New York, NY, USA},
+}
