@@ -220,12 +220,12 @@ def get_dataloaders(args):
     dataset = {}
     train_data, valid_data, test_data, subjects_dict = read_data(args)
     train_data = Dataset(train_data, subjects_dict, "train")
-    dataset["train"] = data.DataLoader(dataset=train_data, batch_size=1, shuffle=True, worker_init_fn=seed_worker,
+    dataset["train"] = data.DataLoader(dataset=train_data, batch_size=args.batch_size, shuffle=True, worker_init_fn=seed_worker,
                                        generator=g)
     valid_data = Dataset(valid_data, subjects_dict, "val")
-    dataset["valid"] = data.DataLoader(dataset=valid_data, batch_size=1, shuffle=False)
+    dataset["valid"] = data.DataLoader(dataset=valid_data, batch_size=args.batch_size, shuffle=False)
     test_data = Dataset(test_data, subjects_dict, "test")
-    dataset["test"] = data.DataLoader(dataset=test_data, batch_size=1, shuffle=False)
+    dataset["test"] = data.DataLoader(dataset=test_data, batch_size=args.batch_size, shuffle=False)
     return dataset
 
 

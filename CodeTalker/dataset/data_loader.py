@@ -133,10 +133,10 @@ def get_dataloaders(args):
     dataset["train"] = data.DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
     
     valid_dataset = Dataset(valid_data, subjects_dict, "val", args.read_audio)
-    dataset["valid"] = data.DataLoader(dataset=valid_dataset, batch_size=1, shuffle=False, num_workers=args.workers)
+    dataset["valid"] = data.DataLoader(dataset=valid_dataset, batch_size=args.batch_size, shuffle=False, num_workers=args.workers)
     
     test_dataset = Dataset(test_data, subjects_dict, "test", args.read_audio)
-    dataset["test"] = data.DataLoader(dataset=test_dataset, batch_size=1, shuffle=False, num_workers=args.workers)
+    dataset["test"] = data.DataLoader(dataset=test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=args.workers)
     
     return dataset
 

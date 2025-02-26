@@ -21,10 +21,11 @@ def trainer_diff(args, train_loader, dev_loader, model, diffusion, optimizer, ep
 
     save_path = os.path.join(args.save_path)
     schedule_sampler = create_named_schedule_sampler('uniform', diffusion)
-    # train_subjects_list = [i for i in args.train_subjects.split(" ")]
     train_subjects_list = args.train_subjects
 
     iteration = 0
+    best_val_loss = float('inf')
+    best_epoch = 0
 
     for e in range(epoch + 1):
         loss_log = []
@@ -39,7 +40,6 @@ def trainer_diff(args, train_loader, dev_loader, model, diffusion, optimizer, ep
             vertice = vertice.astype(np.float32)
             vertice = torch.from_numpy(vertice)
 
-            # for vocaset reduce the frame rate from 60 to 30
             if args.dataset == 'vocaset':
                 vertice = vertice[::2, :]
             vertice = torch.unsqueeze(vertice, 0)
@@ -77,13 +77,11 @@ def trainer_diff(args, train_loader, dev_loader, model, diffusion, optimizer, ep
         valid_loss_log = []
         model.eval()
         for audio, vertice, template, one_hot_all, file_name in dev_loader:
-            # to gpu
             vertice = str(vertice[0])
             vertice = np.load(vertice, allow_pickle=True)
             vertice = vertice.astype(np.float32)
             vertice = torch.from_numpy(vertice)
 
-            # for vocaset reduce the frame rate from 60 to 30
             if args.dataset == 'vocaset':
                 vertice = vertice[::2, :]
             vertice = torch.unsqueeze(vertice, 0)
@@ -130,12 +128,18 @@ def trainer_diff(args, train_loader, dev_loader, model, diffusion, optimizer, ep
                     valid_loss_log.append(loss.item())
 
         current_loss = np.mean(valid_loss_log)
-
         val_losses.append(current_loss)
+        
+        if current_loss < best_val_loss:
+            best_val_loss = current_loss
+            best_epoch = e
+            torch.save(model.state_dict(), os.path.join(save_path, f'bestmodel_{best_epoch}.pth'))
+            print(f'Best model updated at epoch {best_epoch} with loss {best_val_loss}')
+
         if e == args.max_epoch or e % 5 == 0 and e != 0:
             torch.save(model.state_dict(), os.path.join(save_path, f'{args.model}_{args.dataset}_{e}.pth'))
             plot_losses(train_losses, val_losses, os.path.join(save_path, f"losses_{args.model}_{args.dataset}"))
-        print("epcoh: {}, current loss:{:.8f}".format(e + 1, current_loss))
+        print("epoch: {}, current loss:{:.8f}".format(e + 1, current_loss))
 
     plot_losses(train_losses, val_losses, os.path.join(save_path, f"losses_{args.model}_{args.dataset}"))
 
@@ -288,6 +292,7 @@ def main():
     parser.add_argument("--diff_steps", type=int, default=1000, help='number of diffusion steps')
     parser.add_argument("--skip_steps", type=int, default=0, help='number of diffusion steps to skip during inference')
     parser.add_argument("--num_samples", type=int, default=1, help='number of samples to generate per audio')
+    parser.add_argument("--batch_size", type=int, default=16, help='batch size')
     args = parser.parse_args()
 
     assert torch.cuda.is_available()

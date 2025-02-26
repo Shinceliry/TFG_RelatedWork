@@ -118,20 +118,16 @@ def main_worker(gpu, ngpus_per_node, args):
         if cfg.evaluate and (epoch_log % cfg.eval_freq == 0):
             rec_loss_val, quant_loss_val, pp_val = validate(val_loader, model, calc_vq_loss, epoch, cfg)
             if main_process(cfg):
-                logger.info('VAL Epoch: {} '
-                            'loss_val: {} '
-                            'pp_val: {} '
-                            .format(epoch_log, rec_loss_val, pp_val)
-                            )
+                logger.info('VAL Epoch: {} loss_val: {} pp_val: {} '.format(epoch_log, rec_loss_val, pp_val))
                 for m, s in zip([rec_loss_val, quant_loss_val, pp_val],
                                 ["val/rec_loss", "val/quant_loss", "val/perplexity"]):
                     writer.add_scalar(s, m, epoch_log)
-
-
-        if (epoch_log % cfg.save_freq == 0) and main_process(cfg):
-            save_checkpoint(model,
-                            sav_path=os.path.join(cfg.save_path, 'model')
-                            )
+                
+                if rec_loss_val < best_val_loss:
+                    best_val_loss = rec_loss_val
+                    best_epoch = epoch_log
+                    save_checkpoint(model, sav_path=os.path.join(cfg.save_path, f'bestmodel_{best_epoch}.pth'))
+                    logger.info(f'Best model updated at epoch {best_epoch} with loss {best_val_loss}')
 
 
 def train(train_loader, model, loss_fn, optimizer, epoch, cfg):

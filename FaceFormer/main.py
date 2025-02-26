@@ -128,6 +128,7 @@ def main():
        " FaceTalk_170908_03277_TA")
     parser.add_argument("--test_subjects", type=str, nargs="+", default="FaceTalk_170809_00138_TA"
        " FaceTalk_170731_00024_TA")
+    parser.add_argument("--batch_size", type=int, default=16, help='batch size')
     args = parser.parse_args()
 
     #build model
