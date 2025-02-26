@@ -99,6 +99,7 @@ def main_worker(gpu, ngpus_per_node, args):
         val_loader = dataset['valid']
 
     # ####################### Train ############################# #
+    best_val_loss = float('inf')
     for epoch in range(cfg.start_epoch, cfg.epochs):
         rec_loss_train, quant_loss_train, pp_train = train(train_loader, model, calc_vq_loss, optimizer, epoch, cfg)
         epoch_log = epoch + 1

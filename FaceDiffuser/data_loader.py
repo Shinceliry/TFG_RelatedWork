@@ -71,7 +71,7 @@ def read_data(args):
                     subject_id = "_".join(key.split("_")[:-1])
                     sentence_id = int(key.split(".")[0][-2:])
                 elif args.dataset == "MEAD":
-                    subject_id = k.split("_")[0] 
+                    subject_id = key.split("_")[0] 
                     temp = templates['v_template']
                 else:
                     sentence_id = key.split(".")[0].split("_")[-1]

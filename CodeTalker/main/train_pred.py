@@ -108,6 +108,7 @@ def main_worker(gpu, ngpus_per_node, args):
         val_loader = dataset['valid']
 
     # ####################### Train ############################# #
+    best_val_loss = float('inf')
     for epoch in range(cfg.start_epoch, cfg.epochs):
         loss_train, motion_loss_train, reg_loss_train = train(train_loader, model, loss_fn, optimizer, epoch, cfg)
         epoch_log = epoch + 1

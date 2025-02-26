@@ -62,7 +62,7 @@ def read_data(args):
                 data[key]["audio"] = input_values
                 
                 if args.dataset == "MEAD":
-                    subject_id = k.split("_")[0] 
+                    subject_id = key.split("_")[0] 
                     temp = templates['v_template']
                 else:
                     subject_id = "_".join(key.split("_")[:-1])
