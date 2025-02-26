@@ -33,7 +33,7 @@ mkdir -p ${exp_dir}/result
 
 export PYTHONPATH=./
 echo $OMP_NUM_THREADS | tee -a ${exp_dir}/train-$now.log
-nvidia-smi | tee -a ${exp_dir}/train-$now.log
+# nvidia-smi | tee -a ${exp_dir}/train-$now.log
 which pip | tee -a ${exp_dir}/train-$now.log
 
 
