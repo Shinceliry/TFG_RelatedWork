@@ -19,7 +19,9 @@ def trainer_diff(args, train_loader, dev_loader, model, diffusion, optimizer, ep
     train_losses = []
     val_losses = []
 
-    save_path = os.path.join(args.save_path)
+    save_path = os.path.join("./checkpoints", args.experiment_name)
+    if not os.path.exists(save_path):
+        os.makedirs(save_path, exist_ok=True)
     schedule_sampler = create_named_schedule_sampler('uniform', diffusion)
     train_subjects_list = args.train_subjects
 
@@ -32,7 +34,7 @@ def trainer_diff(args, train_loader, dev_loader, model, diffusion, optimizer, ep
         model.train()
         pbar = tqdm(enumerate(train_loader), total=len(train_loader))
         optimizer.zero_grad()
-
+        
         for i, (audio, vertice, template, one_hot, file_name) in pbar:
             iteration += 1
             vertice = str(vertice[0])
@@ -148,12 +150,13 @@ def trainer_diff(args, train_loader, dev_loader, model, diffusion, optimizer, ep
 
 @torch.no_grad()
 def test_diff(args, model, test_loader, epoch, diffusion, device="cuda"):
-    result_path = os.path.join(args.result_path)
+    result_path = os.path.join(args.result_path, args.experiment_name)
     if os.path.exists(result_path):
         shutil.rmtree(result_path)
     os.makedirs(result_path)
 
-    save_path = os.path.join(args.save_path)
+    # save_path = os.path.join(args.save_path)
+    save_path = os.path.join("./checkpoints", args.experiment_name)
     # train_subjects_list = [i for i in args.train_subjects.split(" ")]
     train_subjects_list = args.train_subjects
 
@@ -218,11 +221,11 @@ def test_diff(args, model, test_loader, epoch, diffusion, device="cuda"):
                         out_path = f"{vertice_path}_condition_{condition_subject}.npy"
                 if 'damm' in args.dataset:
                     sample = RIG_SCALER.inverse_transform(sample)
-                    np.save(os.path.join(args.result_path, out_path), sample)
+                    np.save(os.path.join(result_path, out_path), sample)
                     df = pd.DataFrame(sample)
-                    df.to_csv(os.path.join(args.result_path, f"{vertice_path}.csv"), header=None, index=None)
+                    df.to_csv(os.path.join(result_path, f"{vertice_path}.csv"), header=None, index=None)
                 else:
-                    np.save(os.path.join(args.result_path, out_path), sample)
+                    np.save(os.path.join(result_path, out_path), sample)
 
         else:
             for iter in range(one_hot_all.shape[-1]):
@@ -255,9 +258,9 @@ def test_diff(args, model, test_loader, epoch, diffusion, device="cuda"):
                 if 'damm' in args.dataset:
                     prediction = RIG_SCALER.inverse_transform(prediction)
                     df = pd.DataFrame(prediction)
-                    df.to_csv(os.path.join(args.result_path, f"{vertice_path}.csv"), header=None, index=None)
+                    df.to_csv(os.path.join(result_path, f"{vertice_path}.csv"), header=None, index=None)
                 else:
-                    np.save(os.path.join(args.result_path, f"{vertice_path}_condition_{condition_subject}.npy"), prediction)
+                    np.save(os.path.join(result_path, f"{vertice_path}_condition_{condition_subject}.npy"), prediction)
 
 
 def count_parameters(model):
@@ -268,7 +271,7 @@ def main():
     parser.add_argument("--lr", type=float, default=0.0001, help='learning rate')
     parser.add_argument("--dataset", type=str, default="BIWI", help='Name of the dataset folder. eg: BIWI')
     parser.add_argument("--data_path", type=str, default="data")
-    parser.add_argument("--vertice_dim", type=int, default=70110, help='number of vertices - 23370*3 for BIWI dataset')
+    parser.add_argument("--vertice_dim", type=int, default=15069, help='number of vertices - 23370*3 for BIWI topology, 5023*3 for FLAME Toplogy')
     parser.add_argument("--feature_dim", type=int, default=512, help='Latent Dimension to encode the inputs to')
     parser.add_argument("--gru_dim", type=int, default=512, help='GRU Vertex decoder hidden size')
     parser.add_argument("--gru_layers", type=int, default=2, help='GRU Vertex decoder hidden size')
@@ -280,19 +283,19 @@ def main():
     parser.add_argument("--model", type=str, default="face_diffuser", help='name of the trained model')
     parser.add_argument("--template_file", type=str, default="templates.pkl",
                         help='path of the train subject templates')
-    parser.add_argument("--save_path", type=str, default="save", help='path of the trained models')
+    parser.add_argument("--experiment_name", type=str, require=True, help='path of the trained models')
     parser.add_argument("--result_path", type=str, default="result", help='path to the predictions')
-    parser.add_argument("--train_subjects", type=str, default="F2 F3 F4 M3 M4 M5")
-    parser.add_argument("--val_subjects", type=str, default="F2 F3 F4 M3 M4 M5")
-    parser.add_argument("--test_subjects", type=str, default="F1 F2 F3 F4 F5 F6 F7 F8 M1 M2 M3 M4 M5 M6")
+    parser.add_argument("--train_subjects", type=str, nargs="+", default="F2 F3 F4 M3 M4 M5")
+    parser.add_argument("--val_subjects", type=str, nargs="+", default="F2 F3 F4 M3 M4 M5")
+    parser.add_argument("--test_subjects", type=str, nargs="+", default="F1 F2 F3 F4 F5 F6 F7 F8 M1 M2 M3 M4 M5 M6")
     parser.add_argument("--input_fps", type=int, default=50,
                         help='HuBERT last hidden state produces 50 fps audio representation')
-    parser.add_argument("--output_fps", type=int, default=25,
-                        help='fps of the visual data, BIWI was captured in 25 fps')
+    parser.add_argument("--output_fps", type=int, default=30,
+                        help='fps of the visual data, BIWI was captured in 25 fps, vocaset in 30 fps')
     parser.add_argument("--diff_steps", type=int, default=1000, help='number of diffusion steps')
     parser.add_argument("--skip_steps", type=int, default=0, help='number of diffusion steps to skip during inference')
     parser.add_argument("--num_samples", type=int, default=1, help='number of samples to generate per audio')
-    parser.add_argument("--batch_size", type=int, default=16, help='batch size')
+    parser.add_argument("--batch_size", type=int, default=1, help='batch size')
     args = parser.parse_args()
 
     assert torch.cuda.is_available()

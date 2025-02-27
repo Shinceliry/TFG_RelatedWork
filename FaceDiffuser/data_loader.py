@@ -9,6 +9,24 @@ from tqdm import tqdm
 from transformers import Wav2Vec2Processor
 from sklearn.model_selection import train_test_split
 import librosa
+from torch.nn.utils.rnn import pad_sequence
+
+def collate_fn(batch):
+    audio_list, vertice_list, template_list, one_hot_list, file_name_list = zip(*batch)
+
+    # 音声データの長さが異なる場合は `pad_sequence` を使用
+    if isinstance(audio_list[0], torch.Tensor):
+        audio_list = pad_sequence(audio_list, batch_first=True, padding_value=0)
+
+    # Verticeデータの長さが異なる場合は `pad_sequence` を使用
+    if isinstance(vertice_list[0], torch.Tensor):
+        vertice_list = pad_sequence(vertice_list, batch_first=True, padding_value=0)
+
+    # Template や one-hot encoding のデータはそのまま
+    template_list = torch.stack(template_list)
+    one_hot_list = torch.stack(one_hot_list)
+
+    return audio_list, vertice_list, template_list, one_hot_list, file_name_list
 
 
 class Dataset(data.Dataset):
@@ -59,7 +77,8 @@ def read_data(args):
         templates = pickle.load(fin, encoding='latin1')
 
     indices_to_split = []
-    all_subjects = args.train_subjects.split() + args.val_subjects.split() + args.test_subjects.split()
+    # all_subjects = args.train_subjects.split() + args.val_subjects.split() + args.test_subjects.split()
+    all_subjects = args.train_subjects + args.val_subjects + args.test_subjects
     for r, ds, fs in os.walk(audio_path):
         for f in tqdm(fs):
             if f.endswith("wav"):
@@ -220,13 +239,16 @@ def get_dataloaders(args):
     dataset = {}
     train_data, valid_data, test_data, subjects_dict = read_data(args)
     train_data = Dataset(train_data, subjects_dict, "train")
-    dataset["train"] = data.DataLoader(dataset=train_data, batch_size=args.batch_size, shuffle=True, worker_init_fn=seed_worker,
-                                       generator=g)
+    dataset["train"] = data.DataLoader(dataset=train_data, batch_size=args.batch_size, shuffle=True, worker_init_fn=seed_worker, generator=g)
+    # dataset["train"] = data.DataLoader(dataset=train_data, batch_size=args.batch_size, shuffle=True, worker_init_fn=seed_worker, generator=g, collate_fn=collate_fn)
     valid_data = Dataset(valid_data, subjects_dict, "val")
     dataset["valid"] = data.DataLoader(dataset=valid_data, batch_size=args.batch_size, shuffle=False)
+    # dataset["valid"] = data.DataLoader(dataset=valid_data, batch_size=args.batch_size, shuffle=False, collate_fn=collate_fn)
     test_data = Dataset(test_data, subjects_dict, "test")
     dataset["test"] = data.DataLoader(dataset=test_data, batch_size=args.batch_size, shuffle=False)
+    # dataset["test"] = data.DataLoader(dataset=test_data, batch_size=args.batch_size, shuffle=False, collate_fn=collate_fn)
     return dataset
+
 
 
 if __name__ == "__main__":
