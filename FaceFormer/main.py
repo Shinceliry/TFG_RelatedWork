@@ -13,7 +13,7 @@ from data_loader import get_dataloaders
 from faceformer import Faceformer
 
 def trainer(args, train_loader, dev_loader, model, optimizer, criterion, epoch=100):
-    save_path = os.path.join("checkpointss", args.dataset, args.save_path)
+    save_path = os.path.join(args.save_path, args.dataset, args.experiment_name)
     if os.path.exists(save_path):
         shutil.rmtree(save_path)
     os.makedirs(save_path)
@@ -21,6 +21,7 @@ def trainer(args, train_loader, dev_loader, model, optimizer, criterion, epoch=1
     # train_subjects_list = [i for i in args.train_subjects.split(" ")]
     train_subjects_list = args.train_subjects
     iteration = 0
+    best_val_loss = float('inf')  # Initialize with a large value
     for e in range(epoch+1):
         loss_log = []
         # train
@@ -30,8 +31,20 @@ def trainer(args, train_loader, dev_loader, model, optimizer, criterion, epoch=1
 
         for i, (audio, vertice, template, one_hot, file_name) in pbar:
             iteration += 1
+            print(f"Trainer batch {i}: audio shape {audio.shape}, vertice shape {vertice.shape}")
             # to gpu
-            audio, vertice, template, one_hot  = audio.to(device="cuda"), vertice.to(device="cuda"), template.to(device="cuda"), one_hot.to(device="cuda")
+            # audio, vertice, template, one_hot  = audio.to(device="cuda"), vertice.to(device="cuda"), template.to(device="cuda"), one_hot.to(device="cuda")
+            audio = audio.to(device="cuda")
+            vertice = vertice.to(device="cuda")
+            if isinstance(template, tuple):
+                template = torch.stack(template).to(device="cuda")  
+            else:
+                template = template.to(device="cuda")
+            if isinstance(one_hot, tuple):
+                one_hot = torch.stack(one_hot).to(device="cuda")  
+            else:
+                one_hot = one_hot.to(device="cuda")
+                
             loss = model(audio, template,  vertice, one_hot, criterion,teacher_forcing=False)
             loss.backward()
             loss_log.append(loss.item())
@@ -62,27 +75,27 @@ def trainer(args, train_loader, dev_loader, model, optimizer, criterion, epoch=1
                         
         current_loss = np.mean(valid_loss_log)
         
-        if (e > 0 and e % 5 == 0) or e == args.max_epoch:
-            torch.save(model.state_dict(), os.path.join(save_path,'{}_model.pth'.format(e)))
-
+        if current_loss < best_val_loss:
+            best_val_loss = current_loss
+            torch.save(model.state_dict(), os.path.join(save_path, f'best_model_{e}.pth'))
         print("epcoh: {}, current loss:{:.7f}".format(e+1,current_loss))    
     return model
 
 @torch.no_grad()
 def test(args, model, test_loader,epoch):
-    result_path = os.path.join(args.dataset,args.result_path)
+    result_path = os.path.join(args.result_path, args.dataset, args.experiment_name)
     if os.path.exists(result_path):
         shutil.rmtree(result_path)
     os.makedirs(result_path)
 
-    save_path = os.path.join(args.dataset,args.save_path)
+    save_path = os.path.join(args.save_path, args.dataset, args.experiment_name)
     # train_subjects_list = [i for i in args.train_subjects.split(" ")]
     train_subjects_list = args.train_subjects
 
     model.load_state_dict(torch.load(os.path.join(save_path, '{}_model.pth'.format(epoch))))
     model = model.to(torch.device("cuda"))
     model.eval()
-   
+
     for audio, vertice, template, one_hot_all, file_name in test_loader:
         # to gpu
         audio, vertice, template, one_hot_all= audio.to(device="cuda"), vertice.to(device="cuda"), template.to(device="cuda"), one_hot_all.to(device="cuda")
@@ -101,7 +114,7 @@ def test(args, model, test_loader,epoch):
                 prediction = model.predict(audio, template, one_hot)
                 prediction = prediction.squeeze() # (seq_len, V*3)
                 np.save(os.path.join(result_path, file_name[0].split(".")[0]+"_condition_"+condition_subject+".npy"), prediction.detach().cpu().numpy())
-         
+
 def count_parameters(model):
     return sum(p.numel() for p in model.parameters() if p.requires_grad)
 
@@ -115,10 +128,12 @@ def main():
     parser.add_argument("--wav_path", type=str, default= "wav", help='path of the audio signals')
     parser.add_argument("--vertices_path", type=str, default="vertices_npy", help='path of the ground truth')
     parser.add_argument("--gradient_accumulation_steps", type=int, default=1, help='gradient accumulation')
+    parser.add_argument("--experiment_name", type=str, required=True, help='path of the trained models')
     parser.add_argument("--max_epoch", type=int, default=100, help='number of epochs')
+    parser.add_argument("--batch_size", type=int, default=128, help='batch_size')
     parser.add_argument("--device", type=str, default="cuda")
     parser.add_argument("--template_file", type=str, default="templates.pkl", help='path of the personalized templates')
-    parser.add_argument("--save_path", type=str, default="save", help='path of the trained models')
+    parser.add_argument("--save_path", type=str, default="checkpoints", help='path of the trained models')
     parser.add_argument("--result_path", type=str, default="result", help='path to the predictions')
     parser.add_argument("--train_subjects", type=str, nargs="+", default="FaceTalk_170728_03272_TA"
        " FaceTalk_170904_00128_TA FaceTalk_170725_00137_TA FaceTalk_170915_00223_TA"
@@ -128,7 +143,6 @@ def main():
        " FaceTalk_170908_03277_TA")
     parser.add_argument("--test_subjects", type=str, nargs="+", default="FaceTalk_170809_00138_TA"
        " FaceTalk_170731_00024_TA")
-    parser.add_argument("--batch_size", type=int, default=16, help='batch size')
     args = parser.parse_args()
 
     #build model

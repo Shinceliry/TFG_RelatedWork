@@ -40,6 +40,8 @@ class CodeTalker(BaseModel):
             from models.stage1_vocaset import VQAutoEncoder
         elif args.autoencoder == 'stage1_BIWI':
             from models.stage1_BIWI import VQAutoEncoder
+        elif args.autoencoder == 'stage1_MEAD':
+            from models.stage1_MEAD import VQAutoEncoder
 
         self.autoencoder = VQAutoEncoder(args)
         self.autoencoder.load_state_dict(torch.load(args.vqvae_pretrained_path)['state_dict'])

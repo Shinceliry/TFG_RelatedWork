@@ -103,7 +103,7 @@ class LmdbDataset(data.Dataset):
                     coef_dict[coef_key].append(entry['coef'][coef_key][start_idx:end_idx])
 
                 audio_data = entry['audio']
-                audio_clip, sr = torchaudio.load(io.BytesIO(audio_data))
+                audio_clip, sr = torchaudio.load(io.BytesIO(audio_data), format="flac")
                 assert sr == 16000, f'Invalid sampling rate: {sr}'
                 audio_clip = audio_clip.squeeze()
                 audio.append(audio_clip[round(start_idx * self.audio_unit):round(end_idx * self.audio_unit)])
@@ -131,10 +131,13 @@ class LmdbDataset(data.Dataset):
             keys = ['shape', 'exp', 'pose']
         else:
             raise ValueError(f'Unknown rotation representation: {self.rot_representation}')
+        
+        # for k in keys:
+        #     print(f"{k}: coef_dict[k].shape = {coef_dict[k].shape}, coef_stats_mean.shape = {self.coef_stats[f'{k}_mean'].shape}")
 
         # normalize coef if applicable
         if self.coef_stats is not None:
-            coef_dict = {k: (coef_dict[k] - self.coef_stats[f'{k}_mean']) / (self.coef_stats[f'{k}_std'] + 1e-9)
+            coef_dict = {k: (coef_dict[k][:, :self.coef_stats[f'{k}_mean'].shape[0]] - self.coef_stats[f'{k}_mean']) / (self.coef_stats[f'{k}_std'] + 1e-9)
                          for k in keys}
 
         # Extract two consecutive audio/coef clips
