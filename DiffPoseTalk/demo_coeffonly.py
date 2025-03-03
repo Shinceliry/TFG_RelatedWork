@@ -119,11 +119,6 @@ class InferenceRunner:
 
 
     def run(self):
-        """
-        DataLoaderを使って test_list 内の動画ディレクトリ名をバッチで受け取り、
-        run_inference_and_save_batch(...) を呼び出す
-        """
-        
         dataset = TestDataset(self.args.gt_dir, self.args.test_list)
         loader = DataLoader(
             dataset,
@@ -132,7 +127,6 @@ class InferenceRunner:
             num_workers=16,
             drop_last=False
         )
-
         for batch_videos in tqdm(loader):
             self.run_inference_and_save_batch(batch_videos)
 
