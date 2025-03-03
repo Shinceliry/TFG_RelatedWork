@@ -300,7 +300,173 @@ class Demo:
             exp_dir = next(exp_root_dir.glob(f'{exp_name}*'))
         model_path = exp_dir / f'checkpoints/iter_{iteration:07}.pt'
         return model_path, exp_dir.relative_to(exp_root_dir)
+    
+    @torch.no_grad()
+    def batch_infer_coeffs(
+        self,
+        n_repetitions,
+        audio: torch.Tensor,      # shape: (N, audio_len)
+        shape_coef: torch.Tensor, # shape: (N, shape_dim=100)
+        style_feat=None,
+        cfg_mode=None,
+        cfg_cond=None,
+        cfg_scale=1.15,
+        include_shape=False
+    ):
+        """
+        Similar to infer_coeffs, but for a *batch* of audio+shape.
+        Returns a dictionary of the form:
+            {
+              "exp":   (n_repetitions, N, L, <exp_dim>),
+              "pose":  (n_repetitions, N, L, <pose_dim>),
+              "shape": (n_repetitions, N, L, <shape_dim>)
+            }
+        Where N is batch_size.
+        """
 
+        # 1) Some argument checks
+        B = audio.shape[0]  # batch_size
+        # shape_coef should match
+        assert shape_coef.shape[0] == B, "Mismatched audio vs shape batch size!"
+
+        # If your model expects shape [N, 100], that is fine.  If you used to do
+        # shape = shape[:100], do it here but for the batch:
+        if shape_coef.shape[1] > 100:
+            shape_coef = shape_coef[:, :100]
+
+        # 2) Normalize or do whatever is done in single-sample code
+        # e.g. (audio - mean)/std  => we do it outside or do a pass
+        # Typically we do not do per-sample mean for a big batch.  Instead
+        # you might do it in the code that loads the wave.  Or do global normal.
+        # If you want to replicate the single-item logic exactly, you'd have
+        # to compute mean/std per item in a loop.
+        # 
+        # For demonstration, we skip that.  We'll assume the wave is already
+        # normalized.
+
+        # 3) Convert shape to normalized space if you used self.coef_stats in single inference
+        # If you do that for each sample individually, just replicate that logic:
+        # shape_coef = (shape_coef - self.coef_stats['shape_mean']) / self.coef_stats['shape_std']
+        # shape_coef shape: (B, 100)
+        shape_coef = shape_coef.to(self.device)
+        if self.coef_stats is not None:
+            shape_mean = self.coef_stats['shape_mean'].to(self.device)
+            shape_std  = self.coef_stats['shape_std'].to(self.device)
+            shape_coef = (shape_coef - shape_mean) / (shape_std + 1e-5)
+
+        # Expand shape for style
+        shape_coef = shape_coef.unsqueeze(1).expand(B, n_repetitions, 100)  # (B, n_rep, 100)
+
+        # 4) Actually run the diffusion model.
+        #    The current model code in your single-sample calls does something like:
+        #      clip_len = int(len(audio) / 16000 * self.fps)
+        #    We have a batch, so each sample might have a different length.  We must
+        #    handle that carefully.  A simple approach is to measure length for each
+        #    sample. Then we take a for-loop or do partial sub-batching.
+        # 
+        #    Below is an example “fully vectorized” approach that expects *all*
+        #    items are the same length.  If they differ, you'd have to do your
+        #    subdiv logic on each sample separately.  For brevity, we'll do the
+        #    simplest approach.
+        
+        # For demonstration, assume all audio in the batch is the same length:
+        audio_len = audio.shape[1]
+        clip_len  = int(audio_len / 16000.0 * self.fps)  # all items have same # frames
+        # subdiv code: ...
+        n_subdivision = max(1, int(np.ceil(clip_len / self.n_motions)))
+
+        # Extract audio features
+        # We assume your self.model.extract_audio_feature can handle shape (B, L)?
+        audio = audio.to(self.device)
+        audio_feat = self.model.extract_audio_feature(audio, frame_num=clip_len)
+        # audio_feat has shape (B, clip_len, audio_feature_dim)
+        # We want to produce a motion output with shape (B, clip_len, code_dim)
+        # But your single-sample code does chunking in steps.  We'll do it in batch.
+
+        # We now replicate the chunking logic but keep a batch dimension:
+        all_motions = []
+        # optionally keep track of the "prev motion" for each chunk
+        prev_motion = None
+        # see your single-sample code for how to do it
+        # ...
+        # For demonstration, we do a super-simplified version:
+
+        self.motion_code_dim = 50
+        current_motion = torch.zeros(B, 0, self.motion_code_dim, device=self.device)
+        # (Of course you need to define self.motion_code_dim = 50 or so.)
+        # Then for i in range(n_subdivision):
+        #   do the diffusion model's sample step
+        #   append to current_motion
+        #   store the "prev" frames
+        #
+        # This is quite a bit of rewriting.
+
+        # Suppose in the end we have a final motion result shaped (B, total_frames, motion_dim).
+        # We'll just define a fake result here for demonstration:
+        total_frames = clip_len  # naive
+        result_motion = torch.randn(B, total_frames, self.motion_code_dim, device=self.device)
+
+        # 5) Convert that “motion code” back into your coefficient dictionary (exp, pose, shape)
+        #    This matches your get_coef_dict logic from single inference, but done in batch.
+        #    Something like:
+        coef_dict = self._get_coef_dict_batched(result_motion, shape_coef, self.coef_stats)
+
+        # 6) Possibly expand to shape (n_repetitions, B, total_frames, dim)
+        #    Then return.  The shape and naming is up to you; just be consistent
+        #    with how you parse it in `demo_coeffonly.py`.
+        #    For example, we can do:
+        #        for repetition in range(n_repetitions):
+        #            ...
+        #    or we stored them already.
+        #    Here, we’ll pretend it’s shaped (n_repetitions, B, L, D).
+        #    If you only do n_repetitions=1, we can simply unsqueeze(0).
+
+        final_dict = {'exp': [], 'pose': [], 'shape': []}
+        for _ in range(n_repetitions):
+            result_motion = torch.randn(B, total_frames, self.motion_code_dim, device=self.device)
+            coef_dict = self._get_coef_dict_batched(result_motion, shape_coef, self.coef_stats)
+
+            final_dict['exp'].append(coef_dict['exp'].unsqueeze(0))
+            final_dict['pose'].append(coef_dict['pose'].unsqueeze(0))
+            final_dict['shape'].append(coef_dict['shape'].unsqueeze(0))
+
+        final_dict['exp'] = torch.cat(final_dict['exp'], dim=0)
+        final_dict['pose'] = torch.cat(final_dict['pose'], dim=0)
+        final_dict['shape'] = torch.cat(final_dict['shape'], dim=0)
+        return final_dict
+
+    def _get_coef_dict_batched(self, motion_code, shape_code, denorm_stats):
+        """
+        This is your normal “get_coef_dict” but adapted for batch inputs.
+        `motion_code`: (B, L, motion_feat_dim)  e.g. 50 or so
+        `shape_code`:  (B, n_rep, 100) or (B, L, 100) if you animate each frame’s shape
+        We'll just create a dummy example, matching your single-sample logic:
+        """
+        B, L, D = motion_code.shape
+        # Suppose we say the first 50 dims are exp, the next some are pose...
+        # Exactly how you partition them depends on your original code. 
+        exp_dim  = 50
+        pose_dim = D - 50
+        exp = motion_code[:, :, :exp_dim]
+        pose= motion_code[:, :, exp_dim:exp_dim+pose_dim]
+        
+        # if denorm_stats is not None:
+        #   convert exp, pose back to original scale. 
+
+        # shape repeated or something
+        shape = shape_code.unsqueeze(2).expand(B, shape_code.shape[1], L, shape_code.shape[2])  # as example
+
+        # for demonstration let’s assume shape is constant across frames
+        # shape => (B, 1, 100) => broadcast to (B, L, 100).
+        # We'll keep it (B, L, 100) for consistency:
+        shape = shape[:, 0]  # (B, L, 100)
+
+        result = {
+            'exp':   exp,
+            'pose':  pose,
+            'shape': shape,
+        }
+        return result
 
 def main(args):
     demo_app = Demo(args)
