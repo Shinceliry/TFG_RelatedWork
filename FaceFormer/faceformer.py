@@ -112,7 +112,7 @@ class Faceformer(nn.Module):
 
     def forward(self, audio, template, vertice, one_hot, criterion,teacher_forcing=True):
         # Batch processing not supported version
-        if self.srgs.batch_size == 1:
+        if self.args.batch_size == 1:
             '''
             tgt_mask: :math:`(T, T)`.
             memory_mask: :math:`(T, S)`.
