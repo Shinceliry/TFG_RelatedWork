@@ -78,6 +78,7 @@ class Faceformer(nn.Module):
         self.n_head = 4
         self.feature_dim = args.feature_dim
         self.device = args.device
+        self.args = args
 
         # wav2vec2
         self.audio_encoder = Wav2Vec2Model.from_pretrained("facebook/wav2vec2-base-960h")
