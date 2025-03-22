@@ -42,6 +42,10 @@ class CodeTalker(BaseModel):
             from models.stage1_BIWI import VQAutoEncoder
         elif args.autoencoder == 'stage1_MEAD':
             from models.stage1_MEAD import VQAutoEncoder
+        elif args.autoencoder == 'stage1_RAVDESS':
+            from models.stage1_RAVDESS import VQAutoEncoder
+        elif args.autoencoder == 'stage1_HDTF':
+            from models.stage1_HDTF import VQAutoEncoder
 
         self.autoencoder = VQAutoEncoder(args)
         self.autoencoder.load_state_dict(torch.load(args.vqvae_pretrained_path)['state_dict'])
@@ -66,6 +70,7 @@ class CodeTalker(BaseModel):
             if hidden_states.shape[1]<frame_num*2:
                 vertice = vertice[:, :hidden_states.shape[1]//2]
                 frame_num = hidden_states.shape[1]//2
+                
         hidden_states = self.audio_feature_map(hidden_states)
 
         # gt motion feature extraction
@@ -117,7 +122,7 @@ class CodeTalker(BaseModel):
         hidden_states = self.audio_encoder(audio, self.dataset).last_hidden_state
         if self.dataset == "BIWI":
             frame_num = hidden_states.shape[1]//2
-        elif self.dataset == "vocaset":
+        else:
             frame_num = hidden_states.shape[1]
         hidden_states = self.audio_feature_map(hidden_states)
 

@@ -1,0 +1,47 @@
+DATA:
+  dataset: RAVDESS
+  data_root: ./data/RAVDESS/
+  wav_path: wav
+  vertices_path: vertices_npy
+  template_file: templates.pkl
+  train_subjects: 01 02 03 04 05 06 07 08 09 10 13 14 15 16 17 18 19 20 21 22
+
+NETWORK:
+  arch: stage2
+  in_dim: 15069
+  hidden_size: 1024
+  num_hidden_layers: 6
+  num_attention_heads: 8
+  intermediate_size: 1536
+  window_size: 1
+  quant_factor: 0
+  face_quan_num: 16
+  neg: 0.2
+  autoencoder: stage1_RAVDESS
+  INaffine: False
+  style_emb_method: nnemb # onehot or nnemb
+
+VQuantizer:
+  n_embed: 256
+  zquant_dim: 64
+
+PREDICTOR:
+  feature_dim: 1024
+  vertice_dim: 15069
+  device: cuda
+  period: 30
+  vqvae_pretrained_path: RAVDESS/RAVDESS_stage1.pth.tar
+  wav2vec2model_path: facebook/wav2vec2-base-960h
+  teacher_forcing: True
+  num_layers: 6
+  n_head: 4 # not used
+
+DEMO:
+  model_path: RAVDESS/RAVDESS_stage2.pth.tar
+  condition: 01
+  subject: 12
+  demo_wav_path: demo/wav/man.wav
+  demo_output_path: demo/output/
+  demo_npy_save_folder: demo/npy/
+  fps: 30
+  background_black: True # chose the background color of your rendered video
