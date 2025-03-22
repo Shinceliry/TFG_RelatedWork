@@ -31,6 +31,8 @@ class Dataset(data.Dataset):
         if self.data_type == "train":
             if self.args.dataset == "MEAD":
                 subject = file_name.split("_")[0]
+            elif self.args.dataset == "RAVDESS":
+                subject = file_name.split("-")[-1][:-4]
             else: # VOCASET, BIWI
                 subject = "_".join(file_name.split("_")[:-1])
             one_hot = self.one_hot_labels[self.subjects_dict["train"].index(subject)]
@@ -67,7 +69,6 @@ def read_data(args):
         for f in tqdm(fs):
             if f.endswith("wav"):
                 key = f.replace("wav", "npy")
-                
                 if args.read_audio:
                     wav_path = os.path.join(r, f)
                     speech_array, sampling_rate = librosa.load(wav_path, sr=16000)
@@ -113,7 +114,7 @@ def read_data(args):
             subject_id = k.split("_")[0] 
             sentence_id = int(k.split("_")[-1][:-4])
         elif args.dataset == "RAVDESS":
-            subject_id = k.split("-")[-1]
+            subject_id = k.split("-")[-1][:-4]
             sentence_id = int(k.split("-")[-3]) 
         
         if subject_id in subjects_dict["train"] and sentence_id in splits[args.dataset]['train']:
@@ -131,7 +132,6 @@ def read_data(args):
 def get_dataloaders(args):
     dataset = {}
     train_data, valid_data, test_data, subjects_dict = read_data(args)
-    
     train_dataset = Dataset(args, train_data, subjects_dict, "train", args.read_audio)
     dataset["train"] = data.DataLoader(dataset=train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
     valid_dataset = Dataset(args, valid_data, subjects_dict, "val", args.read_audio)
