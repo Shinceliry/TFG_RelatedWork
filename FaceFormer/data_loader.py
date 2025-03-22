@@ -6,18 +6,19 @@ import copy
 import numpy as np
 import pickle
 from tqdm import tqdm
-import random,math
-from transformers import Wav2Vec2FeatureExtractor,Wav2Vec2Processor
+import random, math
+from transformers import Wav2Vec2FeatureExtractor, Wav2Vec2Processor
 import librosa    
 
 class Dataset(data.Dataset):
     """Custom data.Dataset compatible with data.DataLoader."""
-    def __init__(self, data,subjects_dict,data_type="train"):
+    def __init__(self, args, data,subjects_dict,data_type="train"):
         self.data = data
         self.len = len(self.data)
         self.subjects_dict = subjects_dict
         self.data_type = data_type
         self.one_hot_labels = np.eye(len(subjects_dict["train"]))
+        self.args = args
 
     def __getitem__(self, index):
         """Returns one data pair (source and target)."""
@@ -123,19 +124,19 @@ def get_dataloaders(args):
     dataset = {}
     train_data, valid_data, test_data, subjects_dict = read_data(args)
     if args.batch_size == 1:
-        train_data = Dataset(train_data,subjects_dict,"train")
+        train_data = Dataset(args, train_data,subjects_dict,"train")
         dataset["train"] = data.DataLoader(dataset=train_data, batch_size=1, shuffle=True)
-        valid_data = Dataset(valid_data,subjects_dict,"val")
+        valid_data = Dataset(args, valid_data,subjects_dict,"val")
         dataset["valid"] = data.DataLoader(dataset=valid_data, batch_size=1, shuffle=False)
-        test_data = Dataset(test_data,subjects_dict,"test")
+        test_data = Dataset(args, test_data,subjects_dict,"test")
         dataset["test"] = data.DataLoader(dataset=test_data, batch_size=1, shuffle=False)
         return dataset
     else:
-        train_data = Dataset(train_data, subjects_dict, "train")
+        train_data = Dataset(args, train_data, subjects_dict, "train")
         dataset["train"] = data.DataLoader(dataset=train_data, batch_size=args.batch_size, shuffle=True, collate_fn=collate_fn)
-        valid_data = Dataset(valid_data, subjects_dict, "val")
+        valid_data = Dataset(args, valid_data, subjects_dict, "val")
         dataset["valid"] = data.DataLoader(dataset=valid_data, batch_size=args.batch_size, shuffle=False, collate_fn=collate_fn)
-        test_data = Dataset(test_data, subjects_dict, "test")
+        test_data = Dataset(args, test_data, subjects_dict, "test")
         dataset["test"] = data.DataLoader(dataset=test_data, batch_size=args.batch_size, shuffle=False, collate_fn=collate_fn)
         return dataset
 
@@ -147,7 +148,6 @@ def collate_fn(batch):
     vert_batch  = torch.stack([v[:min_vert_len] for v in vertices], dim=0)  # (B, T_vert, 3*N)
     template_batch = torch.stack(templates, dim=0)
     one_hot_batch = torch.stack(one_hots, dim=0)
-    
     return audio_batch, vert_batch, template_batch, one_hot_batch, file_names
 
 if __name__ == "__main__":
