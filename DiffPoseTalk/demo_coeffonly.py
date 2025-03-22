@@ -152,7 +152,6 @@ def main():
     parser.add_argument('--save_coef', action='store_true')
     parser.add_argument('--no_head', action='store_true')
     parser.add_argument("--fps", type=int, default=30, help="Movie FPS")
-
     args = parser.parse_args()
     runner = InferenceRunner(args)
     runner.run()

@@ -22,15 +22,16 @@ class Dataset(data.Dataset):
     def __getitem__(self, index):
         """Returns one data pair (source and target)."""
         file_name = self.data[index]["name"]
-        if self.read_audio:
-            audio = self.data[index]["audio"]
         vertice = self.data[index]["vertice"]
         template = self.data[index]["template"]
+        
+        if self.read_audio:
+            audio = self.data[index]["audio"]
         
         if self.data_type == "train":
             if self.args.dataset == "MEAD":
                 subject = file_name.split("_")[0]
-            else:
+            else: # VOCASET, BIWI
                 subject = "_".join(file_name.split("_")[:-1])
             one_hot = self.one_hot_labels[self.subjects_dict["train"].index(subject)]
         else:
@@ -75,12 +76,11 @@ def read_data(args):
                 else:
                     data[key]["audio"] = None
                 
-                if args.dataset == "MEAD":
-                    subject_id = key.split("_")[0] 
-                    temp = templates['v_template']
-                elif args.dataset in ["vocaset", "BIWI"]:
+                if args.dataset in ["vocaset", "BIWI"]:
                     subject_id = "_".join(key.split("_")[:-1])
                     temp = templates[subject_id]
+                else:
+                    temp = templates['v_template']
                 
                 data[key]["name"] = f
                 data[key]["template"] = temp.reshape((-1))
@@ -90,11 +90,6 @@ def read_data(args):
                     print(f"{vertice_path} is not found.")
                     del data[key]
                 else:
-                    # # if args.dataset == "vocaset"
-                    # if args.dataset == "vocaset" or args.dataset == "MEAD":
-                    #     data[key]["vertice"] = np.load(vertice_path,allow_pickle=True)[::2,:]#due to the memory limit
-                    # elif args.dataset == "BIWI":
-                    #     data[key]["vertice"] = np.load(vertice_path,allow_pickle=True)
                     data[key]["vertice"] = np.load(vertice_path, allow_pickle=True)
                     
     subjects_dict = {
@@ -106,16 +101,20 @@ def read_data(args):
     splits = {
         'vocaset': {'train': range(1, 41), 'val': range(21, 41), 'test': range(21, 41)},
         'BIWI': {'train': range(1, 33), 'val': range(33, 37), 'test': range(37, 41)},
-        'MEAD': {'train': range(1, 61), 'val': range(1, 61), 'test': range(1, 61)}
+        'MEAD': {'train': range(1, 61), 'val': range(1, 61), 'test': range(1, 61)},
+        'RAVDESS': {'train': range(1, 3), 'val': range(1, 3), 'test': range(1, 3)}
     }
     
     for k, v in data.items():
-        if args.dataset == "MEAD":
-            subject_id = k.split("_")[0] 
-            sentence_id = int(k.split("_")[-1][:-4])
-        elif args.dataset in ["vocaset", "BIWI"]:
+        if args.dataset in ["vocaset", "BIWI"]:
             subject_id = "_".join(k.split("_")[:-1])
             sentence_id = int(k.split(".")[0][-2:])
+        elif args.dataset == "MEAD":
+            subject_id = k.split("_")[0] 
+            sentence_id = int(k.split("_")[-1][:-4])
+        elif args.dataset == "RAVDESS":
+            subject_id = k.split("-")[-1]
+            sentence_id = int(k.split("-")[-3]) 
         
         if subject_id in subjects_dict["train"] and sentence_id in splits[args.dataset]['train']:
             train_data.append(v)
