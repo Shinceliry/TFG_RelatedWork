@@ -11,23 +11,6 @@ from sklearn.model_selection import train_test_split
 import librosa
 from torch.nn.utils.rnn import pad_sequence
 
-def collate_fn(batch):
-    audio_list, vertice_list, template_list, one_hot_list, file_name_list = zip(*batch)
-
-    # 音声データの長さが異なる場合は `pad_sequence` を使用
-    if isinstance(audio_list[0], torch.Tensor):
-        audio_list = pad_sequence(audio_list, batch_first=True, padding_value=0)
-
-    # Verticeデータの長さが異なる場合は `pad_sequence` を使用
-    if isinstance(vertice_list[0], torch.Tensor):
-        vertice_list = pad_sequence(vertice_list, batch_first=True, padding_value=0)
-
-    # Template や one-hot encoding のデータはそのまま
-    template_list = torch.stack(template_list)
-    one_hot_list = torch.stack(one_hot_list)
-
-    return audio_list, vertice_list, template_list, one_hot_list, file_name_list
-
 
 class Dataset(data.Dataset):
     """Custom data.Dataset compatible with data.DataLoader."""
@@ -69,8 +52,7 @@ def read_data(args):
     audio_path = os.path.join(args.data_path, args.dataset, args.wav_path)
     vertices_path = os.path.join(args.data_path, args.dataset, args.vertices_path)
 
-    processor = Wav2Vec2Processor.from_pretrained(
-        "facebook/hubert-xlarge-ls960-ft")  # HuBERT uses the processor of Wav2Vec 2.0
+    processor = Wav2Vec2Processor.from_pretrained("facebook/hubert-xlarge-ls960-ft")
 
     template_file = os.path.join(args.data_path, args.dataset, args.template_file)
     with open(template_file, 'rb') as fin:
@@ -84,22 +66,13 @@ def read_data(args):
             if f.endswith("wav"):
                 wav_path = os.path.join(r, f)
                 key = f.replace("wav", "npy")
-
-                # get sample info from the name and add it to the dict for the splits
-                if args.dataset == 'vocaset':
+                
+                if args.dataset in ["vocaset", "BIWI"]:
                     subject_id = "_".join(key.split("_")[:-1])
-                    sentence_id = int(key.split(".")[0][-2:])
-                elif args.dataset == "MEAD":
-                    subject_id = key.split("_")[0] 
-                    temp = templates['v_template']
+                    temp = templates.get(subject_id, np.zeros(args.vertice_dim))
                 else:
-                    sentence_id = key.split(".")[0].split("_")[-1]
-                    subject_id = key.split("_")[0]
-
-                # skip subjects not included in the training or test sets for faster loading
-                if subject_id not in all_subjects:
-                    continue
-
+                    temp = templates['v_template']
+                
                 if args.dataset == 'beat':
                     emotion_id = int(key.split(".")[0].split("_")[-2])
                     indices_to_split.append([sentence_id, emotion_id, subject_id])
@@ -109,8 +82,6 @@ def read_data(args):
                                          sampling_rate=sampling_rate).input_values)
 
                 data[key]["audio"] = input_values
-                if not args.dataset == "MEAD":
-                    temp = templates.get(subject_id, np.zeros(args.vertice_dim))
                 data[key]["name"] = f
                 data[key]["template"] = temp.reshape((-1))
                 vertice_path = os.path.join(vertices_path, key)
@@ -169,8 +140,21 @@ def read_data(args):
             'val': val_split,
             'test': test_split
         },
-        'vocaset': {'train': range(1, 41), 'val': range(21, 41), 'test': range(21, 41)},
-        'MEAD': {'train': range(1, 61), 'val': range(1, 61), 'test': range(1, 61)}
+        'vocaset': {
+            'train': range(1, 41), 
+            'val': range(21, 41), 
+            'test': range(21, 41)
+        },
+        'MEAD': {
+            'train': range(1, 61), 
+            'val': range(1, 61), 
+            'test': range(1, 61)
+        },
+        'RAVDESS': {
+            'train': range(1, 3), 
+            'val': range(1, 3), 
+            'test': range(1, 3)
+        }
     }
 
 
@@ -195,27 +179,17 @@ def read_data(args):
                 valid_data.append(v)
             elif subject_id in subjects_dict["test"] and sentence_id in splits[args.dataset]['test'][subject_id]:
                 test_data.append(v)
-        elif args.dataset == 'BIWI' or args.dataset == 'vocaset':
-            subject_id = "_".join(k.split("_")[:-1])
-            sentence_id = int(k.split(".")[0][-2:])
-            if subject_id in subjects_dict["train"] and sentence_id in splits[args.dataset]['train']:
-                train_data.append(v)
-            elif subject_id in subjects_dict["val"] and sentence_id in splits[args.dataset]['val']:
-                valid_data.append(v)
-            elif subject_id in subjects_dict["test"] and sentence_id in splits[args.dataset]['test']:
-                test_data.append(v)
-        elif args.dataset == 'MEAD':
-            subject_id = k.split("_")[0] 
-            sentence_id = int(k.split("_")[-1][:-4])
-            if subject_id in subjects_dict["train"] and sentence_id in splits[args.dataset]['train']:
-                train_data.append(v)
-            elif subject_id in subjects_dict["val"] and sentence_id in splits[args.dataset]['val']:
-                valid_data.append(v)
-            elif subject_id in subjects_dict["test"] and sentence_id in splits[args.dataset]['test']:
-                test_data.append(v)
         else:
-            subject_id = k.split("_")[0]
-            sentence_id = int(k.split(".")[0].split("_")[-1])
+            if args.dataset == 'BIWI' or args.dataset == 'vocaset':
+                subject_id = "_".join(k.split("_")[:-1])
+                sentence_id = int(k.split(".")[0][-2:])
+            elif args.dataset == 'MEAD':
+                subject_id = k.split("_")[0] 
+                sentence_id = int(k.split("_")[-1][:-4])
+            elif args.dataset == "RAVDESS":
+                subject_id = k.split("-")[-1][:-4]
+                sentence_id = int(k.split("-")[-3]) 
+            
             if subject_id in subjects_dict["train"] and sentence_id in splits[args.dataset]['train']:
                 train_data.append(v)
             elif subject_id in subjects_dict["val"] and sentence_id in splits[args.dataset]['val']:
@@ -238,18 +212,36 @@ def get_dataloaders(args):
     g.manual_seed(0)
     dataset = {}
     train_data, valid_data, test_data, subjects_dict = read_data(args)
-    train_data = Dataset(train_data, subjects_dict, "train")
-    dataset["train"] = data.DataLoader(dataset=train_data, batch_size=args.batch_size, shuffle=True, worker_init_fn=seed_worker, generator=g)
-    # dataset["train"] = data.DataLoader(dataset=train_data, batch_size=args.batch_size, shuffle=True, worker_init_fn=seed_worker, generator=g, collate_fn=collate_fn)
-    valid_data = Dataset(valid_data, subjects_dict, "val")
-    dataset["valid"] = data.DataLoader(dataset=valid_data, batch_size=args.batch_size, shuffle=False)
-    # dataset["valid"] = data.DataLoader(dataset=valid_data, batch_size=args.batch_size, shuffle=False, collate_fn=collate_fn)
-    test_data = Dataset(test_data, subjects_dict, "test")
-    dataset["test"] = data.DataLoader(dataset=test_data, batch_size=args.batch_size, shuffle=False)
-    # dataset["test"] = data.DataLoader(dataset=test_data, batch_size=args.batch_size, shuffle=False, collate_fn=collate_fn)
-    return dataset
+    
+    if args.batch_size == 1:
+        train_data = Dataset(args, train_data,subjects_dict,"train")
+        dataset["train"] = data.DataLoader(dataset=train_data, batch_size=1, shuffle=True, worker_init_fn=seed_worker, generator=g)
+        valid_data = Dataset(args, valid_data,subjects_dict,"val")
+        dataset["valid"] = data.DataLoader(dataset=valid_data, batch_size=1, shuffle=False)
+        test_data = Dataset(args, test_data,subjects_dict,"test")
+        dataset["test"] = data.DataLoader(dataset=test_data, batch_size=1, shuffle=False)
+        return dataset
+    else:
+        train_data = Dataset(args, train_data, subjects_dict, "train")
+        dataset["train"] = data.DataLoader(dataset=train_data, batch_size=args.batch_size, shuffle=True, worker_init_fn=seed_worker, generator=g, collate_fn=collate_fn)
+        valid_data = Dataset(args, valid_data, subjects_dict, "val")
+        dataset["valid"] = data.DataLoader(dataset=valid_data, batch_size=args.batch_size, shuffle=False, collate_fn=collate_fn)
+        test_data = Dataset(args, test_data, subjects_dict, "test")
+        dataset["test"] = data.DataLoader(dataset=test_data, batch_size=args.batch_size, shuffle=False, collate_fn=collate_fn)
+        return dataset
 
+def collate_fn(batch):
+    audio_list, vertice_list, template_list, one_hot_list, file_name_list = zip(*batch)
+    if isinstance(audio_list[0], torch.Tensor):
+        audio_list = pad_sequence(audio_list, batch_first=True, padding_value=0)
+        
+    if isinstance(vertice_list[0], torch.Tensor):
+        vertice_list = pad_sequence(vertice_list, batch_first=True, padding_value=0)
+    
+    template_list = torch.stack(template_list)
+    one_hot_list = torch.stack(one_hot_list)
 
+    return audio_list, vertice_list, template_list, one_hot_list, file_name_list
 
 if __name__ == "__main__":
     get_dataloaders()

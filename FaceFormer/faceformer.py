@@ -108,7 +108,7 @@ class Faceformer(nn.Module):
         self.transformer_decoder = nn.TransformerDecoder(decoder_layer, num_layers=1)
 
         # style embedding
-        num_train_subjects = len(args.train_subjects)
+        num_train_subjects = len(args.train_subjects.split(" "))
         self.obj_vector = nn.Linear(num_train_subjects, args.feature_dim, bias=False)
 
     def forward(self, audio, template, vertice, one_hot, criterion,teacher_forcing=True):
@@ -248,7 +248,7 @@ class Faceformer(nn.Module):
         hidden_states = self.audio_encoder(audio, self.dataset).last_hidden_state
         if self.dataset == "BIWI":
             frame_num = hidden_states.shape[1]//2
-        elif self.dataset == "vocaset":
+        else:
             frame_num = hidden_states.shape[1]
         hidden_states = self.audio_feature_map(hidden_states)
 

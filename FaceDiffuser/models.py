@@ -290,8 +290,7 @@ class FaceDiff(nn.Module):
         nn.init.constant_(self.final_layer.bias, 0)
 
         # Subject embedding, S
-        # self.obj_vector = nn.Linear(len(args.train_subjects.split()), latent_dim, bias=False)
-        self.obj_vector = nn.Linear(len(args.train_subjects), latent_dim, bias=False)
+        self.obj_vector = nn.Linear(len(args.train_subjects.split(" ")), latent_dim, bias=False)
 
     def forward(
             self, x: Tensor,  times: Tensor, cond_embed: Tensor, template, one_hot,

@@ -19,7 +19,7 @@ def test_model(args):
     model = model.to(torch.device(args.device))
     model.eval()
 
-    template_file = os.path.join(args.faceformer_dir_path, args.dataset, args.template_path)
+    template_file = os.path.join(args.faceformer_dir_path, "data", args.dataset, args.template_path)
     with open(template_file, 'rb') as fin:
         templates = pickle.load(fin, encoding='latin1')
 
