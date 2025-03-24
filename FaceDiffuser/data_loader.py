@@ -15,12 +15,13 @@ from torch.nn.utils.rnn import pad_sequence
 class Dataset(data.Dataset):
     """Custom data.Dataset compatible with data.DataLoader."""
 
-    def __init__(self, data, subjects_dict, data_type="train"):
+    def __init__(self, args, data, subjects_dict, data_type="train"):
         self.data = data
         self.len = len(self.data)
         self.subjects_dict = subjects_dict
         self.data_type = data_type
         self.one_hot_labels = np.eye(len(subjects_dict["train"]))
+        self.args = args
 
     def __getitem__(self, index):
         """Returns one data pair (source and target)."""
@@ -30,13 +31,17 @@ class Dataset(data.Dataset):
         template = self.data[index]["template"]
 
         if self.data_type == "train":
-            subject = file_name.split("_")[0]
+            if self.args.dataset == "MEAD":
+                subject = file_name.split("_")[0]
+            elif self.args.dataset == "RAVDESS":
+                subject = file_name.split("-")[-1][:-4]
+            else: # VOCASET, BIWI
+                subject = "_".join(file_name.split("_")[:-1])
             one_hot = self.one_hot_labels[self.subjects_dict["train"].index(subject)]
         else:
             one_hot = self.one_hot_labels
 
-        return torch.FloatTensor(audio), vertice, torch.FloatTensor(template), torch.FloatTensor(
-            one_hot), file_name
+        return torch.FloatTensor(audio), vertice, torch.FloatTensor(template), torch.FloatTensor(one_hot), file_name
 
     def __len__(self):
         return self.len
