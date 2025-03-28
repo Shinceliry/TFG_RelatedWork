@@ -130,8 +130,8 @@ def main():
     parser.add_argument("--feature_dim", type=int, default=256, help='GRU Vertex Decoder hidden size')
     parser.add_argument("--vertice_dim", type=int, default=70110, help='number of vertices - 23370*3 for BIWI')
     parser.add_argument("--device", type=str, default="cuda")
-    parser.add_argument("--train_subjects", type=str, default="F1 F2 F3 F4 F5 F6 F7 F8 M1 M2 M3 M4 M5 M6")
-    parser.add_argument("--test_subjects", type=str, default="F1 F2 F3 F4 F5 F6 F7 F8 M1 M2 M3 M4 M5 M6")
+    parser.add_argument("--train_subjects", type=str, nargs="+", default="F1 F2 F3 F4 F5 F6 F7 F8 M1 M2 M3 M4 M5 M6")
+    parser.add_argument("--test_subjects", type=str, nargs="+", default="F1 F2 F3 F4 F5 F6 F7 F8 M1 M2 M3 M4 M5 M6")
     parser.add_argument("--wav_path", type=str, default="demo/wav/test.wav",
                         help='path of the input audio signal in .wav format')
     parser.add_argument("--result_path", type=str, default="demo/result", help='path of the predictions in .npy format')

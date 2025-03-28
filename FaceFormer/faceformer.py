@@ -108,7 +108,7 @@ class Faceformer(nn.Module):
         self.transformer_decoder = nn.TransformerDecoder(decoder_layer, num_layers=1)
 
         # style embedding
-        num_train_subjects = len(args.train_subjects.split(" "))
+        num_train_subjects = len(args.train_subjects)
         self.obj_vector = nn.Linear(num_train_subjects, args.feature_dim, bias=False)
 
     def forward(self, audio, template, vertice, one_hot, criterion,teacher_forcing=True):
